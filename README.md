@@ -1,1 +1,2 @@
-# Liubo![IMG_2286](https://user-images.githubusercontent.com/72194580/218346553-70787801-4c74-433d-ac21-fb31c3012721.jpg)
+# Liubo!
+<img width="512" alt="截屏2023-02-13 08 28 44" src="https://user-images.githubusercontent.com/72194580/218346607-4d744d97-eb81-459a-8f61-766191567c2f.png">
