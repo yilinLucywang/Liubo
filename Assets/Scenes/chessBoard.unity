@@ -3211,7 +3211,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 987338299}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1800933015}
+        m_MethodName: BottomClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &987338299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5640,6 +5651,7 @@ GameObject:
   - component: {fileID: 1800933012}
   - component: {fileID: 1800933011}
   - component: {fileID: 1800933015}
+  - component: {fileID: 1800933016}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5752,6 +5764,56 @@ MonoBehaviour:
   dice_2: -1
   num_1_text: {fileID: 1882539399}
   num_2_text: {fileID: 809762881}
+--- !u!114 &1800933016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800933010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eee79dab92ca894f858b0edb51a68c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pond_index: 0
+  white_pieces: 
+  black_pieces: 
+  anchors:
+  - {fileID: 555586516}
+  - {fileID: 1667419410}
+  - {fileID: 1268676248}
+  - {fileID: 945310729}
+  - {fileID: 212528456}
+  - {fileID: 789136062}
+  - {fileID: 908699255}
+  - {fileID: 409276141}
+  - {fileID: 308917203}
+  - {fileID: 1595056195}
+  - {fileID: 1563881210}
+  - {fileID: 425687018}
+  - {fileID: 332410577}
+  - {fileID: 829210311}
+  - {fileID: 883228112}
+  - {fileID: 1617119309}
+  - {fileID: 1677562995}
+  - {fileID: 609930246}
+  - {fileID: 936714375}
+  - {fileID: 1960442044}
+  - {fileID: 1947047387}
+  - {fileID: 737436157}
+  - {fileID: 1764514260}
+  - {fileID: 219663961}
+  - {fileID: 1209222169}
+  - {fileID: 1371373318}
+  - {fileID: 793757575}
+  - {fileID: 165940087}
+  - {fileID: 294016220}
+  - {fileID: 2058806966}
+  - {fileID: 76789257}
+  - {fileID: 117970533}
+  - {fileID: 1718892173}
+  cur_rolls: 0000000000000000
 --- !u!1 &1846562585
 GameObject:
   m_ObjectHideFlags: 0
@@ -6365,7 +6427,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1961499591}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1800933015}
+        m_MethodName: TopClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1961499591
 MonoBehaviour:
   m_ObjectHideFlags: 0

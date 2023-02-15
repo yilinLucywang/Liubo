@@ -22,6 +22,9 @@ public class board : MonoBehaviour
     public List<int> black_pieces = new List<int>();
 
 
+    public List<GameObject> anchors = new List<GameObject>();
+
+
     //sets that stores the owl-piece indexs
     public HashSet<int> white_owls = new HashSet<int>();
     public HashSet<int> black_owls = new HashSet<int>();
