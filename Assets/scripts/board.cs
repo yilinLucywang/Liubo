@@ -118,7 +118,7 @@ public class board : MonoBehaviour
     }
 
 
-    List<int> move(bool is_white, int piece_index, int step){
+    public List<int> move(bool is_white, int piece_index, int step){
         List<int> possible_poses = new List<int>();
         int cur_pos = 0;
         if(is_white){

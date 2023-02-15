@@ -65,4 +65,18 @@ public class GameState : MonoBehaviour
             cur_step = dice_2;
         }
     }
+
+    public void PieceChosen(int index, bool is_black){
+        chosen_piece = index; 
+        is_black_chosen = is_black;
+    }
+
+    private void ShowPossiblePositions(){
+        board bd = gameObject.GetComponent<board>();
+        bool is_white = !is_black_chosen;
+        if(is_white){
+            chosen_piece = chosen_piece - 6;
+        }
+        List<int> res_list = bd.move(is_white,chosen_piece, cur_step);
+    }
 }

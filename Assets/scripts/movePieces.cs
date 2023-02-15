@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
+using UnityEngine.EventSystems;
+using System; 
 
 public class movePieces : MonoBehaviour
 {
@@ -60,5 +63,20 @@ public class movePieces : MonoBehaviour
             }
         }
         transform.position = anchors[closestIdx].transform.position;
+    }
+
+
+    public void choosePiece(){
+        string subject_string = EventSystem.current.currentSelectedGameObject.name;
+        string result_string = Regex.Match(subject_string,@"\d+").Value;
+        int index = Int32.Parse(result_string);
+
+
+        bool is_black = false; 
+        if(index <= 5){
+            is_black = true;
+        }
+        GameState bd = gameObject.GetComponent<GameState>();
+        bd.PieceChosen(index,is_black);
     }
 }
