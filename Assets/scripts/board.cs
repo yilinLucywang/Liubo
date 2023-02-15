@@ -8,6 +8,7 @@ public class board : MonoBehaviour
     private static int total_poses = 37;
     private static int piece_number = 6;
     private Dictionary<int, int> anchor_2_index = new Dictionary<int, int> ();
+    private Dictionary<int, int> index_2_anchor = new Dictionary<int, int> ();
     private List<int> final_poses =  new List<int>();
     public List<List<int>> nodes = new List<List<int>>();
     public int pond_index = 0; 
@@ -102,6 +103,7 @@ public class board : MonoBehaviour
             string result_string = Regex.Match(subject_string,@"\d+").Value;
             int index = Int32.Parse(result_string);
             anchor_2_index[i] = index;
+            index_2_anchor[index] = i; 
         }
 
     }
@@ -118,8 +120,8 @@ public class board : MonoBehaviour
     }
 
 
-    public List<int> move(bool is_white, int piece_index, int step){
-        List<int> possible_poses = new List<int>();
+    public List<Vector2> move(bool is_white, int piece_index, int step){
+        //List<int> possible_poses = new List<int>();
         int cur_pos = 0;
         if(is_white){
             cur_pos = white_pieces[piece_index];
@@ -161,7 +163,14 @@ public class board : MonoBehaviour
                 normal_helper(cur_pos,step,visited_spot);
             }
         }
-        return final_poses;
+
+        List<Vector2> final_positions = new List<Vector2> ();
+        for(int i = 0; i < final_poses.Count; i++){
+            int anchor_index = index_2_anchor[final_poses[i]];
+            Vector2 position = anchors[anchor_index].transform.position;
+            final_positions.Add(position);
+        }
+        return final_positions;
     }
 
 

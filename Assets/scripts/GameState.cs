@@ -16,7 +16,11 @@ public class GameState : MonoBehaviour
     public int chosen_piece = -1;
 
 
+    //prefab to spawn
+    public GameObject valid_sign;
+
     private int cur_step = 0;
+    private List<GameObject> instantiated_list = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -77,7 +81,25 @@ public class GameState : MonoBehaviour
         if(is_white){
             chosen_piece = chosen_piece - 6;
         }
-        List<int> res_list = bd.move(is_white,chosen_piece, cur_step);
+        List<Vector2> res_list = bd.move(is_white,chosen_piece, cur_step);
         Debug.Log(res_list);
+
+        //what to do with the possible move positions?
+        for(int i = 0; i < res_list.Count; i++){
+            Vector2 pos = res_list[i];
+        }
+    }
+
+
+    void SpawnGreen(Vector2 spawn_pos){
+        //spawn the prefab at the given position
+        GameObject instantiated = Instantiate(valid_sign, spawn_pos, Quaternion.identity);
+        instantiated_list.Add(instantiated);
+    }
+
+    void RemoveGreens(){
+        for(int i = 0; i < instantiated_list.Count; i++){
+            Destroy(instantiated_list[i]);
+        }
     }
 }
