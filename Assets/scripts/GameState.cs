@@ -78,5 +78,6 @@ public class GameState : MonoBehaviour
             chosen_piece = chosen_piece - 6;
         }
         List<int> res_list = bd.move(is_white,chosen_piece, cur_step);
+        Debug.Log(res_list);
     }
 }
