@@ -8,7 +8,7 @@ public class board : MonoBehaviour
     private static int total_poses = 37;
     private static int piece_number = 6;
     private List<int> final_poses =  new List<int>();
-    public List<int> nodes;
+    public List<List<int>> nodes = new List<List<int>>();
     public int pond_index = 0; 
     public int[,] normal_edges = new int[total_poses, total_poses];
     public int[,] owl_edges = new int[total_poses, total_poses];
@@ -32,7 +32,9 @@ public class board : MonoBehaviour
     {
         //-1 means no piece in current location
         for(int i = 0; i < total_poses; i++){
-            nodes.Add(-1);
+            //change to list 
+            List<int> empty_pos =  new List<int>();
+            nodes.Add(empty_pos);
         }
 
 
@@ -122,51 +124,69 @@ public class board : MonoBehaviour
                 //This part searches in owl_edges
                 //has cycle, may cause some issue here in this dfs
                 final_poses.Clear();
-                owl_helper(cur_pos,step);
+                HashSet<int> visited_spot = new HashSet<int>();
+                owl_helper(cur_pos,step,visited_spot);
             }
             else{
                 //This part searches in normal_edges
                 final_poses.Clear();
-                normal_helper(cur_pos,step);
+                HashSet<int> visited_spot = new HashSet<int>(); 
+                normal_helper(cur_pos,step,visited_spot);
             }
         }
         else{
             if(black_owls.Contains(piece_index)){
                 //This part searches in owl_edges
                 final_poses.Clear();
-                owl_helper(cur_pos,step);
+                HashSet<int> visited_spot = new HashSet<int>();
+                owl_helper(cur_pos,step,visited_spot);
             }
             else{
                 //This part searches in normal_edges
                 final_poses.Clear();
-                normal_helper(cur_pos,step);
+                HashSet<int> visited_spot = new HashSet<int>();
+                normal_helper(cur_pos,step,visited_spot);
             }
         }
         return final_poses;
     }
 
 
-    void normal_helper(int cur_pos, int step){
+    void normal_helper(int cur_pos, int step, HashSet<int> visited_spot){
         if(step < 1){
             final_poses.Add(cur_pos);
         }
         else{
             for(int i = 0; i < normal_edges.GetLength(1); i++){
+                if(nodes[i].Count > 1){
+                    continue;
+                }
                 if(normal_edges[cur_pos,i] == 1){
-                    normal_helper(i,step - 1);
+                    if(!visited_spot.Contains(i)){
+                        visited_spot.Add(i);
+                        normal_helper(i,step - 1,visited_spot);
+                        visited_spot.Remove(i);
+                    }
                 }
             }
         }
     }
 
-    void owl_helper(int cur_pos, int  step){
+    void owl_helper(int cur_pos, int  step, HashSet<int> visited_spot){
         if(step < 1){
             final_poses.Add(cur_pos);
         }
         else{
             for(int i = 0; i < owl_edges.GetLength(1); i++){
+                if(nodes[i].Count > 1){
+                    continue;
+                }
                 if(owl_edges[cur_pos,i] == 1){
-                    owl_helper(i,step - 1);
+                    if(!visited_spot.Contains(i)){
+                        visited_spot.Add(i);
+                        owl_helper(i,step - 1, visited_spot);
+                        visited_spot.Remove(i);
+                    }
                 }
             }
         }
