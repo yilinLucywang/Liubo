@@ -12,6 +12,8 @@ public class GameState : MonoBehaviour
     public Text num_1_text;
     public Text num_2_text;  
 
+    public bool is_black_chosen = true;
+    public int chosen_piece = -1;
 
 
     private int cur_step = 0;

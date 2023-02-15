@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using System.Text.RegularExpressions;
 public class board : MonoBehaviour
 {   
     private static int total_poses = 37;
     private static int piece_number = 6;
+    private Dictionary<int, int> anchor_2_index = new Dictionary<int, int> ();
     private List<int> final_poses =  new List<int>();
     public List<List<int>> nodes = new List<List<int>>();
     public int pond_index = 0; 
@@ -92,6 +93,15 @@ public class board : MonoBehaviour
         for(int i = 0; i < piece_number; i++){
             white_pieces.Add(-1); 
             black_pieces.Add(-1);
+        }
+
+        //anchor_2_index
+
+        for(int i = 0; i < anchors.Count; i++){
+            string subject_string = anchors[i].name;
+            string result_string = Regex.Match(subject_string,@"\d+").Value;
+            int index = Int32.Parse(result_string);
+            anchor_2_index[i] = index;
         }
 
     }
