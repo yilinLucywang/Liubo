@@ -18,7 +18,7 @@ public class Score : MonoBehaviour
 
     public bool is_p1_turn = true;
 
-    //this maps piece index -> node_index, if not on board pieces[piece_index] = -1
+    //this maps piece index -> node_ind ex, if not on board pieces[piece_index] = -1
     public List<int> white_pieces = new List<int>();
     public List<int> black_pieces = new List<int>();
 
@@ -155,7 +155,6 @@ public class Score : MonoBehaviour
                     {
                         white_score++;
                     }
-
                 }
             }
             else
@@ -163,6 +162,8 @@ public class Score : MonoBehaviour
                 //This part searches in normal_edges
                 final_poses.Clear();
                 normal_helper(cur_pos, step);
+
+                //calculate score
                 int last = final_poses[final_poses.Count - 1];
                 if (black_pieces.Contains(last))
                 {
@@ -190,12 +191,53 @@ public class Score : MonoBehaviour
                 //This part searches in owl_edges
                 final_poses.Clear();
                 owl_helper(cur_pos, step);
+
+                //calculate score
+                int last = final_poses[final_poses.Count - 1];
+                if (white_pieces.Contains(last))
+                {
+                    //owl -> 1 normal opponment || (1 normal opponment && 1 normal friend)
+                    //send back the normal black piece on the edge
+                    int normal_index = white_pieces.IndexOf(last);
+                    white_pieces[normal_index] = -1;
+                    //add 3 point if eat black owl, 1 point blakc normal
+                    if (white_owls.Contains(last))
+                    {
+                        black_score += 3;
+                    }
+                    else
+                    {
+                        black_score++;
+                    }
+
+                }
             }
             else
             {
                 //This part searches in normal_edges
                 final_poses.Clear();
                 normal_helper(cur_pos, step);
+
+                //calculate score
+                int last = final_poses[final_poses.Count - 1];
+                if (white_pieces.Contains(last))
+                {
+                    //normal -> 1 owl opponment || (1 normal opponment && 1 normal friend)
+                    //send back the normal black piece on the edge
+                    int normal_index = white_pieces.IndexOf(last);
+                    white_pieces[normal_index] = -1;
+                    //add 3 point if eat black owl, 1 point blakc normal
+                    if (white_owls.Contains(last))
+                    {
+                        black_score += 3;
+                    }
+                    else
+                    {
+                        black_score++;
+                    }
+
+                }
+
             }
         }
         return final_poses;
