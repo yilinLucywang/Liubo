@@ -139,6 +139,7 @@ public class board : MonoBehaviour
         if(cur_pos == -1){
             //TODO: what if piece off board
             //starting pos: 11,1,30,22
+            step = step - 1;
             if(is_white){
                 //1,11
                 //no way for this case to be owl
