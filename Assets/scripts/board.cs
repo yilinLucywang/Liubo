@@ -144,16 +144,20 @@ public class board : MonoBehaviour
                 //no way for this case to be owl
                 final_poses.Clear();
                 HashSet<int> visited_spot = new HashSet<int>();
+                visited_spot.Add(1);
                 normal_helper(1,step,visited_spot);
                 visited_spot.Clear();
+                visited_spot.Add(11);
                 normal_helper(11,step,visited_spot);
             }else{
                 //30,22
                 //no way for this case to be owl
                 final_poses.Clear();
                 HashSet<int> visited_spot = new HashSet<int>();
+                visited_spot.Add(30);
                 normal_helper(30,step,visited_spot);
                 visited_spot.Clear();
+                visited_spot.Add(22);
                 normal_helper(22,step,visited_spot);
             }
         }
@@ -165,12 +169,14 @@ public class board : MonoBehaviour
                     //has cycle, may cause some issue here in this dfs
                     final_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
+                    visited_spot.Add(cur_pos);
                     owl_helper(cur_pos,step,visited_spot);
                 }
                 else{
                     //This part searches in normal_edges
                     final_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>(); 
+                    visited_spot.Add(cur_pos);
                     normal_helper(cur_pos,step,visited_spot);
                 }
             }
@@ -179,12 +185,14 @@ public class board : MonoBehaviour
                     //This part searches in owl_edges
                     final_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
+                    visited_spot.Add(cur_pos);
                     owl_helper(cur_pos,step,visited_spot);
                 }
                 else{
                     //This part searches in normal_edges
                     final_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
+                    visited_spot.Add(cur_pos);
                     normal_helper(cur_pos,step,visited_spot);
                 }
             }
@@ -202,8 +210,8 @@ public class board : MonoBehaviour
 
     void normal_helper(int cur_pos, int step, HashSet<int> visited_spot){
         if(step < 1){
-            Debug.Log("final position");
-            Debug.Log(cur_pos);
+            //Debug.Log("final position");
+            //Debug.Log(cur_pos);
             final_poses.Add(cur_pos);
         }
         else{
@@ -218,11 +226,11 @@ public class board : MonoBehaviour
                 if(normal_edges[cur_pos,i] == 1){
                     if(!visited_spot.Contains(i)){
                         visited_spot.Add(i);
-                        Debug.Log("begin");
-                        foreach(int k in visited_spot){
-                            Debug.Log(k);
-                        }
-                        Debug.Log("end");
+                        // Debug.Log("begin");
+                        // foreach(int k in visited_spot){
+                        //     Debug.Log(k);
+                        // }
+                        // Debug.Log("end");
                         normal_helper(i,step - 1,visited_spot);
                         visited_spot.Remove(i);
                     }
