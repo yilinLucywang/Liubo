@@ -1722,6 +1722,7 @@ MonoBehaviour:
   - {fileID: 308917203}
   - {fileID: 1595056195}
   - {fileID: 1563881210}
+  canvas: {fileID: 1800933010}
 --- !u!114 &646621998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1994,6 +1995,7 @@ MonoBehaviour:
   - {fileID: 308917203}
   - {fileID: 1595056195}
   - {fileID: 1563881210}
+  canvas: {fileID: 1800933010}
 --- !u!114 &677871075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3526,6 +3528,7 @@ MonoBehaviour:
   - {fileID: 308917203}
   - {fileID: 1595056195}
   - {fileID: 1563881210}
+  canvas: {fileID: 1800933010}
 --- !u!114 &1054059540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3762,6 +3765,7 @@ MonoBehaviour:
   - {fileID: 308917203}
   - {fileID: 1595056195}
   - {fileID: 1563881210}
+  canvas: {fileID: 1800933010}
 --- !u!114 &1094064536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4062,6 +4066,7 @@ MonoBehaviour:
   - {fileID: 308917203}
   - {fileID: 1595056195}
   - {fileID: 1563881210}
+  canvas: {fileID: 1800933010}
 --- !u!114 &1181652491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4218,6 +4223,7 @@ MonoBehaviour:
   - {fileID: 308917203}
   - {fileID: 1595056195}
   - {fileID: 1563881210}
+  canvas: {fileID: 1800933010}
 --- !u!114 &1206827565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4738,6 +4744,7 @@ MonoBehaviour:
   - {fileID: 308917203}
   - {fileID: 1595056195}
   - {fileID: 1563881210}
+  canvas: {fileID: 1800933010}
 --- !u!114 &1579703737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5242,6 +5249,7 @@ MonoBehaviour:
   - {fileID: 308917203}
   - {fileID: 1595056195}
   - {fileID: 1563881210}
+  canvas: {fileID: 1800933010}
 --- !u!114 &1690787077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5398,6 +5406,7 @@ MonoBehaviour:
   - {fileID: 308917203}
   - {fileID: 1595056195}
   - {fileID: 1563881210}
+  canvas: {fileID: 1800933010}
 --- !u!114 &1714104150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5839,6 +5848,7 @@ MonoBehaviour:
   is_black_chosen: 1
   chosen_piece: -1
   valid_sign: {fileID: 640312626}
+  canvas: {fileID: 1800933010}
 --- !u!114 &1800933016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5954,6 +5964,7 @@ MonoBehaviour:
   - {fileID: 308917203}
   - {fileID: 1595056195}
   - {fileID: 1563881210}
+  canvas: {fileID: 1800933010}
 --- !u!114 &1846562588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6188,6 +6199,7 @@ MonoBehaviour:
   - {fileID: 308917203}
   - {fileID: 1595056195}
   - {fileID: 1563881210}
+  canvas: {fileID: 1800933010}
 --- !u!114 &1899419721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6687,6 +6699,7 @@ MonoBehaviour:
   - {fileID: 308917203}
   - {fileID: 1595056195}
   - {fileID: 1563881210}
+  canvas: {fileID: 1800933010}
 --- !u!114 &2072145862
 MonoBehaviour:
   m_ObjectHideFlags: 0

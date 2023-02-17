@@ -18,6 +18,7 @@ public class GameState : MonoBehaviour
 
     //prefab to spawn
     public GameObject valid_sign;
+    public GameObject canvas;
 
     private int cur_step = 0;
     private List<GameObject> instantiated_list = new List<GameObject>();
@@ -73,20 +74,28 @@ public class GameState : MonoBehaviour
     public void PieceChosen(int index, bool is_black){
         chosen_piece = index; 
         is_black_chosen = is_black;
+
+        //show all possibe positions
+        ShowPossiblePositions();
     }
 
     private void ShowPossiblePositions(){
+        //TODO: what if piece off board
+        //starting pos: 11,1,30,22
+
         board bd = gameObject.GetComponent<board>();
         bool is_white = !is_black_chosen;
         if(is_white){
             chosen_piece = chosen_piece - 6;
         }
         List<Vector2> res_list = bd.move(is_white,chosen_piece, cur_step);
-        Debug.Log(res_list);
+        // for(int i = 0; i < res_list.Count; i++){
+        //     Debug.Log(res_list[i]);
+        // }
 
-        //what to do with the possible move positions?
         for(int i = 0; i < res_list.Count; i++){
             Vector2 pos = res_list[i];
+            SpawnGreen(pos);
         }
     }
 
@@ -94,6 +103,7 @@ public class GameState : MonoBehaviour
     void SpawnGreen(Vector2 spawn_pos){
         //spawn the prefab at the given position
         GameObject instantiated = Instantiate(valid_sign, spawn_pos, Quaternion.identity);
+        instantiated.transform.SetParent(canvas.transform);
         instantiated_list.Add(instantiated);
     }
 
