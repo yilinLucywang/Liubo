@@ -99,6 +99,11 @@ public class GameState : MonoBehaviour
         }
     }
 
+    public void MovePiece(Vector2 position){
+        //TODO: 1. move piece
+        
+        //TODO: 2. update the game board status
+    }
 
     void SpawnGreen(Vector2 spawn_pos){
         //spawn the prefab at the given position
@@ -107,7 +112,7 @@ public class GameState : MonoBehaviour
         instantiated_list.Add(instantiated);
     }
 
-    void RemoveGreens(){
+    public void RemoveGreens(){
         for(int i = 0; i < instantiated_list.Count; i++){
             Destroy(instantiated_list[i]);
         }
