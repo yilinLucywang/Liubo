@@ -109,6 +109,8 @@ public class GameState : MonoBehaviour
         GameObject cur_piece = GameObject.Find(chosen_piece_name);
         cur_piece.transform.position = position; 
         //TODO: 2. update the game board status
+        board bd = gameObject.GetComponent<board>();
+        
     }
 
     void SpawnGreen(Vector2 spawn_pos){
