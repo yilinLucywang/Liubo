@@ -101,7 +101,13 @@ public class GameState : MonoBehaviour
 
     public void MovePiece(Vector2 position){
         //TODO: 1. move piece
-        
+        if(!is_black_chosen){
+            chosen_piece = chosen_piece + 6;
+        }
+
+        string chosen_piece_name = chosen_piece.ToString();
+        GameObject cur_piece = GameObject.Find(chosen_piece_name);
+        cur_piece.transform.position = position; 
         //TODO: 2. update the game board status
     }
 
