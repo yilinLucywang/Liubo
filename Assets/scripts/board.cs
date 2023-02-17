@@ -61,7 +61,9 @@ public class board : MonoBehaviour
         {14,27},{27,26},{24,26},{19,18},{18,17},{17,13},{3,5},
         {5,6},{6,8}};
 
-        for(int i = 0; i < temp_owl_edges.Length; i++){
+
+        int cur_length = temp_owl_edges.GetLength(0);
+        for(int i = 0; i < cur_length; i++){
             int first = temp_owl_edges[i,0]; 
             int second = temp_owl_edges[i,1];
 
@@ -73,14 +75,16 @@ public class board : MonoBehaviour
         }
         //This is what common pieces cannot walk on
         int[,] temp_not_normal_edges = new int[,] {{10,12},{11,12},{0,2},{1,2},{30,29},{31,29},{21,23},{21,22}};
-        for(int i = 0; i < temp_not_normal_edges.Length; i++){
+        cur_length = temp_not_normal_edges.GetLength(0);
+        for(int i = 0; i < cur_length; i++){
             int first = temp_not_normal_edges[i,0]; 
             int second = temp_not_normal_edges[i,1];
             normal_edges[first,second] = 0;
             normal_edges[second, first] = 0;
         }
 
-        for(int i = 0; i < pond_edges.Length; i++){
+        cur_length = pond_edges.GetLength(0);
+        for(int i = 0; i < cur_length; i++){
             int first = pond_edges[i,0]; 
             int second = pond_edges[i,1];
 
@@ -100,7 +104,9 @@ public class board : MonoBehaviour
 
         for(int i = 0; i < anchors.Count; i++){
             string subject_string = anchors[i].name;
+            //Debug.Log(subject_string);
             string result_string = Regex.Match(subject_string,@"\d+").Value;
+            //Debug.Log(result_string);
             int index = Int32.Parse(result_string);
             anchor_2_index[i] = index;
             index_2_anchor[index] = i; 
