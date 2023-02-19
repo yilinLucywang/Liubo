@@ -10,6 +10,7 @@ public class board : MonoBehaviour
     private Dictionary<int, int> anchor_2_index = new Dictionary<int, int> ();
     private Dictionary<int, int> index_2_anchor = new Dictionary<int, int> ();
     private List<int> final_poses =  new List<int>();
+    //index rules: white piece index: 0-5; black piece index: 6-11 
     public List<List<int>> nodes = new List<List<int>>();
     public int pond_index = 0; 
     public int[,] normal_edges = new int[total_poses, total_poses];
