@@ -89,10 +89,6 @@ public class GameState : MonoBehaviour
             chosen_piece = chosen_piece - 6;
         }
         List<Vector2> res_list = bd.move(is_white,chosen_piece, cur_step);
-        // for(int i = 0; i < res_list.Count; i++){
-        //     Debug.Log(res_list[i]);
-        // }
-
         for(int i = 0; i < res_list.Count; i++){
             Vector2 pos = res_list[i];
             SpawnGreen(pos);

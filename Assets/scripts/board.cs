@@ -143,9 +143,13 @@ public class board : MonoBehaviour
         int cur_pos = 0;
         if(is_white){
             cur_pos = white_pieces[piece_index];
+            Debug.Log("board part printing");
+            Debug.Log(cur_pos);
         }
         else{
             cur_pos = black_pieces[piece_index];
+            Debug.Log("board part printing");
+            Debug.Log(cur_pos);
         }
 
         if(cur_pos == -1){
