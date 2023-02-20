@@ -126,7 +126,18 @@ public class board : MonoBehaviour
         
     }
 
+    public int get_anchor_index(Vector2 pos){
+        int  index = 0; 
+        for(int i = 0; i < anchors.Count; i++){
+            Vector2 anchor_pos = anchors[i].transform.position; 
+            if(anchor_pos == pos){
+                index = anchor_2_index[i]; 
+                return index;
+            }
+        }
+        return index;
 
+    }
     public List<Vector2> move(bool is_white, int piece_index, int step){
         //List<int> possible_poses = new List<int>();
         int cur_pos = 0;

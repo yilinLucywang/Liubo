@@ -110,20 +110,23 @@ public class GameState : MonoBehaviour
         cur_piece.transform.position = position; 
         //TODO: 2. update the game board status
         board bd = gameObject.GetComponent<board>();
+        int pos_index = bd.get_anchor_index(position);
+        bd.nodes[pos_index].Add(chosen_piece);
+        
         if(!is_black_chosen){
             chosen_piece = chosen_piece - 6;
         }
         //TODO: figure out pos_index
-        int pos_index = 0;
+        Debug.Log(pos_index);
         if(is_black_chosen){
             bd.black_pieces[chosen_piece] = pos_index;
         }
         else{
             bd.white_pieces[chosen_piece] = pos_index;
         }
-
-        
+    
     }
+
 
     void SpawnGreen(Vector2 spawn_pos){
         //spawn the prefab at the given position
