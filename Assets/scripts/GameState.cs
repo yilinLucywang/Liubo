@@ -106,10 +106,17 @@ public class GameState : MonoBehaviour
         board bd = gameObject.GetComponent<board>();
         int pos_index = bd.get_anchor_index(position);
         bool is_two_same_spot = false; 
-        if(bd.nodes[pos_index].Count == 2){
+        if(bd.nodes[pos_index].Count >= 1){
             is_two_same_spot = true;
         }
-        cur_piece.transform.position = position; 
+
+        if(is_two_same_spot){
+            cur_piece.transform.position = position + new Vector2(5.0f,12.5f); 
+        }
+        else{
+            cur_piece.transform.position = position;
+        }
+
         bd.nodes[pos_index].Add(chosen_piece);
 
         if(!is_black_chosen){
