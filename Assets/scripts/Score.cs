@@ -54,8 +54,7 @@ public class Score : MonoBehaviour
         //-1 means no piece in current location
         for (int i = 0; i < total_poses; i++)
         {
-            List<int> cur_list = new List<int> ();
-            nodes.Add(cur_list);
+            nodes.Add(-1);
         }
 
 
@@ -160,7 +159,7 @@ public class Score : MonoBehaviour
                 owl_helper(cur_pos, step);
 
                 //calculate score
-                int last = final_poses[final_poses.Count-1];
+                int last = final_poses[final_poses.Count - 1];
                 if (black_pieces.Contains(last))
                 {
                     //owl -> 1 normal opponment || (1 normal opponment && 1 normal friend)
@@ -334,7 +333,7 @@ public class Score : MonoBehaviour
 
     }
 
-    public void CalculateScore(Vector2 position)
+    public void CalculateScore(Vector2 position, int chosen_piece)
     {
         string chosen_piece_name = chosen_piece.ToString();
         GameObject cur_piece = GameObject.Find(chosen_piece_name);
@@ -343,25 +342,78 @@ public class Score : MonoBehaviour
         int pos_index = bd.get_anchor_index(position);
         bd.nodes[pos_index].Add(chosen_piece);
 
+        int diffColorIndex;
+
         if (pos_index == 9)
         {
             cur_piece.tag = "Owl";
         }
 
-        if (is_black_chosen )
+        if (is_black_chosen)
         {
             bd.black_pieces[chosen_piece] = pos_index;
-            if (cur_piece.tag == "Owl" && (nodes[pos_index].Count > 1))
+            if (cur_piece.tag == "Normal" && (bd.nodes[pos_index].Count == 1))
             {
-                if (nodes[pos_index][0]>5)
+                return;
+            }
+            else if (cur_piece.tag == "Owl" )
+            {
+                //black owl  
+                diffColorIndex = findDifferentColor(pos_index);
+                if (bd.nodes[pos_index][0] > 5)
                 {
-                    bd.nodes[pos_index].Remove(0);
+                    //white owl
+                    if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl")
+                    {
+                        gameData.black_score += 3;
+                    }
+                    //white normal
+                    else
+                    {
+                        gameData.black_score++;
+                    }
 
+                    bd.nodes[pos_index].Remove(diffColorIndex);
 
                 }
             }
         }
 
     }
-
+    public string findTag(int index)
+    {
+        string piece_name = index.ToString();
+        GameObject piece = GameObject.Find(piece_name);
+        string tagName = piece.tag;
+        return tagName;
+    }
+    public int findDifferentColor(int pos_index)
+    {
+        board bd = gameObject.GetComponent<board>();
+        if (is_black_chosen)
+        {
+            //if white or only have one index so assume first is white
+            if (bd.nodes[pos_index][0] > 5 || (bd.nodes[pos_index].Count == 1))
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        else
+        {
+            if (bd.nodes[pos_index][0] < 6 || (bd.nodes[pos_index].Count == 1))
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        
+        
+    }
 }
