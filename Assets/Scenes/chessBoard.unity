@@ -6154,6 +6154,8 @@ MonoBehaviour:
   dice_2: -1
   dice1But: {fileID: 1961499588}
   dice2But: {fileID: 987338296}
+  blackPieceBut: {fileID: 672904507}
+  whitePieceBut: {fileID: 234756994}
   num_1_text: {fileID: 804341322}
   num_2_text: {fileID: 2125023869}
   is_black_chosen: 1

@@ -10,6 +10,7 @@ public class GameState : MonoBehaviour
     public int dice_2 = -1;
 
     public GameObject dice1But, dice2But;
+    public GameObject blackPieceBut, whitePieceBut;
 
     public Text num_1_text;
     public Text num_2_text;  
@@ -27,7 +28,10 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
+        {
+            btn.interactable = false;
+        }
     }
 
     // Update is called once per frame
@@ -38,13 +42,28 @@ public class GameState : MonoBehaviour
 
     public void NextRound()
     {
+        is_p1_turn = !is_p1_turn;
         dice_1 = -1; 
         dice_2 = -1; 
         if(is_p1_turn){
-            is_p1_turn = false;
+            foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = false;
+            }
+            foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = true;
+            }
         }
         else{
-            is_p1_turn = true;
+            foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = true;
+            }
+            foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = false;
+            }
         }
         dice1But.SetActive(true);
         dice2But.SetActive(true);
