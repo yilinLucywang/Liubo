@@ -5,7 +5,8 @@ using System;
 
 public class Score : MonoBehaviour
 {
-    public int white_score = 0, black_score = 0;
+    //public int white_score = 0, black_score = 0;
+    public GameData gameData;
     private static int total_poses = 37;
     private static int piece_number = 6;
     private List<int> final_poses = new List<int>();
@@ -149,11 +150,11 @@ public class Score : MonoBehaviour
                     //add 3 point if eat black owl, 1 point blakc normal
                     if (black_owls.Contains(last))
                     {
-                        white_score+=3;
+                        gameData.white_score += 3;
                     }
                     else
                     {
-                        white_score++;
+                        gameData.white_score++;
                     }
                 }
             }
@@ -174,11 +175,11 @@ public class Score : MonoBehaviour
                     //add 3 point if eat black owl, 1 point blakc normal
                     if (black_owls.Contains(last))
                     {
-                        white_score += 3;
+                        gameData.white_score += 3;
                     }
                     else
                     {
-                        white_score++;
+                        gameData.white_score++;
                     }
 
                 }
@@ -203,11 +204,11 @@ public class Score : MonoBehaviour
                     //add 3 point if eat black owl, 1 point blakc normal
                     if (white_owls.Contains(last))
                     {
-                        black_score += 3;
+                        gameData.black_score += 3;
                     }
                     else
                     {
-                        black_score++;
+                        gameData.black_score++;
                     }
 
                 }
@@ -229,11 +230,11 @@ public class Score : MonoBehaviour
                     //add 3 point if eat black owl, 1 point blakc normal
                     if (white_owls.Contains(last))
                     {
-                        black_score += 3;
+                        gameData.black_score += 3;
                     }
                     else
                     {
-                        black_score++;
+                        gameData.black_score++;
                     }
 
                 }
