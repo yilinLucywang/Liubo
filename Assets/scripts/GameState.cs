@@ -46,7 +46,8 @@ public class GameState : MonoBehaviour
         else{
             is_p1_turn = true;
         }
-
+        dice1But.SetActive(true);
+        dice2But.SetActive(true);
         num_1_text.text = "Dice1: "; 
         num_2_text.text = "Dice2: ";
     }
