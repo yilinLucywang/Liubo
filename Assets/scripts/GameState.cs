@@ -112,7 +112,7 @@ public class GameState : MonoBehaviour
         board bd = gameObject.GetComponent<board>();
         int pos_index = bd.get_anchor_index(position);
         bd.nodes[pos_index].Add(chosen_piece);
-        
+
         if(!is_black_chosen){
             chosen_piece = chosen_piece - 6;
         }
@@ -139,5 +139,25 @@ public class GameState : MonoBehaviour
         for(int i = 0; i < instantiated_list.Count; i++){
             Destroy(instantiated_list[i]);
         }
+    }
+
+
+    public void SwitchToNextRound(){
+        board bd = gameObject.GetComponent<board>();
+        //TODO: switch the color of the piece
+        if(bd.is_p1_turn){
+            bd.is_p1_turn = false;
+        }
+        else{
+            bd.is_p1_turn = true;
+        }
+        //TODO: clear up the number on the board and also in the board.cs
+        bd.cur_rolls[0] = 0;
+        bd.cur_rolls[1] = 0;
+
+        dice_1 = -1; 
+        dice_2 = -1;
+        num_1_text.text = "Dice1: "; 
+        num_2_text.text = "Dice2: ";   
     }
 }

@@ -18,7 +18,7 @@ public class board : MonoBehaviour
     public int[,] pond_edges = new int[,]{{8,9},{9,13},{15,9},{14,9}};
 
 
-    //public bool is_p1_turn = true; 
+    public bool is_p1_turn = true; 
 
     //this maps piece index -> node_index, if not on board pieces[piece_index] = -1
     public List<int> white_pieces = new List<int>();
