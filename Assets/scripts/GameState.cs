@@ -103,9 +103,13 @@ public class GameState : MonoBehaviour
 
         string chosen_piece_name = chosen_piece.ToString();
         GameObject cur_piece = GameObject.Find(chosen_piece_name);
-        cur_piece.transform.position = position; 
         board bd = gameObject.GetComponent<board>();
         int pos_index = bd.get_anchor_index(position);
+        bool is_two_same_spot = false; 
+        if(bd.nodes[pos_index].Count == 2){
+            is_two_same_spot = true;
+        }
+        cur_piece.transform.position = position; 
         bd.nodes[pos_index].Add(chosen_piece);
 
         if(!is_black_chosen){
