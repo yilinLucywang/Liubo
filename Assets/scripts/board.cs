@@ -227,7 +227,8 @@ public class board : MonoBehaviour
         }
         else{
             for(int i = 0; i < normal_edges.GetLength(0); i++){
-                if(nodes[i].Count > 1){
+                if(nodes[i].Count > 1 && isSameColor(i))
+                {
                     continue;
                 }
                 if(normal_edges[cur_pos,i] == 1){
@@ -247,9 +248,12 @@ public class board : MonoBehaviour
         }
         else{
             for(int i = 0; i < owl_edges.GetLength(1); i++){
-                if(nodes[i].Count > 1){
+
+                if(nodes[i].Count > 1 && isSameColor(i))
+                {
                     continue;
                 }
+                
                 if(owl_edges[cur_pos,i] == 1){
                     if(!visited_spot.Contains(i)){
                         visited_spot.Add(i);
@@ -259,5 +263,20 @@ public class board : MonoBehaviour
                 }
             }
         }
+    }
+
+    bool isSameColor(int i)
+    {
+        bool sameColor;
+
+        if ((nodes[i][0] < 6 && nodes[i][0] < 6) || (nodes[i][0] > 5 && nodes[i][0] > 5))
+        {
+            sameColor = true;
+        }
+        else
+        {
+            sameColor = false;
+        }
+        return sameColor;
     }
 }

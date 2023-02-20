@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class Score : MonoBehaviour
@@ -10,7 +11,7 @@ public class Score : MonoBehaviour
     private static int total_poses = 37;
     private static int piece_number = 6;
     private List<int> final_poses = new List<int>();
-    public List<int> nodes;
+    public List<List<int>> nodes = new List<List<int>>();
     public int pond_index = 0;
     public int[,] normal_edges = new int[total_poses, total_poses];
     public int[,] owl_edges = new int[total_poses, total_poses];
@@ -27,6 +28,24 @@ public class Score : MonoBehaviour
     //sets that stores the owl-piece indexs
     public HashSet<int> white_owls = new HashSet<int>();
     public HashSet<int> black_owls = new HashSet<int>();
+
+    //
+    public int dice_1 = -1;
+    public int dice_2 = -1;
+
+    public Text num_1_text;
+    public Text num_2_text;
+
+    public bool is_black_chosen = true;
+    public int chosen_piece = -1;
+
+
+    //prefab to spawn
+    public GameObject valid_sign;
+    public GameObject canvas;
+
+    private int cur_step = 0;
+    private List<GameObject> instantiated_list = new List<GameObject>();
 
 
     public int[] cur_rolls = new int[2];
@@ -279,6 +298,69 @@ public class Score : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void MovePiece(Vector2 position)
+    {
+        //TODO: 1. move piece
+        if (!is_black_chosen)
+        {
+            chosen_piece = chosen_piece + 6;
+        }
+
+        string chosen_piece_name = chosen_piece.ToString();
+        GameObject cur_piece = GameObject.Find(chosen_piece_name);
+        cur_piece.transform.position = position;
+        board bd = gameObject.GetComponent<board>();
+        int pos_index = bd.get_anchor_index(position);
+        bd.nodes[pos_index].Add(chosen_piece);
+
+        if (!is_black_chosen)
+        {
+            chosen_piece = chosen_piece - 6;
+        }
+        Debug.Log(pos_index);
+        Debug.Log("num name: ");
+        Debug.Log(chosen_piece);
+        if (is_black_chosen)
+        {
+            bd.black_pieces[chosen_piece] = pos_index;
+        }
+        else
+        {
+            bd.white_pieces[chosen_piece] = pos_index;
+        }
+
+    }
+
+    public void CalculateScore(Vector2 position)
+    {
+        string chosen_piece_name = chosen_piece.ToString();
+        GameObject cur_piece = GameObject.Find(chosen_piece_name);
+        cur_piece.transform.position = position;
+        board bd = gameObject.GetComponent<board>();
+        int pos_index = bd.get_anchor_index(position);
+        bd.nodes[pos_index].Add(chosen_piece);
+
+        if (pos_index == 9)
+        {
+            cur_piece.tag = "Owl";
+        }
+
+        if (is_black_chosen )
+        {
+            bd.black_pieces[chosen_piece] = pos_index;
+            if (cur_piece.tag == "Owl" && (nodes[pos_index].Count > 1))
+            {
+                if (nodes[pos_index][0]>5)
+                {
+                    bd.nodes[pos_index].Remove(0);
+
+
+                }
+            }
+        }
+
     }
 
 }
