@@ -54,7 +54,8 @@ public class Score : MonoBehaviour
         //-1 means no piece in current location
         for (int i = 0; i < total_poses; i++)
         {
-            nodes.Add(-1);
+            List<int> cur_list = new List<int> ();
+            nodes.Add(cur_list);
         }
 
 
