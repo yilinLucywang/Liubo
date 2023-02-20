@@ -31,11 +31,6 @@ public class movePieces : MonoBehaviour
             is_black = true;
         }
         board board = canvas.GetComponent<board>();
-        if(is_black == board.is_p1_turn){
-            throw new Exception("color of the piece is incorrect!");
-        }
-        else{
-            bd.PieceChosen(index,is_black);
-        }
+        bd.PieceChosen(index,is_black);
     }
 }
