@@ -118,11 +118,23 @@ public class GameState : MonoBehaviour
         }
         //TODO: figure out pos_index
         Debug.Log(pos_index);
+        Debug.Log("num name: "); 
+        Debug.Log(chosen_piece);
         if(is_black_chosen){
             bd.black_pieces[chosen_piece] = pos_index;
+            Debug.Log("begin");
+            foreach(var item in bd.black_pieces){
+                Debug.Log(item);
+            }
+            Debug.Log("end");
         }
         else{
             bd.white_pieces[chosen_piece] = pos_index;
+            Debug.Log("begin");
+            foreach(var item in bd.white_pieces){
+                Debug.Log(item);
+            }
+            Debug.Log("end");
         }
     
     }
