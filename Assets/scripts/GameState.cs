@@ -9,6 +9,8 @@ public class GameState : MonoBehaviour
     public int dice_1 = -1; 
     public int dice_2 = -1;
 
+    public GameObject dice1But, dice2But;
+
     public Text num_1_text;
     public Text num_2_text;  
 
@@ -44,7 +46,8 @@ public class GameState : MonoBehaviour
         else{
             is_p1_turn = true;
         }
-
+        dice1But.SetActive(true);
+        dice2But.SetActive(true);
         num_1_text.text = "Dice1: "; 
         num_2_text.text = "Dice2: ";
     }
@@ -65,12 +68,14 @@ public class GameState : MonoBehaviour
     public void TopClick(){
         if(dice_1 != -1){
             cur_step = dice_1;
+            dice1But.SetActive(false);
         }
     }
 
     public void BottomClick(){
         if(dice_2 != -1){
             cur_step = dice_2;
+            dice2But.SetActive(false);
         }
     }
 
