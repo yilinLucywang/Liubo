@@ -125,28 +125,24 @@ public class board : MonoBehaviour
     }
 
     public int get_anchor_index(Vector2 pos){
-        int  index = 0; 
+        int  index = -1; 
         for(int i = 0; i < anchors.Count; i++){
             Vector2 anchor_pos = anchors[i].transform.position; 
-            if(anchor_pos == pos){
+            if(Vector2.Distance(anchor_pos, pos) <= 8.0){
                 index = anchor_2_index[i]; 
                 return index;
             }
         }
         return index;
-
     }
+
     public List<Vector2> move(bool is_white, int piece_index, int step){
         int cur_pos = 0;
         if(is_white){
             cur_pos = white_pieces[piece_index];
-            Debug.Log("board part printing");
-            Debug.Log(cur_pos);
         }
         else{
             cur_pos = black_pieces[piece_index];
-            Debug.Log("board part printing");
-            Debug.Log(cur_pos);
         }
 
         if(cur_pos == -1){
