@@ -105,9 +105,7 @@ public class board : MonoBehaviour
 
         for(int i = 0; i < anchors.Count; i++){
             string subject_string = anchors[i].name;
-            //Debug.Log(subject_string);
             string result_string = Regex.Match(subject_string,@"\d+").Value;
-            //Debug.Log(result_string);
             int index = Int32.Parse(result_string);
             anchor_2_index[i] = index;
             index_2_anchor[index] = i; 
@@ -139,7 +137,6 @@ public class board : MonoBehaviour
 
     }
     public List<Vector2> move(bool is_white, int piece_index, int step){
-        //List<int> possible_poses = new List<int>();
         int cur_pos = 0;
         if(is_white){
             cur_pos = white_pieces[piece_index];
@@ -153,7 +150,6 @@ public class board : MonoBehaviour
         }
 
         if(cur_pos == -1){
-            //TODO: what if piece off board
             //starting pos: 11,1,30,22
             step = step - 1;
             if(is_white){
@@ -227,27 +223,16 @@ public class board : MonoBehaviour
 
     void normal_helper(int cur_pos, int step, HashSet<int> visited_spot){
         if(step < 1){
-            //Debug.Log("final position");
-            //Debug.Log(cur_pos);
             final_poses.Add(cur_pos);
         }
         else{
-            //TODO: check whether this should be 0?
-            //Debug.Log(normal_edges.GetLength(0));
             for(int i = 0; i < normal_edges.GetLength(0); i++){
                 if(nodes[i].Count > 1){
                     continue;
                 }
-                // Debug.Log(cur_pos);
-                // Debug.Log(i);
                 if(normal_edges[cur_pos,i] == 1){
                     if(!visited_spot.Contains(i)){
                         visited_spot.Add(i);
-                        // Debug.Log("begin");
-                        // foreach(int k in visited_spot){
-                        //     Debug.Log(k);
-                        // }
-                        // Debug.Log("end");
                         normal_helper(i,step - 1,visited_spot);
                         visited_spot.Remove(i);
                     }

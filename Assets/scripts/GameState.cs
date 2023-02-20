@@ -74,15 +74,12 @@ public class GameState : MonoBehaviour
     public void PieceChosen(int index, bool is_black){
         chosen_piece = index; 
         is_black_chosen = is_black;
-
         //show all possibe positions
         ShowPossiblePositions();
     }
 
     private void ShowPossiblePositions(){
-        //TODO: what if piece off board
-        //starting pos: 11,1,30,22
-
+        //piece offbard starting pos: 11,1,30,22
         board bd = gameObject.GetComponent<board>();
         bool is_white = !is_black_chosen;
         if(is_white){
@@ -104,7 +101,6 @@ public class GameState : MonoBehaviour
         string chosen_piece_name = chosen_piece.ToString();
         GameObject cur_piece = GameObject.Find(chosen_piece_name);
         cur_piece.transform.position = position; 
-        //TODO: 2. update the game board status
         board bd = gameObject.GetComponent<board>();
         int pos_index = bd.get_anchor_index(position);
         bd.nodes[pos_index].Add(chosen_piece);
@@ -112,25 +108,14 @@ public class GameState : MonoBehaviour
         if(!is_black_chosen){
             chosen_piece = chosen_piece - 6;
         }
-        //TODO: figure out pos_index
         Debug.Log(pos_index);
         Debug.Log("num name: "); 
         Debug.Log(chosen_piece);
         if(is_black_chosen){
             bd.black_pieces[chosen_piece] = pos_index;
-            Debug.Log("begin");
-            foreach(var item in bd.black_pieces){
-                Debug.Log(item);
-            }
-            Debug.Log("end");
         }
         else{
             bd.white_pieces[chosen_piece] = pos_index;
-            Debug.Log("begin");
-            foreach(var item in bd.white_pieces){
-                Debug.Log(item);
-            }
-            Debug.Log("end");
         }
     
     }
