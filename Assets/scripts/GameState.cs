@@ -173,8 +173,11 @@ public class GameState : MonoBehaviour
     }
 
     public void MovePiece(Vector2 position){
+        //call script form score
+        Score score = gameObject.GetComponent<Score>();
+
         //TODO: 1. move piece
-        if(!is_black_chosen){
+        if (!is_black_chosen){
             chosen_piece = chosen_piece + 6;
         }
 
@@ -193,6 +196,9 @@ public class GameState : MonoBehaviour
         else{
             cur_piece.transform.position = position;
         }
+
+        //calculate score before add piece 
+        score.CalculateScore(position, chosen_piece, is_black_chosen);
 
         bd.nodes[pos_index].Add(chosen_piece);
 
