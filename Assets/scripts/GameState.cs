@@ -36,6 +36,9 @@ public class GameState : MonoBehaviour
         {
             btn.interactable = false;
         }
+
+        dice1But.SetActive(false);
+        dice2But.SetActive(false);
     }
 
     // Update is called once per frame
@@ -69,8 +72,7 @@ public class GameState : MonoBehaviour
                 btn.interactable = false;
             }
         }*/
-        dice1But.SetActive(true);
-        dice2But.SetActive(true);
+        
         num_1_text.text = "Dice1: "; 
         num_2_text.text = "Dice2: ";
     }
@@ -86,6 +88,9 @@ public class GameState : MonoBehaviour
         num_2_text.text = "Dice2: " + num_2.ToString();
         dice_1 = num_1; 
         dice_2 = num_2;
+
+        dice1But.SetActive(true);
+        dice2But.SetActive(true);
     }
 
     public void TopClick(){
