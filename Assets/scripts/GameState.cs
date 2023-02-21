@@ -143,6 +143,8 @@ public class GameState : MonoBehaviour
 
         bd.nodes[pos_index].Add(chosen_piece);
 
+        cur_piece.GetComponent<Button>().interactable = false;
+
         if(!is_black_chosen){
             chosen_piece = chosen_piece - 6;
         }
