@@ -32,6 +32,10 @@ public class GameState : MonoBehaviour
         {
             btn.interactable = false;
         }
+        foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
+        {
+            btn.interactable = false;
+        }
     }
 
     // Update is called once per frame
@@ -45,7 +49,7 @@ public class GameState : MonoBehaviour
         is_p1_turn = !is_p1_turn;
         dice_1 = -1; 
         dice_2 = -1; 
-        if(is_p1_turn){
+        /*if(is_p1_turn){
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
             {
                 btn.interactable = false;
@@ -64,7 +68,7 @@ public class GameState : MonoBehaviour
             {
                 btn.interactable = false;
             }
-        }
+        }*/
         dice1But.SetActive(true);
         dice2But.SetActive(true);
         num_1_text.text = "Dice1: "; 
@@ -89,12 +93,56 @@ public class GameState : MonoBehaviour
             cur_step = dice_1;
             dice1But.SetActive(false);
         }
+        if (is_p1_turn)
+        {
+            foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = false;
+            }
+            foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = true;
+            }
+        }
+        else
+        {
+            foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = true;
+            }
+            foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = false;
+            }
+        }
     }
 
     public void BottomClick(){
         if(dice_2 != -1){
             cur_step = dice_2;
             dice2But.SetActive(false);
+        }
+        if (is_p1_turn)
+        {
+            foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = false;
+            }
+            foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = true;
+            }
+        }
+        else
+        {
+            foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = true;
+            }
+            foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = false;
+            }
         }
     }
 
