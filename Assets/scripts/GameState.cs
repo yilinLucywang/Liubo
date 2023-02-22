@@ -52,26 +52,6 @@ public class GameState : MonoBehaviour
         is_p1_turn = !is_p1_turn;
         dice_1 = -1; 
         dice_2 = -1; 
-        /*if(is_p1_turn){
-            foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
-            {
-                btn.interactable = false;
-            }
-            foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
-            {
-                btn.interactable = true;
-            }
-        }
-        else{
-            foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
-            {
-                btn.interactable = true;
-            }
-            foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
-            {
-                btn.interactable = false;
-            }
-        }*/
         
         num_1_text.text = "Dice1: "; 
         num_2_text.text = "Dice2: ";
@@ -95,7 +75,7 @@ public class GameState : MonoBehaviour
             cur_step = dice_1;
             dice1But.SetActive(false);
         }
-        if (is_p1_turn)
+        /*if (is_p1_turn)
         {
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
             {
@@ -116,7 +96,7 @@ public class GameState : MonoBehaviour
             {
                 btn.interactable = false;
             }
-        }
+        }*/
     }
 
     public void BottomClick(){
@@ -124,7 +104,7 @@ public class GameState : MonoBehaviour
             cur_step = dice_2;
             dice2But.SetActive(false);
         }
-        if (is_p1_turn)
+        /*if (is_p1_turn)
         {
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
             {
@@ -145,7 +125,7 @@ public class GameState : MonoBehaviour
             {
                 btn.interactable = false;
             }
-        }
+        }*/
     }
 
     public void PieceChosen(int index, bool is_black){
