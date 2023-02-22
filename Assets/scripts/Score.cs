@@ -131,7 +131,8 @@ public class Score : MonoBehaviour
                     {
                         gameData.white_score++;
                         Debug.Log("white owl get black normal");
-
+                        //remove different color piece
+                        gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
                     }
                     //2 black owl eat white owl
                     else if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl" && (bd.nodes[pos_index].Count > 1))

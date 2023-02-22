@@ -176,10 +176,8 @@ public class board : MonoBehaviour
 
             if(is_white){
                 //white owls
-                Debug.Log(score.findTag(piece_index+6));
                 if(score.findTag(piece_index) == "Owl")
                 {
-                    Debug.Log("owl helper");
                     //This part searches in owl_edges
                     //has cycle, may cause some issue here in this dfs
                     final_poses.Clear();
@@ -281,7 +279,6 @@ public class board : MonoBehaviour
         {
             sameColor = false;
         }
-        Debug.Log(sameColor);
         return sameColor;
     }
 }
