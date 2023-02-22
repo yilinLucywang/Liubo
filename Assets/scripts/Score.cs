@@ -27,7 +27,7 @@ public class Score : MonoBehaviour
     {
         string chosen_piece_name = chosen_piece.ToString();
         GameObject cur_piece = GameObject.Find(chosen_piece_name);
-        cur_piece.transform.position = position;
+        //cur_piece.transform.position = position;
         board bd = gameObject.GetComponent<board>();
         GameState gamestate = gameObject.GetComponent<GameState>();
         int pos_index = bd.get_anchor_index(position);
