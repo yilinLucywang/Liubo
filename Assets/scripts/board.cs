@@ -81,6 +81,7 @@ public class board : MonoBehaviour
             normal_edges[second,first] = 1;
         }
         //This is what common pieces cannot walk on
+        int[,] temp_not_normal_edges = new int[,] {{10,12},{11,12},{0,2},{1,2},{30,29},{31,29},{21,23},{21,22}};
         cur_length = temp_not_normal_edges.GetLength(0);
         for(int i = 0; i < cur_length; i++){
             int first = temp_not_normal_edges[i,0]; 
