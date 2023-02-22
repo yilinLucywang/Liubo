@@ -12,12 +12,15 @@ public class GameState : MonoBehaviour
     public GameObject dice1But, dice2But;
     public GameObject blackPieceBut, whitePieceBut;
     public GameObject rollDicebtn;
+    public GameObject whiteTurn, blackTurn;
 
     public Text num_1_text;
     public Text num_2_text;  
 
     public bool is_black_chosen = true;
     public int chosen_piece = -1;
+
+    public bool openLimit;
 
 
     //prefab to spawn
@@ -47,15 +50,18 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
+        whiteTurn.SetActive(true);
+        if (openLimit == true)
         {
-            btn.interactable = false;
+            foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = false;
+            }
+            foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = false;
+            }
         }
-        foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
-        {
-            btn.interactable = false;
-        }
-
         dice1But.SetActive(false);
         dice2But.SetActive(false);
     }
@@ -76,6 +82,18 @@ public class GameState : MonoBehaviour
         num_2_text.text = "Dice2: ";
 
         rollDicebtn.GetComponent<Button>().interactable = true;
+
+        if (is_p1_turn)
+        {
+            whiteTurn.SetActive(true);
+            blackTurn.SetActive(false);
+        }
+        if (!is_p1_turn)
+        {
+            whiteTurn.SetActive(false);
+            blackTurn.SetActive(true);
+        }
+
     }
 
     public void RollDice()
@@ -98,7 +116,7 @@ public class GameState : MonoBehaviour
             cur_step = dice_1;
             dice1But.SetActive(false);
         }
-        if (is_p1_turn)
+        if (is_p1_turn && openLimit == true)
         {
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
             {
@@ -109,7 +127,7 @@ public class GameState : MonoBehaviour
                 btn.interactable = true;
             }
         }
-        else
+        else if(!is_p1_turn && openLimit == true)
         {
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
             {
@@ -127,7 +145,7 @@ public class GameState : MonoBehaviour
             cur_step = dice_2;
             dice2But.SetActive(false);
         }
-        if (is_p1_turn)
+        if (is_p1_turn && openLimit == true)
         {
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
             {
@@ -138,7 +156,7 @@ public class GameState : MonoBehaviour
                 btn.interactable = true;
             }
         }
-        else
+        else if(!is_p1_turn && openLimit == true)
         {
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
             {
@@ -202,7 +220,8 @@ public class GameState : MonoBehaviour
 
         bd.nodes[pos_index].Add(chosen_piece);
 
-        cur_piece.GetComponent<Button>().interactable = false;
+        if(openLimit == true)
+            cur_piece.GetComponent<Button>().interactable = false;
 
         if(!is_black_chosen){
             chosen_piece = chosen_piece - 6;
