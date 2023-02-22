@@ -213,9 +213,11 @@ public class GameState : MonoBehaviour
 
     //This index is in range[0, 5]
     public void RemovePiece(int index, bool is_white){
+        Debug.Log("remove");
         //This part takes care of the board storage
         board bd = gameObject.GetComponent<board>();
         if(is_white){
+            Debug.Log(index);
             int ori_place = bd.white_pieces[index];
             int board_index = index + 6;
             List<int> cur_pieces = bd.nodes[ori_place]; 
@@ -245,7 +247,7 @@ public class GameState : MonoBehaviour
     }
 
     public void RemoveTest(){
-        RemovePiece(5, true);
+       // RemovePiece(5, true);
     }
 
 

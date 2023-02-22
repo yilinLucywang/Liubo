@@ -29,6 +29,7 @@ public class Score : MonoBehaviour
         GameObject cur_piece = GameObject.Find(chosen_piece_name);
         cur_piece.transform.position = position;
         board bd = gameObject.GetComponent<board>();
+        GameState gamestate = gameObject.GetComponent<GameState>();
         int pos_index = bd.get_anchor_index(position);
         //
         int diffColorIndex ;
@@ -61,34 +62,46 @@ public class Score : MonoBehaviour
             if (hasDiffColor)
             {
                 Debug.Log("hasDiffColor");
-                
-                //black pieces eat white owl
-                if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl")
-                {
-                    gameData.black_score += 3;
-                    changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
-                    Debug.Log("Black owl get white owl");
-                }
-                else if (cur_piece.CompareTag("Owl") )
+                //black owl
+                if (cur_piece.CompareTag("Owl") )
                 {
                     //black owl eat white normal
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal")
                     {
                         gameData.black_score++;
                         Debug.Log("Black owl get white normal");
+                        //remove different color piece
+                        gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
+                    }
+                    //2 black owl eat white owl
+                    else if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl" && (bd.nodes[pos_index].Count > 1))
+                    {
+                        gameData.black_score += 3;
+                        changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
+                        Debug.Log("2 Black owl get white owl");
+                        //remove different color piece
+                        gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
                     }
                 }
-                else if (cur_piece.CompareTag("Normal")&& (bd.nodes[pos_index].Count > 1))
+                //black normal
+                else if (cur_piece.CompareTag("Normal") )
                 {
-                    Debug.Log("2 normal");
-                    if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal")
+                    if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl")
+                    {
+                        gameData.black_score += 3;
+                        Debug.Log("Black normal get white owl");
+                        //remove different color piece
+                        gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
+                    }
+                    if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal" && (bd.nodes[pos_index].Count > 1))
                     {
                         Debug.Log("2 b normal get 1 w normal ");
                         gameData.black_score++;
+                        //remove different color piece
+                        gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
                     }
                 }
-                    //remove different color piece
-                bd.nodes[pos_index].Remove(diffColorIndex);
+                
             }
         }
         else//white chosen
@@ -109,37 +122,46 @@ public class Score : MonoBehaviour
             diffColorIndex = findDifferentColor(pos_index, is_black_chosen);
             if (hasDiffColor)
             {
-                
                 Debug.Log("hasDiffColor");
-                //white pieces eat black owl
-                if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl")
-                {
-                    gameData.white_score += 3;
-                    changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
-                    Debug.Log("white owl get black owl");
-                }
-                else if (cur_piece.CompareTag("Owl"))
+                //black owl
+                if (cur_piece.CompareTag("Owl"))
                 {
                     //white owl eat black normal
-                    Debug.Log("B");
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal")
                     {
                         gameData.white_score++;
-                        Debug.Log("white owl get black owl");
+                        Debug.Log("white owl get black normal");
+
+                    }
+                    //2 black owl eat white owl
+                    else if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl" && (bd.nodes[pos_index].Count > 1))
+                    {
+                        gameData.white_score += 3;
+                        changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
+                        Debug.Log("2 white owl get black owl");
+                        //remove different color piece
+                        gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
                     }
                 }
-                //two white normal eat black normal
-                else if (cur_piece.CompareTag("Normal") && (bd.nodes[pos_index].Count > 1))
+                //black normal
+                else if (cur_piece.CompareTag("Normal"))
                 {
-                    Debug.Log("2 normal");
-                    if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal")
+                    if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl")
+                    {
+                        gameData.white_score += 3;
+                        Debug.Log("white normal get black owl");
+                        //remove different color piece
+                        gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
+                    }
+                    if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal" && (bd.nodes[pos_index].Count > 1))
                     {
                         Debug.Log("2 w normal get 1 b normal ");
                         gameData.white_score++;
+                        //remove different color piece
+                        gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
                     }
                 }
-                //remove different color piece
-                bd.nodes[pos_index].Remove(diffColorIndex);
+                
             }
         }
         //update UI

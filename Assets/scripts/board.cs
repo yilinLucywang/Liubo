@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Text.RegularExpressions;
+
 public class board : MonoBehaviour
 {   
     private static int total_poses = 37;
@@ -32,7 +33,7 @@ public class board : MonoBehaviour
     public HashSet<int> white_owls = new HashSet<int>();
     public HashSet<int> black_owls = new HashSet<int>();
 
-
+    
     public int[] cur_rolls = new int[2];
     void Awake()
     {
@@ -137,6 +138,7 @@ public class board : MonoBehaviour
     }
 
     public List<Vector2> move(bool is_white, int piece_index, int step){
+        Score score = gameObject.GetComponent<Score>();
         int cur_pos = 0;
         if(is_white){
             cur_pos = white_pieces[piece_index];
@@ -173,7 +175,11 @@ public class board : MonoBehaviour
         else{
 
             if(is_white){
-                if(white_owls.Contains(piece_index)){
+                //white owls
+                Debug.Log(score.findTag(piece_index+6));
+                if(score.findTag(piece_index) == "Owl")
+                {
+                    Debug.Log("owl helper");
                     //This part searches in owl_edges
                     //has cycle, may cause some issue here in this dfs
                     final_poses.Clear();
@@ -190,7 +196,9 @@ public class board : MonoBehaviour
                 }
             }
             else{
-                if(black_owls.Contains(piece_index)){
+                //black_owls
+                if(score.findTag(piece_index) == "Owl")
+                {
                     //This part searches in owl_edges
                     final_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
