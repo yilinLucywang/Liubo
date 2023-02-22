@@ -25,6 +25,24 @@ public class GameState : MonoBehaviour
 
     private int cur_step = 0;
     private List<GameObject> instantiated_list = new List<GameObject>();
+
+
+
+    public List<GameObject> white_pieces = new List<GameObject>();
+    public List<GameObject> black_pieces = new List<GameObject>(); 
+
+
+    private List<Vector2> white_poses = new List<Vector2>();
+    private List<Vector2> black_poses = new List<Vector2>();
+
+
+    void Awake(){
+        for(int i = 0; i < white_pieces.Count; i++){
+            white_poses.Add(white_pieces[i].transform.position);
+            black_poses.Add(black_pieces[i].transform.position);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -191,6 +209,43 @@ public class GameState : MonoBehaviour
             bd.white_pieces[chosen_piece] = pos_index;
         }
     
+    }
+
+    //This index is in range[0, 5]
+    public void RemovePiece(int index, bool is_white){
+        //This part takes care of the board storage
+        board bd = gameObject.GetComponent<board>();
+        if(is_white){
+            int ori_place = bd.white_pieces[index];
+            int board_index = index + 6;
+            List<int> cur_pieces = bd.nodes[board_index]; 
+            for(int i = 0; i < cur_pieces.Count; i++){
+                if(cur_pieces[i] == board_index){
+                    bd.nodes[board_index].RemoveAt(i);
+                    break;
+                }
+            }
+            bd.white_pieces[index] = -1;
+            white_pieces[index].transform.position = white_poses[index];
+        }
+        else{
+            int ori_place = bd.black_pieces[index];
+            int board_index = index;
+            List<int> cur_pieces = bd.nodes[board_index];
+            for(int i = 0; i < cur_pieces.Count; i++){
+                if(cur_pieces[i] == board_index){
+                    bd.nodes[board_index].RemoveAt(i);
+                    break;
+                }
+            }
+            bd.black_pieces[index] = -1;
+            black_pieces[index].transform.position = black_poses[index];
+        }
+        //This part takes care of the UI part
+    }
+
+    public void RemoveTest(){
+        RemovePiece(0, true);
     }
 
 
