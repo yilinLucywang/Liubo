@@ -185,7 +185,7 @@ public class Score : MonoBehaviour
     public int findDifferentColor(int pos_index, bool is_black_chosen)
     {
         board bd = gameObject.GetComponent<board>();
-        Debug.Log(bd.nodes[pos_index].Count);
+        //Debug.Log(bd.nodes[pos_index].Count);
         if (bd.nodes[pos_index].Count > 0)
         {
             if (is_black_chosen)
