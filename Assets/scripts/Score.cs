@@ -44,6 +44,7 @@ public class Score : MonoBehaviour
 
         if (is_black_chosen)
         {
+            Debug.Log("Black Turn");
             bd.black_pieces[chosen_piece] = pos_index;
             if (cur_piece.CompareTag("Owl"))
             {
@@ -55,7 +56,7 @@ public class Score : MonoBehaviour
                 }
             }
                 // if there is already a piece on there
-            if (bd.nodes[pos_index].Count != 0 && hasDiffColor)
+            if (bd.nodes[pos_index].Count > 0 && hasDiffColor)
             {
                 diffColorIndex = findDifferentColor(pos_index, is_black_chosen);
                 //black pieces eat white owl
@@ -70,6 +71,7 @@ public class Score : MonoBehaviour
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal")
                     {
                         gameData.black_score++;
+                        Debug.Log("Black owl get white normal");
                     }
                 }
                 else if (cur_piece.CompareTag("Normal")&& (bd.nodes[pos_index].Count > 1))
@@ -85,7 +87,7 @@ public class Score : MonoBehaviour
         }
         else//white chosen
         {
-            bd.white_pieces[chosen_piece] = pos_index;
+            bd.white_pieces[chosen_piece-6] = pos_index;
             if (cur_piece.CompareTag("Owl"))
             {
                 //white owl land on nest
@@ -96,7 +98,7 @@ public class Score : MonoBehaviour
                 }
             }
             // if there is already a piece on there
-            if (bd.nodes[pos_index].Count != 0 && hasDiffColor)
+            if (bd.nodes[pos_index].Count > 0 && hasDiffColor)
             {
                 diffColorIndex = findDifferentColor(pos_index, is_black_chosen);
                 //white pieces eat black owl
@@ -130,6 +132,7 @@ public class Score : MonoBehaviour
     }
     public string findTag(int index)
     {
+        Debug.Log(index);
         string piece_name = index.ToString();
         GameObject piece = GameObject.Find(piece_name);
         string tagName = piece.tag;
@@ -183,7 +186,6 @@ public class Score : MonoBehaviour
                 return 0;
             }
         }
-        
-        
+  
     }
 }

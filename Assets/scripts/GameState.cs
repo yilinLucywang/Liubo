@@ -79,11 +79,8 @@ public class GameState : MonoBehaviour
 
     public void RollDice()
     {
-        Debug.Log("hihihih");
         int num_1 = Random.Range(1, 5);
         int num_2 = Random.Range(1, 5);
-        Debug.Log(num_1_text.text);
-        Debug.Log("22222");
         num_1_text.text = "Dice1: " + num_1.ToString(); 
         num_2_text.text = "Dice2: " + num_2.ToString();
         dice_1 = num_1; 
@@ -207,9 +204,6 @@ public class GameState : MonoBehaviour
         if(!is_black_chosen){
             chosen_piece = chosen_piece - 6;
         }
-        Debug.Log(pos_index);
-        Debug.Log("num name: "); 
-        Debug.Log(chosen_piece);
         if(is_black_chosen){
             bd.black_pieces[chosen_piece] = pos_index;
         }
