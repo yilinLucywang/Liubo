@@ -62,8 +62,11 @@ public class GameState : MonoBehaviour
                 btn.interactable = false;
             }
         }
-        dice1But.SetActive(false);
-        dice2But.SetActive(false);
+        if(openLimit == true)
+        {
+            dice1But.SetActive(false);
+            dice2But.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -105,17 +108,24 @@ public class GameState : MonoBehaviour
         dice_1 = num_1; 
         dice_2 = num_2;
 
-        dice1But.SetActive(true);
-        dice2But.SetActive(true);
+        if(openLimit == true)
+        {
+            dice1But.SetActive(true);
+            dice2But.SetActive(true);
 
-        rollDicebtn.GetComponent<Button>().interactable = false;
+            rollDicebtn.GetComponent<Button>().interactable = false;
+        }
     }
 
     public void TopClick(){
         if(dice_1 != -1){
             cur_step = dice_1;
-            dice1But.SetActive(false);
+            
         }
+
+        if(openLimit == true)
+            dice1But.SetActive(false);
+
         if (is_p1_turn && openLimit == true)
         {
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
@@ -143,8 +153,11 @@ public class GameState : MonoBehaviour
     public void BottomClick(){
         if(dice_2 != -1){
             cur_step = dice_2;
-            dice2But.SetActive(false);
         }
+
+        if(openLimit == true)
+            dice2But.SetActive(false);
+
         if (is_p1_turn && openLimit == true)
         {
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
