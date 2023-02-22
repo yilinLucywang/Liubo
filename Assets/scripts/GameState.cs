@@ -218,7 +218,7 @@ public class GameState : MonoBehaviour
         if(is_white){
             int ori_place = bd.white_pieces[index];
             int board_index = index + 6;
-            List<int> cur_pieces = bd.nodes[board_index]; 
+            List<int> cur_pieces = bd.nodes[ori_place]; 
             for(int i = 0; i < cur_pieces.Count; i++){
                 if(cur_pieces[i] == board_index){
                     bd.nodes[board_index].RemoveAt(i);
@@ -231,7 +231,7 @@ public class GameState : MonoBehaviour
         else{
             int ori_place = bd.black_pieces[index];
             int board_index = index;
-            List<int> cur_pieces = bd.nodes[board_index];
+            List<int> cur_pieces = bd.nodes[ori_place];
             for(int i = 0; i < cur_pieces.Count; i++){
                 if(cur_pieces[i] == board_index){
                     bd.nodes[board_index].RemoveAt(i);
