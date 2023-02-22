@@ -28,7 +28,7 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
+        /*foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
         {
             btn.interactable = false;
         }
@@ -38,7 +38,7 @@ public class GameState : MonoBehaviour
         }
 
         dice1But.SetActive(false);
-        dice2But.SetActive(false);
+        dice2But.SetActive(false);*/
     }
 
     // Update is called once per frame
@@ -66,8 +66,8 @@ public class GameState : MonoBehaviour
         dice_1 = num_1; 
         dice_2 = num_2;
 
-        dice1But.SetActive(true);
-        dice2But.SetActive(true);
+        //dice1But.SetActive(true);
+        //dice2But.SetActive(true);
     }
 
     public void TopClick(){
