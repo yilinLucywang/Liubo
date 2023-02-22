@@ -32,7 +32,7 @@ public class GreenController : MonoBehaviour
         //TODO: destroy all of the green spot
         bd.RemoveGreens();
 
-        /*if (FindObjectOfType<GameState>().is_p1_turn)
+        if (FindObjectOfType<GameState>().is_p1_turn)
         {
             foreach (var btn in FindObjectOfType<GameState>().blackPieceBut.GetComponentsInChildren<Button>())
             {
@@ -53,6 +53,6 @@ public class GreenController : MonoBehaviour
             {
                 btn.interactable = false;
             }
-        }*/
+        }
     }
 }
