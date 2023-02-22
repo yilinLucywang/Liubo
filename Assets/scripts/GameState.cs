@@ -221,7 +221,7 @@ public class GameState : MonoBehaviour
             List<int> cur_pieces = bd.nodes[ori_place]; 
             for(int i = 0; i < cur_pieces.Count; i++){
                 if(cur_pieces[i] == board_index){
-                    bd.nodes[board_index].RemoveAt(i);
+                    bd.nodes[ori_place].RemoveAt(i);
                     break;
                 }
             }
@@ -234,7 +234,7 @@ public class GameState : MonoBehaviour
             List<int> cur_pieces = bd.nodes[ori_place];
             for(int i = 0; i < cur_pieces.Count; i++){
                 if(cur_pieces[i] == board_index){
-                    bd.nodes[board_index].RemoveAt(i);
+                    bd.nodes[ori_place].RemoveAt(i);
                     break;
                 }
             }
@@ -245,7 +245,7 @@ public class GameState : MonoBehaviour
     }
 
     public void RemoveTest(){
-        RemovePiece(0, true);
+        RemovePiece(5, true);
     }
 
 
