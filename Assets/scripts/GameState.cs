@@ -216,6 +216,7 @@ public class GameState : MonoBehaviour
         GameObject cur_piece = GameObject.Find(chosen_piece_name);
         board bd = gameObject.GetComponent<board>();
         int pos_index = bd.get_anchor_index(position);
+        Debug.Log(pos_index);
         bool is_two_same_spot = false; 
         if(bd.nodes[pos_index].Count >= 1){
             is_two_same_spot = true;
@@ -250,11 +251,9 @@ public class GameState : MonoBehaviour
 
     //This index is in range[0, 5]
     public void RemovePiece(int index, bool is_white){
-        Debug.Log("remove");
         //This part takes care of the board storage
         board bd = gameObject.GetComponent<board>();
         if(is_white){
-            Debug.Log(index);
             int ori_place = bd.white_pieces[index];
             int board_index = index + 6;
             List<int> cur_pieces = bd.nodes[ori_place]; 
