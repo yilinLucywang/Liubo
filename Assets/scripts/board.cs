@@ -15,7 +15,8 @@ public class board : MonoBehaviour
     public List<List<int>> nodes = new List<List<int>>();
     public int pond_index = 0; 
     public int[,] normal_edges = new int[total_poses, total_poses];
-    public int[,] owl_edges = new int[total_poses, total_poses];
+    public int[,] white_owl_edges = new int[total_poses, total_poses];
+    public int[,] black_owl_edges = new int[total_poses, total_poses];
     public int[,] pond_edges = new int[,]{{8,9},{9,13},{15,9},{14,9}};
 
 
@@ -48,7 +49,8 @@ public class board : MonoBehaviour
         for(int i = 0; i < total_poses; i++){
             for(int j = 0; j < total_poses; j++){
                 normal_edges[i,j] = 0; 
-                owl_edges[i,j] = 0;
+                white_owl_edges[i,j] = 0;
+                black_owl_edges[i,j] = 0;
             }
         }
 
@@ -69,8 +71,11 @@ public class board : MonoBehaviour
             int first = temp_owl_edges[i,0]; 
             int second = temp_owl_edges[i,1];
 
-            owl_edges[first,second] = 1;
-            owl_edges[second, first] = 1; 
+            white_owl_edges[first,second] = 1;
+            white_owl_edges[second, first] = 1; 
+
+            black_owl_edges[first,second] = 1;
+            black_owl_edges[second, first] = 1;
 
             normal_edges[first,second] = 1; 
             normal_edges[second,first] = 1;
@@ -83,6 +88,12 @@ public class board : MonoBehaviour
             int second = temp_not_normal_edges[i,1];
             normal_edges[first,second] = 0;
             normal_edges[second, first] = 0;
+
+            white_owl_edges[first,second] = 1;
+            white_owl_edges[second, first] = 1; 
+
+            black_owl_edges[first,second] = 1;
+            black_owl_edges[second, first] = 1; 
         }
 
         cur_length = pond_edges.GetLength(0);
@@ -90,8 +101,11 @@ public class board : MonoBehaviour
             int first = pond_edges[i,0]; 
             int second = pond_edges[i,1];
 
-            owl_edges[first,second] = 1;
-            owl_edges[second, first] = 1; 
+            white_owl_edges[first,second] = 1;
+            white_owl_edges[second, first] = 1; 
+
+            black_owl_edges[first,second] = 1;
+            black_owl_edges[second, first] = 1; 
 
             normal_edges[first,second] = 1; 
             normal_edges[second,first] = 1;
@@ -183,7 +197,8 @@ public class board : MonoBehaviour
                     final_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
                     visited_spot.Add(cur_pos);
-                    owl_helper(cur_pos,step,visited_spot);
+                    Debug.Log("is owl here");
+                    white_owl_helper(cur_pos,step,visited_spot);
                 }
                 else{
                     //This part searches in normal_edges
@@ -201,7 +216,8 @@ public class board : MonoBehaviour
                     final_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
                     visited_spot.Add(cur_pos);
-                    owl_helper(cur_pos,step,visited_spot);
+                    Debug.Log("is owl here");
+                    black_owl_helper(cur_pos,step,visited_spot);
                 }
                 else{
                     //This part searches in normal_edges
@@ -244,22 +260,45 @@ public class board : MonoBehaviour
         }
     }
 
-    void owl_helper(int cur_pos, int  step, HashSet<int> visited_spot){
+    void white_owl_helper(int cur_pos, int  step, HashSet<int> visited_spot){
         if(step < 1){
             final_poses.Add(cur_pos);
         }
         else{
-            for(int i = 0; i < owl_edges.GetLength(1); i++){
+            for(int i = 0; i < white_owl_edges.GetLength(1); i++){
 
                 if(nodes[i].Count > 1 && isSameColor(i))
                 {
                     continue;
                 }
                 
-                if(owl_edges[cur_pos,i] == 1){
+                if(white_owl_edges[cur_pos,i] == 1){
                     if(!visited_spot.Contains(i)){
                         visited_spot.Add(i);
-                        owl_helper(i,step - 1, visited_spot);
+                        white_owl_helper(i,step - 1, visited_spot);
+                        visited_spot.Remove(i);
+                    }
+                }
+            }
+        }
+    }
+
+    void black_owl_helper(int cur_pos, int  step, HashSet<int> visited_spot){
+        if(step < 1){
+            final_poses.Add(cur_pos);
+        }
+        else{
+            for(int i = 0; i < black_owl_edges.GetLength(1); i++){
+
+                if(nodes[i].Count > 1 && isSameColor(i))
+                {
+                    continue;
+                }
+                
+                if(black_owl_edges[cur_pos,i] == 1){
+                    if(!visited_spot.Contains(i)){
+                        visited_spot.Add(i);
+                        black_owl_helper(i,step - 1, visited_spot);
                         visited_spot.Remove(i);
                     }
                 }
