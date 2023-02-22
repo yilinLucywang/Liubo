@@ -83,6 +83,7 @@ public class Score : MonoBehaviour
                     Debug.Log("2 normal");
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal")
                     {
+                        Debug.Log("2 b normal get 1 w normal ");
                         gameData.black_score++;
                     }
                 }
@@ -133,6 +134,7 @@ public class Score : MonoBehaviour
                     Debug.Log("2 normal");
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal")
                     {
+                        Debug.Log("2 w normal get 1 b normal ");
                         gameData.white_score++;
                     }
                 }
