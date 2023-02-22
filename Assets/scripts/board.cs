@@ -81,7 +81,6 @@ public class board : MonoBehaviour
             normal_edges[second,first] = 1;
         }
         //This is what common pieces cannot walk on
-        int[,] temp_not_normal_edges = new int[,] {{10,12},{11,12},{0,2},{1,2},{30,29},{31,29},{21,23},{21,22}};
         cur_length = temp_not_normal_edges.GetLength(0);
         for(int i = 0; i < cur_length; i++){
             int first = temp_not_normal_edges[i,0]; 
@@ -109,6 +108,36 @@ public class board : MonoBehaviour
 
             normal_edges[first,second] = 1; 
             normal_edges[second,first] = 1;
+        }
+
+
+
+        //white bottom
+        int[,] white_not_normal_edges = new int[,] {{30,29},{31,29},{21,23},{21,22}};
+        int[,] black_not_normal_edges = new int[,] {{10,12},{11,12},{0,2},{1,2}};
+        cur_length = white_not_normal_edges.GetLength(0);
+        for(int i = 0; i < cur_length; i++){
+            int first = pond_edges[i,0]; 
+            int second = pond_edges[i,1];
+
+            white_owl_edges[first,second] = 1;
+            white_owl_edges[second, first] = 1; 
+
+            black_owl_edges[first,second] = 0;
+            black_owl_edges[second, first] = 0; 
+        }
+
+
+        cur_length = black_not_normal_edges.GetLength(0);
+        for(int i = 0; i < cur_length; i++){
+            int first = pond_edges[i,0]; 
+            int second = pond_edges[i,1];
+
+            white_owl_edges[first,second] = 0;
+            white_owl_edges[second, first] = 0; 
+
+            black_owl_edges[first,second] = 1;
+            black_owl_edges[second, first] = 1; 
         }
 
         for(int i = 0; i < piece_number; i++){
