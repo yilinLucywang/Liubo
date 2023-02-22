@@ -220,8 +220,11 @@ public class board : MonoBehaviour
 
             if(is_white){
                 //white owls
-                if(score.findTag(piece_index) == "Owl")
+                string piece_name = (piece_index+6).ToString();
+                GameObject piece = GameObject.Find(piece_name);
+                if (piece.CompareTag("Owl"))
                 {
+                    Debug.Log("w owl");
                     //This part searches in owl_edges
                     //has cycle, may cause some issue here in this dfs
                     final_poses.Clear();
@@ -240,8 +243,11 @@ public class board : MonoBehaviour
             }
             else{
                 //black_owls
-                if(score.findTag(piece_index) == "Owl")
+                string piece_name = piece_index.ToString();
+                GameObject piece = GameObject.Find(piece_name);
+                if (piece.CompareTag("Owl"))
                 {
+                    Debug.Log("b owl");
                     //This part searches in owl_edges
                     final_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
