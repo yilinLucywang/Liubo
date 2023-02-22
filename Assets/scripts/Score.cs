@@ -48,6 +48,7 @@ public class Score : MonoBehaviour
             bd.black_pieces[chosen_piece] = pos_index;
             if (cur_piece.CompareTag("Owl"))
             {
+                Debug.Log("black owl move");
                 //black owl land on nest
                 if ((pos_index == 2) || (pos_index == 12))//(pos_index == 21)|| (pos_index == 29)
                 {
@@ -56,14 +57,17 @@ public class Score : MonoBehaviour
                 }
             }
                 // if there is already a piece on there
-            if (bd.nodes[pos_index].Count > 0 && hasDiffColor)
+             diffColorIndex = findDifferentColor(pos_index, is_black_chosen);
+            if (hasDiffColor)
             {
-                diffColorIndex = findDifferentColor(pos_index, is_black_chosen);
+                Debug.Log("hasDiffColor");
+                
                 //black pieces eat white owl
                 if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl")
                 {
                     gameData.black_score += 3;
                     changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
+                    Debug.Log("Black owl get white owl");
                 }
                 else if (cur_piece.CompareTag("Owl") )
                 {
@@ -76,6 +80,7 @@ public class Score : MonoBehaviour
                 }
                 else if (cur_piece.CompareTag("Normal")&& (bd.nodes[pos_index].Count > 1))
                 {
+                    Debug.Log("2 normal");
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal")
                     {
                         gameData.black_score++;
@@ -88,8 +93,10 @@ public class Score : MonoBehaviour
         else//white chosen
         {
             bd.white_pieces[chosen_piece-6] = pos_index;
+
             if (cur_piece.CompareTag("Owl"))
             {
+                Debug.Log("white owl move");
                 //white owl land on nest
                 if ((pos_index == 21) || (pos_index == 29))
                 {
@@ -98,26 +105,32 @@ public class Score : MonoBehaviour
                 }
             }
             // if there is already a piece on there
-            if (bd.nodes[pos_index].Count > 0 && hasDiffColor)
+            diffColorIndex = findDifferentColor(pos_index, is_black_chosen);
+            if (hasDiffColor)
             {
-                diffColorIndex = findDifferentColor(pos_index, is_black_chosen);
+                
+                Debug.Log("hasDiffColor");
                 //white pieces eat black owl
                 if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl")
                 {
                     gameData.white_score += 3;
                     changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
+                    Debug.Log("white owl get black owl");
                 }
                 else if (cur_piece.CompareTag("Owl"))
                 {
                     //white owl eat black normal
+                    Debug.Log("B");
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal")
                     {
                         gameData.white_score++;
+                        Debug.Log("white owl get black owl");
                     }
                 }
                 //two white normal eat black normal
                 else if (cur_piece.CompareTag("Normal") && (bd.nodes[pos_index].Count > 1))
                 {
+                    Debug.Log("2 normal");
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal")
                     {
                         gameData.white_score++;
@@ -132,7 +145,6 @@ public class Score : MonoBehaviour
     }
     public string findTag(int index)
     {
-        Debug.Log(index);
         string piece_name = index.ToString();
         GameObject piece = GameObject.Find(piece_name);
         string tagName = piece.tag;
@@ -148,44 +160,39 @@ public class Score : MonoBehaviour
     public int findDifferentColor(int pos_index, bool is_black_chosen)
     {
         board bd = gameObject.GetComponent<board>();
-        if (is_black_chosen)
+        Debug.Log(bd.nodes[pos_index].Count);
+        if (bd.nodes[pos_index].Count > 0)
         {
-            //if white or only have one index so assume first is white
-            if (bd.nodes[pos_index][0] > 5)
+            if (is_black_chosen)
             {
-                hasDiffColor = true;
-                return 0;
-            }
-            else if (bd.nodes[pos_index][1] > 5)
-            {
-                hasDiffColor = true;
-                return 1;
-            }
-            else
-            {
-                hasDiffColor = false;
-                return 0;
+                for (var i = 0; i < bd.nodes[pos_index].Count; i++)
+                {
+                    if (bd.nodes[pos_index][i] > 5)
+                    {
+                        hasDiffColor = true;
+                        return i;
+                    }
+                }
             }
 
+            else
+            {
+                for (var i = 0; i < bd.nodes[pos_index].Count; i++)
+                {
+                    if (bd.nodes[pos_index][i] < 6)
+                    {
+                        hasDiffColor = true;
+                        return i;
+                    }
+                }
+            }
+            hasDiffColor = false;
+            return 0;
         }
         else
         {
-            if (bd.nodes[pos_index][0] < 6 )
-            {
-                hasDiffColor = true;
-                return 0;
-            }
-            else if (bd.nodes[pos_index][1] < 6)
-            {
-                hasDiffColor = true;
-                return 1;
-            }
-            else
-            {
-                hasDiffColor = false;
-                return 0;
-            }
+            hasDiffColor = false;
+            return 0;
         }
-  
     }
 }

@@ -265,7 +265,7 @@ public class board : MonoBehaviour
     {
         bool sameColor;
 
-        if ((nodes[i][0] < 6 && nodes[i][0] < 6) || (nodes[i][0] > 5 && nodes[i][0] > 5))
+        if ((nodes[i][0] < 6 && nodes[i][1] < 6) || (nodes[i][0] > 5 && nodes[i][1] > 5))
         {
             sameColor = true;
         }
@@ -273,6 +273,7 @@ public class board : MonoBehaviour
         {
             sameColor = false;
         }
+        Debug.Log(sameColor);
         return sameColor;
     }
 }
