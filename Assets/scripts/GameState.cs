@@ -73,7 +73,7 @@ public class GameState : MonoBehaviour
     public void TopClick(){
         if(dice_1 != -1){
             cur_step = dice_1;
-            dice1But.SetActive(false);
+            //dice1But.SetActive(false);
         }
         /*if (is_p1_turn)
         {
@@ -102,7 +102,7 @@ public class GameState : MonoBehaviour
     public void BottomClick(){
         if(dice_2 != -1){
             cur_step = dice_2;
-            dice2But.SetActive(false);
+            //dice2But.SetActive(false);
         }
         /*if (is_p1_turn)
         {
@@ -179,7 +179,7 @@ public class GameState : MonoBehaviour
 
         bd.nodes[pos_index].Add(chosen_piece);
 
-        cur_piece.GetComponent<Button>().interactable = false;
+        //cur_piece.GetComponent<Button>().interactable = false;
 
         if(!is_black_chosen){
             chosen_piece = chosen_piece - 6;
