@@ -271,7 +271,7 @@ public class GameState : MonoBehaviour
         GameObject cur_piece = GameObject.Find(chosen_piece_name);
         board bd = gameObject.GetComponent<board>();
         int pos_index = bd.get_anchor_index(position);
-        Debug.Log(pos_index);
+        //Debug.Log(pos_index);
         bool is_two_same_spot = false; 
         if(bd.nodes[pos_index].Count >= 1){
             is_two_same_spot = true;
