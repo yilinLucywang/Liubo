@@ -17,7 +17,6 @@ public class board : MonoBehaviour
     public int[,] normal_edges = new int[total_poses, total_poses];
     public int[,] white_owl_edges = new int[total_poses, total_poses];
     public int[,] black_owl_edges = new int[total_poses, total_poses];
-    public int[,] pond_edges = new int[,]{{8,9},{9,13},{15,9},{14,9}};
 
 
     public bool is_p1_turn = true; 
@@ -96,6 +95,7 @@ public class board : MonoBehaviour
             black_owl_edges[second, first] = 1; 
         }
 
+        int[,] pond_edges = new int[,]{{8,9},{9,13},{15,9},{14,9}};
         cur_length = pond_edges.GetLength(0);
         for(int i = 0; i < cur_length; i++){
             int first = pond_edges[i,0]; 
@@ -118,8 +118,8 @@ public class board : MonoBehaviour
         int[,] black_not_normal_edges = new int[,] {{10,12},{11,12},{0,2},{1,2}};
         cur_length = white_not_normal_edges.GetLength(0);
         for(int i = 0; i < cur_length; i++){
-            int first = pond_edges[i,0]; 
-            int second = pond_edges[i,1];
+            int first = white_not_normal_edges[i,0]; 
+            int second = white_not_normal_edges[i,1];
 
             white_owl_edges[first,second] = 1;
             white_owl_edges[second, first] = 1; 
@@ -131,8 +131,8 @@ public class board : MonoBehaviour
 
         cur_length = black_not_normal_edges.GetLength(0);
         for(int i = 0; i < cur_length; i++){
-            int first = pond_edges[i,0]; 
-            int second = pond_edges[i,1];
+            int first = black_not_normal_edges[i,0]; 
+            int second = black_not_normal_edges[i,1];
 
             white_owl_edges[first,second] = 0;
             white_owl_edges[second, first] = 0; 
@@ -224,13 +224,11 @@ public class board : MonoBehaviour
                 GameObject piece = GameObject.Find(piece_name);
                 if (piece.CompareTag("Owl"))
                 {
-                    Debug.Log("w owl");
                     //This part searches in owl_edges
                     //has cycle, may cause some issue here in this dfs
                     final_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
                     visited_spot.Add(cur_pos);
-                    Debug.Log("is owl here");
                     white_owl_helper(cur_pos,step,visited_spot);
                 }
                 else{
@@ -247,12 +245,10 @@ public class board : MonoBehaviour
                 GameObject piece = GameObject.Find(piece_name);
                 if (piece.CompareTag("Owl"))
                 {
-                    Debug.Log("b owl");
                     //This part searches in owl_edges
                     final_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
                     visited_spot.Add(cur_pos);
-                    Debug.Log("is owl here");
                     black_owl_helper(cur_pos,step,visited_spot);
                 }
                 else{
