@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GameState : MonoBehaviour
 {
+    //Set this to true for the 3D scene, will use Vector3s instead of Vector2s
+    public bool Is3DGame = false;
+
     public bool is_p1_turn = true;
     public int dice_1 = -1; 
     public int dice_2 = -1;
@@ -40,6 +43,8 @@ public class GameState : MonoBehaviour
     private List<Vector2> black_poses = new List<Vector2>();
 
 
+
+
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
             white_poses.Add(white_pieces[i].transform.position);
@@ -53,11 +58,21 @@ public class GameState : MonoBehaviour
         whiteTurn.SetActive(true);
         if (openLimit == true)
         {
+            //2D version
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
             {
                 btn.interactable = false;
             }
             foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = false;
+            }
+            //3D version
+            foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
+            {
+                btn.interactable = false;
+            }
+            foreach (var btn in whitePieceBut.GetComponentsInChildren<Clickable>())
             {
                 btn.interactable = false;
             }
@@ -128,6 +143,7 @@ public class GameState : MonoBehaviour
 
         if (is_p1_turn && openLimit == true)
         {
+            //2D Version
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
             {
                 btn.interactable = false;
@@ -136,14 +152,33 @@ public class GameState : MonoBehaviour
             {
                 btn.interactable = true;
             }
+            //3D Version
+            foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
+            {
+                btn.interactable = false;
+            }
+            foreach (var btn in whitePieceBut.GetComponentsInChildren<Clickable>())
+            {
+                btn.interactable = true;
+            }
         }
         else if(!is_p1_turn && openLimit == true)
         {
+            //2D Version
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
             {
                 btn.interactable = true;
             }
             foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = false;
+            }
+            //3D Version
+            foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
+            {
+                btn.interactable = true;
+            }
+            foreach (var btn in whitePieceBut.GetComponentsInChildren<Clickable>())
             {
                 btn.interactable = false;
             }
@@ -160,6 +195,7 @@ public class GameState : MonoBehaviour
 
         if (is_p1_turn && openLimit == true)
         {
+            //2D Version
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
             {
                 btn.interactable = false;
@@ -168,14 +204,33 @@ public class GameState : MonoBehaviour
             {
                 btn.interactable = true;
             }
+            //3D Version
+            foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
+            {
+                btn.interactable = false;
+            }
+            foreach (var btn in whitePieceBut.GetComponentsInChildren<Clickable>())
+            {
+                btn.interactable = true;
+            }
         }
         else if(!is_p1_turn && openLimit == true)
         {
+            //2D Version
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
             {
                 btn.interactable = true;
             }
             foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
+            {
+                btn.interactable = false;
+            }
+            //3D Version
+            foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
+            {
+                btn.interactable = true;
+            }
+            foreach (var btn in whitePieceBut.GetComponentsInChildren<Clickable>())
             {
                 btn.interactable = false;
             }
