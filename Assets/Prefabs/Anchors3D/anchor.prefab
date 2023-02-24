@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4084976679205894622}
   - component: {fileID: 8945185575703843158}
   - component: {fileID: 1138788535080668813}
+  - component: {fileID: 2213755676568704784}
   m_Layer: 0
   m_Name: anchor
   m_TagString: Untagged
@@ -89,7 +90,33 @@ BoxCollider:
   m_GameObject: {fileID: 1283889813212435214}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2213755676568704784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283889813212435214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06728572ac58cd44b9e2de04e85615c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClick3D:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2213755676568704784}
+        m_MethodName: TestFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
