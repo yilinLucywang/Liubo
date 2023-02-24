@@ -169,11 +169,11 @@ public class board : MonoBehaviour
         
     }
 
-    public int get_anchor_index(Vector2 pos){
+    public int get_anchor_index(Vector3 pos){
         int  index = -1; 
         for(int i = 0; i < anchors.Count; i++){
-            Vector2 anchor_pos = anchors[i].transform.position; 
-            if(Vector2.Distance(anchor_pos, pos) <= 8.0){
+            Vector3 anchor_pos = anchors[i].transform.position; 
+            if(Vector3.Distance(anchor_pos, pos) <= 8.0){
                 index = anchor_2_index[i]; 
                 return index;
             }
@@ -181,7 +181,7 @@ public class board : MonoBehaviour
         return index;
     }
 
-    public List<Vector2> move(bool is_white, int piece_index, int step){
+    public List<Vector3> move(bool is_white, int piece_index, int step){
         Score score = gameObject.GetComponent<Score>();
         int cur_pos = 0;
         if(is_white){
@@ -261,10 +261,10 @@ public class board : MonoBehaviour
             }
         }
 
-        List<Vector2> final_positions = new List<Vector2> ();
+        List<Vector3> final_positions = new List<Vector3> ();
         for(int i = 0; i < final_poses.Count; i++){
             int anchor_index = index_2_anchor[final_poses[i]];
-            Vector2 position = anchors[anchor_index].transform.position;
+            Vector3 position = anchors[anchor_index].transform.position;
             final_positions.Add(position);
         }
         return final_positions;

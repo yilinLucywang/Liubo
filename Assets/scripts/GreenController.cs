@@ -26,7 +26,7 @@ public class GreenController : MonoBehaviour
 
     public void OnClick(){
         //TODO: move current button to the position clicked
-        Vector2 pos = gameObject.transform.position;
+        Vector3 pos = gameObject.transform.position;
         //TODO: move piece
         bd.MovePiece(pos);
         //TODO: destroy all of the green spot

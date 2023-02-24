@@ -23,7 +23,7 @@ public class Score : MonoBehaviour
 
 
    
-    public void CalculateScore(Vector2 position, int chosen_piece, bool is_black_chosen)
+    public void CalculateScore(Vector3 position, int chosen_piece, bool is_black_chosen)
     {
         string chosen_piece_name = chosen_piece.ToString();
         GameObject cur_piece = GameObject.Find(chosen_piece_name);

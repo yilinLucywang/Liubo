@@ -39,8 +39,8 @@ public class GameState : MonoBehaviour
     public List<GameObject> black_pieces = new List<GameObject>(); 
 
 
-    private List<Vector2> white_poses = new List<Vector2>();
-    private List<Vector2> black_poses = new List<Vector2>();
+    private List<Vector3> white_poses = new List<Vector3>();
+    private List<Vector3> black_poses = new List<Vector3>();
 
 
 
@@ -251,14 +251,14 @@ public class GameState : MonoBehaviour
         if(is_white){
             chosen_piece = chosen_piece - 6;
         }
-        List<Vector2> res_list = bd.move(is_white,chosen_piece, cur_step);
+        List<Vector3> res_list = bd.move(is_white,chosen_piece, cur_step);
         for(int i = 0; i < res_list.Count; i++){
-            Vector2 pos = res_list[i];
+            Vector3 pos = res_list[i];
             SpawnGreen(pos);
         }
     }
 
-    public void MovePiece(Vector2 position){
+    public void MovePiece(Vector3 position){
         //call script form score
         Score score = gameObject.GetComponent<Score>();
 
@@ -278,7 +278,7 @@ public class GameState : MonoBehaviour
         }
 
         if(is_two_same_spot){
-            cur_piece.transform.position = position + new Vector2(5.0f,12.5f); 
+            cur_piece.transform.position = position + new Vector3(5.0f,12.5f); 
         }
         else{
             cur_piece.transform.position = position;
@@ -342,7 +342,7 @@ public class GameState : MonoBehaviour
     }
 
 
-    void SpawnGreen(Vector2 spawn_pos){
+    void SpawnGreen(Vector3 spawn_pos){
         //spawn the prefab at the given position
         GameObject instantiated = Instantiate(valid_sign, spawn_pos, Quaternion.identity);
         instantiated.transform.SetParent(canvas.transform);
