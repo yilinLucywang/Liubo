@@ -259,6 +259,7 @@ public class GameState : MonoBehaviour
     }
 
     public void MovePiece(Vector3 position){
+        Debug.Log("In Move Piece");
         //call script form score
         Score score = gameObject.GetComponent<Score>();
 
@@ -278,7 +279,11 @@ public class GameState : MonoBehaviour
         }
 
         if(is_two_same_spot){
-            cur_piece.transform.position = position + new Vector3(5.0f,12.5f); 
+            if(Is3DGame)
+                cur_piece.transform.position = position;
+            else
+                cur_piece.transform.position = position + new Vector3(5.0f,12.5f); 
+
         }
         else{
             cur_piece.transform.position = position;
@@ -289,8 +294,18 @@ public class GameState : MonoBehaviour
 
         bd.nodes[pos_index].Add(chosen_piece);
 
-        if(openLimit == true)
-            cur_piece.GetComponent<Button>().interactable = false;
+        if (openLimit == true)
+        {
+            if (Is3DGame)
+            {
+                cur_piece.GetComponent<Clickable>().interactable = false;
+            }
+            else
+            {
+                cur_piece.GetComponent<Button>().interactable = false;
+            }
+            
+        }
 
         if(!is_black_chosen){
             chosen_piece = chosen_piece - 6;

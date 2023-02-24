@@ -25,6 +25,7 @@ public class GreenController : MonoBehaviour
     }
 
     public void OnClick(){
+        Debug.Log("In GreenController");
         //TODO: move current button to the position clicked
         Vector3 pos = gameObject.transform.position;
         //TODO: move piece
