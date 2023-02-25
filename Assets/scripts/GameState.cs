@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameState : MonoBehaviour
 {
     //Set this to true for the 3D scene, will use Vector3s instead of Vector2s
+    [SerializeField] GameObject LiuboBoard;
     public bool Is3DGame = false;
 
     public bool is_p1_turn = true;
@@ -288,7 +289,8 @@ public class GameState : MonoBehaviour
         else{
             cur_piece.transform.position = position;
         }
-
+        //rotate if needed
+        //Rotate(cur_piece, pos_index);
         //calculate score before add piece 
         score.CalculateScore(position, chosen_piece, is_black_chosen);
 
@@ -388,5 +390,33 @@ public class GameState : MonoBehaviour
         dice_2 = -1;
         num_1_text.text = "Dice1: "; 
         num_2_text.text = "Dice2: ";   
+    }
+
+    List<int> horizontalPosition = new List<int>() {
+         1,
+         3,
+         5,
+         8,
+         11,
+         36,
+         33,
+         17,
+         20,
+         30,
+         24,
+         26,
+         14,//14 or 28?
+         22
+      };
+    public void Rotate(GameObject cur_piece, int pos_index)
+    {
+        
+            
+        if (horizontalPosition.Contains(pos_index))
+        {
+            //rotate 90 degree: horizontal
+            cur_piece.transform.rotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
+        }
+        
     }
 }

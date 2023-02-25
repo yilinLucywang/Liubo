@@ -41,6 +41,7 @@ public class Score : MonoBehaviour
         if (pos_index == 9)
         {
             cur_piece.tag = "Owl";
+            //cur_piece.transform.rotation = cur_piece.transform.rotation * Quaternion.Euler(0f, 0f, 90f);
         }
 
         if (is_black_chosen)
