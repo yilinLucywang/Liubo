@@ -44,7 +44,10 @@ public class GameState : MonoBehaviour
     private List<Vector3> black_poses = new List<Vector3>();
 
 
+    public bool TwoDiceSame;
+    public int firstOrigPos = -10, firstFinalPos;
 
+    private bool isFirstMoved = false;
 
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
@@ -112,7 +115,7 @@ public class GameState : MonoBehaviour
             whiteTurn.SetActive(false);
             blackTurn.SetActive(true);
         }
-
+        firstOrigPos = -10;
     }
 
     public void RollDice()
@@ -131,6 +134,7 @@ public class GameState : MonoBehaviour
 
             rollDicebtn.GetComponent<Button>().interactable = false;
         }
+
     }
 
     public void TopClick(){
@@ -238,6 +242,15 @@ public class GameState : MonoBehaviour
         }
     }
 
+    public void NotMoveBlock()
+    {
+        if (dice_1 == dice_2)
+        {
+            //can not move both pieces on block
+            TwoDiceSame = true;
+        }
+    }
+
     public void PieceChosen(int index, bool is_black){
         chosen_piece = index; 
         is_black_chosen = is_black;
@@ -255,7 +268,15 @@ public class GameState : MonoBehaviour
         List<Vector3> res_list = bd.move(is_white,chosen_piece, cur_step);
         for(int i = 0; i < res_list.Count; i++){
             Vector3 pos = res_list[i];
-            SpawnGreen(pos);
+            if (pos == bd.anchors[firstFinalPos].transform.position && isFirstMoved == true)
+            {
+                continue;
+            }
+            else
+            {
+                SpawnGreen(pos);
+            }
+            
         }
     }
 
@@ -273,13 +294,45 @@ public class GameState : MonoBehaviour
         GameObject cur_piece = GameObject.Find(chosen_piece_name);
         board bd = gameObject.GetComponent<board>();
         int pos_index = bd.get_anchor_index(position);
-        //Debug.Log(pos_index);
+        Debug.Log(pos_index);
         bool is_two_same_spot = false; 
-        if(bd.nodes[pos_index].Count >= 1){
+
+        //check position beofre moving
+        int CurOrgIndex = bd.get_anchor_index(cur_piece.transform.position);
+        Debug.Log("original index" + CurOrgIndex);
+        
+        if (bd.nodes[CurOrgIndex].Count > 1)
+        {
+            isFirstMoved = false;
+            firstFinalPos = pos_index;
+            firstOrigPos = CurOrgIndex;
+        }
+        if (bd.nodes[CurOrgIndex].Count == 1 && CurOrgIndex == firstOrigPos)
+        {
+            isFirstMoved = true;
+        }
+
+
+        /*
+        if (orgIndex == firstOrigPos)
+        {
+
+            //firstFinalPos = pos_index;
+        }
+        else
+        {
+            firstOrigPos = orgIndex;
+
+        }
+         */
+
+
+        if (bd.nodes[pos_index].Count >= 1){
             is_two_same_spot = true;
         }
 
         if(is_two_same_spot){
+
             if(Is3DGame)
                 cur_piece.transform.position = position;
             else
@@ -290,11 +343,12 @@ public class GameState : MonoBehaviour
             cur_piece.transform.position = position;
         }
         //rotate if needed
-        //Rotate(cur_piece, pos_index);
+        Rotate(cur_piece, pos_index);
         //calculate score before add piece 
         score.CalculateScore(position, chosen_piece, is_black_chosen);
 
         bd.nodes[pos_index].Add(chosen_piece);
+
 
         if (openLimit == true)
         {
@@ -414,8 +468,15 @@ public class GameState : MonoBehaviour
             
         if (horizontalPosition.Contains(pos_index))
         {
+            Debug.Log("horizonal");
             //rotate 90 degree: horizontal
-            cur_piece.transform.rotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
+            cur_piece.transform.rotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 0f, 0f);
+        }
+        else
+        {
+            Debug.Log("vertical");
+            //rotate back
+            cur_piece.transform.rotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 180f, 0f);
         }
         
     }
