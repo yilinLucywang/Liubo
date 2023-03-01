@@ -207,6 +207,7 @@ public class board : MonoBehaviour
                 //1,11
                 //no way for this case to be owl
                 final_poses.Clear();
+                owl_poses.Clear();
                 HashSet<int> visited_spot = new HashSet<int>();
                 visited_spot.Add(1);
                 normal_helper(1,step,visited_spot);
@@ -217,6 +218,7 @@ public class board : MonoBehaviour
                 //30,22
                 //no way for this case to be owl
                 final_poses.Clear();
+                owl_poses.Clear();
                 HashSet<int> visited_spot = new HashSet<int>();
                 visited_spot.Add(30);
                 normal_helper(30,step,visited_spot);
@@ -236,6 +238,7 @@ public class board : MonoBehaviour
                     //This part searches in owl_edges
                     //has cycle, may cause some issue here in this dfs
                     final_poses.Clear();
+                    owl_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
                     visited_spot.Add(cur_pos);
                     white_owl_helper(cur_pos,step,visited_spot);
@@ -243,6 +246,7 @@ public class board : MonoBehaviour
                 else{
                     //This part searches in normal_edges
                     final_poses.Clear();
+                    owl_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>(); 
                     visited_spot.Add(cur_pos);
                     normal_helper(cur_pos,step,visited_spot);
@@ -256,6 +260,7 @@ public class board : MonoBehaviour
                 {
                     //This part searches in owl_edges
                     final_poses.Clear();
+                    owl_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
                     visited_spot.Add(cur_pos);
                     black_owl_helper(cur_pos,step,visited_spot);
@@ -263,6 +268,7 @@ public class board : MonoBehaviour
                 else{
                     //This part searches in normal_edges
                     final_poses.Clear();
+                    owl_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
                     visited_spot.Add(cur_pos);
                     normal_helper(cur_pos,step,visited_spot);
