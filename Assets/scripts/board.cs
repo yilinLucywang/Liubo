@@ -38,6 +38,9 @@ public class board : MonoBehaviour
     public HashSet<int> white_owls = new HashSet<int>();
     public HashSet<int> black_owls = new HashSet<int>();
 
+    //Max valid distance when comparing validMove positions to anchor positions
+    public float max_anchor_distance = 0.01f;
+
     
     public int[] cur_rolls = new int[2];
     void Awake()
@@ -178,7 +181,7 @@ public class board : MonoBehaviour
         int  index = -1; 
         for(int i = 0; i < anchors.Count; i++){
             Vector3 anchor_pos = anchors[i].transform.position; 
-            if(Vector3.Distance(anchor_pos, pos) <= 8.0){
+            if(Vector3.Distance(anchor_pos, pos) <= max_anchor_distance){
                 index = anchor_2_index[i]; 
                 return index;
             }
@@ -195,8 +198,9 @@ public class board : MonoBehaviour
         else{
             cur_pos = black_pieces[piece_index];
         }
+        Debug.Log("cur_pos = " + cur_pos);
 
-        if(cur_pos == -1){
+        if (cur_pos == -1){
             //starting pos: 11,1,30,22
             step = step - 1;
             if(is_white){
