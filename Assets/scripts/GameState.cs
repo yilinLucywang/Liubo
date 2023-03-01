@@ -120,8 +120,8 @@ public class GameState : MonoBehaviour
 
     public void RollDice()
     {
-        int num_1 = Random.Range(1, 5);
-        int num_2 = Random.Range(1, 5);
+        int num_1 = RollSticks();
+        int num_2 = RollSticks();
         num_1_text.text = "Dice1: " + num_1.ToString(); 
         num_2_text.text = "Dice2: " + num_2.ToString();
         dice_1 = num_1; 
@@ -134,6 +134,32 @@ public class GameState : MonoBehaviour
 
             rollDicebtn.GetComponent<Button>().interactable = false;
         }
+
+    }
+
+    /// <summary>
+    /// Random number generator that returns a number between 1-4
+    /// Uses the same probabilties as the sticks (3/8 chance of 1, 3/8 chance of 2, 1/8 chance of  3, 1/8 chance of 4)
+    /// </summary>
+    /// <returns>
+    /// roll_result = int between 1 and 4
+    /// </returns>
+    private int RollSticks()
+    {
+        int random_value = Random.Range(1, 9);
+        //values 1 through 3 == 1 on the sticks
+        if (random_value < 4)
+            return 1;
+        //values 4 through 6 == 2 on the sticks
+        else if (random_value < 7)
+            return 2;
+        //value 7 == 3 on the sticks
+        else if (random_value == 7)
+            return 3;
+        //value 8 == 4 on the sticks
+        else
+            return 4;
+
 
     }
 
