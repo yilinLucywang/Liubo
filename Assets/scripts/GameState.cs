@@ -295,9 +295,8 @@ public class GameState : MonoBehaviour
         board bd = gameObject.GetComponent<board>();
         int pos_index = bd.get_anchor_index(position);
         Debug.Log(pos_index);
-        //TODO: this is the bool indicating whether the piece should be an owl
-        bool is_owl = bd.is_becoming_owl(pos_index);
-        
+
+
         bool is_two_same_spot = false; 
 
         //check position beofre moving
@@ -348,7 +347,9 @@ public class GameState : MonoBehaviour
         //rotate if needed
         Rotate(cur_piece, pos_index);
         //calculate score before add piece 
-        score.CalculateScore(position, chosen_piece, is_black_chosen);
+        //TODO: this is the bool indicating whether the piece should be an owl
+        bool is_owl = bd.is_becoming_owl(pos_index);
+        score.CalculateScore(position, chosen_piece, is_black_chosen, is_owl);
 
         bd.nodes[pos_index].Add(chosen_piece);
 

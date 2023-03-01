@@ -23,7 +23,7 @@ public class Score : MonoBehaviour
 
 
    
-    public void CalculateScore(Vector3 position, int chosen_piece, bool is_black_chosen)
+    public void CalculateScore(Vector3 position, int chosen_piece, bool is_black_chosen, bool is_owl)
     {
         string chosen_piece_name = chosen_piece.ToString();
         GameObject cur_piece = GameObject.Find(chosen_piece_name);
@@ -38,7 +38,8 @@ public class Score : MonoBehaviour
         //bd.nodes[pos_index].Add(chosen_piece);
 
 
-        if (pos_index == 9)
+        //if (pos_index == 9)
+        if(is_owl)
         {
             cur_piece.tag = "Owl";
             //cur_piece.transform.rotation = cur_piece.transform.rotation * Quaternion.Euler(0f, 0f, 90f);
