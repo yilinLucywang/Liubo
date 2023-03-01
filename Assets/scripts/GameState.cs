@@ -294,8 +294,12 @@ public class GameState : MonoBehaviour
         List<Vector3> res_list = bd.move(is_white,chosen_piece, cur_step);
         for(int i = 0; i < res_list.Count; i++){
             Vector3 pos = res_list[i];
+
+            Debug.Log("final pos"+bd.anchors[firstFinalPos].transform.position);
             if (pos == bd.anchors[firstFinalPos].transform.position && isFirstMoved == true)
             {
+                Debug.Log("isfirstmove" + isFirstMoved);
+                isFirstMoved = false;
                 continue;
             }
             else
@@ -330,13 +334,15 @@ public class GameState : MonoBehaviour
         Debug.Log("original index" + CurOrgIndex);
         
         //Moving from off board
-        if(CurOrgIndex == -1)
+       if(CurOrgIndex == -1)
         {
             //Don't know what should go here
         }
         else if (bd.nodes[CurOrgIndex].Count > 1)
+
         {
-            isFirstMoved = false;
+            
+            isFirstMoved = true;
             firstFinalPos = pos_index;
             firstOrigPos = CurOrgIndex;
         }
@@ -508,13 +514,11 @@ public class GameState : MonoBehaviour
             
         if (horizontalPosition.Contains(pos_index))
         {
-            Debug.Log("horizonal");
             //rotate 90 degree: horizontal
             cur_piece.transform.rotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 0f, 0f);
         }
         else
         {
-            Debug.Log("vertical");
             //rotate back
             cur_piece.transform.rotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
         }

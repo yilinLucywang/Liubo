@@ -42,7 +42,8 @@ public class Score : MonoBehaviour
         if(is_owl)
         {
             cur_piece.tag = "Owl";
-            //cur_piece.transform.rotation = cur_piece.transform.rotation * Quaternion.Euler(0f, 0f, 90f);
+            cur_piece.transform.rotation = cur_piece.transform.rotation * Quaternion.Euler(0f, 0f, 90f);
+            cur_piece.transform.position += new Vector3(0f, 0.15f, 0f);
         }
 
         if (is_black_chosen)
@@ -57,7 +58,7 @@ public class Score : MonoBehaviour
                 {
                     gameData.black_score += 2;
                     changeTag(bd.nodes[pos_index].Count - 1, "Normal");
-                    //RotateBackToNorm(cur_piece);
+                    RotateBackToNorm(cur_piece);
                 }
             }
                 // if there is already a piece on there
@@ -81,7 +82,7 @@ public class Score : MonoBehaviour
                     {
                         gameData.black_score += 3;
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
-                        //RotateBackToNorm(cur_piece);
+                        RotateBackToNorm(cur_piece);
                         Debug.Log("2 Black owl get white owl");
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
@@ -94,7 +95,7 @@ public class Score : MonoBehaviour
                     {
                         gameData.black_score += 3;
                         Debug.Log("Black normal get white owl");
-                        //RotateBackToNorm(cur_piece);
+                        RotateBackToNorm(cur_piece);
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
                     }
@@ -231,5 +232,6 @@ public class Score : MonoBehaviour
     public void RotateBackToNorm(GameObject cur_piece)
     {
         cur_piece.transform.rotation = cur_piece.transform.rotation * Quaternion.Euler(0f, 0f, 90f);
+        cur_piece.transform.position -= new Vector3(0f, 0.15f, 0f);
     }
 }
