@@ -329,7 +329,12 @@ public class GameState : MonoBehaviour
         int CurOrgIndex = bd.get_anchor_index(cur_piece.transform.position);
         Debug.Log("original index" + CurOrgIndex);
         
-        if (CurOrgIndex == -1 || bd.nodes[CurOrgIndex].Count > 1)
+        //Moving from off board
+        if(CurOrgIndex == -1)
+        {
+            //Don't know what should go here
+        }
+        else if (bd.nodes[CurOrgIndex].Count > 1)
         {
             isFirstMoved = false;
             firstFinalPos = pos_index;
@@ -361,14 +366,19 @@ public class GameState : MonoBehaviour
 
         if(is_two_same_spot){
 
-            if(Is3DGame)
+            if (Is3DGame)
+            {
                 cur_piece.transform.position = position;
+                cur_piece.transform.Translate(new Vector3(0f, 0.14f, 0f));
+            }
             else
-                cur_piece.transform.position = position + new Vector3(5.0f,12.5f); 
+                cur_piece.transform.position = position + new Vector3(5.0f, 12.5f); 
 
         }
         else{
             cur_piece.transform.position = position;
+            cur_piece.transform.Translate(new Vector3(0f, 0.04f, 0f));
+
         }
         //rotate if needed
         Rotate(cur_piece, pos_index);
