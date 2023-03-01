@@ -11,6 +11,11 @@ public class board : MonoBehaviour
     private Dictionary<int, int> anchor_2_index = new Dictionary<int, int> ();
     private Dictionary<int, int> index_2_anchor = new Dictionary<int, int> ();
     private List<int> final_poses =  new List<int>();
+
+    //true stands for the final pose with that index will change the normal piece into owl
+    private List<int> owl_poses = new List<int>();
+
+
     //index rules: white piece index: 0-5; black piece index: 6-11 
     public List<List<int>> nodes = new List<List<int>>();
     public int pond_index = 0; 
@@ -271,9 +276,21 @@ public class board : MonoBehaviour
     }
 
 
+    public bool is_becoming_owl(int index){
+        for(int i = 0; i < owl_poses.Count; i++){
+            if(owl_poses[i] == index){
+                return true;
+            }
+        }
+        return false;
+    }
+
     void normal_helper(int cur_pos, int step, HashSet<int> visited_spot){
         if(step < 1){
             final_poses.Add(cur_pos);
+            if(visited_spot.Contains(9)){
+                owl_poses.Add(cur_pos);
+            }
         }
         else{
             for(int i = 0; i < normal_edges.GetLength(0); i++){
@@ -295,6 +312,9 @@ public class board : MonoBehaviour
     void white_owl_helper(int cur_pos, int  step, HashSet<int> visited_spot){
         if(step < 1){
             final_poses.Add(cur_pos);
+            if(visited_spot.Contains(9)){
+                owl_poses.Add(cur_pos);
+            }
         }
         else{
             for(int i = 0; i < white_owl_edges.GetLength(1); i++){
@@ -318,6 +338,9 @@ public class board : MonoBehaviour
     void black_owl_helper(int cur_pos, int  step, HashSet<int> visited_spot){
         if(step < 1){
             final_poses.Add(cur_pos);
+            if(visited_spot.Contains(9)){
+                owl_poses.Add(cur_pos);
+            }
         }
         else{
             for(int i = 0; i < black_owl_edges.GetLength(1); i++){
