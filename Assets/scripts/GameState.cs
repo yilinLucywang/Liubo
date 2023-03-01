@@ -320,7 +320,7 @@ public class GameState : MonoBehaviour
         GameObject cur_piece = GameObject.Find(chosen_piece_name);
         board bd = gameObject.GetComponent<board>();
         int pos_index = bd.get_anchor_index(position);
-        Debug.Log(pos_index);
+        Debug.Log("pos_index = "+ pos_index);
 
 
         bool is_two_same_spot = false; 
@@ -329,13 +329,13 @@ public class GameState : MonoBehaviour
         int CurOrgIndex = bd.get_anchor_index(cur_piece.transform.position);
         Debug.Log("original index" + CurOrgIndex);
         
-        if (bd.nodes[CurOrgIndex].Count > 1)
+        if (CurOrgIndex == -1 || bd.nodes[CurOrgIndex].Count > 1)
         {
             isFirstMoved = false;
             firstFinalPos = pos_index;
             firstOrigPos = CurOrgIndex;
         }
-        if (bd.nodes[CurOrgIndex].Count == 1 && CurOrgIndex == firstOrigPos)
+        else if (bd.nodes[CurOrgIndex].Count == 1 && CurOrgIndex == firstOrigPos)
         {
             isFirstMoved = true;
         }
