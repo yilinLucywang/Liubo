@@ -516,7 +516,7 @@ public class GameState : MonoBehaviour
         {
             Debug.Log("vertical");
             //rotate back
-            cur_piece.transform.rotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 180f, 0f);
+            cur_piece.transform.rotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
         }
         
     }
