@@ -39,7 +39,7 @@ public class board : MonoBehaviour
     public HashSet<int> black_owls = new HashSet<int>();
 
     //Max valid distance when comparing validMove positions to anchor positions
-    public float max_anchor_distance = 0.01f;
+    public float max_anchor_distance = 0.1f;
 
     
     public int[] cur_rolls = new int[2];
