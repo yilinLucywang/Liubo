@@ -57,7 +57,7 @@ public class Score : MonoBehaviour
                 if ((pos_index == 2) || (pos_index == 12))//(pos_index == 21)|| (pos_index == 29)
                 {
                     gameData.black_score += 2;
-                    changeTag(bd.nodes[pos_index].Count - 1, "Normal");
+                    changeTagOwl(cur_piece, "Normal");
                     RotateBackToNorm(cur_piece);
                 }
             }
@@ -82,6 +82,7 @@ public class Score : MonoBehaviour
                     {
                         gameData.black_score += 3;
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
+
                         RotateBackToNorm(cur_piece);
                         Debug.Log("2 Black owl get white owl");
                         //remove different color piece
@@ -99,7 +100,8 @@ public class Score : MonoBehaviour
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
                     }
-                    if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal" && (bd.nodes[pos_index].Count > 1))
+                    Debug.Log("index"+ bd.nodes[pos_index].Count);
+                    if ( (bd.nodes[pos_index].Count > 1)&&(findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal"))
                     {
                         Debug.Log("2 b normal get 1 w normal ");
                         gameData.black_score++;
@@ -122,7 +124,7 @@ public class Score : MonoBehaviour
                 if ((pos_index == 21) || (pos_index == 29))
                 {
                     gameData.black_score += 2;
-                    changeTag(bd.nodes[pos_index].Count - 1, "Normal");
+                    changeTagOwl(cur_piece, "Normal");
                     //RotateBackToNorm(cur_piece);
                 }
             }
@@ -130,7 +132,6 @@ public class Score : MonoBehaviour
             diffColorIndex = findDifferentColor(pos_index, is_black_chosen);
             if (hasDiffColor)
             {
-                Debug.Log("hasDiffColor");
                 //black owl
                 if (cur_piece.CompareTag("Owl"))
                 {
@@ -147,6 +148,7 @@ public class Score : MonoBehaviour
                     {
                         gameData.white_score += 3;
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
+
                         //RotateBackToNorm(cur_piece);
                         Debug.Log("2 white owl get black owl");
                         //remove different color piece
@@ -185,6 +187,14 @@ public class Score : MonoBehaviour
         string tagName = piece.tag;
         return tagName;
     }
+    public void changeTagOwl(GameObject cur_piece, string newTag)
+    {
+        //string piece_name = index.ToString();
+        //GameObject piece = GameObject.Find(piece_name);
+        cur_piece.tag = newTag;
+        return;
+    }
+
     public void changeTag(int index, string newTag)
     {
         string piece_name = index.ToString();
