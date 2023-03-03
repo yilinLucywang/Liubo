@@ -279,6 +279,7 @@ public class GameState : MonoBehaviour
 
     private void ShowPossiblePositions()
     {
+        RemoveGreens();
         //piece offbard starting pos: 11,1,30,22
         board bd = gameObject.GetComponent<board>();
         bool is_white = !is_black_chosen;
