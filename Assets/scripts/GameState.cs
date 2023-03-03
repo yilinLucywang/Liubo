@@ -302,10 +302,10 @@ public class GameState : MonoBehaviour
         for(int i = 0; i < res_list.Count; i++){
             Vector3 pos = res_list[i];
 
-            Debug.Log("final pos"+bd.anchors[firstFinalPos].transform.position);
+            //Debug.Log("final pos"+bd.anchors[firstFinalPos].transform.position);
             if (blockade == true)
             {
-                Debug.Log("isfirstmove" + isFirstMoved);
+                //Debug.Log("isfirstmove" + isFirstMoved);
                 
             }
             else
@@ -317,7 +317,7 @@ public class GameState : MonoBehaviour
     }
 
     public void MovePiece(Vector3 position){
-        Debug.Log("In Move Piece");
+        //Debug.Log("In Move Piece");
         //call script form score
         Score score = gameObject.GetComponent<Score>();
 
@@ -330,14 +330,14 @@ public class GameState : MonoBehaviour
         GameObject cur_piece = GameObject.Find(chosen_piece_name);
         board bd = gameObject.GetComponent<board>();
         int pos_index = bd.get_anchor_index(position);
-        Debug.Log("pos_index = "+ pos_index);
+        //Debug.Log("pos_index = "+ pos_index);
 
 
         bool is_two_same_spot = false; 
 
         //check position beofre moving
         int CurOrgIndex = bd.get_anchor_index(cur_piece.transform.position);
-        Debug.Log("original index" + CurOrgIndex);
+        //Debug.Log("original index" + CurOrgIndex);
         
         //Moving from off board
        if(CurOrgIndex == -1)
@@ -348,7 +348,7 @@ public class GameState : MonoBehaviour
         {
             //form blockade
             blockade = true;
-            Debug.Log("blockade" + blockade);
+            //Debug.Log("blockade" + blockade);
 
             
             /*for (int i = 0; i < bd.nodes[CurOrgIndex].Count; i++)
@@ -401,6 +401,14 @@ public class GameState : MonoBehaviour
 
         bd.nodes[pos_index].Add(chosen_piece);
 
+        //TODO: remove piece from the original place
+        if(CurOrgIndex != -1){
+            for(int i = 0; i < bd.nodes[CurOrgIndex].Count; i++){
+                if(bd.nodes[CurOrgIndex][i] == chosen_piece){
+                    bd.nodes[CurOrgIndex].RemoveAt(i);
+                }
+            }
+        }
 
         if (openLimit == true)
         {
