@@ -296,9 +296,12 @@ public class GameState : MonoBehaviour
                 if (res_list[i].x - firstTargetPos.x < 0.01f && res_list[i].z - firstTargetPos.z < 0.01f)
                 {
                     res_list.RemoveAt(i);
+                    for(int j = 0; j<res_list.Count; j++)
+                    {
+                        Vector3 newPos = res_list[j];
+                        SpawnGreen(newPos);
+                    }
                 }
-                Vector3 pos = res_list[i];
-                SpawnGreen(pos);
             }
             else
             {
