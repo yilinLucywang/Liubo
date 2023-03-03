@@ -429,7 +429,7 @@ MonoBehaviour:
   - {fileID: 1248338952}
   - {fileID: 370175153}
   - {fileID: 1900303660}
-  max_anchor_distance: 1
+  max_anchor_distance: 0.2
   cur_rolls: 0000000000000000
 --- !u!114 &153840375
 MonoBehaviour:
