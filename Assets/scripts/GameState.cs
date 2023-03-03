@@ -26,6 +26,7 @@ public class GameState : MonoBehaviour
 
     public bool openLimit;
 
+    private Vector3 firstTargetPos;
 
     //prefab to spawn
     public GameObject valid_sign;
@@ -268,21 +269,6 @@ public class GameState : MonoBehaviour
         }
     }
 
-    public void checkBlock(int CurOrgIndex)
-    {
-        board bd = gameObject.GetComponent<board>();
-        if (dice_1 == dice_2)
-        {
-            //can not move both pieces on block
-            TwoDiceSame = true;
-        }
-        if (bd.nodes[CurOrgIndex].Count > 1 && GetComponent<board>().isSameColor(CurOrgIndex) == true)
-        {
-            //form blockade
-            blockade = true;
-        }
-
-    }
 
     public void PieceChosen(int index, bool is_black){
         chosen_piece = index; 
@@ -291,38 +277,46 @@ public class GameState : MonoBehaviour
         ShowPossiblePositions();
     }
 
-    private void ShowPossiblePositions(){
+    private void ShowPossiblePositions()
+    {
         //piece offbard starting pos: 11,1,30,22
         board bd = gameObject.GetComponent<board>();
         bool is_white = !is_black_chosen;
-        if(is_white){
+        if (is_white)
+        {
             chosen_piece = chosen_piece - 6;
         }
-        List<Vector3> res_list = bd.move(is_white,chosen_piece, cur_step);
-        for(int i = 0; i < res_list.Count; i++){
-            Vector3 pos = res_list[i];
-
-            //Debug.Log("final pos"+bd.anchors[firstFinalPos].transform.position);
-            if (blockade == true)
+        List<Vector3> res_list = bd.move(is_white, chosen_piece, cur_step);
+        for (int i = 0; i < res_list.Count; i++)
+        {
+            //Vector3 pos = res_list[i];
+            if (blockade == true && dice_1 == dice_2)
             {
-                //Debug.Log("isfirstmove" + isFirstMoved);
-                
+                if (res_list[i].x - firstTargetPos.x < 0.01f && res_list[i].z - firstTargetPos.z < 0.01f)
+                {
+                    res_list.RemoveAt(i);
+                }
+                Vector3 pos = res_list[i];
+                SpawnGreen(pos);
             }
             else
             {
+                Vector3 pos = res_list[i];
                 SpawnGreen(pos);
             }
-            
+
         }
     }
 
-    public void MovePiece(Vector3 position){
-        //Debug.Log("In Move Piece");
+    public void MovePiece(Vector3 position)
+    {
+        blockade = false;
         //call script form score
         Score score = gameObject.GetComponent<Score>();
-
+        
         //TODO: 1. move piece
-        if (!is_black_chosen){
+        if (!is_black_chosen)
+        {
             chosen_piece = chosen_piece + 6;
         }
 
@@ -330,17 +324,15 @@ public class GameState : MonoBehaviour
         GameObject cur_piece = GameObject.Find(chosen_piece_name);
         board bd = gameObject.GetComponent<board>();
         int pos_index = bd.get_anchor_index(position);
-        //Debug.Log("pos_index = "+ pos_index);
 
 
-        bool is_two_same_spot = false; 
+        bool is_two_same_spot = false;
 
         //check position beofre moving
         int CurOrgIndex = bd.get_anchor_index(cur_piece.transform.position);
-        //Debug.Log("original index" + CurOrgIndex);
-        
+
         //Moving from off board
-       if(CurOrgIndex == -1)
+        if (CurOrgIndex == -1)
         {
             //Don't know what should go here
         }
@@ -348,35 +340,17 @@ public class GameState : MonoBehaviour
         {
             //form blockade
             blockade = true;
-            //Debug.Log("blockade" + blockade);
-
-            
-            /*for (int i = 0; i < bd.nodes[CurOrgIndex].Count; i++)
-            {
-                bd.nodes[CurOrgIndex][i] = pos_index;
-            }*/
+            firstTargetPos = position;
         }
 
 
-        /*
-        if (orgIndex == firstOrigPos)
+        if (bd.nodes[pos_index].Count >= 1)
         {
-
-            //firstFinalPos = pos_index;
-        }
-        else
-        {
-            firstOrigPos = orgIndex;
-
-        }
-         */
-
-
-        if (bd.nodes[pos_index].Count >= 1){
             is_two_same_spot = true;
         }
 
-        if(is_two_same_spot){
+        if (is_two_same_spot)
+        {
 
             if (Is3DGame)
             {
@@ -384,10 +358,11 @@ public class GameState : MonoBehaviour
                 cur_piece.transform.Translate(new Vector3(0f, 0.14f, 0f));
             }
             else
-                cur_piece.transform.position = position + new Vector3(5.0f, 12.5f); 
+                cur_piece.transform.position = position + new Vector3(5.0f, 12.5f);
 
         }
-        else{
+        else
+        {
             cur_piece.transform.position = position;
             cur_piece.transform.Translate(new Vector3(0f, 0.04f, 0f));
 
@@ -401,14 +376,6 @@ public class GameState : MonoBehaviour
 
         bd.nodes[pos_index].Add(chosen_piece);
 
-        //TODO: remove piece from the original place
-        if(CurOrgIndex != -1){
-            for(int i = 0; i < bd.nodes[CurOrgIndex].Count; i++){
-                if(bd.nodes[CurOrgIndex][i] == chosen_piece){
-                    bd.nodes[CurOrgIndex].RemoveAt(i);
-                }
-            }
-        }
 
         if (openLimit == true)
         {
@@ -420,19 +387,22 @@ public class GameState : MonoBehaviour
             {
                 cur_piece.GetComponent<Button>().interactable = false;
             }
-            
+
         }
 
-        if(!is_black_chosen){
+        if (!is_black_chosen)
+        {
             chosen_piece = chosen_piece - 6;
         }
-        if(is_black_chosen){
+        if (is_black_chosen)
+        {
             bd.black_pieces[chosen_piece] = pos_index;
         }
-        else{
+        else
+        {
             bd.white_pieces[chosen_piece] = pos_index;
         }
-    
+
     }
 
     //This index is in range[0, 5]
