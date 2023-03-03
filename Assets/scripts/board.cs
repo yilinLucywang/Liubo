@@ -65,13 +65,10 @@ public class board : MonoBehaviour
         //1 means row[i] connects to col[j]
         //0 means row[i] doesn't connect to col[j]
         //This is the owl edges
-        int[,] temp_owl_edges = new int[,] {{0,3},{1,0},{0,2},{1,2},{3,4},{4,10},{10,11},
-        {11,12},{10,12},{11,19},{19,20},{20,22},{22,23},
-        {23,24},{24,25},{25,31},{30,31},{29,30},{31,29},
-        {30,35},{35,36},{1,36},{34,35},{33,34},{33,15},
-        {14,27},{27,26},{24,26},{19,18},{18,17},{17,13},{3,5},
-        {5,6},{6,8}};
-
+        int[,] temp_owl_edges = new int[,] {{0,2},{1,2},{1,36},{36,30},{30,31},{30,29},{29,31},{31,25},
+        {25,23},{23,22},{23,21},{21,22},{22,20},{20,11},{12,11},{11,10},{10,12},{3,4},{3,5},{5,6},{6,8},{8,9},
+        {35,36},{35,34},{34,33},{33,15},{15,9},{25,24},{24,26},{26,27},{27,14},{14,9},{20,19},{19,18},{18,17},
+        {17,13},{13,9}};
 
         int cur_length = temp_owl_edges.GetLength(0);
         for(int i = 0; i < cur_length; i++){
@@ -87,6 +84,7 @@ public class board : MonoBehaviour
             normal_edges[first,second] = 1; 
             normal_edges[second,first] = 1;
         }
+
         //This is what common pieces cannot walk on
         int[,] temp_not_normal_edges = new int[,] {{10,12},{11,12},{0,2},{1,2},{30,29},{31,29},{21,23},{21,22}};
         cur_length = temp_not_normal_edges.GetLength(0);
@@ -103,24 +101,6 @@ public class board : MonoBehaviour
             black_owl_edges[second, first] = 1; 
         }
 
-        int[,] pond_edges = new int[,]{{8,9},{9,13},{15,9},{14,9}};
-        cur_length = pond_edges.GetLength(0);
-        for(int i = 0; i < cur_length; i++){
-            int first = pond_edges[i,0]; 
-            int second = pond_edges[i,1];
-
-            white_owl_edges[first,second] = 1;
-            white_owl_edges[second, first] = 1; 
-
-            black_owl_edges[first,second] = 1;
-            black_owl_edges[second, first] = 1; 
-
-            normal_edges[first,second] = 1; 
-            normal_edges[second,first] = 1;
-        }
-
-
-
         //white bottom
         int[,] white_not_normal_edges = new int[,] {{30,29},{31,29},{21,23},{21,22}};
         int[,] black_not_normal_edges = new int[,] {{10,12},{11,12},{0,2},{1,2}};
@@ -135,7 +115,6 @@ public class board : MonoBehaviour
             black_owl_edges[first,second] = 0;
             black_owl_edges[second, first] = 0; 
         }
-
 
         cur_length = black_not_normal_edges.GetLength(0);
         for(int i = 0; i < cur_length; i++){
@@ -153,9 +132,6 @@ public class board : MonoBehaviour
             white_pieces.Add(-1); 
             black_pieces.Add(-1);
         }
-
-        //anchor_2_index
-
         for(int i = 0; i < anchors.Count; i++){
             string subject_string = anchors[i].name;
             string result_string = Regex.Match(subject_string,@"\d+").Value;
@@ -206,21 +182,21 @@ public class board : MonoBehaviour
         //Debug.Log("cur_pos = " + cur_pos);
 
         if (cur_pos == -1){
-            //starting pos: 11,1,30,22
+            //starting pos: 11,0,30,23
             step = step - 1;
             if(is_white){
-                //1,11
+                //0,11
                 //no way for this case to be owl
                 final_poses.Clear();
                 owl_poses.Clear();
                 HashSet<int> visited_spot = new HashSet<int>();
-                visited_spot.Add(1);
-                normal_helper(1,step,visited_spot);
+                visited_spot.Add(0);
+                normal_helper(0,step,visited_spot);
                 visited_spot.Clear();
                 visited_spot.Add(11);
                 normal_helper(11,step,visited_spot);
             }else{
-                //30,22
+                //30,23
                 //no way for this case to be owl
                 final_poses.Clear();
                 owl_poses.Clear();
@@ -228,8 +204,8 @@ public class board : MonoBehaviour
                 visited_spot.Add(30);
                 normal_helper(30,step,visited_spot);
                 visited_spot.Clear();
-                visited_spot.Add(22);
-                normal_helper(22,step,visited_spot);
+                visited_spot.Add(23);
+                normal_helper(23,step,visited_spot);
             }
         }
         else{
