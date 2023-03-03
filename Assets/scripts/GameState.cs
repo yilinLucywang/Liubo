@@ -290,7 +290,7 @@ public class GameState : MonoBehaviour
         List<Vector3> res_list = bd.move(is_white, chosen_piece, cur_step);
         for (int i = 0; i < res_list.Count; i++)
         {
-            //Vector3 pos = res_list[i];
+            Vector3 pos = res_list[i];
             if (blockade == true && dice_1 == dice_2)
             {
                 if (res_list[i].x - firstTargetPos.x < 0.01f && res_list[i].z - firstTargetPos.z < 0.01f)
@@ -305,7 +305,6 @@ public class GameState : MonoBehaviour
             }
             else
             {
-                Vector3 pos = res_list[i];
                 SpawnGreen(pos);
             }
 
