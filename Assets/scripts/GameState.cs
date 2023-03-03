@@ -338,7 +338,7 @@ public class GameState : MonoBehaviour
         {
             //Don't know what should go here
         }
-        else if (bd.nodes[CurOrgIndex].Count > 1)
+        if (bd.nodes[CurOrgIndex].Count > 1)
 
         {
             
