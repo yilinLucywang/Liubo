@@ -39,7 +39,7 @@ public class board : MonoBehaviour
     public HashSet<int> black_owls = new HashSet<int>();
 
     //Max valid distance when comparing validMove positions to anchor positions
-    public float max_anchor_distance = 0.1f;
+    public float max_anchor_distance = 0.02f;
 
     
     public int[] cur_rolls = new int[2];
@@ -178,16 +178,17 @@ public class board : MonoBehaviour
     }
 
     public int get_anchor_index(Vector3 pos){
-        int  index = -1; 
+        int  min_index = -1; 
+        float min_dist = 100000.0f;
         for(int i = 0; i < anchors.Count; i++){
             Vector3 anchor_pos = anchors[i].transform.position;
-            if (Mathf.Abs(anchor_pos.x - pos.x) < max_anchor_distance && Mathf.Abs(anchor_pos.z - pos.z) < max_anchor_distance) 
+            if (Math.Sqrt((anchor_pos.x - pos.x)*(anchor_pos.x - pos.x) + (anchor_pos.z - pos.z)*(anchor_pos.z - pos.z)) < min_dist)
             { 
-                index = anchor_2_index[i]; 
-                return index;
+                min_index = anchor_2_index[i]; 
+                min_dist = (float)Math.Sqrt((anchor_pos.x - pos.x)*(anchor_pos.x - pos.x) + (anchor_pos.z - pos.z)*(anchor_pos.z - pos.z));
             }
         }
-        return index;
+        return min_index;
     }
 
     public List<Vector3> move(bool is_white, int piece_index, int step){
@@ -199,7 +200,7 @@ public class board : MonoBehaviour
         else{
             cur_pos = black_pieces[piece_index];
         }
-        Debug.Log("cur_pos = " + cur_pos);
+        //Debug.Log("cur_pos = " + cur_pos);
 
         if (cur_pos == -1){
             //starting pos: 11,1,30,22
@@ -281,7 +282,10 @@ public class board : MonoBehaviour
         for(int i = 0; i < final_poses.Count; i++){
             int anchor_index = index_2_anchor[final_poses[i]];
             Vector3 position = anchors[anchor_index].transform.position;
-            final_positions.Add(position);
+            //only add to pissible moves when there are available position
+            if(nodes[final_poses[i]].Count <= 1){
+                final_positions.Add(position);
+            }
         }
         return final_positions;
     }
