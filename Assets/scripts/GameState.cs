@@ -351,7 +351,6 @@ public class GameState : MonoBehaviour
         {
             is_two_same_spot = true;
         }
-
         if (is_two_same_spot)
         {
 
@@ -406,6 +405,7 @@ public class GameState : MonoBehaviour
             bd.white_pieces[chosen_piece] = pos_index;
         }
 
+        Debug.Log("count" + bd.nodes[pos_index].Count);
     }
 
     //This index is in range[0, 5]

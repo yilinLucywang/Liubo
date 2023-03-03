@@ -166,7 +166,7 @@ public class Score : MonoBehaviour
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
                     }
-                    if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal" && (bd.nodes[pos_index].Count > 1))
+                    if ((bd.nodes[pos_index].Count > 1) && (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal"))
                     {
                         Debug.Log("2 w normal get 1 b normal ");
                         gameData.white_score++;
