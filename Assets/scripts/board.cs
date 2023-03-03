@@ -192,6 +192,9 @@ public class board : MonoBehaviour
     }
 
     public List<Vector3> move(bool is_white, int piece_index, int step){
+        if(step < 1){
+            return new List<Vector3> ();
+        }
         Score score = gameObject.GetComponent<Score>();
         int cur_pos = 0;
         if(is_white){
