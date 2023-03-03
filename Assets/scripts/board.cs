@@ -11,13 +11,17 @@ public class board : MonoBehaviour
     private Dictionary<int, int> anchor_2_index = new Dictionary<int, int> ();
     private Dictionary<int, int> index_2_anchor = new Dictionary<int, int> ();
     private List<int> final_poses =  new List<int>();
+
+    //true stands for the final pose with that index will change the normal piece into owl
+    private List<int> owl_poses = new List<int>();
+
+
     //index rules: white piece index: 0-5; black piece index: 6-11 
     public List<List<int>> nodes = new List<List<int>>();
     public int pond_index = 0; 
     public int[,] normal_edges = new int[total_poses, total_poses];
     public int[,] white_owl_edges = new int[total_poses, total_poses];
     public int[,] black_owl_edges = new int[total_poses, total_poses];
-    public int[,] pond_edges = new int[,]{{8,9},{9,13},{15,9},{14,9}};
 
 
     public bool is_p1_turn = true; 
@@ -33,6 +37,9 @@ public class board : MonoBehaviour
     //sets that stores the owl-piece indexs
     public HashSet<int> white_owls = new HashSet<int>();
     public HashSet<int> black_owls = new HashSet<int>();
+
+    //Max valid distance when comparing validMove positions to anchor positions
+    public float max_anchor_distance = 0.02f;
 
     
     public int[] cur_rolls = new int[2];
@@ -58,13 +65,10 @@ public class board : MonoBehaviour
         //1 means row[i] connects to col[j]
         //0 means row[i] doesn't connect to col[j]
         //This is the owl edges
-        int[,] temp_owl_edges = new int[,] {{0,3},{1,0},{0,2},{1,2},{3,4},{4,10},{10,11},
-        {11,12},{10,12},{11,19},{19,20},{20,22},{22,23},
-        {23,24},{24,25},{25,31},{30,31},{29,30},{31,29},
-        {30,35},{35,36},{1,36},{34,35},{33,34},{33,15},
-        {14,27},{27,26},{24,26},{19,18},{18,17},{17,13},{3,5},
-        {5,6},{6,8}};
-
+        int[,] temp_owl_edges = new int[,] {{0,2},{1,2},{1,36},{36,30},{30,31},{30,29},{29,31},{31,25},
+        {25,23},{23,22},{23,21},{21,22},{22,20},{20,11},{12,11},{11,10},{10,12},{3,4},{3,5},{5,6},{6,8},{8,9},
+        {35,36},{35,34},{34,33},{33,15},{15,9},{25,24},{24,26},{26,27},{27,14},{14,9},{20,19},{19,18},{18,17},
+        {17,13},{13,9}};
 
         int cur_length = temp_owl_edges.GetLength(0);
         for(int i = 0; i < cur_length; i++){
@@ -80,6 +84,7 @@ public class board : MonoBehaviour
             normal_edges[first,second] = 1; 
             normal_edges[second,first] = 1;
         }
+
         //This is what common pieces cannot walk on
         int[,] temp_not_normal_edges = new int[,] {{10,12},{11,12},{0,2},{1,2},{30,29},{31,29},{21,23},{21,22}};
         cur_length = temp_not_normal_edges.GetLength(0);
@@ -96,30 +101,13 @@ public class board : MonoBehaviour
             black_owl_edges[second, first] = 1; 
         }
 
-        cur_length = pond_edges.GetLength(0);
-        for(int i = 0; i < cur_length; i++){
-            int first = pond_edges[i,0]; 
-            int second = pond_edges[i,1];
-
-            white_owl_edges[first,second] = 1;
-            white_owl_edges[second, first] = 1; 
-
-            black_owl_edges[first,second] = 1;
-            black_owl_edges[second, first] = 1; 
-
-            normal_edges[first,second] = 1; 
-            normal_edges[second,first] = 1;
-        }
-
-
-
         //white bottom
         int[,] white_not_normal_edges = new int[,] {{30,29},{31,29},{21,23},{21,22}};
         int[,] black_not_normal_edges = new int[,] {{10,12},{11,12},{0,2},{1,2}};
         cur_length = white_not_normal_edges.GetLength(0);
         for(int i = 0; i < cur_length; i++){
-            int first = pond_edges[i,0]; 
-            int second = pond_edges[i,1];
+            int first = white_not_normal_edges[i,0]; 
+            int second = white_not_normal_edges[i,1];
 
             white_owl_edges[first,second] = 1;
             white_owl_edges[second, first] = 1; 
@@ -128,11 +116,10 @@ public class board : MonoBehaviour
             black_owl_edges[second, first] = 0; 
         }
 
-
         cur_length = black_not_normal_edges.GetLength(0);
         for(int i = 0; i < cur_length; i++){
-            int first = pond_edges[i,0]; 
-            int second = pond_edges[i,1];
+            int first = black_not_normal_edges[i,0]; 
+            int second = black_not_normal_edges[i,1];
 
             white_owl_edges[first,second] = 0;
             white_owl_edges[second, first] = 0; 
@@ -145,9 +132,6 @@ public class board : MonoBehaviour
             white_pieces.Add(-1); 
             black_pieces.Add(-1);
         }
-
-        //anchor_2_index
-
         for(int i = 0; i < anchors.Count; i++){
             string subject_string = anchors[i].name;
             string result_string = Regex.Match(subject_string,@"\d+").Value;
@@ -169,19 +153,24 @@ public class board : MonoBehaviour
         
     }
 
-    public int get_anchor_index(Vector2 pos){
-        int  index = -1; 
+    public int get_anchor_index(Vector3 pos){
+        int  min_index = -1; 
+        float min_dist = 100000.0f;
         for(int i = 0; i < anchors.Count; i++){
-            Vector2 anchor_pos = anchors[i].transform.position; 
-            if(Vector2.Distance(anchor_pos, pos) <= 8.0){
-                index = anchor_2_index[i]; 
-                return index;
+            Vector3 anchor_pos = anchors[i].transform.position;
+            if (Math.Sqrt((anchor_pos.x - pos.x)*(anchor_pos.x - pos.x) + (anchor_pos.z - pos.z)*(anchor_pos.z - pos.z)) < min_dist)
+            { 
+                min_index = anchor_2_index[i]; 
+                min_dist = (float)Math.Sqrt((anchor_pos.x - pos.x)*(anchor_pos.x - pos.x) + (anchor_pos.z - pos.z)*(anchor_pos.z - pos.z));
             }
         }
-        return index;
+        return min_index;
     }
 
-    public List<Vector2> move(bool is_white, int piece_index, int step){
+    public List<Vector3> move(bool is_white, int piece_index, int step){
+        if(step < 1){
+            return new List<Vector3> ();
+        }
         Score score = gameObject.GetComponent<Score>();
         int cur_pos = 0;
         if(is_white){
@@ -190,30 +179,33 @@ public class board : MonoBehaviour
         else{
             cur_pos = black_pieces[piece_index];
         }
+        //Debug.Log("cur_pos = " + cur_pos);
 
-        if(cur_pos == -1){
-            //starting pos: 11,1,30,22
+        if (cur_pos == -1){
+            //starting pos: 11,0,30,23
             step = step - 1;
             if(is_white){
-                //1,11
+                //0,11
                 //no way for this case to be owl
                 final_poses.Clear();
+                owl_poses.Clear();
                 HashSet<int> visited_spot = new HashSet<int>();
-                visited_spot.Add(1);
-                normal_helper(1,step,visited_spot);
+                visited_spot.Add(0);
+                normal_helper(0,step,visited_spot);
                 visited_spot.Clear();
                 visited_spot.Add(11);
                 normal_helper(11,step,visited_spot);
             }else{
-                //30,22
+                //30,23
                 //no way for this case to be owl
                 final_poses.Clear();
+                owl_poses.Clear();
                 HashSet<int> visited_spot = new HashSet<int>();
                 visited_spot.Add(30);
                 normal_helper(30,step,visited_spot);
                 visited_spot.Clear();
-                visited_spot.Add(22);
-                normal_helper(22,step,visited_spot);
+                visited_spot.Add(23);
+                normal_helper(23,step,visited_spot);
             }
         }
         else{
@@ -224,18 +216,18 @@ public class board : MonoBehaviour
                 GameObject piece = GameObject.Find(piece_name);
                 if (piece.CompareTag("Owl"))
                 {
-                    Debug.Log("w owl");
                     //This part searches in owl_edges
                     //has cycle, may cause some issue here in this dfs
                     final_poses.Clear();
+                    owl_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
                     visited_spot.Add(cur_pos);
-                    Debug.Log("is owl here");
                     white_owl_helper(cur_pos,step,visited_spot);
                 }
                 else{
                     //This part searches in normal_edges
                     final_poses.Clear();
+                    owl_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>(); 
                     visited_spot.Add(cur_pos);
                     normal_helper(cur_pos,step,visited_spot);
@@ -247,17 +239,17 @@ public class board : MonoBehaviour
                 GameObject piece = GameObject.Find(piece_name);
                 if (piece.CompareTag("Owl"))
                 {
-                    Debug.Log("b owl");
                     //This part searches in owl_edges
                     final_poses.Clear();
+                    owl_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
                     visited_spot.Add(cur_pos);
-                    Debug.Log("is owl here");
                     black_owl_helper(cur_pos,step,visited_spot);
                 }
                 else{
                     //This part searches in normal_edges
                     final_poses.Clear();
+                    owl_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
                     visited_spot.Add(cur_pos);
                     normal_helper(cur_pos,step,visited_spot);
@@ -265,19 +257,34 @@ public class board : MonoBehaviour
             }
         }
 
-        List<Vector2> final_positions = new List<Vector2> ();
+        List<Vector3> final_positions = new List<Vector3> ();
         for(int i = 0; i < final_poses.Count; i++){
             int anchor_index = index_2_anchor[final_poses[i]];
-            Vector2 position = anchors[anchor_index].transform.position;
-            final_positions.Add(position);
+            Vector3 position = anchors[anchor_index].transform.position;
+            //only add to pissible moves when there are available position
+            if(nodes[final_poses[i]].Count <= 1){
+                final_positions.Add(position);
+            }
         }
         return final_positions;
     }
 
 
+    public bool is_becoming_owl(int index){
+        for(int i = 0; i < owl_poses.Count; i++){
+            if(owl_poses[i] == index){
+                return true;
+            }
+        }
+        return false;
+    }
+
     void normal_helper(int cur_pos, int step, HashSet<int> visited_spot){
         if(step < 1){
             final_poses.Add(cur_pos);
+            if(visited_spot.Contains(9)){
+                owl_poses.Add(cur_pos);
+            }
         }
         else{
             for(int i = 0; i < normal_edges.GetLength(0); i++){
@@ -299,6 +306,9 @@ public class board : MonoBehaviour
     void white_owl_helper(int cur_pos, int  step, HashSet<int> visited_spot){
         if(step < 1){
             final_poses.Add(cur_pos);
+            if(visited_spot.Contains(9)){
+                owl_poses.Add(cur_pos);
+            }
         }
         else{
             for(int i = 0; i < white_owl_edges.GetLength(1); i++){
@@ -322,6 +332,9 @@ public class board : MonoBehaviour
     void black_owl_helper(int cur_pos, int  step, HashSet<int> visited_spot){
         if(step < 1){
             final_poses.Add(cur_pos);
+            if(visited_spot.Contains(9)){
+                owl_poses.Add(cur_pos);
+            }
         }
         else{
             for(int i = 0; i < black_owl_edges.GetLength(1); i++){
@@ -342,7 +355,7 @@ public class board : MonoBehaviour
         }
     }
 
-    bool isSameColor(int i)
+    public bool isSameColor(int i)
     {
         bool sameColor;
 
@@ -356,4 +369,6 @@ public class board : MonoBehaviour
         }
         return sameColor;
     }
+
+
 }

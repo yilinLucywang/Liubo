@@ -26,7 +26,7 @@ public class GreenController : MonoBehaviour
 
     public void OnClick(){
         //TODO: move current button to the position clicked
-        Vector2 pos = gameObject.transform.position;
+        Vector3 pos = gameObject.transform.position;
         //TODO: move piece
         bd.MovePiece(pos);
         //TODO: destroy all of the green spot
@@ -34,22 +34,22 @@ public class GreenController : MonoBehaviour
 
         if (FindObjectOfType<GameState>().is_p1_turn && FindObjectOfType<GameState>().openLimit == true)
         {
-            foreach (var btn in FindObjectOfType<GameState>().blackPieceBut.GetComponentsInChildren<Button>())
+            foreach (var btn in FindObjectOfType<GameState>().blackPieceBut.GetComponentsInChildren<Clickable>())
             {
                 btn.interactable = false;
             }
-            foreach (var btn in FindObjectOfType<GameState>().whitePieceBut.GetComponentsInChildren<Button>())
+            foreach (var btn in FindObjectOfType<GameState>().whitePieceBut.GetComponentsInChildren<Clickable>())
             {
                 btn.interactable = false;
             }
         }
         else if(!FindObjectOfType<GameState>().is_p1_turn && FindObjectOfType<GameState>().openLimit == true)
         {
-            foreach (var btn in FindObjectOfType<GameState>().blackPieceBut.GetComponentsInChildren<Button>())
+            foreach (var btn in FindObjectOfType<GameState>().blackPieceBut.GetComponentsInChildren<Clickable>())
             {
                 btn.interactable = false;
             }
-            foreach (var btn in FindObjectOfType<GameState>().whitePieceBut.GetComponentsInChildren<Button>())
+            foreach (var btn in FindObjectOfType<GameState>().whitePieceBut.GetComponentsInChildren<Clickable>())
             {
                 btn.interactable = false;
             }

@@ -23,7 +23,8 @@ public class movePieces : MonoBehaviour
 
     public void choosePiece(){
         GameState bd = canvas.GetComponent<GameState>();
-        string subject_string = EventSystem.current.currentSelectedGameObject.name;
+        //string subject_string = EventSystem.current.currentSelectedGameObject.name;
+        string subject_string = name;
         string result_string = Regex.Match(subject_string,@"\d+").Value;
         int index = Int32.Parse(result_string);
         bool is_black = false; 

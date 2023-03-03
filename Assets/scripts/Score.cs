@@ -23,7 +23,7 @@ public class Score : MonoBehaviour
 
 
    
-    public void CalculateScore(Vector2 position, int chosen_piece, bool is_black_chosen)
+    public void CalculateScore(Vector3 position, int chosen_piece, bool is_black_chosen, bool is_owl)
     {
         string chosen_piece_name = chosen_piece.ToString();
         GameObject cur_piece = GameObject.Find(chosen_piece_name);
@@ -38,9 +38,12 @@ public class Score : MonoBehaviour
         //bd.nodes[pos_index].Add(chosen_piece);
 
 
-        if (pos_index == 9)
+        //if (pos_index == 9)
+        if(is_owl)
         {
             cur_piece.tag = "Owl";
+            cur_piece.transform.rotation = cur_piece.transform.rotation * Quaternion.Euler(0f, 0f, 90f);
+            cur_piece.transform.position += new Vector3(0f, 0.15f, 0f);
         }
 
         if (is_black_chosen)
@@ -55,6 +58,7 @@ public class Score : MonoBehaviour
                 {
                     gameData.black_score += 2;
                     changeTag(bd.nodes[pos_index].Count - 1, "Normal");
+                    RotateBackToNorm(cur_piece);
                 }
             }
                 // if there is already a piece on there
@@ -78,6 +82,7 @@ public class Score : MonoBehaviour
                     {
                         gameData.black_score += 3;
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
+                        RotateBackToNorm(cur_piece);
                         Debug.Log("2 Black owl get white owl");
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
@@ -90,6 +95,7 @@ public class Score : MonoBehaviour
                     {
                         gameData.black_score += 3;
                         Debug.Log("Black normal get white owl");
+                        RotateBackToNorm(cur_piece);
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
                     }
@@ -103,6 +109,7 @@ public class Score : MonoBehaviour
                 }
                 
             }
+
         }
         else//white chosen
         {
@@ -116,6 +123,7 @@ public class Score : MonoBehaviour
                 {
                     gameData.black_score += 2;
                     changeTag(bd.nodes[pos_index].Count - 1, "Normal");
+                    //RotateBackToNorm(cur_piece);
                 }
             }
             // if there is already a piece on there
@@ -139,6 +147,7 @@ public class Score : MonoBehaviour
                     {
                         gameData.white_score += 3;
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
+                        //RotateBackToNorm(cur_piece);
                         Debug.Log("2 white owl get black owl");
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
@@ -151,6 +160,7 @@ public class Score : MonoBehaviour
                     {
                         gameData.white_score += 3;
                         Debug.Log("white normal get black owl");
+                        //RotateBackToNorm(cur_piece);
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
                     }
@@ -219,5 +229,10 @@ public class Score : MonoBehaviour
             hasDiffColor = false;
             return 0;
         }
+    }
+    public void RotateBackToNorm(GameObject cur_piece)
+    {
+        cur_piece.transform.rotation = cur_piece.transform.rotation * Quaternion.Euler(0f, 0f, 90f);
+        cur_piece.transform.position -= new Vector3(0f, 0.15f, 0f);
     }
 }
