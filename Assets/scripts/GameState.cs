@@ -47,7 +47,7 @@ public class GameState : MonoBehaviour
     public bool TwoDiceSame;
     public int firstOrigPos = -10, firstFinalPos;
 
-    private bool isFirstMoved = false;
+    private bool isFirstMoved = false, blockade = false;
 
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
@@ -268,13 +268,20 @@ public class GameState : MonoBehaviour
         }
     }
 
-    public void NotMoveBlock()
+    public void checkBlock(int CurOrgIndex)
     {
+        board bd = gameObject.GetComponent<board>();
         if (dice_1 == dice_2)
         {
             //can not move both pieces on block
             TwoDiceSame = true;
         }
+        if (bd.nodes[CurOrgIndex].Count > 1 && GetComponent<board>().isSameColor(CurOrgIndex) == true)
+        {
+            //form blockade
+            blockade = true;
+        }
+
     }
 
     public void PieceChosen(int index, bool is_black){
@@ -296,11 +303,10 @@ public class GameState : MonoBehaviour
             Vector3 pos = res_list[i];
 
             Debug.Log("final pos"+bd.anchors[firstFinalPos].transform.position);
-            if (pos == bd.anchors[firstFinalPos].transform.position && isFirstMoved == true)
+            if (blockade == true)
             {
                 Debug.Log("isfirstmove" + isFirstMoved);
-                isFirstMoved = false;
-                continue;
+                
             }
             else
             {
@@ -338,17 +344,17 @@ public class GameState : MonoBehaviour
         {
             //Don't know what should go here
         }
-        if (bd.nodes[CurOrgIndex].Count > 1)
+        else if (bd.nodes[CurOrgIndex].Count > 1 && GetComponent<board>().isSameColor(CurOrgIndex) == true)
+        {
+            //form blockade
+            blockade = true;
+            Debug.Log("blockade" + blockade);
 
-        {
             
-            isFirstMoved = true;
-            firstFinalPos = pos_index;
-            firstOrigPos = CurOrgIndex;
-        }
-        else if (bd.nodes[CurOrgIndex].Count == 1 && CurOrgIndex == firstOrigPos)
-        {
-            isFirstMoved = true;
+            /*for (int i = 0; i < bd.nodes[CurOrgIndex].Count; i++)
+            {
+                bd.nodes[CurOrgIndex][i] = pos_index;
+            }*/
         }
 
 

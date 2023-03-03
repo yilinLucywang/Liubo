@@ -180,8 +180,9 @@ public class board : MonoBehaviour
     public int get_anchor_index(Vector3 pos){
         int  index = -1; 
         for(int i = 0; i < anchors.Count; i++){
-            Vector3 anchor_pos = anchors[i].transform.position; 
-            if(Vector3.Distance(anchor_pos, pos) <= max_anchor_distance){
+            Vector3 anchor_pos = anchors[i].transform.position;
+            if (Mathf.Abs(anchor_pos.x - pos.x) < max_anchor_distance && Mathf.Abs(anchor_pos.z - pos.z) < max_anchor_distance) 
+            { 
                 index = anchor_2_index[i]; 
                 return index;
             }
@@ -371,7 +372,7 @@ public class board : MonoBehaviour
         }
     }
 
-    bool isSameColor(int i)
+    public bool isSameColor(int i)
     {
         bool sameColor;
 

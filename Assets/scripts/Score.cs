@@ -109,6 +109,7 @@ public class Score : MonoBehaviour
                 }
                 
             }
+
         }
         else//white chosen
         {
