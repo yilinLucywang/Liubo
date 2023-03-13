@@ -15,8 +15,8 @@ public class RotateCamera : MonoBehaviour
     {
         _offset = transform.position - focusPoint.transform.position;
         positionForCamera = transform.position;
-        
         constraintVolume = Mathf.Abs(constraintVolume);
+        Debug.Log(transform.rotation);
     }
 
     private void Update()
