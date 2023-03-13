@@ -21,18 +21,18 @@ public class RotateCamera : MonoBehaviour
 
     private void Update()
     {
-        if (positionForCamera.z < constraintVolume)
+        if (positionForCamera.z > -1 * constraintVolume)
         {
             if (Input.GetKey(KeyCode.D))
             {
-                positionForCamera = new Vector3(transform.position.x,transform.position.y, transform.position.z + _speed * Time.deltaTime);
+                positionForCamera = new Vector3(transform.position.x,transform.position.y, transform.position.z + _speed * -1 * Time.deltaTime);
             }
         }
-        if(positionForCamera.z > -1*constraintVolume)
+        if(positionForCamera.z < constraintVolume)
         {
             if (Input.GetKey(KeyCode.A))
             {
-                positionForCamera = new Vector3(transform.position.x, transform.position.y, transform.position.z + _speed * -1 * Time.deltaTime);
+                positionForCamera = new Vector3(transform.position.x, transform.position.y, transform.position.z + _speed * Time.deltaTime);
             }
         }
         
