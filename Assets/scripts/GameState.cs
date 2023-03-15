@@ -352,16 +352,17 @@ public class GameState : MonoBehaviour
         if(isOwl){
             curPieceRotation = curPieceRotation * Quaternion.Euler(0f, 0f, 90f);
             if(isSecondOne){
-                curPieceTranslation = new Vector3(0f, 0.15f, 0f);
+                Debug.Log("am I here??????");
+                curPieceTranslation = new Vector3(0.14f, 0f, 0f);
                 if(isHorizontal){
-                    curPieceTranslation += new Vector3(0f,0f,0.01429f);
+                    curPieceTranslation += new Vector3(0f,0.12f,0f);
                 }
                 else{
-                    curPieceTranslation += new Vector3(0.0138f, 0f,0f);
+                    curPieceTranslation += new Vector3(0f,0.09f,0f);
                 }
             }
             else{
-                curPieceTranslation = new Vector3(0f, 0.15f, 0f);
+                curPieceTranslation = new Vector3(0.14f, 0f, 0f);
             }
         }
         else{
@@ -422,7 +423,12 @@ public class GameState : MonoBehaviour
             is_two_same_spot = true;
         }
         bool is_owl = bd.is_becoming_owl(pos_index);
-        piecePlacement(pos_index, is_owl, is_two_same_spot, cur_piece, position);
+        if(is_owl || cur_piece.CompareTag("Owl")){
+            piecePlacement(pos_index, true, is_two_same_spot, cur_piece, position);
+        }
+        else{
+            piecePlacement(pos_index, false, is_two_same_spot, cur_piece, position);
+        }
         //update board, remove piece from the original position, add it to the new position
         for(int i = 0; i < bd.nodes[CurOrgIndex].Count; i++){
             //piece index 0 - 11
@@ -469,7 +475,7 @@ public class GameState : MonoBehaviour
             dice1But.GetComponent<Button>().interactable = true;
         }
 
-        Debug.Log("count" + bd.nodes[pos_index].Count);
+        //Debug.Log("count" + bd.nodes[pos_index].Count);
     }
 
     //This index is in range[0, 5]
