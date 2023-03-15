@@ -29,6 +29,7 @@ public class GameState : MonoBehaviour
     private Vector3 firstTargetPos;
     private string previousPiece;
     private bool isSamePiece = false;
+    private bool notFirstRound = false;
     private GameObject cur_piece;
 
     //prefab to spawn
@@ -192,7 +193,7 @@ public class GameState : MonoBehaviour
             {
                 btn.interactable = true;
             }
-            if (previousPiece == cur_piece.ToString())
+            if (notFirstRound == true && previousPiece == cur_piece.ToString())
             {
                 cur_piece.GetComponent<Clickable>().interactable = false;
             }
@@ -208,7 +209,7 @@ public class GameState : MonoBehaviour
             {
                 btn.interactable = false;
             }
-            if (previousPiece == cur_piece.ToString())
+            if (notFirstRound == true && previousPiece == cur_piece.ToString())
             {
                 cur_piece.GetComponent<Clickable>().interactable = false;
             }
@@ -238,7 +239,7 @@ public class GameState : MonoBehaviour
                 btn.interactable = true;
                 
             }
-            if (previousPiece == cur_piece.ToString())
+            if (notFirstRound == true && previousPiece == cur_piece.ToString())
             {
                 cur_piece.GetComponent<Clickable>().interactable = false;
             }
@@ -254,7 +255,7 @@ public class GameState : MonoBehaviour
             {
                 btn.interactable = false;
             }
-            if (previousPiece == cur_piece.ToString())
+            if (notFirstRound == true && previousPiece == cur_piece.ToString())
             {
                 cur_piece.GetComponent<Clickable>().interactable = false;
             }
@@ -371,6 +372,7 @@ public class GameState : MonoBehaviour
 
     public void MovePiece(Vector3 position)
     {
+        notFirstRound = true;
         blockade = false;
         //call script form score
         Score score = gameObject.GetComponent<Score>();
