@@ -123,7 +123,7 @@ public class Score : MonoBehaviour
                 //white owl land on nest
                 if ((pos_index == 21) || (pos_index == 29))
                 {
-                    gameData.black_score += 2;
+                    gameData.white_score += 2;
                     changeTagOwl(cur_piece, "Normal");
                     //RotateBackToNorm(cur_piece);
                 }
