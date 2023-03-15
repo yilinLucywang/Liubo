@@ -317,6 +317,70 @@ public class GameState : MonoBehaviour
         }
     }
 
+
+    List<int> horizontalPosition = new List<int>() {
+         1,
+         3,
+         5,
+         8,
+         11,
+         36,
+         33,
+         17,
+         20,
+         30,
+         24,
+         26,
+         14,//14 or 28?
+         22
+    };
+    public void piecePlacement(int pos_index, bool isOwl, bool isSecondOne, GameObject cur_piece, Vector3 anchor_pos){
+        Quaternion curPieceRotation = Quaternion.Euler(0f, 0f, 0f);
+        Vector3 curPieceTranslation = new Vector3(0f,0f,0f);
+        bool isHorizontal = false;
+        if (horizontalPosition.Contains(pos_index))
+        {
+            //rotate 90 degree: horizontal
+            isHorizontal = true;
+            curPieceRotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 0f, 0f);
+        }
+        else
+        {
+            //rotate back
+            curPieceRotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
+        }
+        if(isOwl){
+            curPieceRotation = curPieceRotation * Quaternion.Euler(0f, 0f, 90f);
+            if(isSecondOne){
+                curPieceTranslation = new Vector3(0f, 0.15f, 0f);
+                if(isHorizontal){
+                    curPieceTranslation += new Vector3(0f,0f,0.01429f);
+                }
+                else{
+                    curPieceTranslation += new Vector3(0.0138f, 0f,0f);
+                }
+            }
+            else{
+                curPieceTranslation = new Vector3(0f, 0.15f, 0f);
+            }
+        }
+        else{
+            curPieceRotation = curPieceRotation * Quaternion.Euler(0f, 0f, 0f);
+            if(isSecondOne){
+                curPieceTranslation = new Vector3(0f, 0.14f, 0f);
+            }
+            else{
+                curPieceTranslation = new Vector3(0f, 0.04f, 0f);
+            }
+        }
+
+        cur_piece.transform.position = anchor_pos;
+        cur_piece.transform.Translate(curPieceTranslation);
+        cur_piece.transform.rotation = curPieceRotation; 
+    }
+
+
+
     public void MovePiece(Vector3 position)
     {
         blockade = false;
@@ -357,34 +421,22 @@ public class GameState : MonoBehaviour
         {
             is_two_same_spot = true;
         }
-        if (is_two_same_spot)
-        {
-
-            if (Is3DGame)
-            {
-                cur_piece.transform.position = position;
-                cur_piece.transform.Translate(new Vector3(0f, 0.14f, 0f));
-            }
-            else
-                cur_piece.transform.position = position + new Vector3(5.0f, 12.5f);
-
-        }
-        else
-        {
-            cur_piece.transform.position = position;
-            cur_piece.transform.Translate(new Vector3(0f, 0.04f, 0f));
-
-        }
-        //rotate if needed
-        Rotate(cur_piece, pos_index);
-        //calculate score before add piece 
-        //TODO: this is the bool indicating whether the piece should be an owl
         bool is_owl = bd.is_becoming_owl(pos_index);
-        score.CalculateScore(position, chosen_piece, is_black_chosen, is_owl);
-
+        piecePlacement(pos_index, is_owl, is_two_same_spot, cur_piece, position);
+        //update board, remove piece from the original position, add it to the new position
+        for(int i = 0; i < bd.nodes[CurOrgIndex].Count; i++){
+            //piece index 0 - 11
+            if(bd.nodes[CurOrgIndex][i] == chosen_piece){
+                bd.nodes[CurOrgIndex].RemoveAt(i);
+                break;
+            }
+        }
         bd.nodes[pos_index].Add(chosen_piece);
 
 
+        //calculate score before add piece 
+        //TODO: this is the bool indicating whether the piece should be an owl
+        score.CalculateScore(position, chosen_piece, is_black_chosen, is_owl);
         if (openLimit == true)
         {
             if (Is3DGame)
@@ -453,11 +505,6 @@ public class GameState : MonoBehaviour
         //This part takes care of the UI part
     }
 
-    public void RemoveTest(){
-       // RemovePiece(5, true);
-    }
-
-
     void SpawnGreen(Vector3 spawn_pos){
         //spawn the prefab at the given position
         GameObject instantiated = Instantiate(valid_sign, spawn_pos, Quaternion.identity);
@@ -491,22 +538,6 @@ public class GameState : MonoBehaviour
         num_2_text.text = "Dice2: ";   
     }
 
-    List<int> horizontalPosition = new List<int>() {
-         1,
-         3,
-         5,
-         8,
-         11,
-         36,
-         33,
-         17,
-         20,
-         30,
-         24,
-         26,
-         14,//14 or 28?
-         22
-      };
     public void Rotate(GameObject cur_piece, int pos_index)
     {
         
