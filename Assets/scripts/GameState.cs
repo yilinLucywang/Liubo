@@ -171,7 +171,10 @@ public class GameState : MonoBehaviour
         }
 
         if(openLimit == true)
+        {
             dice1But.SetActive(false);
+            dice2But.GetComponent<Button>().interactable = false;
+        }
 
         if (is_p1_turn && openLimit == true)
         {
@@ -223,7 +226,10 @@ public class GameState : MonoBehaviour
         }
 
         if(openLimit == true)
+        {
             dice2But.SetActive(false);
+            dice1But.GetComponent<Button>().interactable = false;
+        }
 
         if (is_p1_turn && openLimit == true)
         {
@@ -403,6 +409,12 @@ public class GameState : MonoBehaviour
         else
         {
             bd.white_pieces[chosen_piece] = pos_index;
+        }
+
+        if (openLimit == true)
+        {
+            dice2But.GetComponent<Button>().interactable = true;
+            dice1But.GetComponent<Button>().interactable = true;
         }
 
         Debug.Log("count" + bd.nodes[pos_index].Count);
