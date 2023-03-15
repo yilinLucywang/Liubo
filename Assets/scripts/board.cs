@@ -86,13 +86,14 @@ public class board : MonoBehaviour
         }
 
         //This is what common pieces cannot walk on
-        int[,] temp_not_normal_edges = new int[,] {{10,12},{11,12},{0,2},{1,2},{30,29},{31,29},{21,23},{21,22}};
+        int[,] temp_not_normal_edges = new int[,] {{10,12},{11,12},{0,2},{1,2},{30,29},{31,29},{23,21},{22,21}};
         cur_length = temp_not_normal_edges.GetLength(0);
         for(int i = 0; i < cur_length; i++){
             int first = temp_not_normal_edges[i,0]; 
             int second = temp_not_normal_edges[i,1];
             normal_edges[first,second] = 0;
-            normal_edges[second, first] = 0;
+            //This lets normal pieces leave nests, but not enter them
+            normal_edges[second, first] = 1;
 
             white_owl_edges[first,second] = 1;
             white_owl_edges[second, first] = 1; 
