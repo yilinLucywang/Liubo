@@ -433,7 +433,6 @@ public class GameState : MonoBehaviour
         if (openLimit == true)
         {
             previousPiece = cur_piece.ToString();
-            Debug.LogWarning("previousPi" + previousPiece);
             if (Is3DGame)
             {
                 //previousPiece = cur_piece;
