@@ -263,7 +263,7 @@ public class board : MonoBehaviour
             int anchor_index = index_2_anchor[final_poses[i]];
             Vector3 position = anchors[anchor_index].transform.position;
             //only add to pissible moves when there are available position
-            if(nodes[final_poses[i]].Count <= 1){
+            if(nodes[final_poses[i]].Count <= 2){
                 final_positions.Add(position);
             }
         }
