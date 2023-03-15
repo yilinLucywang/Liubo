@@ -49,7 +49,7 @@ public class JarController : MonoBehaviour
         var newY = Input.GetAxis("Mouse Y");
         var deltaY = newY - preY;
         
-        Debug.Log(deltaY);
+        //Debug.Log(deltaY);
         deltaY = Mathf.Clamp(deltaY, -5, 5);
         deltaX = Mathf.Clamp(deltaX, -5, 5);
         var delta = new Vector2(deltaX, deltaY);
