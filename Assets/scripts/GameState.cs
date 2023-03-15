@@ -354,17 +354,17 @@ public class GameState : MonoBehaviour
         if(isOwl){
             curPieceRotation = curPieceRotation * Quaternion.Euler(0f, 0f, 90f);
             if(isSecondOne){
-                Debug.Log("am I here??????");
-                curPieceTranslation = new Vector3(0.14f, 0f, 0f);
+                curPieceTranslation = new Vector3(0f, 0.14f, 0f);
                 if(isHorizontal){
-                    curPieceTranslation += new Vector3(0f,0.12f,0f);
+                    curPieceTranslation += new Vector3(0.11f,0f,0f);
                 }
                 else{
-                    curPieceTranslation += new Vector3(0f,0.09f,0f);
+
+                    curPieceTranslation += new Vector3(0f,0f,0.11f);
                 }
             }
             else{
-                curPieceTranslation = new Vector3(0.14f, 0f, 0f);
+                curPieceTranslation = new Vector3(0f, 0.14f, 0f);
             }
         }
         else{
@@ -444,7 +444,8 @@ public class GameState : MonoBehaviour
 
         //calculate score before add piece 
         //TODO: this is the bool indicating whether the piece should be an owl
-        score.CalculateScore(position, chosen_piece, is_black_chosen, is_owl);
+        
+        //score.CalculateScore(position, chosen_piece, is_black_chosen, is_owl);
         if (openLimit == true)
         {
             if (Is3DGame)
@@ -477,7 +478,7 @@ public class GameState : MonoBehaviour
             dice1But.GetComponent<Button>().interactable = true;
         }
 
-        //Debug.Log("count" + bd.nodes[pos_index].Count);
+        ////Debug.Log("count" + bd.nodes[pos_index].Count);
     }
 
     //This index is in range[0, 5]
