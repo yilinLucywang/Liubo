@@ -27,6 +27,9 @@ public class GameState : MonoBehaviour
     public bool openLimit;
 
     private Vector3 firstTargetPos;
+    private string previousPiece;
+    private bool isSamePiece = false;
+    private GameObject cur_piece;
 
     //prefab to spawn
     public GameObject valid_sign;
@@ -180,15 +183,6 @@ public class GameState : MonoBehaviour
 
         if (is_p1_turn && openLimit == true)
         {
-            //2D Version
-            foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
-            {
-                btn.interactable = false;
-            }
-            foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
-            {
-                btn.interactable = true;
-            }
             //3D Version
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
             {
@@ -197,19 +191,14 @@ public class GameState : MonoBehaviour
             foreach (var btn in whitePieceBut.GetComponentsInChildren<Clickable>())
             {
                 btn.interactable = true;
+            }
+            if (previousPiece == cur_piece.ToString())
+            {
+                cur_piece.GetComponent<Clickable>().interactable = false;
             }
         }
         else if(!is_p1_turn && openLimit == true)
         {
-            //2D Version
-            foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
-            {
-                btn.interactable = true;
-            }
-            foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
-            {
-                btn.interactable = false;
-            }
             //3D Version
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
             {
@@ -218,6 +207,10 @@ public class GameState : MonoBehaviour
             foreach (var btn in whitePieceBut.GetComponentsInChildren<Clickable>())
             {
                 btn.interactable = false;
+            }
+            if (previousPiece == cur_piece.ToString())
+            {
+                cur_piece.GetComponent<Clickable>().interactable = false;
             }
         }
     }
@@ -235,15 +228,6 @@ public class GameState : MonoBehaviour
 
         if (is_p1_turn && openLimit == true)
         {
-            //2D Version
-            foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
-            {
-                btn.interactable = false;
-            }
-            foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
-            {
-                btn.interactable = true;
-            }
             //3D Version
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
             {
@@ -252,19 +236,15 @@ public class GameState : MonoBehaviour
             foreach (var btn in whitePieceBut.GetComponentsInChildren<Clickable>())
             {
                 btn.interactable = true;
+                
+            }
+            if (previousPiece == cur_piece.ToString())
+            {
+                cur_piece.GetComponent<Clickable>().interactable = false;
             }
         }
         else if(!is_p1_turn && openLimit == true)
         {
-            //2D Version
-            foreach (var btn in blackPieceBut.GetComponentsInChildren<Button>())
-            {
-                btn.interactable = true;
-            }
-            foreach (var btn in whitePieceBut.GetComponentsInChildren<Button>())
-            {
-                btn.interactable = false;
-            }
             //3D Version
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
             {
@@ -273,6 +253,10 @@ public class GameState : MonoBehaviour
             foreach (var btn in whitePieceBut.GetComponentsInChildren<Clickable>())
             {
                 btn.interactable = false;
+            }
+            if (previousPiece == cur_piece.ToString())
+            {
+                cur_piece.GetComponent<Clickable>().interactable = false;
             }
         }
     }
@@ -283,6 +267,8 @@ public class GameState : MonoBehaviour
         is_black_chosen = is_black;
         //show all possibe positions
         ShowPossiblePositions();
+        
+
     }
 
     private void ShowPossiblePositions()
@@ -315,7 +301,6 @@ public class GameState : MonoBehaviour
             {
                 SpawnGreen(pos);
             }
-
         }
     }
 
@@ -397,12 +382,11 @@ public class GameState : MonoBehaviour
         }
 
         string chosen_piece_name = chosen_piece.ToString();
-        GameObject cur_piece = GameObject.Find(chosen_piece_name);
+        cur_piece = GameObject.Find(chosen_piece_name);
         board bd = gameObject.GetComponent<board>();
         int pos_index = bd.get_anchor_index(position);
 
-
-        bool is_two_same_spot = false;
+            bool is_two_same_spot = false;
 
         //check position beofre moving
         int CurOrgIndex = bd.get_anchor_index(cur_piece.transform.position);
@@ -448,13 +432,11 @@ public class GameState : MonoBehaviour
         //score.CalculateScore(position, chosen_piece, is_black_chosen, is_owl);
         if (openLimit == true)
         {
+            previousPiece = cur_piece.ToString();
+            Debug.LogWarning("previousPi" + previousPiece);
             if (Is3DGame)
             {
-                cur_piece.GetComponent<Clickable>().interactable = false;
-            }
-            else
-            {
-                cur_piece.GetComponent<Button>().interactable = false;
+                //previousPiece = cur_piece;
             }
 
         }

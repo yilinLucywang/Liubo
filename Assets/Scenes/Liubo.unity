@@ -576,7 +576,7 @@ MonoBehaviour:
   num_2_text: {fileID: 846062073}
   is_black_chosen: 1
   chosen_piece: -1
-  openLimit: 0
+  openLimit: 1
   valid_sign: {fileID: 727620669}
   canvas: {fileID: 153840371}
   white_pieces:
