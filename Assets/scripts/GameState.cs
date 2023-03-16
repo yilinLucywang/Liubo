@@ -342,11 +342,11 @@ public class GameState : MonoBehaviour
             if(isSecondOne){
                 curPieceTranslation = new Vector3(0f, 0.14f, 0f);
                 if(isHorizontal){
-                    curPieceTranslation += new Vector3(0.11f,0f,0f);
+                    curPieceTranslation += new Vector3(0f,0f,0.11f);
                 }
                 else{
 
-                    curPieceTranslation += new Vector3(0f,0f,0.11f);
+                    curPieceTranslation += new Vector3(0.11f,0f,0f);
                 }
             }
             else{
@@ -364,7 +364,8 @@ public class GameState : MonoBehaviour
         }
 
         cur_piece.transform.position = anchor_pos;
-        cur_piece.transform.Translate(curPieceTranslation);
+        //cur_piece.transform.Translate(curPieceTranslation);
+        cur_piece.transform.position = cur_piece.transform.position + curPieceTranslation;
         cur_piece.transform.rotation = curPieceRotation; 
     }
 
@@ -406,7 +407,7 @@ public class GameState : MonoBehaviour
         }
 
 
-        if (bd.nodes[pos_index].Count >= 1)
+        if (bd.nodes[pos_index].Count >= 1 && (bd.nodes[pos_index][0] != chosen_piece))
         {
             is_two_same_spot = true;
         }
@@ -431,7 +432,7 @@ public class GameState : MonoBehaviour
         //calculate score before add piece 
         //TODO: this is the bool indicating whether the piece should be an owl
         
-        //score.CalculateScore(position, chosen_piece, is_black_chosen, is_owl);
+        score.CalculateScore(position, chosen_piece, is_black_chosen, is_owl);
         if (openLimit == true)
         {
             previousPiece = cur_piece.ToString();
@@ -530,20 +531,20 @@ public class GameState : MonoBehaviour
         num_2_text.text = "Dice2: ";   
     }
 
-    public void Rotate(GameObject cur_piece, int pos_index)
-    {
+    // public void Rotate(GameObject cur_piece, int pos_index)
+    // {
         
             
-        if (horizontalPosition.Contains(pos_index))
-        {
-            //rotate 90 degree: horizontal
-            cur_piece.transform.rotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 0f, 0f);
-        }
-        else
-        {
-            //rotate back
-            cur_piece.transform.rotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
-        }
+    //     if (horizontalPosition.Contains(pos_index))
+    //     {
+    //         //rotate 90 degree: horizontal
+    //         cur_piece.transform.rotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 0f, 0f);
+    //     }
+    //     else
+    //     {
+    //         //rotate back
+    //         cur_piece.transform.rotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
+    //     }
         
-    }
+    // }
 }
