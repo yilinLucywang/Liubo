@@ -456,13 +456,13 @@ public class GameState : MonoBehaviour
 
 
         //TODO: check whether the other piece is of the same type
-        bool isDiff = isDifferentType(pos_index, cur_piece.CompareTag("Owl"), chosen_piece);
-        if(is_owl || cur_piece.CompareTag("Owl")){
-            piecePlacement(pos_index, true, is_two_same_spot, cur_piece, position, isDiff);
-        }
-        else{
-            piecePlacement(pos_index, false, is_two_same_spot, cur_piece, position, isDiff);
-        }
+        // bool isDiff = isDifferentType(pos_index, cur_piece.CompareTag("Owl"), chosen_piece);
+        // if(is_owl || cur_piece.CompareTag("Owl")){
+        //     piecePlacement(pos_index, true, is_two_same_spot, cur_piece, position, isDiff);
+        // }
+        // else{
+        //     piecePlacement(pos_index, false, is_two_same_spot, cur_piece, position, isDiff);
+        // }
         //update board, remove piece from the original position, add it to the new position
         for(int i = 0; i < bd.nodes[CurOrgIndex].Count; i++){
             //piece index 0 - 11
@@ -472,6 +472,7 @@ public class GameState : MonoBehaviour
             }
         }
         bd.nodes[pos_index].Add(chosen_piece);
+        piecePlacement(pos_index,position);
 
 
         //calculate score before add piece 
