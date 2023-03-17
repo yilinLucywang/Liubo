@@ -43,12 +43,7 @@ public class Score : MonoBehaviour
         {
             cur_piece.tag = "Owl";
             Debug.Log("line 45");
-            if (bd.nodes[pos_index].Count >= 1 && (bd.nodes[pos_index][0] != chosen_piece))
-            {
-                is_two_same_spot = true;
-            }
-            bool isDiff = gamestate.isDifferentType(pos_index, cur_piece.CompareTag("Owl"), chosen_piece);
-            gamestate.piecePlacement(pos_index, is_owl, is_two_same_spot, cur_piece, position, isDiff);
+            gamestate.piecePlacement(pos_index,  position);
             // cur_piece.transform.rotation = cur_piece.transform.rotation * Quaternion.Euler(0f, 0f, 90f);
             // cur_piece.transform.position += new Vector3(0f, 0.15f, 0f);
         }
@@ -67,12 +62,7 @@ public class Score : MonoBehaviour
                     changeTagOwl(cur_piece, "Normal");
                     //RotateBackToNorm(cur_piece);
                     Debug.Log("line 67");
-                    if (bd.nodes[pos_index].Count >= 1 && (bd.nodes[pos_index][0] != chosen_piece))
-                    {
-                        is_two_same_spot = true;
-                    }
-                    bool isDiff = gamestate.isDifferentType(pos_index, cur_piece.CompareTag("Owl"), chosen_piece);
-                    gamestate.piecePlacement(pos_index, false, is_two_same_spot, cur_piece, position, isDiff);
+                    gamestate.piecePlacement(pos_index, position);
                 }
             }
                 // if there is already a piece on there
@@ -102,12 +92,7 @@ public class Score : MonoBehaviour
                         //remove different color piece
                         Debug.Log("line 99");
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
-                        if (bd.nodes[pos_index].Count >= 1 && (bd.nodes[pos_index][0] != chosen_piece))
-                        {
-                            is_two_same_spot = true;
-                        }
-                        bool isDiff = gamestate.isDifferentType(pos_index, cur_piece.CompareTag("Owl"), chosen_piece);
-                        gamestate.piecePlacement(pos_index, false, is_two_same_spot, cur_piece, position, isDiff);
+                        gamestate.piecePlacement(pos_index, position);
                     }
                 }
                 //black normal
@@ -122,12 +107,7 @@ public class Score : MonoBehaviour
 
                         Debug.Log("line 117");
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
-                        if (bd.nodes[pos_index].Count >= 1 && (bd.nodes[pos_index][0] != chosen_piece))
-                        {
-                            is_two_same_spot = true;
-                        }
-                        bool isDiff = gamestate.isDifferentType(pos_index, cur_piece.CompareTag("Owl"), chosen_piece);
-                        gamestate.piecePlacement(pos_index, false, is_two_same_spot, cur_piece, position, isDiff);
+                        gamestate.piecePlacement(pos_index, position);
                     }
                     //Debug.Log("index"+ bd.nodes[pos_index].Count);
                     if ( (bd.nodes[pos_index].Count > 2)&&(findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal"))

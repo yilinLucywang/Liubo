@@ -322,6 +322,25 @@ public class GameState : MonoBehaviour
          14,//14 or 28?
          22
     };
+    public void piecePlacement(int pos_index, Vector3 anchor_pos){
+        board bd = gameObject.GetComponent<board>();
+        bool is_two_same_spot = false;
+        if (bd.nodes[pos_index].Count >= 1 && (bd.nodes[pos_index][0] != chosen_piece))
+        {
+            is_two_same_spot = true;
+        }
+        bool isSecondOne = false; 
+        for(int i = 0; i < bd.nodes[pos_index].Count; i++){
+            int chosen_piece_index = bd.nodes[pos_index][i];
+            string chosen_piece_name = chosen_piece_index.ToString();; 
+            GameObject cur_piece = GameObject.Find(chosen_piece_name);
+            bool isDiff = isDifferentType(pos_index, cur_piece.CompareTag("Owl"), chosen_piece);
+            bool isOwl = cur_piece.CompareTag("Owl");
+            piecePlacement(pos_index, isOwl, isSecondOne, cur_piece, anchor_pos, isDiff);
+            isSecondOne = true;
+        }
+    }
+
     public void piecePlacement(int pos_index, bool isOwl, bool isSecondOne, GameObject cur_piece, Vector3 anchor_pos, bool isDiff){
         Quaternion curPieceRotation = Quaternion.Euler(0f, 0f, 0f);
         Vector3 curPieceTranslation = new Vector3(0f,0f,0f);
