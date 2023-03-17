@@ -368,6 +368,7 @@ public class GameState : MonoBehaviour
                 curPieceTranslation = curPieceTranslation +  new Vector3(0f, 0.14f, 0f);
             }
             else{
+                //Debug.Log("123123");
                 curPieceTranslation = curPieceTranslation - new Vector3(0f, 0.10f, 0f);
             }
 
@@ -384,10 +385,7 @@ public class GameState : MonoBehaviour
             if(bd.nodes[pos_index][0] != cur_index){
                 string chosen_piece_name = bd.nodes[pos_index][0].ToString();
                 GameObject prev_piece = GameObject.Find(chosen_piece_name);
-                if(prev_piece.CompareTag("Owl")){
-                    return false;
-                }
-                else{
+                if(prev_piece.CompareTag("Owl") ^ isOwl){
                     return true;
                 }
             }
