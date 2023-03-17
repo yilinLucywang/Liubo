@@ -153,7 +153,7 @@ public class Score : MonoBehaviour
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
                     }
                     //2 black owl eat white owl
-                    else if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl" && (bd.nodes[pos_index].Count > 1))
+                    else if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl" && (bd.nodes[pos_index].Count > 2))
                     {
                         gameData.white_score += 3;
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
@@ -175,7 +175,7 @@ public class Score : MonoBehaviour
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
                     }
-                    if ((bd.nodes[pos_index].Count > 1) && (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal"))
+                    if ((bd.nodes[pos_index].Count > 2) && (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal"))
                     {
                         //Debug.Log("2 w normal get 1 b normal ");
                         gameData.white_score++;
