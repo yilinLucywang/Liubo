@@ -507,6 +507,7 @@ public class GameState : MonoBehaviour
             }
             bd.white_pieces[index] = -1;
             white_pieces[index].transform.position = white_poses[index];
+            white_pieces[index].transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
         else{
             int ori_place = bd.black_pieces[index];
@@ -520,6 +521,7 @@ public class GameState : MonoBehaviour
             }
             bd.black_pieces[index] = -1;
             black_pieces[index].transform.position = black_poses[index];
+            black_pieces[index].transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
         //This part takes care of the UI part
     }
