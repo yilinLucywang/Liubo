@@ -47,7 +47,8 @@ public class Score : MonoBehaviour
             {
                 is_two_same_spot = true;
             }
-            gamestate.piecePlacement(pos_index, is_owl, is_two_same_spot, cur_piece, position);
+            bool isDiff = gamestate.isDifferentType(pos_index, cur_piece.CompareTag("Owl"), chosen_piece);
+            gamestate.piecePlacement(pos_index, is_owl, is_two_same_spot, cur_piece, position, isDiff);
             // cur_piece.transform.rotation = cur_piece.transform.rotation * Quaternion.Euler(0f, 0f, 90f);
             // cur_piece.transform.position += new Vector3(0f, 0.15f, 0f);
         }
@@ -70,7 +71,8 @@ public class Score : MonoBehaviour
                     {
                         is_two_same_spot = true;
                     }
-                    gamestate.piecePlacement(pos_index, false, is_two_same_spot, cur_piece, position);
+                    bool isDiff = gamestate.isDifferentType(pos_index, cur_piece.CompareTag("Owl"), chosen_piece);
+                    gamestate.piecePlacement(pos_index, false, is_two_same_spot, cur_piece, position, isDiff);
                 }
             }
                 // if there is already a piece on there
@@ -104,7 +106,8 @@ public class Score : MonoBehaviour
                         {
                             is_two_same_spot = true;
                         }
-                        gamestate.piecePlacement(pos_index, false, is_two_same_spot, cur_piece, position);
+                        bool isDiff = gamestate.isDifferentType(pos_index, cur_piece.CompareTag("Owl"), chosen_piece);
+                        gamestate.piecePlacement(pos_index, false, is_two_same_spot, cur_piece, position, isDiff);
                     }
                 }
                 //black normal
@@ -123,7 +126,8 @@ public class Score : MonoBehaviour
                         {
                             is_two_same_spot = true;
                         }
-                        gamestate.piecePlacement(pos_index, false, is_two_same_spot, cur_piece, position);
+                        bool isDiff = gamestate.isDifferentType(pos_index, cur_piece.CompareTag("Owl"), chosen_piece);
+                        gamestate.piecePlacement(pos_index, false, is_two_same_spot, cur_piece, position, isDiff);
                     }
                     //Debug.Log("index"+ bd.nodes[pos_index].Count);
                     if ( (bd.nodes[pos_index].Count > 2)&&(findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal"))

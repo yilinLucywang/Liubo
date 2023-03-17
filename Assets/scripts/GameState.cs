@@ -322,7 +322,7 @@ public class GameState : MonoBehaviour
          14,//14 or 28?
          22
     };
-    public void piecePlacement(int pos_index, bool isOwl, bool isSecondOne, GameObject cur_piece, Vector3 anchor_pos){
+    public void piecePlacement(int pos_index, bool isOwl, bool isSecondOne, GameObject cur_piece, Vector3 anchor_pos, bool isDiff){
         Quaternion curPieceRotation = Quaternion.Euler(0f, 0f, 0f);
         Vector3 curPieceTranslation = new Vector3(0f,0f,0f);
         bool isHorizontal = false;
@@ -339,7 +339,7 @@ public class GameState : MonoBehaviour
         }
         if(isOwl){
             curPieceRotation = curPieceRotation * Quaternion.Euler(0f, 0f, 90f);
-            if(isSecondOne){
+            if(isSecondOne && (!isDiff)){
                 curPieceTranslation = new Vector3(0f, 0.14f, 0f);
                 if(isHorizontal){
                     curPieceTranslation += new Vector3(0f,0f,0.11f);
@@ -363,13 +363,37 @@ public class GameState : MonoBehaviour
             }
         }
 
+        if(isSecondOne && isDiff){
+            if(isOwl){
+                curPieceTranslation = curPieceTranslation +  new Vector3(0f, 0.14f, 0f);
+            }
+            else{
+                curPieceTranslation = curPieceTranslation - new Vector3(0f, 0.10f, 0f);
+            }
+
+        }
         cur_piece.transform.position = anchor_pos;
         //cur_piece.transform.Translate(curPieceTranslation);
         cur_piece.transform.position = cur_piece.transform.position + curPieceTranslation;
         cur_piece.transform.rotation = curPieceRotation; 
     }
 
-
+    public bool isDifferentType(int pos_index, bool isOwl, int cur_index){
+        board bd = gameObject.GetComponent<board>();
+        if(bd.nodes[pos_index].Count == 1){
+            if(bd.nodes[pos_index][0] != cur_index){
+                string chosen_piece_name = bd.nodes[pos_index][0].ToString();
+                GameObject prev_piece = GameObject.Find(chosen_piece_name);
+                if(prev_piece.CompareTag("Owl")){
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     public void MovePiece(Vector3 position)
     {
@@ -412,11 +436,15 @@ public class GameState : MonoBehaviour
             is_two_same_spot = true;
         }
         bool is_owl = bd.is_becoming_owl(pos_index);
+
+
+        //TODO: check whether the other piece is of the same type
+        bool isDiff = isDifferentType(pos_index, cur_piece.CompareTag("Owl"), chosen_piece);
         if(is_owl || cur_piece.CompareTag("Owl")){
-            piecePlacement(pos_index, true, is_two_same_spot, cur_piece, position);
+            piecePlacement(pos_index, true, is_two_same_spot, cur_piece, position, isDiff);
         }
         else{
-            piecePlacement(pos_index, false, is_two_same_spot, cur_piece, position);
+            piecePlacement(pos_index, false, is_two_same_spot, cur_piece, position, isDiff);
         }
         //update board, remove piece from the original position, add it to the new position
         for(int i = 0; i < bd.nodes[CurOrgIndex].Count; i++){
