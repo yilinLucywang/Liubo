@@ -389,7 +389,7 @@ public class GameState : MonoBehaviour
                 curPieceTranslation = curPieceTranslation +  new Vector3(0f, 0.14f, 0f);
             }
             else{
-                //Debug.Log("123123");
+                Debug.Log("123123");
                 curPieceTranslation = curPieceTranslation - new Vector3(0f, 0.10f, 0f);
             }
 
@@ -470,6 +470,7 @@ public class GameState : MonoBehaviour
             //piece index 0 - 11
             if(bd.nodes[CurOrgIndex][i] == chosen_piece){
                 bd.nodes[CurOrgIndex].RemoveAt(i);
+                piecePlacement(CurOrgIndex, new Vector3(cur_piece.transform.position.x, 0.04f, cur_piece.transform.position.z));
                 break;
             }
         }
