@@ -34,6 +34,6 @@ public class Clickable : MonoBehaviour
     //Use this to test if CallOnClick3D is working
     public void TestFunction()
     {
-        Debug.Log("Received a click!");
+        //Debug.Log("Received a click!");
     }
 }
