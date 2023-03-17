@@ -80,6 +80,7 @@ public class Score : MonoBehaviour
                         //Debug.Log("Black owl get white normal");
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
+                        gamestate.piecePlacement(pos_index, position);
                     }
                     //2 black owl eat white owl
                     else if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl" && (bd.nodes[pos_index].Count > 2))
@@ -116,6 +117,7 @@ public class Score : MonoBehaviour
                         gameData.black_score++;
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
+                        gamestate.piecePlacement(pos_index, position);
                     }
                 }
                 
@@ -151,6 +153,7 @@ public class Score : MonoBehaviour
                         //Debug.Log("white owl get black normal");
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
+                        gamestate.piecePlacement(pos_index, position);
                     }
                     //2 black owl eat white owl
                     else if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl" && (bd.nodes[pos_index].Count > 2))
@@ -162,6 +165,7 @@ public class Score : MonoBehaviour
                         //Debug.Log("2 white owl get black owl");
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
+                        gamestate.piecePlacement(pos_index, position);
                     }
                 }
                 //black normal
@@ -174,6 +178,7 @@ public class Score : MonoBehaviour
                         //RotateBackToNorm(cur_piece);
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
+                        gamestate.piecePlacement(pos_index, position);
                     }
                     if ((bd.nodes[pos_index].Count > 2) && (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal"))
                     {
@@ -181,6 +186,7 @@ public class Score : MonoBehaviour
                         gameData.white_score++;
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
+                        gamestate.piecePlacement(pos_index, position);
                     }
                 }
                 
