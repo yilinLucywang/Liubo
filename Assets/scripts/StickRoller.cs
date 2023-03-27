@@ -7,7 +7,11 @@ using Random = System.Random;
 
 public class StickRoller
 {
+    public RollStickEvent onStickRoll;
+    public UnityEvent onStickRollerEnable;
+    public UnityEvent onStickRollerDisable;
     private static StickRoller Instance;
+    private bool isActive = true;
 
     private Random rand;
 
@@ -24,12 +28,14 @@ public class StickRoller
     {
         rand = new Random();
         onStickRoll = new RollStickEvent();
+        onStickRollerEnable = new UnityEvent();
+        onStickRollerDisable = new UnityEvent();
     }
     
-    public RollStickEvent onStickRoll;
 
     public (int, int) RollSticks()
     {
+        if (!isActive) return (0, 0);
         var rand = this.rand.Next();
         var val1 = rand & 7;
         var val2 = (rand >> 3) & 7;
@@ -57,7 +63,19 @@ public class StickRoller
         }
         return ret;
     }
-    
+
+    public void SetActive(bool isAtive)
+    {
+        this.isActive = isAtive;
+        if (isActive)
+        {
+            onStickRollerEnable.Invoke();
+        }
+        else
+        {
+            onStickRollerDisable.Invoke();
+        }
+    }
 }
 
 [Serializable]

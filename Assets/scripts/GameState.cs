@@ -17,7 +17,7 @@ public class GameState : MonoBehaviour
     public GameObject blackPieceBut, whitePieceBut;
     public GameObject rollDicebtn;
     public GameObject whiteTurn, blackTurn;
-    public GameObject stickJar;
+    // public GameObject stickJar;
 
     public Text num_1_text;
     public Text num_2_text;  
@@ -105,7 +105,7 @@ public class GameState : MonoBehaviour
         is_p1_turn = !is_p1_turn;
         dice_1 = -1; 
         dice_2 = -1;
-        stickJar.SetActive(true);
+        StickRoller.GetInstance().SetActive(true);
         
         num_1_text.text = "Dice1: "; 
         num_2_text.text = "Dice2: ";
@@ -177,7 +177,7 @@ public class GameState : MonoBehaviour
             cur_step = dice_1;
             
         }
-        stickJar.SetActive(false);
+        StickRoller.GetInstance().SetActive(false);
         if(openLimit == true)
         {
             dice1But.SetActive(false);
@@ -222,7 +222,7 @@ public class GameState : MonoBehaviour
         if(dice_2 != -1){
             cur_step = dice_2;
         }
-        stickJar.SetActive(false);
+        StickRoller.GetInstance().SetActive(false);
         if (openLimit == true)
         {
             dice2But.SetActive(false);

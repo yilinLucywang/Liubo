@@ -572,12 +572,11 @@ MonoBehaviour:
   rollDicebtn: {fileID: 2117922722}
   whiteTurn: {fileID: 1751455676}
   blackTurn: {fileID: 980562356}
-  stickJar: {fileID: 552044310}
   num_1_text: {fileID: 1476920756}
   num_2_text: {fileID: 846062073}
   is_black_chosen: 1
   chosen_piece: -1
-  openLimit: 0
+  openLimit: 1
   valid_sign: {fileID: 727620669}
   canvas: {fileID: 153840371}
   white_pieces:
@@ -2605,6 +2604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 552044312}
   - component: {fileID: 552044311}
+  - component: {fileID: 552044313}
   m_Layer: 0
   m_Name: JarSet
   m_TagString: Untagged
@@ -2653,6 +2653,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 89.979004, z: 0}
+--- !u!114 &552044313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552044310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5dc2b586ed410b46b8a8fff9ad341e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jar: {fileID: 1123006573}
+  sticks:
+  - {fileID: 464938963}
+  - {fileID: 1225267725}
+  - {fileID: 272148670}
+  - {fileID: 322208200}
+  - {fileID: 287115302}
+  - {fileID: 623073295}
+  jarAnimator: {fileID: 552044311}
 --- !u!1001 &552251537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4644,14 +4665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44df8a9c857ce0c42bc7d1a9c7e6ed63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jarAnimator: {fileID: 552044311}
-  sticks:
-  - {fileID: 464938963}
-  - {fileID: 1225267725}
-  - {fileID: 272148670}
-  - {fileID: 322208200}
-  - {fileID: 287115302}
-  - {fileID: 623073295}
   isMouseControlable: 0
 --- !u!1 &1128626818
 GameObject:

@@ -8,15 +8,6 @@ public class JarController : MonoBehaviour
     
     private Rigidbody _rigidbody;
     private float preX = 0, preY = 0;
-    [SerializeField] private Animator jarAnimator;
-
-    [SerializeField] private List<GameObject> sticks;
-
-    private List<StickTransform> originalStickTransforms = new List<StickTransform>();
-
-    private Vector3 originalJarPos;
-
-    private Vector3 originalJarRot;
 
     public bool isMouseControlable;
     // [SerializeField] private Rigidbody childRigidbody;
@@ -24,18 +15,9 @@ public class JarController : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        StickRoller.GetInstance().onStickRoll.AddListener(ThrowJar);
-        sticks.ForEach(stick =>
-        {
-            var stickTransform = new StickTransform();
-            stickTransform.position = stick.transform.position;
-            stickTransform.rotation = stick.transform.eulerAngles;
-
-            originalStickTransforms.Add(stickTransform);
-        });
-        originalJarPos = transform.position;
-        originalJarRot = transform.eulerAngles;
         isMouseControlable = true;
+        
+        
     }
 
     // Update is called once per frame
@@ -85,35 +67,9 @@ public class JarController : MonoBehaviour
         preY = newY;
     }
 
-    void ThrowJar(int _a, int _b)
-    {
-        jarAnimator.Play("Throw");
-        StartCoroutine(SetSticksActive());
-    }
+    
 
-    IEnumerator SetSticksActive()
-    {
-        yield return new WaitForSeconds(0.5f);
-        sticks.ForEach(stick =>
-        {
-            stick.SetActive(false);
-            //Destroy(stick);
-        });
-        transform.position = originalJarPos;
-        transform.eulerAngles = originalJarRot;
-        isMouseControlable = false;
-        // lock mouse control
-        
-        yield return new WaitForSeconds(1.2f);
-        for (int i = 0; i < sticks.Count; i++)
-        {
-            sticks[i].SetActive(true);
-            sticks[i].transform.position = originalStickTransforms[i].position;
-            sticks[i].transform.eulerAngles = originalStickTransforms[i].rotation;
-        }
+    
 
-        transform.position = originalJarPos;
-        transform.eulerAngles = originalJarRot;
-        isMouseControlable = true;
-    }
+    
 }
