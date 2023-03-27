@@ -10,6 +10,7 @@ public class UI : MonoBehaviour
     [SerializeField] private GameData gameData;
     [SerializeField] private Text player1Score;
     [SerializeField] private Text player2Score;
+    [SerializeField] private GameObject BlackImage;
 
     void Awake()
     {
@@ -31,7 +32,21 @@ public class UI : MonoBehaviour
 
         if (gameData.white_score == 6 || gameData.black_score == 6)
         {
-            SceneManager.LoadScene("End");
+            BlackImage.SetActive(true);
+            StartCoroutine(Fade());
         }
+    }
+
+    public IEnumerator Fade()
+    {
+        float alphaColor = BlackImage.GetComponent<CanvasGroup>().alpha;
+        while (alphaColor < 1f)
+        {
+            alphaColor += Time.deltaTime;
+            BlackImage.GetComponent<CanvasGroup>().alpha = alphaColor;
+            yield return new WaitForSeconds(Time.deltaTime*0.001f);
+        }
+        SceneManager.LoadScene("End");
+        yield return null;
     }
 }
