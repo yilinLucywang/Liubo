@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99759c694db0d241bad31bc24c6ebe6, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  white_score: 6
+  white_score: 0
   black_score: 0
+  playername1: 
+  playername2: 
