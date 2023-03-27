@@ -137,6 +137,7 @@ public class Score : MonoBehaviour
                     gameData.white_score += 2;
                     changeTagOwl(cur_piece, "Normal");
                     //RotateBackToNorm(cur_piece);
+                    gamestate.piecePlacement(pos_index, position);
                 }
             }
             // if there is already a piece on there
