@@ -7,6 +7,7 @@ public class JarSet : MonoBehaviour
     [SerializeField] private GameObject jar;
     [SerializeField] private List<GameObject> sticks;
     [SerializeField] private Animator jarAnimator;
+    [SerializeField] private Animator flyingSticksAnimator;
 
     private List<StickTransform> originalStickTransforms = new List<StickTransform>();
 
@@ -32,6 +33,8 @@ public class JarSet : MonoBehaviour
         
         StickRoller.GetInstance().onStickRollerEnable.AddListener(ResetJarAndSticks);
         StickRoller.GetInstance().onStickRollerDisable.AddListener(DisableJarAndSticks);
+
+        flyingSticksAnimator.speed = 6f;
     }
 
     // Update is called once per frame
@@ -54,6 +57,7 @@ public class JarSet : MonoBehaviour
             stick.SetActive(false);
             //Destroy(stick);
         });
+        flyingSticksAnimator.Play("ThrowSticks");
         jar.transform.position = originalJarPos;
         jar.transform.eulerAngles = originalJarRot;
         jar.GetComponent<JarController>().isMouseControlable = false;
