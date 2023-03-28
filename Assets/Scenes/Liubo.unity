@@ -722,6 +722,7 @@ MonoBehaviour:
   rollDicebtn: {fileID: 2117922722}
   whiteTurn: {fileID: 1751455676}
   blackTurn: {fileID: 980562356}
+  gameData: {fileID: 11400000, guid: c2bf33fbf6d9e3a48ad89085e62bb76a, type: 2}
   num_1_text: {fileID: 1476920756}
   num_2_text: {fileID: 846062073}
   is_black_chosen: 1

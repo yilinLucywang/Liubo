@@ -17,6 +17,7 @@ public class GameState : MonoBehaviour
     public GameObject blackPieceBut, whitePieceBut;
     public GameObject rollDicebtn;
     public GameObject whiteTurn, blackTurn;
+    public GameData gameData;
     // public GameObject stickJar;
 
     public Text num_1_text;
@@ -65,7 +66,11 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        whiteTurn.SetActive(true);
+        if(is_p1_turn == true)
+        {
+            whiteTurn.GetComponentInChildren<Text>().text = gameData.playername1 + "'s Turn";
+            whiteTurn.SetActive(true);
+        }
         if (openLimit == true)
         {
             //2D version
@@ -114,12 +119,14 @@ public class GameState : MonoBehaviour
 
         if (is_p1_turn)
         {
-            whiteTurn.SetActive(true);
             blackTurn.SetActive(false);
+            whiteTurn.GetComponentInChildren<Text>().text = gameData.playername1 + "'s Turn";
+            whiteTurn.SetActive(true);
         }
         if (!is_p1_turn)
         {
             whiteTurn.SetActive(false);
+            blackTurn.GetComponentInChildren<Text>().text = gameData.playername2 + "'s Turn";
             blackTurn.SetActive(true);
         }
         firstOrigPos = -10;
