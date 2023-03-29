@@ -18,6 +18,7 @@ public class GameState : MonoBehaviour
     public GameObject rollDicebtn;
     public GameObject whiteTurn, blackTurn;
     public GameData gameData;
+    public GameObject boardCharacter;
     // public GameObject stickJar;
 
     public Text num_1_text;
@@ -26,6 +27,7 @@ public class GameState : MonoBehaviour
     public bool is_black_chosen = true;
     public int chosen_piece = -1;
 
+
     public bool openLimit;
 
     private Vector3 firstTargetPos;
@@ -33,6 +35,7 @@ public class GameState : MonoBehaviour
     private bool isSamePiece = false;
     private bool notFirstRound = false;
     private GameObject cur_piece;
+    private bool isCharacterOn;
 
     //prefab to spawn
     public GameObject valid_sign;
@@ -66,6 +69,7 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isCharacterOn = false;
         if(is_p1_turn == true)
         {
             whiteTurn.GetComponentInChildren<Text>().text = gameData.playername1 + "'s Turn";
@@ -102,6 +106,20 @@ public class GameState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    public void ShowBoardCharacter()
+    {
+        if(isCharacterOn == false)
+        {
+            boardCharacter.SetActive(true);
+            isCharacterOn = true;
+        } else if(isCharacterOn == true)
+        {
+            boardCharacter.SetActive(false);
+            isCharacterOn = false;
+        }
         
     }
 
