@@ -25,11 +25,11 @@ public class EndUI : MonoBehaviour
 
         if (gameData.white_score == 6 )
         {
-            Winner.text = "Player 1 Win!";
+            Winner.text = gameData.playername1 + " Win!";
         }
         else
         {
-            Winner.text = "Player 2 Win!";
+            Winner.text = gameData.playername2 + " Win!";
         }
     }
 
