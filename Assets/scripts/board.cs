@@ -12,6 +12,14 @@ public class board : MonoBehaviour
     private Dictionary<int, int> index_2_anchor = new Dictionary<int, int> ();
     private List<int> final_poses =  new List<int>();
 
+
+
+    public List<List<int>> final_paths = new List<List<int>>();
+
+
+    //try to store it here
+    private List<int> path = new List<int>();
+
     //true stands for the final pose with that index will change the normal piece into owl
     private List<int> owl_poses = new List<int>();
 
@@ -151,7 +159,6 @@ public class board : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public int get_anchor_index(Vector3 pos){
@@ -169,6 +176,7 @@ public class board : MonoBehaviour
     }
 
     public List<Vector3> move(bool is_white, int piece_index, int step){
+        final_paths.Clear();
         if(step < 1){
             return new List<Vector3> ();
         }
@@ -192,25 +200,40 @@ public class board : MonoBehaviour
                 owl_poses.Clear();
                 HashSet<int> visited_spot = new HashSet<int>();
                 visited_spot.Add(0);
-                normal_helper(0,step,visited_spot);
+                path.Clear();
+                path.Add(0);
+                normal_helper(0,step,visited_spot,path);
                 visited_spot.Clear();
                 visited_spot.Add(11);
-                normal_helper(11,step,visited_spot);
+                path.Clear();
+                path.Add(11);
+                normal_helper(11,step,visited_spot,path);
+                Debug.Log("Is this right?");
+                        for(int k = 0; k < final_paths.Count; k++){
+            string pathString = "";
+            for(int j = 0; j < final_paths[k].Count; j++){
+                pathString += final_paths[k][j].ToString();
+            }
+            Debug.Log(pathString);
+        }
             }else{
                 //30,23
                 //no way for this case to be owl
                 final_poses.Clear();
                 owl_poses.Clear();
                 HashSet<int> visited_spot = new HashSet<int>();
+                path.Clear();
+                path.Add(30);
                 visited_spot.Add(30);
-                normal_helper(30,step,visited_spot);
+                normal_helper(30,step,visited_spot,path);
                 visited_spot.Clear();
                 visited_spot.Add(23);
-                normal_helper(23,step,visited_spot);
+                path.Clear();
+                path.Add(23);
+                normal_helper(23,step,visited_spot,path);
             }
         }
         else{
-
             if(is_white){
                 //white owls
                 string piece_name = (piece_index+6).ToString();
@@ -223,7 +246,9 @@ public class board : MonoBehaviour
                     owl_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
                     visited_spot.Add(cur_pos);
-                    white_owl_helper(cur_pos,step,visited_spot);
+                    path.Clear();
+                    path.Add(cur_pos);
+                    white_owl_helper(cur_pos,step,visited_spot,path);
                 }
                 else{
                     //This part searches in normal_edges
@@ -231,7 +256,9 @@ public class board : MonoBehaviour
                     owl_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>(); 
                     visited_spot.Add(cur_pos);
-                    normal_helper(cur_pos,step,visited_spot);
+                    path.Clear();
+                    path.Add(cur_pos);
+                    normal_helper(cur_pos,step,visited_spot,path);
                 }
             }
             else{
@@ -245,7 +272,9 @@ public class board : MonoBehaviour
                     owl_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
                     visited_spot.Add(cur_pos);
-                    black_owl_helper(cur_pos,step,visited_spot);
+                    path.Clear();
+                    path.Add(cur_pos);
+                    black_owl_helper(cur_pos,step,visited_spot,path);
                 }
                 else{
                     //This part searches in normal_edges
@@ -253,7 +282,9 @@ public class board : MonoBehaviour
                     owl_poses.Clear();
                     HashSet<int> visited_spot = new HashSet<int>();
                     visited_spot.Add(cur_pos);
-                    normal_helper(cur_pos,step,visited_spot);
+                    path.Clear();
+                    path.Add(cur_pos);
+                    normal_helper(cur_pos,step,visited_spot,path);
                 }
             }
         }
@@ -267,6 +298,16 @@ public class board : MonoBehaviour
                 final_positions.Add(position);
             }
         }
+
+
+        // for(int k = 0; k < final_paths.Count; k++){
+        //     string pathString = "";
+        //     for(int j = 0; j < final_paths[k].Count; j++){
+        //         pathString += final_paths[k][j].ToString();
+        //     }
+        //     Debug.Log(pathString);
+        // }
+
         return final_positions;
     }
 
@@ -280,9 +321,23 @@ public class board : MonoBehaviour
         return false;
     }
 
-    void normal_helper(int cur_pos, int step, HashSet<int> visited_spot){
+    public List<List<int>> get_paths(){
+        return final_paths;
+    }
+
+    void normal_helper(int cur_pos, int step, HashSet<int> visited_spot, List<int> path){
         if(step < 1){
             final_poses.Add(cur_pos);
+            //path.Add(cur_pos);
+            final_paths.Add(path);
+            Debug.Log("hi");
+            for(int k = 0; k < final_paths.Count; k++){
+                string pathString = "";
+                for(int j = 0; j < final_paths[k].Count; j++){
+                    pathString += final_paths[k][j].ToString();
+                }
+                Debug.Log(pathString);
+            }
             if(visited_spot.Contains(9)){
                 owl_poses.Add(cur_pos);
             }
@@ -296,17 +351,20 @@ public class board : MonoBehaviour
                 if(normal_edges[cur_pos,i] == 1){
                     if(!visited_spot.Contains(i)){
                         visited_spot.Add(i);
-                        normal_helper(i,step - 1,visited_spot);
+                        path.Add(i);
+                        normal_helper(i,step - 1,visited_spot,path);
                         visited_spot.Remove(i);
+                        path.RemoveAt(path.Count - 1);
                     }
                 }
             }
         }
     }
 
-    void white_owl_helper(int cur_pos, int  step, HashSet<int> visited_spot){
+    void white_owl_helper(int cur_pos, int  step, HashSet<int> visited_spot, List<int> path){
         if(step < 1){
             final_poses.Add(cur_pos);
+            final_paths.Add(path);
             if(visited_spot.Contains(9)){
                 owl_poses.Add(cur_pos);
             }
@@ -322,17 +380,21 @@ public class board : MonoBehaviour
                 if(white_owl_edges[cur_pos,i] == 1){
                     if(!visited_spot.Contains(i)){
                         visited_spot.Add(i);
-                        white_owl_helper(i,step - 1, visited_spot);
+                        path.Add(i);
+                        white_owl_helper(i,step - 1, visited_spot,path);
                         visited_spot.Remove(i);
+                        path.RemoveAt(path.Count - 1);
+
                     }
                 }
             }
         }
     }
 
-    void black_owl_helper(int cur_pos, int  step, HashSet<int> visited_spot){
+    void black_owl_helper(int cur_pos, int  step, HashSet<int> visited_spot, List<int> path){
         if(step < 1){
             final_poses.Add(cur_pos);
+            final_paths.Add(path);
             if(visited_spot.Contains(9)){
                 owl_poses.Add(cur_pos);
             }
@@ -348,8 +410,10 @@ public class board : MonoBehaviour
                 if(black_owl_edges[cur_pos,i] == 1){
                     if(!visited_spot.Contains(i)){
                         visited_spot.Add(i);
-                        black_owl_helper(i,step - 1, visited_spot);
+                        path.Add(i);
+                        black_owl_helper(i,step - 1, visited_spot,path);
                         visited_spot.Remove(i);
+                        path.RemoveAt(path.Count - 1);
                     }
                 }
             }
