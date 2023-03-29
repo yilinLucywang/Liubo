@@ -205,10 +205,12 @@ public class board : MonoBehaviour
                 owl_poses.Clear();
                 HashSet<int> visited_spot = new HashSet<int>();
                 visited_spot.Add(0);
-                normal_helper(0,step,visited_spot,CreateList(0));
+                List<int> p_1 = CreateList(0);
+                normal_helper(0,step,visited_spot,p_1);
                 visited_spot.Clear();
                 visited_spot.Add(11);
-                normal_helper(11,step,visited_spot,CreateList(11));
+                List<int> p_2 = CreateList(11);
+                normal_helper(11,step,visited_spot,p_2);
                 Debug.Log("Is this right?");
                 Debug.Log(final_paths.Count);
                 for(int k = 0; k < final_paths.Count; k++){
@@ -331,8 +333,14 @@ public class board : MonoBehaviour
         if(step < 1){
             final_poses.Add(cur_pos);
             //path.Add(cur_pos);
-            final_paths.Add(path_1);
+            List<int> path_2 = new List<int>();
+            for(int i = 0; i < path_1.Count; i++){
+                int val = path_1[i];
+                path_2.Add(val);
+            }
+            final_paths.Add(path_2);
             Debug.Log("hi");
+            Debug.Log(final_paths.Count);
             for(int k = 0; k < final_paths.Count; k++){
                 string pathString = "";
                 for(int j = 0; j < final_paths[k].Count; j++){
@@ -340,6 +348,7 @@ public class board : MonoBehaviour
                 }
                 Debug.Log(pathString);
             }
+            Debug.Log("end");
             if(visited_spot.Contains(9)){
                 owl_poses.Add(cur_pos);
             }
