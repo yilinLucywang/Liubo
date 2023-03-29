@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 75677614}
   - component: {fileID: 75677616}
   - component: {fileID: 75677615}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: owl nest (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,12 +548,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -741,6 +741,7 @@ MonoBehaviour:
   player1Score: {fileID: 1802622446}
   player2Score: {fileID: 375745112}
   BlackImage: {fileID: 959155422}
+  showCharacter: {fileID: 1409663168}
 --- !u!114 &153840374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,6 +825,7 @@ MonoBehaviour:
   is_black_chosen: 1
   chosen_piece: -1
   openLimit: 1
+  isCharacterOn: 0
   valid_sign: {fileID: 727620669}
   canvas: {fileID: 153840371}
   white_pieces:
@@ -951,7 +953,7 @@ GameObject:
   - component: {fileID: 163023962}
   - component: {fileID: 163023964}
   - component: {fileID: 163023963}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: hollow (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1006,12 +1008,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -1491,7 +1493,7 @@ GameObject:
   - component: {fileID: 232890370}
   - component: {fileID: 232890372}
   - component: {fileID: 232890371}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: garden wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1544,12 +1546,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -1879,6 +1881,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1554561326303886056, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554561326303886056, guid: bae781a92bb37ec42b7249f2adaf6d0f,
+        type: 3}
       propertyPath: m_TagString
       value: Normal
       objectReference: {fileID: 0}
@@ -2199,7 +2206,7 @@ GameObject:
   - component: {fileID: 322512294}
   - component: {fileID: 322512296}
   - component: {fileID: 322512295}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: hollow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2254,12 +2261,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -2544,7 +2551,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382842701}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.237, y: 0.027799994, z: 0.1227}
+  m_LocalPosition: {x: -2.886, y: 0.027799994, z: 0.1227}
   m_LocalScale: {x: 8.134869, y: 8.134869, z: 8.134869}
   m_Children:
   - {fileID: 1170338293}
@@ -2876,7 +2883,7 @@ GameObject:
   - component: {fileID: 436942301}
   - component: {fileID: 436942303}
   - component: {fileID: 436942302}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: woodshed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2929,12 +2936,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -3068,7 +3075,7 @@ GameObject:
   - component: {fileID: 455004898}
   - component: {fileID: 455004900}
   - component: {fileID: 455004899}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: stone path (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3121,12 +3128,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -3492,7 +3499,7 @@ GameObject:
   - component: {fileID: 534681499}
   - component: {fileID: 534681501}
   - component: {fileID: 534681500}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: woodshed (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3545,12 +3552,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -3755,7 +3762,7 @@ GameObject:
   - component: {fileID: 557498550}
   - component: {fileID: 557498552}
   - component: {fileID: 557498551}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: owl nest (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3810,12 +3817,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -3994,6 +4001,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554561326303886056, guid: bae781a92bb37ec42b7249f2adaf6d0f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1554561326303886056, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
@@ -4178,7 +4190,7 @@ GameObject:
   - component: {fileID: 592173770}
   - component: {fileID: 592173772}
   - component: {fileID: 592173771}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: felled tree (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4231,12 +4243,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -4271,7 +4283,7 @@ GameObject:
   - component: {fileID: 598192155}
   - component: {fileID: 598192157}
   - component: {fileID: 598192156}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: branch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4324,12 +4336,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -4475,7 +4487,7 @@ GameObject:
   - component: {fileID: 628353562}
   - component: {fileID: 628353564}
   - component: {fileID: 628353563}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: garden wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4528,12 +4540,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -4641,6 +4653,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 153840375}
         m_MethodName: ShowBoardCharacter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 153840373}
+        m_MethodName: ChangeCharacterButText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4773,6 +4796,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1554561326303886056, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554561326303886056, guid: bae781a92bb37ec42b7249f2adaf6d0f,
+        type: 3}
       propertyPath: m_TagString
       value: Normal
       objectReference: {fileID: 0}
@@ -4871,7 +4899,7 @@ GameObject:
   - component: {fileID: 773139227}
   - component: {fileID: 773139229}
   - component: {fileID: 773139228}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: garden wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4924,12 +4952,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -5313,6 +5341,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
         type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
+        type: 3}
       propertyPath: m_TagString
       value: Normal
       objectReference: {fileID: 0}
@@ -5395,6 +5428,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554561326303886056, guid: bae781a92bb37ec42b7249f2adaf6d0f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1554561326303886056, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
@@ -5606,7 +5644,7 @@ GameObject:
   - component: {fileID: 907659481}
   - component: {fileID: 907659483}
   - component: {fileID: 907659482}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: garden wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5659,12 +5697,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -5699,7 +5737,7 @@ GameObject:
   - component: {fileID: 909022768}
   - component: {fileID: 909022770}
   - component: {fileID: 909022769}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: hollow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5754,12 +5792,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -5824,7 +5862,7 @@ GameObject:
   - component: {fileID: 932027667}
   - component: {fileID: 932027669}
   - component: {fileID: 932027668}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: felled tree (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5877,12 +5915,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -6320,7 +6358,7 @@ GameObject:
   - component: {fileID: 991446729}
   - component: {fileID: 991446731}
   - component: {fileID: 991446730}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: stone path (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6373,12 +6411,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -7094,6 +7132,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
         type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
+        type: 3}
       propertyPath: m_TagString
       value: Normal
       objectReference: {fileID: 0}
@@ -7175,6 +7218,11 @@ PrefabInstance:
     - target: {fileID: 1554561326303886056, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
       propertyPath: m_Name
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554561326303886056, guid: bae781a92bb37ec42b7249f2adaf6d0f,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1554561326303886056, guid: bae781a92bb37ec42b7249f2adaf6d0f,
@@ -7366,7 +7414,7 @@ GameObject:
   - component: {fileID: 1206264857}
   - component: {fileID: 1206264859}
   - component: {fileID: 1206264858}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: stone path (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7419,12 +7467,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -7836,6 +7884,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
         type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
+        type: 3}
       propertyPath: m_TagString
       value: Normal
       objectReference: {fileID: 0}
@@ -8043,7 +8096,7 @@ GameObject:
   - component: {fileID: 1334777031}
   - component: {fileID: 1334777033}
   - component: {fileID: 1334777032}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: branch (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8096,12 +8149,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -8222,7 +8275,7 @@ GameObject:
   - component: {fileID: 1379118314}
   - component: {fileID: 1379118316}
   - component: {fileID: 1379118315}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: felled tree (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8275,12 +8328,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -8448,6 +8501,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
         type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
+        type: 3}
       propertyPath: m_TagString
       value: Normal
       objectReference: {fileID: 0}
@@ -8563,7 +8621,7 @@ GameObject:
   - component: {fileID: 1407285684}
   - component: {fileID: 1407285686}
   - component: {fileID: 1407285685}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: branch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8616,12 +8674,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -8714,7 +8772,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Show character
+  m_Text: Show Characters
 --- !u!222 &1409663169
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8890,6 +8948,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554561326303886056, guid: bae781a92bb37ec42b7249f2adaf6d0f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1554561326303886056, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
@@ -9156,7 +9219,7 @@ GameObject:
   - component: {fileID: 1482380365}
   - component: {fileID: 1482380367}
   - component: {fileID: 1482380366}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: woodshed (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9209,12 +9272,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -9385,7 +9448,7 @@ GameObject:
   - component: {fileID: 1575981517}
   - component: {fileID: 1575981519}
   - component: {fileID: 1575981518}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: woodpile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9438,12 +9501,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -9491,7 +9554,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577139378}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.876, y: 0.027799994, z: 0.1227}
+  m_LocalPosition: {x: 0.499, y: 0.027799994, z: 0.1227}
   m_LocalScale: {x: 8.134869, y: 8.134869, z: 8.134869}
   m_Children:
   - {fileID: 1391523067}
@@ -9613,7 +9676,7 @@ GameObject:
   - component: {fileID: 1609897487}
   - component: {fileID: 1609897489}
   - component: {fileID: 1609897488}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: woodpile (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9666,12 +9729,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -9718,7 +9781,7 @@ GameObject:
   - component: {fileID: 1636609466}
   - component: {fileID: 1636609468}
   - component: {fileID: 1636609467}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: woodpile (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9771,12 +9834,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -9865,7 +9928,7 @@ GameObject:
   - component: {fileID: 1678411320}
   - component: {fileID: 1678411322}
   - component: {fileID: 1678411321}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: owl nest (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9920,12 +9983,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -10072,7 +10135,7 @@ GameObject:
   - component: {fileID: 1704776978}
   - component: {fileID: 1704776980}
   - component: {fileID: 1704776979}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: branch (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10125,12 +10188,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -10331,7 +10394,7 @@ GameObject:
   - component: {fileID: 1756929321}
   - component: {fileID: 1756929323}
   - component: {fileID: 1756929322}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: stone path
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10384,12 +10447,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -10736,6 +10799,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
         type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
+        type: 3}
       propertyPath: m_TagString
       value: Normal
       objectReference: {fileID: 0}
@@ -10756,7 +10824,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1832840751}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Characters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10905,7 +10973,7 @@ GameObject:
   - component: {fileID: 1901855908}
   - component: {fileID: 1901855910}
   - component: {fileID: 1901855909}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: hollow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10960,12 +11028,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -11095,7 +11163,7 @@ GameObject:
   - component: {fileID: 1921162913}
   - component: {fileID: 1921162915}
   - component: {fileID: 1921162914}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: owl nest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11150,12 +11218,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -11348,7 +11416,7 @@ GameObject:
   - component: {fileID: 1989919802}
   - component: {fileID: 1989919804}
   - component: {fileID: 1989919803}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: the pond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11401,12 +11469,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -11771,7 +11839,7 @@ GameObject:
   - component: {fileID: 2029448973}
   - component: {fileID: 2029448975}
   - component: {fileID: 2029448974}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: woodshed (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11824,12 +11892,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -11864,7 +11932,7 @@ GameObject:
   - component: {fileID: 2035366401}
   - component: {fileID: 2035366403}
   - component: {fileID: 2035366402}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: woodpile (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11917,12 +11985,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -11957,7 +12025,7 @@ GameObject:
   - component: {fileID: 2048304340}
   - component: {fileID: 2048304342}
   - component: {fileID: 2048304341}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: felled tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12010,12 +12078,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
@@ -12411,6 +12479,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
         type: 3}

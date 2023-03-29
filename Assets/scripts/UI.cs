@@ -11,6 +11,7 @@ public class UI : MonoBehaviour
     [SerializeField] private Text player1Score;
     [SerializeField] private Text player2Score;
     [SerializeField] private GameObject BlackImage;
+    [SerializeField] private Text showCharacter;
 
     void Awake()
     {
@@ -57,5 +58,16 @@ public class UI : MonoBehaviour
         }
         SceneManager.LoadScene("End");
         yield return null;
+    }
+
+    public void ChangeCharacterButText()
+    {
+        if(GetComponent<GameState>().isCharacterOn == false)
+        {
+            showCharacter.text = "Show Characters";
+        } else if(GetComponent<GameState>().isCharacterOn == true)
+        {
+            showCharacter.text = "Hide Characters";
+        }
     }
 }

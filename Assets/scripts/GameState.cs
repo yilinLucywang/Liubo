@@ -35,7 +35,7 @@ public class GameState : MonoBehaviour
     private bool isSamePiece = false;
     private bool notFirstRound = false;
     private GameObject cur_piece;
-    private bool isCharacterOn;
+    public bool isCharacterOn;
 
     //prefab to spawn
     public GameObject valid_sign;
