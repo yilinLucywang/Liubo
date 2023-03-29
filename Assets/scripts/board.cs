@@ -175,6 +175,11 @@ public class board : MonoBehaviour
         return min_index;
     }
 
+    List<T> CreateList<T>(params T[] values)
+    {
+        return new List<T>(values);
+    }
+
     public List<Vector3> move(bool is_white, int piece_index, int step){
         final_paths.Clear();
         if(step < 1){
@@ -200,21 +205,18 @@ public class board : MonoBehaviour
                 owl_poses.Clear();
                 HashSet<int> visited_spot = new HashSet<int>();
                 visited_spot.Add(0);
-                path.Clear();
-                path.Add(0);
-                normal_helper(0,step,visited_spot,path);
+                normal_helper(0,step,visited_spot,CreateList(0));
                 visited_spot.Clear();
                 visited_spot.Add(11);
-                path.Clear();
-                path.Add(11);
-                normal_helper(11,step,visited_spot,path);
+                normal_helper(11,step,visited_spot,CreateList(11));
                 Debug.Log("Is this right?");
-                        for(int k = 0; k < final_paths.Count; k++){
-            string pathString = "";
-            for(int j = 0; j < final_paths[k].Count; j++){
-                pathString += final_paths[k][j].ToString();
-            }
-            Debug.Log(pathString);
+                Debug.Log(final_paths.Count);
+                for(int k = 0; k < final_paths.Count; k++){
+                    string pathString = "";
+                    for(int j = 0; j < final_paths[k].Count; j++){
+                        pathString += final_paths[k][j].ToString();
+                }
+                Debug.Log(pathString);
         }
             }else{
                 //30,23
@@ -325,11 +327,11 @@ public class board : MonoBehaviour
         return final_paths;
     }
 
-    void normal_helper(int cur_pos, int step, HashSet<int> visited_spot, List<int> path){
+    void normal_helper(int cur_pos, int step, HashSet<int> visited_spot, List<int> path_1){
         if(step < 1){
             final_poses.Add(cur_pos);
             //path.Add(cur_pos);
-            final_paths.Add(path);
+            final_paths.Add(path_1);
             Debug.Log("hi");
             for(int k = 0; k < final_paths.Count; k++){
                 string pathString = "";
@@ -351,10 +353,10 @@ public class board : MonoBehaviour
                 if(normal_edges[cur_pos,i] == 1){
                     if(!visited_spot.Contains(i)){
                         visited_spot.Add(i);
-                        path.Add(i);
-                        normal_helper(i,step - 1,visited_spot,path);
+                        path_1.Add(i);
+                        normal_helper(i,step - 1,visited_spot,path_1);
                         visited_spot.Remove(i);
-                        path.RemoveAt(path.Count - 1);
+                        path_1.RemoveAt(path_1.Count - 1);
                     }
                 }
             }
