@@ -211,15 +211,6 @@ public class board : MonoBehaviour
                 visited_spot.Add(11);
                 List<int> p_2 = CreateList(11);
                 normal_helper(11,step,visited_spot,p_2);
-                Debug.Log("Is this right?");
-                Debug.Log(final_paths.Count);
-                for(int k = 0; k < final_paths.Count; k++){
-                    string pathString = "";
-                    for(int j = 0; j < final_paths[k].Count; j++){
-                        pathString += final_paths[k][j].ToString();
-                }
-                Debug.Log(pathString);
-        }
             }else{
                 //30,23
                 //no way for this case to be owl
@@ -339,16 +330,16 @@ public class board : MonoBehaviour
                 path_2.Add(val);
             }
             final_paths.Add(path_2);
-            Debug.Log("hi");
-            Debug.Log(final_paths.Count);
-            for(int k = 0; k < final_paths.Count; k++){
-                string pathString = "";
-                for(int j = 0; j < final_paths[k].Count; j++){
-                    pathString += final_paths[k][j].ToString();
-                }
-                Debug.Log(pathString);
-            }
-            Debug.Log("end");
+            // Debug.Log("hi");
+            // Debug.Log(final_paths.Count);
+            // for(int k = 0; k < final_paths.Count; k++){
+            //     string pathString = "";
+            //     for(int j = 0; j < final_paths[k].Count; j++){
+            //         pathString += final_paths[k][j].ToString();
+            //     }
+            //     Debug.Log(pathString);
+            // }
+            // Debug.Log("end");
             if(visited_spot.Contains(9)){
                 owl_poses.Add(cur_pos);
             }
@@ -375,7 +366,12 @@ public class board : MonoBehaviour
     void white_owl_helper(int cur_pos, int  step, HashSet<int> visited_spot, List<int> path){
         if(step < 1){
             final_poses.Add(cur_pos);
-            final_paths.Add(path);
+            List<int> path_2 = new List<int>();
+            for(int i = 0; i < path.Count; i++){
+                int val = path[i];
+                path_2.Add(val);
+            }
+            final_paths.Add(path_2);
             if(visited_spot.Contains(9)){
                 owl_poses.Add(cur_pos);
             }
@@ -405,7 +401,12 @@ public class board : MonoBehaviour
     void black_owl_helper(int cur_pos, int  step, HashSet<int> visited_spot, List<int> path){
         if(step < 1){
             final_poses.Add(cur_pos);
-            final_paths.Add(path);
+            List<int> path_2 = new List<int>();
+            for(int i = 0; i < path.Count; i++){
+                int val = path[i];
+                path_2.Add(val);
+            }
+            final_paths.Add(path_2);
             if(visited_spot.Contains(9)){
                 owl_poses.Add(cur_pos);
             }

@@ -310,6 +310,18 @@ public class GameState : MonoBehaviour
             chosen_piece = chosen_piece - 6;
         }
         List<Vector3> res_list = bd.move(is_white, chosen_piece, cur_step);
+
+        Debug.Log("hi");
+        Debug.Log(bd.final_paths.Count);
+        for(int k = 0; k < bd.final_paths.Count; k++){
+            string pathString = "";
+            for(int j = 0; j < bd.final_paths[k].Count; j++){
+                pathString += bd.final_paths[k][j].ToString();
+            }
+            Debug.Log(pathString);
+        }
+        Debug.Log("end");
+
         for (int i = 0; i < res_list.Count; i++)
         {
             Vector3 pos = res_list[i];
