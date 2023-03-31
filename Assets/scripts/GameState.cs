@@ -77,7 +77,7 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isCharacterOn = false;
+        isCharacterOn = true;
         if(is_p1_turn == true)
         {
             whiteTurn.GetComponentInChildren<Text>().text = gameData.playername1 + "'s Turn";

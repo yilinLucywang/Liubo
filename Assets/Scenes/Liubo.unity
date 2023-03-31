@@ -828,7 +828,7 @@ MonoBehaviour:
   is_black_chosen: 1
   chosen_piece: -1
   openLimit: 1
-  isCharacterOn: 0
+  isCharacterOn: 1
   valid_sign: {fileID: 727620669}
   canvas: {fileID: 153840371}
   white_pieces:
@@ -11262,7 +11262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1832840751
 Transform:
   m_ObjectHideFlags: 0
