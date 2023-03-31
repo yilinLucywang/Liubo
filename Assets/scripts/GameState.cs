@@ -10,6 +10,7 @@ public class GameState : MonoBehaviour
 {
     //Set this to true for the 3D scene, will use Vector3s instead of Vector2s
     [SerializeField] GameObject LiuboBoard;
+    public AudioSource ac;
     public bool Is3DGame = false;
 
     public bool is_p1_turn = true;
@@ -165,6 +166,7 @@ public class GameState : MonoBehaviour
     {
         // int num_1 = RollSticks();
         // int num_2 = RollSticks();
+        ac.Play();
         var (num_1, num_2) = StickRoller.GetInstance().RollSticks();
         
         num_1_text.text = "Move 1: " + num_1.ToString(); 
@@ -174,10 +176,10 @@ public class GameState : MonoBehaviour
 
         if (openLimit == true)
         {
+            StopCoroutine(WaitForClickBtn());
             StartCoroutine(WaitForClickBtn());
 
             rollDicebtn.GetComponent<Button>().interactable = false;
-            StopCoroutine(WaitForClickBtn());
         }
 
     }
