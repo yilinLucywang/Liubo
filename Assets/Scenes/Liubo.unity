@@ -5319,7 +5319,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Dice2: '
+  m_Text: 'Move 2: '
 --- !u!222 &846062074
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6354,7 +6354,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Roll Dice
+  m_Text: 'Roll Sticks
 
 '
 --- !u!222 &949242623
@@ -9487,7 +9487,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Dice1: '
+  m_Text: 'Move 1: '
 --- !u!1 &1482380364
 GameObject:
   m_ObjectHideFlags: 0
