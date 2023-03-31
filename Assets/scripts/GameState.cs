@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -453,6 +455,11 @@ public class GameState : MonoBehaviour
 
     public void MovePiece(Vector3 position)
     {
+        StartCoroutine(MovePieceCoroutine(position));
+    }
+
+    private IEnumerator MovePieceCoroutine(Vector3 position)
+    {
         notFirstRound = true;
         blockade = false;
         //call script form score
@@ -511,6 +518,10 @@ public class GameState : MonoBehaviour
                 break;
             }
         }
+        
+        // Perform moving animation, delay all the following until the animation completes
+        yield return StartCoroutine(MovePieceAnimation(chosen_piece, cur_piece, pos_index, CurOrgIndex));
+        
         bd.nodes[pos_index].Add(chosen_piece);
         piecePlacement(pos_index,position);
 
@@ -549,6 +560,7 @@ public class GameState : MonoBehaviour
         }
 
         ////Debug.Log("count" + bd.nodes[pos_index].Count);
+        yield return null;
     }
 
     //This index is in range[0, 5]
@@ -635,4 +647,26 @@ public class GameState : MonoBehaviour
     //     }
         
     // }
+
+    IEnumerator MovePieceAnimation(int pieceIndex, GameObject piece, int destAnchor, int startingPos)
+    {
+        board bd = gameObject.GetComponent<board>();
+        var path = bd.final_paths.First(p => p[p.Count - 1] == destAnchor);
+
+        if (pieceIndex >= 6 && bd.white_pieces[pieceIndex - 6] != -1)
+        {
+            path.RemoveAt(0);
+        } 
+        else if (pieceIndex < 6 && bd.black_pieces[pieceIndex] != -1)
+        {
+            path.RemoveAt(0);
+        }
+
+        var a = path.Select(anchor => bd.anchors[bd.index_2_anchor[anchor]].transform.position).ToArray();
+        // yield return piece.transform.DOPath(a.ToArray(), 3, PathType.Linear, PathMode.Full3D).WaitForCompletion();
+        foreach (var anchorPos in a)
+        {
+            yield return piece.transform.DOMove(anchorPos, 1).WaitForCompletion();
+        }
+    }
 }

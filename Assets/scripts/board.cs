@@ -9,7 +9,7 @@ public class board : MonoBehaviour
     private static int total_poses = 37;
     private static int piece_number = 6;
     private Dictionary<int, int> anchor_2_index = new Dictionary<int, int> ();
-    private Dictionary<int, int> index_2_anchor = new Dictionary<int, int> ();
+    public Dictionary<int, int> index_2_anchor = new Dictionary<int, int> ();
     private List<int> final_poses =  new List<int>();
 
 
