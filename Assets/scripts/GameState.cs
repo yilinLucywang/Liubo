@@ -67,6 +67,8 @@ public class GameState : MonoBehaviour
     public UnityEvent OnPieceLand = new UnityEvent();
     
     private board bd;
+
+    private int pieceMoved = 0;
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
             white_poses.Add(white_pieces[i].transform.position);
@@ -170,7 +172,7 @@ public class GameState : MonoBehaviour
         dice_1 = num_1; 
         dice_2 = num_2;
 
-        if(openLimit == true)
+        if (openLimit == true)
         {
             dice1But.SetActive(true);
             dice2But.SetActive(true);
@@ -320,23 +322,27 @@ public class GameState : MonoBehaviour
         }
         List<Vector3> res_list = bd.move(is_white, chosen_piece, cur_step);
 
-        Debug.Log("hi");
-        Debug.Log(bd.final_paths.Count);
+
         for(int k = 0; k < bd.final_paths.Count; k++){
             string pathString = "";
             for(int j = 0; j < bd.final_paths[k].Count; j++){
                 pathString += bd.final_paths[k][j].ToString();
             }
-            Debug.Log(pathString);
+
         }
-        Debug.Log("end");
+
 
         for (int i = 0; i < res_list.Count; i++)
         {
             Vector3 pos = res_list[i];
+            
+            
             if (blockade == true && dice_1 == dice_2)
             {
-                if (res_list[i].x - firstTargetPos.x < 0.01f && res_list[i].z - firstTargetPos.z < 0.01f)
+                
+                //if (res_list[i].x - firstTargetPos.x < 0.01f && res_list[i].z - firstTargetPos.z < 0.01f)
+                
+                if (bd.get_anchor_index (res_list[i]) == bd.get_anchor_index(firstTargetPos))
                 {
                     res_list.RemoveAt(i);
                     for(int j = 0; j<res_list.Count; j++)
@@ -463,6 +469,7 @@ public class GameState : MonoBehaviour
     public void MovePiece(Vector3 position)
     {
         StartCoroutine(MovePieceCoroutine(position));
+
     }
 
     private IEnumerator MovePieceCoroutine(Vector3 position)
@@ -498,6 +505,7 @@ public class GameState : MonoBehaviour
             //form blockade
             blockade = true;
             firstTargetPos = position;
+            //Debug.Log("first pos" + bd.get_anchor_index(firstTargetPos));
         }
 
 
@@ -568,6 +576,15 @@ public class GameState : MonoBehaviour
 
         ////Debug.Log("count" + bd.nodes[pos_index].Count);
         OnPieceLand.Invoke();
+
+        new WaitForSeconds(2f);
+        pieceMoved++;
+        if (pieceMoved == 2)
+        {
+            NextRound();
+            pieceMoved = 0;
+        }
+
         yield return null;
     }
 
