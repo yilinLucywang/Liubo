@@ -10,20 +10,26 @@ public class JarController : MonoBehaviour
     private float preX = 0, preY = 0;
 
     public bool isMouseControlable;
+    private bool isAngleLockActive = false;
+    private HingeJoint hj;
+    private IEnumerator lockControlCountdownCoroutine;
+    
     // [SerializeField] private Rigidbody childRigidbody;
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
         isMouseControlable = true;
-        
-        
+        hj = GetComponent<HingeJoint>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         if (!isMouseControlable) return;
+        if (hj.angle > 13) isAngleLockActive = false;
+        if (isAngleLockActive) return;
         var cons = 1f;
         
         var newX = Input.GetAxis("Mouse X");
@@ -65,6 +71,9 @@ public class JarController : MonoBehaviour
        
         preX = newX;
         preY = newY;
+
+        
+        if (hj.angle < 5) isAngleLockActive = true;
     }
 
     
