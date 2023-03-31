@@ -105,7 +105,7 @@ public class Score : MonoBehaviour
                         //Debug.Log("Black normal get white owl");
                         //RotateBackToNorm(cur_piece);
                         //remove different color piece
-
+                        changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
                         Debug.Log("line 117");
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
                         gamestate.piecePlacement(pos_index, position);
@@ -175,6 +175,7 @@ public class Score : MonoBehaviour
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl")
                     {
                         gameData.white_score += 3;
+                        changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
                         //Debug.Log("white normal get black owl");
                         //RotateBackToNorm(cur_piece);
                         //remove different color piece
