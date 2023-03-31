@@ -15,17 +15,26 @@ public class StartUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetName();
+        
     }
     [SerializeField] private TMP_InputField[] inputField;
     public GameData data;
-    public void SetName()
-    {
-        data.playername1 = inputField[0].text;
-        data.playername2 = inputField[1].text;
-    }
+
     public void StartGame()
     {
+
+
+        if (inputField[0].text == "")
+            data.playername1 = "Player1";
+        else
+            data.playername1 = inputField[0].text;
+
+        if (inputField[1].text == "")
+            data.playername2 = "Player2";
+        else
+            data.playername2 = inputField[1].text;
+
+
         SceneManager.LoadScene("Liubo");
     }
 }

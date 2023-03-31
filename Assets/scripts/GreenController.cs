@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,8 @@ public class GreenController : MonoBehaviour
 {
     public GameObject canvas;
     private GameState bd;
+    [SerializeField] private GameObject hologramPrefab;
+    private GameObject hologram;
 
     void Awake(){
         bd = canvas.GetComponent<GameState>();
@@ -22,6 +25,26 @@ public class GreenController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnMouseEnter()
+    {
+        bd.OnDestinationMouseEnter(transform.position);
+        hologram = Instantiate(hologramPrefab, transform.position, Quaternion.identity);
+    }
+
+    public void OnMouseExit()
+    {
+        bd.OnDestinationMouseExit();
+        Destroy(hologram);
+    }
+
+    private void OnDestroy()
+    {
+        if (hologram != null)
+        {
+            Destroy(hologram);
+        }
     }
 
     public void OnClick(){

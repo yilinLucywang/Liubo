@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class GameState : MonoBehaviour
 {
     //Set this to true for the 3D scene, will use Vector3s instead of Vector2s
     [SerializeField] GameObject LiuboBoard;
+    public AudioSource ac;
     public bool Is3DGame = false;
 
     public bool is_p1_turn = true;
@@ -17,6 +21,8 @@ public class GameState : MonoBehaviour
     public GameObject blackPieceBut, whitePieceBut;
     public GameObject rollDicebtn;
     public GameObject whiteTurn, blackTurn;
+    public GameData gameData;
+    public GameObject boardCharacter;
     // public GameObject stickJar;
 
     public Text num_1_text;
@@ -25,6 +31,7 @@ public class GameState : MonoBehaviour
     public bool is_black_chosen = true;
     public int chosen_piece = -1;
 
+
     public bool openLimit;
 
     private Vector3 firstTargetPos;
@@ -32,6 +39,7 @@ public class GameState : MonoBehaviour
     private bool isSamePiece = false;
     private bool notFirstRound = false;
     private GameObject cur_piece;
+    public bool isCharacterOn;
 
     //prefab to spawn
     public GameObject valid_sign;
@@ -55,6 +63,13 @@ public class GameState : MonoBehaviour
 
     private bool isFirstMoved = false, blockade = false;
 
+    public DestinationMouseEvent OnDestinationMouseEnterEvent = new DestinationMouseEvent();
+    public UnityEvent OnDestinationMouseExitEvent = new UnityEvent();
+    public UnityEvent OnPieceLand = new UnityEvent();
+    
+    private board bd;
+
+    private int pieceMoved = 0;
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
             white_poses.Add(white_pieces[i].transform.position);
@@ -65,7 +80,12 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        whiteTurn.SetActive(true);
+        isCharacterOn = true;
+        if(is_p1_turn == true)
+        {
+            whiteTurn.GetComponentInChildren<Text>().text = gameData.playername1 + "'s Turn";
+            whiteTurn.SetActive(true);
+        }
         if (openLimit == true)
         {
             //2D version
@@ -92,11 +112,26 @@ public class GameState : MonoBehaviour
             dice1But.SetActive(false);
             dice2But.SetActive(false);
         }
+        bd = GetComponent<board>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    public void ShowBoardCharacter()
+    {
+        if(isCharacterOn == false)
+        {
+            boardCharacter.SetActive(true);
+            isCharacterOn = true;
+        } else if(isCharacterOn == true)
+        {
+            boardCharacter.SetActive(false);
+            isCharacterOn = false;
+        }
         
     }
 
@@ -107,19 +142,21 @@ public class GameState : MonoBehaviour
         dice_2 = -1;
         StickRoller.GetInstance().SetActive(true);
         
-        num_1_text.text = "Dice1: "; 
-        num_2_text.text = "Dice2: ";
+        num_1_text.text = "Move 1: "; 
+        num_2_text.text = "Move 2: ";
 
         rollDicebtn.GetComponent<Button>().interactable = true;
 
         if (is_p1_turn)
         {
-            whiteTurn.SetActive(true);
             blackTurn.SetActive(false);
+            whiteTurn.GetComponentInChildren<Text>().text = gameData.playername1 + "'s Turn";
+            whiteTurn.SetActive(true);
         }
         if (!is_p1_turn)
         {
             whiteTurn.SetActive(false);
+            blackTurn.GetComponentInChildren<Text>().text = gameData.playername2 + "'s Turn";
             blackTurn.SetActive(true);
         }
         firstOrigPos = -10;
@@ -129,23 +166,30 @@ public class GameState : MonoBehaviour
     {
         // int num_1 = RollSticks();
         // int num_2 = RollSticks();
+        ac.Play();
         var (num_1, num_2) = StickRoller.GetInstance().RollSticks();
         
-        num_1_text.text = "Dice1: " + num_1.ToString(); 
-        num_2_text.text = "Dice2: " + num_2.ToString();
+        num_1_text.text = "Move 1: " + num_1.ToString(); 
+        num_2_text.text = "Move 2: " + num_2.ToString();
         dice_1 = num_1; 
         dice_2 = num_2;
 
-        if(openLimit == true)
+        if (openLimit == true)
         {
-            dice1But.SetActive(true);
-            dice2But.SetActive(true);
+            StopCoroutine(WaitForClickBtn());
+            StartCoroutine(WaitForClickBtn());
 
             rollDicebtn.GetComponent<Button>().interactable = false;
         }
 
     }
 
+    IEnumerator WaitForClickBtn()
+    {
+        yield return new WaitForSeconds(2f);
+        dice1But.SetActive(true);
+        dice2But.SetActive(true);
+    }
     /// <summary>
     /// Random number generator that returns a number between 1-4
     /// Uses the same probabilties as the sticks (3/8 chance of 1, 3/8 chance of 2, 1/8 chance of  3, 1/8 chance of 4)
@@ -285,12 +329,28 @@ public class GameState : MonoBehaviour
             chosen_piece = chosen_piece - 6;
         }
         List<Vector3> res_list = bd.move(is_white, chosen_piece, cur_step);
+
+
+        for(int k = 0; k < bd.final_paths.Count; k++){
+            string pathString = "";
+            for(int j = 0; j < bd.final_paths[k].Count; j++){
+                pathString += bd.final_paths[k][j].ToString();
+            }
+
+        }
+
+
         for (int i = 0; i < res_list.Count; i++)
         {
             Vector3 pos = res_list[i];
+            
+            
             if (blockade == true && dice_1 == dice_2)
             {
-                if (res_list[i].x - firstTargetPos.x < 0.01f && res_list[i].z - firstTargetPos.z < 0.01f)
+                
+                //if (res_list[i].x - firstTargetPos.x < 0.01f && res_list[i].z - firstTargetPos.z < 0.01f)
+                
+                if (bd.get_anchor_index (res_list[i]) == bd.get_anchor_index(firstTargetPos))
                 {
                     res_list.RemoveAt(i);
                     for(int j = 0; j<res_list.Count; j++)
@@ -416,6 +476,12 @@ public class GameState : MonoBehaviour
 
     public void MovePiece(Vector3 position)
     {
+        StartCoroutine(MovePieceCoroutine(position));
+
+    }
+
+    private IEnumerator MovePieceCoroutine(Vector3 position)
+    {
         notFirstRound = true;
         blockade = false;
         //call script form score
@@ -447,6 +513,7 @@ public class GameState : MonoBehaviour
             //form blockade
             blockade = true;
             firstTargetPos = position;
+            //Debug.Log("first pos" + bd.get_anchor_index(firstTargetPos));
         }
 
 
@@ -474,6 +541,10 @@ public class GameState : MonoBehaviour
                 break;
             }
         }
+        
+        // Perform moving animation, delay all the following until the animation completes
+        yield return StartCoroutine(MovePieceAnimation(chosen_piece, cur_piece, pos_index, CurOrgIndex));
+        
         bd.nodes[pos_index].Add(chosen_piece);
         piecePlacement(pos_index,position);
 
@@ -512,6 +583,17 @@ public class GameState : MonoBehaviour
         }
 
         ////Debug.Log("count" + bd.nodes[pos_index].Count);
+        OnPieceLand.Invoke();
+
+        new WaitForSeconds(2f);
+        pieceMoved++;
+        if (pieceMoved == 2)
+        {
+            NextRound();
+            pieceMoved = 0;
+        }
+
+        yield return null;
     }
 
     //This index is in range[0, 5]
@@ -598,4 +680,43 @@ public class GameState : MonoBehaviour
     //     }
         
     // }
+
+    IEnumerator MovePieceAnimation(int pieceIndex, GameObject piece, int destAnchor, int startingPos)
+    {
+        board bd = gameObject.GetComponent<board>();
+        var path = bd.final_paths.First(p => p[p.Count - 1] == destAnchor);
+
+        if (pieceIndex >= 6 && bd.white_pieces[pieceIndex - 6] != -1)
+        {
+            path.RemoveAt(0);
+        } 
+        else if (pieceIndex < 6 && bd.black_pieces[pieceIndex] != -1)
+        {
+            path.RemoveAt(0);
+        }
+
+        var a = path.Select(anchor => bd.anchors[bd.index_2_anchor[anchor]].transform.position).ToArray();
+        // yield return piece.transform.DOPath(a.ToArray(), 3, PathType.Linear, PathMode.Full3D).WaitForCompletion();
+        foreach (var anchorPos in a)
+        {
+            yield return piece.transform.DOMove(anchorPos, 1).WaitForCompletion();
+        }
+    }
+
+    public void OnDestinationMouseEnter(Vector3 DestPos)
+    {
+        var destAnchor = bd.get_anchor_index(DestPos);
+        var path = bd.final_paths.First(p => p[p.Count - 1] == destAnchor);
+        OnDestinationMouseEnterEvent.Invoke(path);
+    }
+    
+    public void OnDestinationMouseExit()
+    {
+        OnDestinationMouseExitEvent.Invoke();
+    }
+}
+
+public class DestinationMouseEvent : UnityEvent<List<int>>
+{
+    
 }
