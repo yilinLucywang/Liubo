@@ -12,6 +12,11 @@ public class UI : MonoBehaviour
     [SerializeField] private Text player2Score;
     [SerializeField] private GameObject BlackImage;
     [SerializeField] private Text showCharacter;
+    [SerializeField] private GameObject HintImage;
+    [SerializeField] private Button HintButton;
+    [SerializeField] private Text hintButtonText;
+
+    private bool isHintOn = false;
 
     void Awake()
     {
@@ -23,23 +28,28 @@ public class UI : MonoBehaviour
         player1Score.text = gameData.playername1 + " Score: " + gameData.white_score.ToString();
         player2Score.text = gameData.playername2 + " Score: " + gameData.black_score.ToString();
 
-       
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //Close hint on any click
+        if (isHintOn && Input.GetMouseButtonDown(0))
+        {
+            ToggleHintOff();
+        }
     }
 
-    public void ChangeScore() {
-        
+    public void ChangeScore()
+    {
+
         player1Score.text = gameData.playername1 + " Score: " + gameData.white_score.ToString();
         player2Score.text = gameData.playername2 + " Score: " + gameData.black_score.ToString();
-        
-        
-        
+
+
+
         if (gameData.white_score == 6 || gameData.black_score == 6)
         {
             BlackImage.SetActive(true);
@@ -54,7 +64,7 @@ public class UI : MonoBehaviour
         {
             alphaColor += Time.deltaTime;
             BlackImage.GetComponent<CanvasGroup>().alpha = alphaColor;
-            yield return new WaitForSeconds(Time.deltaTime*0.001f);
+            yield return new WaitForSeconds(Time.deltaTime * 0.001f);
         }
         SceneManager.LoadScene("End");
         yield return null;
@@ -62,12 +72,35 @@ public class UI : MonoBehaviour
 
     public void ChangeCharacterButText()
     {
-        if(GetComponent<GameState>().isCharacterOn == false)
+        if (GetComponent<GameState>().isCharacterOn == false)
         {
             showCharacter.text = "Show Characters";
-        } else if(GetComponent<GameState>().isCharacterOn == true)
+        }
+        else if (GetComponent<GameState>().isCharacterOn == true)
         {
             showCharacter.text = "Hide Characters";
         }
     }
+
+    //Triggered by clicking hint button on UI
+    public void ToggleHintOn()
+    {
+        if(!isHintOn)
+        {
+            HintImage.SetActive(true);
+            isHintOn = true;
+            hintButtonText.text = "Hide Rules Hint";
+            HintButton.enabled = false;
+        }
+    }
+
+    //Triggered by any click while hint is on
+    public void ToggleHintOff()
+    {
+        HintImage.SetActive(false);
+        isHintOn = false;
+        hintButtonText.text = "Show Rules Hint";
+        HintButton.enabled = true;
+    }
+
 }
