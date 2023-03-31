@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7095,9 +7095,9 @@ HingeJoint:
   m_ConnectedAnchor: {x: -0.2168525, y: 0.70674443, z: 0.016019577}
   m_UseSpring: 1
   m_Spring:
-    spring: 13.8
+    spring: 100
     damper: 1.57
-    targetPosition: 0
+    targetPosition: 30
   m_UseMotor: 0
   m_Motor:
     targetVelocity: 0
