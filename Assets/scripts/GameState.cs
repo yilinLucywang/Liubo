@@ -174,14 +174,20 @@ public class GameState : MonoBehaviour
 
         if (openLimit == true)
         {
-            dice1But.SetActive(true);
-            dice2But.SetActive(true);
+            StartCoroutine(WaitForClickBtn());
 
             rollDicebtn.GetComponent<Button>().interactable = false;
+            StopCoroutine(WaitForClickBtn());
         }
 
     }
 
+    IEnumerator WaitForClickBtn()
+    {
+        yield return new WaitForSeconds(2f);
+        dice1But.SetActive(true);
+        dice2But.SetActive(true);
+    }
     /// <summary>
     /// Random number generator that returns a number between 1-4
     /// Uses the same probabilties as the sticks (3/8 chance of 1, 3/8 chance of 2, 1/8 chance of  3, 1/8 chance of 4)
