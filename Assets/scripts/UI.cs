@@ -89,7 +89,7 @@ public class UI : MonoBehaviour
         {
             HintImage.SetActive(true);
             isHintOn = true;
-            hintButtonText.text = "Hide Rules Hint";
+            hintButtonText.text = "Hide How to Capture";
             HintButton.enabled = false;
         }
     }
@@ -99,7 +99,7 @@ public class UI : MonoBehaviour
     {
         HintImage.SetActive(false);
         isHintOn = false;
-        hintButtonText.text = "Show Rules Hint";
+        hintButtonText.text = "Show How to Capture";
         HintButton.enabled = true;
     }
 
