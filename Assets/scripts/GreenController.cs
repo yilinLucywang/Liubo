@@ -29,11 +29,13 @@ public class GreenController : MonoBehaviour
 
     public void OnMouseEnter()
     {
+        bd.OnDestinationMouseEnter(transform.position);
         hologram = Instantiate(hologramPrefab, transform.position, Quaternion.identity);
     }
 
     public void OnMouseExit()
     {
+        bd.OnDestinationMouseExit();
         Destroy(hologram);
     }
 

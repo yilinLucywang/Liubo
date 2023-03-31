@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class GameState : MonoBehaviour
@@ -61,6 +62,11 @@ public class GameState : MonoBehaviour
 
     private bool isFirstMoved = false, blockade = false;
 
+    public DestinationMouseEvent OnDestinationMouseEnterEvent = new DestinationMouseEvent();
+    public UnityEvent OnDestinationMouseExitEvent = new UnityEvent();
+    public UnityEvent OnPieceLand = new UnityEvent();
+    
+    private board bd;
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
             white_poses.Add(white_pieces[i].transform.position);
@@ -103,6 +109,7 @@ public class GameState : MonoBehaviour
             dice1But.SetActive(false);
             dice2But.SetActive(false);
         }
+        bd = GetComponent<board>();
     }
 
     // Update is called once per frame
@@ -560,6 +567,7 @@ public class GameState : MonoBehaviour
         }
 
         ////Debug.Log("count" + bd.nodes[pos_index].Count);
+        OnPieceLand.Invoke();
         yield return null;
     }
 
@@ -669,4 +677,21 @@ public class GameState : MonoBehaviour
             yield return piece.transform.DOMove(anchorPos, 1).WaitForCompletion();
         }
     }
+
+    public void OnDestinationMouseEnter(Vector3 DestPos)
+    {
+        var destAnchor = bd.get_anchor_index(DestPos);
+        var path = bd.final_paths.First(p => p[p.Count - 1] == destAnchor);
+        OnDestinationMouseEnterEvent.Invoke(path);
+    }
+    
+    public void OnDestinationMouseExit()
+    {
+        OnDestinationMouseExitEvent.Invoke();
+    }
+}
+
+public class DestinationMouseEvent : UnityEvent<List<int>>
+{
+    
 }
