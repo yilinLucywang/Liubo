@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43851432, g: 0.48661202, b: 0.5668865, a: 1}
+  m_IndirectSpecularColor: {r: 0.4423893, g: 0.49144578, b: 0.57130927, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5319,7 +5319,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Dice2: '
+  m_Text: 'Move 2: '
 --- !u!222 &846062074
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6354,7 +6354,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Roll Dice
+  m_Text: 'Roll Sticks
 
 '
 --- !u!222 &949242623
@@ -9487,7 +9487,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Dice1: '
+  m_Text: 'Move 1: '
 --- !u!1 &1482380364
 GameObject:
   m_ObjectHideFlags: 0
@@ -12104,7 +12104,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.1
+  m_Intensity: 1.8
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -12160,13 +12160,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2013718534}
-  m_LocalRotation: {x: 0.3822226, y: -0.5315161, z: 0.69643193, w: 0.2939035}
+  m_LocalRotation: {x: -0.677082, y: 0.48912224, z: -0.43493375, w: -0.33638072}
   m_LocalPosition: {x: 1.1, y: 1.62, z: 0.2872779}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 105.203, y: -122.991, z: -0.6669922}
+  m_LocalEulerAnglesHint: {x: 118.23801, y: -33.320984, z: 411.395}
 --- !u!1 &2023354143
 GameObject:
   m_ObjectHideFlags: 0
