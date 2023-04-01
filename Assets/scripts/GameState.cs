@@ -142,8 +142,8 @@ public class GameState : MonoBehaviour
         dice_2 = -1;
         StickRoller.GetInstance().SetActive(true);
         
-        num_1_text.text = "Move 1: "; 
-        num_2_text.text = "Move 2: ";
+        num_1_text.text = ""; 
+        num_2_text.text = "";
 
         rollDicebtn.GetComponent<Button>().interactable = true;
 
@@ -169,8 +169,8 @@ public class GameState : MonoBehaviour
         ac.Play();
         var (num_1, num_2) = StickRoller.GetInstance().RollSticks();
         
-        num_1_text.text = "Move 1: " + num_1.ToString(); 
-        num_2_text.text = "Move 2: " + num_2.ToString();
+        num_1_text.text = num_1.ToString(); 
+        num_2_text.text = num_2.ToString();
         dice_1 = num_1; 
         dice_2 = num_2;
 
