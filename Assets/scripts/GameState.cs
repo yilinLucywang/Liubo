@@ -17,7 +17,7 @@ public class GameState : MonoBehaviour
     public int dice_1 = -1; 
     public int dice_2 = -1;
 
-    public GameObject dice1But, dice2But;
+    public GameObject dice1But, dice2But, dice1But2, dice2But2;
     public GameObject blackPieceBut, whitePieceBut;
     public GameObject rollDicebtn;
     public GameObject whiteTurn, blackTurn;
@@ -25,8 +25,7 @@ public class GameState : MonoBehaviour
     public GameObject boardCharacter;
     // public GameObject stickJar;
 
-    public Text num_1_text;
-    public Text num_2_text;  
+    public Text num_1_text, num_2_text, num_1_text2, num_2_text2;  
 
     public bool is_black_chosen = true;
     public int chosen_piece = -1;
@@ -111,6 +110,8 @@ public class GameState : MonoBehaviour
         {
             dice1But.SetActive(false);
             dice2But.SetActive(false);
+            dice1But2.SetActive(false);
+            dice2But2.SetActive(false);
         }
         bd = GetComponent<board>();
     }
@@ -145,6 +146,9 @@ public class GameState : MonoBehaviour
         num_1_text.text = ""; 
         num_2_text.text = "";
 
+        num_1_text2.text = "";
+        num_2_text2.text = "";
+
         rollDicebtn.GetComponent<Button>().interactable = true;
 
         if (is_p1_turn)
@@ -171,6 +175,9 @@ public class GameState : MonoBehaviour
         
         num_1_text.text = num_1.ToString(); 
         num_2_text.text = num_2.ToString();
+        num_1_text2.text = num_1.ToString();
+        num_2_text2.text = num_2.ToString();
+
         dice_1 = num_1; 
         dice_2 = num_2;
 
@@ -187,8 +194,16 @@ public class GameState : MonoBehaviour
     IEnumerator WaitForClickBtn()
     {
         yield return new WaitForSeconds(2f);
-        dice1But.SetActive(true);
-        dice2But.SetActive(true);
+        if (is_p1_turn)
+        {
+            dice1But.SetActive(true);
+            dice2But.SetActive(true);
+        }
+        else
+        {
+            dice1But2.SetActive(true);
+            dice2But2.SetActive(true);
+        }
     }
     /// <summary>
     /// Random number generator that returns a number between 1-4
@@ -226,6 +241,8 @@ public class GameState : MonoBehaviour
         {
             dice1But.SetActive(false);
             dice2But.GetComponent<Button>().interactable = false;
+            dice1But2.SetActive(false);
+            dice2But2.GetComponent<Button>().interactable = false;
         }
 
         if (is_p1_turn && openLimit == true)
@@ -271,6 +288,8 @@ public class GameState : MonoBehaviour
         {
             dice2But.SetActive(false);
             dice1But.GetComponent<Button>().interactable = false;
+            dice2But2.SetActive(false);
+            dice1But2.GetComponent<Button>().interactable = false;
         }
 
         if (is_p1_turn && openLimit == true)
@@ -583,6 +602,8 @@ public class GameState : MonoBehaviour
         {
             dice2But.GetComponent<Button>().interactable = true;
             dice1But.GetComponent<Button>().interactable = true;
+            dice2But2.GetComponent<Button>().interactable = true;
+            dice1But2.GetComponent<Button>().interactable = true;
         }
 
         ////Debug.Log("count" + bd.nodes[pos_index].Count);

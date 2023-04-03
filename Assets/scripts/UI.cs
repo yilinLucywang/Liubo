@@ -25,8 +25,8 @@ public class UI : MonoBehaviour
     {
         gameData.white_score = 0;
         gameData.black_score = 0;
-        player1Score.text = gameData.playername1 + " Score: " + gameData.white_score.ToString();
-        player2Score.text = gameData.playername2 + " Score: " + gameData.black_score.ToString();
+        player1Score.text = gameData.playername1 + "  \n\t " + gameData.white_score.ToString();
+        player2Score.text = gameData.playername2 + "  \n\t  " + gameData.black_score.ToString();
 
         showCharacter.text = "Hide Characters";
 
@@ -48,7 +48,7 @@ public class UI : MonoBehaviour
         //player1Score.text = gameData.playername1 + " Score: " + gameData.white_score.ToString();
         //player2Score.text = gameData.playername2 + " Score: " + gameData.black_score.ToString();
         player1Score.text = gameData.playername1 + " \n\t " + gameData.white_score.ToString();
-        player2Score.text = gameData.playername2 + " Score: " + gameData.black_score.ToString();
+        player2Score.text = gameData.playername2 + "  \n\t " + gameData.black_score.ToString();
 
 
         if (gameData.white_score >= 6 || gameData.black_score >= 6)
