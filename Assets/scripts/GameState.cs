@@ -12,6 +12,7 @@ public class GameState : MonoBehaviour
     [SerializeField] GameObject LiuboBoard;
     public AudioSource ac;
     public bool Is3DGame = false;
+    public Material whiteMat, blackMat;
 
     public bool is_p1_turn = true;
     public int dice_1 = -1; 
@@ -58,6 +59,9 @@ public class GameState : MonoBehaviour
 
     private List<Vector3> white_poses = new List<Vector3>();
     private List<Vector3> black_poses = new List<Vector3>();
+
+    private List<Material> whiteMaterials = new List<Material>();
+    private List<Material> blackMaterials = new List<Material>();
 
 
     public bool TwoDiceSame;
@@ -117,6 +121,9 @@ public class GameState : MonoBehaviour
             dice2But2.SetActive(false);
         }
         bd = GetComponent<board>();
+
+        whiteMaterials = whitePieceBut.GetComponentInChildren<MeshRenderer>().materials.ToList();
+        blackMaterials = blackPieceBut.GetComponentInChildren<MeshRenderer>().materials.ToList();
     }
 
     // Update is called once per frame
@@ -518,6 +525,9 @@ public class GameState : MonoBehaviour
         {
             dice2But2.SetActive(false);
         }
+
+        whiteMaterials[0] = whiteMat;
+        blackMaterials[0] = blackMat;
     }
 
     private IEnumerator MovePieceCoroutine(Vector3 position)

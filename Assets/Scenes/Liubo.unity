@@ -894,6 +894,8 @@ MonoBehaviour:
   LiuboBoard: {fileID: 910063860}
   ac: {fileID: 153840381}
   Is3DGame: 1
+  whiteMat: {fileID: 2100000, guid: e559da05aba06194cb828420113d9b18, type: 2}
+  blackMat: {fileID: 2100000, guid: 579f5cb74883d464e8a8f9b04bd2b270, type: 2}
   is_p1_turn: 1
   dice_1: -1
   dice_2: -1
