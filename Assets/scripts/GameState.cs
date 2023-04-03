@@ -12,6 +12,9 @@ public class GameState : MonoBehaviour
     [SerializeField] GameObject LiuboBoard;
     public AudioSource ac;
     public bool Is3DGame = false;
+    public bool firstMoved = false;
+
+    private bool topClicked, bottomClicked;
 
     public bool is_p1_turn = true;
     public int dice_1 = -1; 
@@ -60,7 +63,7 @@ public class GameState : MonoBehaviour
     public bool TwoDiceSame;
     public int firstOrigPos = -10, firstFinalPos;
 
-    private bool isFirstMoved = false, blockade = false;
+    private bool blockade = false;
 
     public DestinationMouseEvent OnDestinationMouseEnterEvent = new DestinationMouseEvent();
     public UnityEvent OnDestinationMouseExitEvent = new UnityEvent();
@@ -79,6 +82,8 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        topClicked = false;
+        bottomClicked = false;
         isCharacterOn = true;
         if(is_p1_turn == true)
         {
@@ -142,12 +147,16 @@ public class GameState : MonoBehaviour
         dice_1 = -1; 
         dice_2 = -1;
         StickRoller.GetInstance().SetActive(true);
-        
         num_1_text.text = ""; 
         num_2_text.text = "";
 
+<<<<<<< Updated upstream
         num_1_text2.text = "";
         num_2_text2.text = "";
+=======
+        dice1But.GetComponent<Button>().interactable = true;
+        dice2But.GetComponent<Button>().interactable = true;
+>>>>>>> Stashed changes
 
         rollDicebtn.GetComponent<Button>().interactable = true;
 
@@ -239,10 +248,15 @@ public class GameState : MonoBehaviour
         StickRoller.GetInstance().SetActive(false);
         if(openLimit == true)
         {
+<<<<<<< Updated upstream
             dice1But.SetActive(false);
             dice2But.GetComponent<Button>().interactable = false;
             dice1But2.SetActive(false);
             dice2But2.GetComponent<Button>().interactable = false;
+=======
+            topClicked = true;
+            bottomClicked = false;
+>>>>>>> Stashed changes
         }
 
         if (is_p1_turn && openLimit == true)
@@ -286,11 +300,17 @@ public class GameState : MonoBehaviour
         StickRoller.GetInstance().SetActive(false);
         if (openLimit == true)
         {
+<<<<<<< Updated upstream
             dice2But.SetActive(false);
             dice1But.GetComponent<Button>().interactable = false;
             dice2But2.SetActive(false);
             dice1But2.GetComponent<Button>().interactable = false;
         }
+=======
+            bottomClicked = true;
+            topClicked = false;
+        } 
+>>>>>>> Stashed changes
 
         if (is_p1_turn && openLimit == true)
         {
@@ -499,6 +519,15 @@ public class GameState : MonoBehaviour
     {
         StartCoroutine(MovePieceCoroutine(position));
 
+        if(topClicked == true)
+        {
+            dice1But.GetComponent<Button>().interactable = false;
+            //dice1But.SetActive(false);
+        } else if(bottomClicked == true)
+        {
+            dice2But.GetComponent<Button>().interactable = false;
+            //dice2But.SetActive(false);
+        }
     }
 
     private IEnumerator MovePieceCoroutine(Vector3 position)
@@ -600,10 +629,15 @@ public class GameState : MonoBehaviour
 
         if (openLimit == true)
         {
+<<<<<<< Updated upstream
             dice2But.GetComponent<Button>().interactable = true;
             dice1But.GetComponent<Button>().interactable = true;
             dice2But2.GetComponent<Button>().interactable = true;
             dice1But2.GetComponent<Button>().interactable = true;
+=======
+            //dice2But.GetComponent<Button>().interactable = true;
+            //dice1But.GetComponent<Button>().interactable = true;
+>>>>>>> Stashed changes
         }
 
         ////Debug.Log("count" + bd.nodes[pos_index].Count);

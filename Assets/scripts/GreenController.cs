@@ -11,9 +11,11 @@ public class GreenController : MonoBehaviour
     [SerializeField] private GameObject hologramPrefab;
     private GameObject hologram;
 
+    
+
     void Awake(){
         bd = canvas.GetComponent<GameState>();
-
+        
     }
     // Start is called before the first frame update
     void Start()
