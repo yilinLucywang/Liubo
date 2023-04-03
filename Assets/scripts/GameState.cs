@@ -385,6 +385,7 @@ public class GameState : MonoBehaviour
          22
     };
     public void piecePlacement(int pos_index, Vector3 anchor_pos){
+        //Debug.Log("388");
         board bd = gameObject.GetComponent<board>();
         bool is_two_same_spot = false;
         if (bd.nodes[pos_index].Count >= 1 && (bd.nodes[pos_index][0] != chosen_piece))
@@ -404,6 +405,7 @@ public class GameState : MonoBehaviour
     }
 
     public void piecePlacement(int pos_index, bool isOwl, bool isSecondOne, GameObject cur_piece, Vector3 anchor_pos, bool isDiff){
+        //Debug.Log("408");
         Quaternion curPieceRotation = Quaternion.Euler(0f, 0f, 0f);
         Vector3 curPieceTranslation = new Vector3(0f,0f,0f);
         bool isHorizontal = false;
@@ -551,8 +553,9 @@ public class GameState : MonoBehaviour
 
         //calculate score before add piece 
         //TODO: this is the bool indicating whether the piece should be an owl
-        
+        Debug.Log("before calc score");
         score.CalculateScore(position, chosen_piece, is_black_chosen, is_owl);
+        Debug.Log("after calc score");
         if (openLimit == true)
         {
             previousPiece = cur_piece.ToString();
@@ -593,6 +596,7 @@ public class GameState : MonoBehaviour
             pieceMoved = 0;
         }
 
+        Debug.Log("before return");
         yield return null;
     }
 

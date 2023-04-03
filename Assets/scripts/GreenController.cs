@@ -51,9 +51,13 @@ public class GreenController : MonoBehaviour
         //TODO: move current button to the position clicked
         Vector3 pos = gameObject.transform.position;
         //TODO: move piece
+        Debug.Log("before move piece");
         bd.MovePiece(pos);
+        Debug.Log("after move piece");
         //TODO: destroy all of the green spot
+        Debug.Log("before remove");
         bd.RemoveGreens();
+        Debug.Log("after remove");
 
         if (FindObjectOfType<GameState>().is_p1_turn && FindObjectOfType<GameState>().openLimit == true)
         {

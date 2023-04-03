@@ -43,6 +43,7 @@ public class Score : MonoBehaviour
         {
             cur_piece.tag = "Owl";
             Debug.Log("line 45");
+            //
             gamestate.piecePlacement(pos_index,  position);
             // cur_piece.transform.rotation = cur_piece.transform.rotation * Quaternion.Euler(0f, 0f, 90f);
             // cur_piece.transform.position += new Vector3(0f, 0.15f, 0f);
@@ -195,7 +196,9 @@ public class Score : MonoBehaviour
             }
         }
         //update UI
+        Debug.Log("before change score");
         UI.ChangeScore();
+        Debug.Log("after change score");
     }
 
 
