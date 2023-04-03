@@ -908,6 +908,8 @@ MonoBehaviour:
   blackTurn: {fileID: 980562356}
   gameData: {fileID: 11400000, guid: c2bf33fbf6d9e3a48ad89085e62bb76a, type: 2}
   boardCharacter: {fileID: 1832840750}
+  stickJar: {fileID: 552044310}
+  throwingSticks: {fileID: 1028252659}
   num_1_text: {fileID: 1476920756}
   num_2_text: {fileID: 846062073}
   num_1_text2: {fileID: 1607193593}
@@ -1729,6 +1731,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: throwing stick ver.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8fbeccbf52cb562498f62219ce91bd2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5369426616942330430, guid: 8fbeccbf52cb562498f62219ce91bd2f,
         type: 3}

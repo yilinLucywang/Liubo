@@ -23,7 +23,7 @@ public class GameState : MonoBehaviour
     public GameObject whiteTurn, blackTurn;
     public GameData gameData;
     public GameObject boardCharacter;
-    // public GameObject stickJar;
+    public GameObject stickJar, throwingSticks;
 
     public Text num_1_text, num_2_text, num_1_text2, num_2_text2;  
 
@@ -144,7 +144,9 @@ public class GameState : MonoBehaviour
         is_p1_turn = !is_p1_turn;
         dice_1 = -1; 
         dice_2 = -1;
-        StickRoller.GetInstance().SetActive(true);
+
+        stickJar.SetActive(true);
+        throwingSticks.SetActive(true);
         
         num_1_text.text = ""; 
         num_2_text.text = "";
@@ -192,6 +194,7 @@ public class GameState : MonoBehaviour
             StopCoroutine(WaitForClickBtn());
             StartCoroutine(WaitForClickBtn());
 
+
             rollDicebtn.GetComponent<Button>().interactable = false;
         }
 
@@ -200,6 +203,8 @@ public class GameState : MonoBehaviour
     IEnumerator WaitForClickBtn()
     {
         yield return new WaitForSeconds(2f);
+        stickJar.SetActive(false);
+        throwingSticks.SetActive(false);
         if (is_p1_turn)
         {
             dice1But.SetActive(true);
@@ -242,7 +247,7 @@ public class GameState : MonoBehaviour
             cur_step = dice_1;
             
         }
-        StickRoller.GetInstance().SetActive(false);
+        
         if(openLimit == true)
         {
             topClicked = true;
@@ -287,7 +292,6 @@ public class GameState : MonoBehaviour
         if(dice_2 != -1){
             cur_step = dice_2;
         }
-        StickRoller.GetInstance().SetActive(false);
         if (openLimit == true)
         {
             topClicked = false;
