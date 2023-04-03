@@ -440,7 +440,7 @@ public class GameState : MonoBehaviour
             curPieceRotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
         }
         if(isOwl){
-            curPieceRotation = curPieceRotation * Quaternion.Euler(0f, 0f, 90f);
+            curPieceRotation = curPieceRotation * Quaternion.Euler(0f, 90f, 90f);
             if(isSecondOne && (!isDiff)){
                 curPieceTranslation = new Vector3(0f, 0.14f, 0f);
                 if(isHorizontal){
