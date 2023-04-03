@@ -894,7 +894,6 @@ MonoBehaviour:
   LiuboBoard: {fileID: 910063860}
   ac: {fileID: 153840381}
   Is3DGame: 1
-  firstMoved: 0
   is_p1_turn: 1
   dice_1: -1
   dice_2: -1
@@ -911,6 +910,8 @@ MonoBehaviour:
   boardCharacter: {fileID: 1832840750}
   num_1_text: {fileID: 1476920756}
   num_2_text: {fileID: 846062073}
+  num_1_text2: {fileID: 1607193593}
+  num_2_text2: {fileID: 911234941}
   is_black_chosen: 1
   chosen_piece: -1
   openLimit: 1
@@ -12045,16 +12046,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1577139379}
     m_Modifications:
-    - target: {fileID: 7478109773052154648, guid: a098fa4854716164db33d4f4c6bca159,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7478109773052154648, guid: a098fa4854716164db33d4f4c6bca159,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8614464608003516535, guid: a098fa4854716164db33d4f4c6bca159,
         type: 3}
       propertyPath: m_RootOrder
