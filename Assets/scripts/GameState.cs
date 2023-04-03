@@ -30,6 +30,9 @@ public class GameState : MonoBehaviour
     public bool is_black_chosen = true;
     public int chosen_piece = -1;
 
+    public bool topClicked = false;
+    public bool bottomClicked = false;
+
 
     public bool openLimit;
 
@@ -156,12 +159,14 @@ public class GameState : MonoBehaviour
             blackTurn.SetActive(false);
             whiteTurn.GetComponentInChildren<Text>().text = gameData.playername1 + "'s Turn";
             whiteTurn.SetActive(true);
+            
         }
         if (!is_p1_turn)
         {
             whiteTurn.SetActive(false);
             blackTurn.GetComponentInChildren<Text>().text = gameData.playername2 + "'s Turn";
             blackTurn.SetActive(true);
+
         }
         firstOrigPos = -10;
     }
@@ -181,6 +186,7 @@ public class GameState : MonoBehaviour
         dice_1 = num_1; 
         dice_2 = num_2;
 
+
         if (openLimit == true)
         {
             StopCoroutine(WaitForClickBtn());
@@ -199,7 +205,7 @@ public class GameState : MonoBehaviour
             dice1But.SetActive(true);
             dice2But.SetActive(true);
         }
-        else
+        else if (!is_p1_turn)
         {
             dice1But2.SetActive(true);
             dice2But2.SetActive(true);
@@ -239,10 +245,8 @@ public class GameState : MonoBehaviour
         StickRoller.GetInstance().SetActive(false);
         if(openLimit == true)
         {
-            dice1But.SetActive(false);
-            dice2But.GetComponent<Button>().interactable = false;
-            dice1But2.SetActive(false);
-            dice2But2.GetComponent<Button>().interactable = false;
+            topClicked = true;
+            bottomClicked = false;
         }
 
         if (is_p1_turn && openLimit == true)
@@ -286,10 +290,8 @@ public class GameState : MonoBehaviour
         StickRoller.GetInstance().SetActive(false);
         if (openLimit == true)
         {
-            dice2But.SetActive(false);
-            dice1But.GetComponent<Button>().interactable = false;
-            dice2But2.SetActive(false);
-            dice1But2.GetComponent<Button>().interactable = false;
+            topClicked = false;
+            bottomClicked = true;
         }
 
         if (is_p1_turn && openLimit == true)
@@ -499,6 +501,19 @@ public class GameState : MonoBehaviour
     {
         StartCoroutine(MovePieceCoroutine(position));
 
+        if(is_p1_turn && topClicked == true)
+        {
+            dice1But.SetActive(false);
+        } else if(is_p1_turn && bottomClicked == true)
+        {
+            dice2But.SetActive(false);
+        } else if(!is_p1_turn && topClicked == true)
+        {
+            dice1But2.SetActive(false);
+        } else if(!is_p1_turn && bottomClicked == true)
+        {
+            dice2But2.SetActive(false);
+        }
     }
 
     private IEnumerator MovePieceCoroutine(Vector3 position)
@@ -600,10 +615,7 @@ public class GameState : MonoBehaviour
 
         if (openLimit == true)
         {
-            dice2But.GetComponent<Button>().interactable = true;
-            dice1But.GetComponent<Button>().interactable = true;
-            dice2But2.GetComponent<Button>().interactable = true;
-            dice1But2.GetComponent<Button>().interactable = true;
+            
         }
 
         ////Debug.Log("count" + bd.nodes[pos_index].Count);
