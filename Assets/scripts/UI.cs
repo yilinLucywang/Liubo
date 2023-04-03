@@ -45,9 +45,10 @@ public class UI : MonoBehaviour
     public void ChangeScore()
     {
 
-        player1Score.text = gameData.playername1 + " Score: " + gameData.white_score.ToString();
+        //player1Score.text = gameData.playername1 + " Score: " + gameData.white_score.ToString();
+        //player2Score.text = gameData.playername2 + " Score: " + gameData.black_score.ToString();
+        player1Score.text = gameData.playername1 + " \n\t " + gameData.white_score.ToString();
         player2Score.text = gameData.playername2 + " Score: " + gameData.black_score.ToString();
-
 
 
         if (gameData.white_score >= 6 || gameData.black_score >= 6)
