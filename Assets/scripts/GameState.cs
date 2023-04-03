@@ -47,6 +47,10 @@ public class GameState : MonoBehaviour
     public GameObject valid_sign;
     public GameObject canvas;
 
+    //stop sign to spawn
+    public GameObject stop_sign; 
+    private List<GameObject> instantiated_stop_list = new List<GameObject>();
+
     private int cur_step = 0;
     private List<GameObject> instantiated_list = new List<GameObject>();
 
@@ -357,7 +361,6 @@ public class GameState : MonoBehaviour
             for(int j = 0; j < bd.final_paths[k].Count; j++){
                 pathString += bd.final_paths[k][j].ToString();
             }
-
         }
 
 
@@ -734,10 +737,27 @@ public class GameState : MonoBehaviour
 
         var a = path.Select(anchor => bd.anchors[bd.index_2_anchor[anchor]].transform.position).ToArray();
         // yield return piece.transform.DOPath(a.ToArray(), 3, PathType.Linear, PathMode.Full3D).WaitForCompletion();
+        //TODO: spawn marks here
         foreach (var anchorPos in a)
         {
             yield return piece.transform.DOMove(anchorPos, 1).WaitForCompletion();
         }
+    }
+
+    private void spawnStop(List<Vector3> poses){
+        for(int i = 0; i < poses.Count; i++){
+            Vector3 pos = poses[i];
+            GameObject instantiated = Instantiate(stop_sign, pos, Quaternion.identity);
+            instantiated.transform.SetParent(canvas.transform);
+            instantiated_stop_list.Add(instantiated);
+        }
+    }
+
+    private void removeGreens(){
+        for(int i = 0; i < instantiated_stop_list.Count; i++){
+            Destroy(instantiated_stop_list[i]);
+        }
+        instantiated_stop_list.Clear();
     }
 
     public void OnDestinationMouseEnter(Vector3 DestPos)
