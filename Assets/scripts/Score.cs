@@ -9,6 +9,8 @@ public class Score : MonoBehaviour
     
     public GameData gameData;
     public bool hasDiffColor;
+    [SerializeField] private AudioClip[] SFX;
+    [SerializeField] private AudioSource audioSource;
 
     void Start()
     {
@@ -45,6 +47,9 @@ public class Score : MonoBehaviour
             Debug.Log("line 45");
             //
             gamestate.piecePlacement(pos_index,  position);
+
+            //play turning to owl sfx
+            audioSource.PlayOneShot(SFX[0], 1f);
             // cur_piece.transform.rotation = cur_piece.transform.rotation * Quaternion.Euler(0f, 0f, 90f);
             // cur_piece.transform.position += new Vector3(0f, 0.15f, 0f);
         }
