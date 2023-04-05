@@ -78,8 +78,11 @@ public class GameState : MonoBehaviour
     public UnityEvent OnPieceLand = new UnityEvent();
     
     private board bd;
-
     private int pieceMoved = 0;
+
+    private Coroutine pieceMovingCoroutine;
+    public State state = State.MoveSelection;
+    
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
             white_poses.Add(white_pieces[i].transform.position);
@@ -152,6 +155,7 @@ public class GameState : MonoBehaviour
 
     public void NextRound()
     {
+        state = State.Roll;
         is_p1_turn = !is_p1_turn;
         dice_1 = -1; 
         dice_2 = -1;
@@ -215,6 +219,7 @@ public class GameState : MonoBehaviour
     IEnumerator WaitForClickBtn()
     {
         yield return new WaitForSeconds(2f);
+        state = State.MoveSelection;
         StickRoller.GetInstance().SetActive(false);
         throwingSticks.SetActive(false);
         if (is_p1_turn)
@@ -231,6 +236,7 @@ public class GameState : MonoBehaviour
             dice1But2.GetComponent<Button>().interactable = true;
             dice2But2.GetComponent<Button>().interactable = true;
         }
+        
     }
     /// <summary>
     /// Random number generator that returns a number between 1-4
@@ -258,19 +264,19 @@ public class GameState : MonoBehaviour
 
     }
 
-    public void TopClick(){
+    public void TopClick()
+    {
+        if (state != State.PieceSelection && state != State.MoveSelection) return;
         if(dice_1 != -1){
             cur_step = dice_1;
             
         }
         
-        if(openLimit == true)
-        {
-            RemoveGreens();
-            chosen_piece = -1;
-            topClicked = true;
-            bottomClicked = false;
-        }
+        RemoveGreens();
+        chosen_piece = -1;
+        topClicked = true;
+        bottomClicked = false;
+        state = State.PieceSelection;
 
         if (is_p1_turn && openLimit == true)
         {
@@ -311,16 +317,18 @@ public class GameState : MonoBehaviour
     }
 
     public void BottomClick(){
+        if (state != State.PieceSelection && state != State.MoveSelection) return;
+
         if(dice_2 != -1){
             cur_step = dice_2;
         }
-        if (openLimit == true)
-        {
-            RemoveGreens();
-            chosen_piece = -1;
-            topClicked = false;
-            bottomClicked = true;
-        }
+
+        RemoveGreens();
+        chosen_piece = -1;
+        topClicked = false;
+        bottomClicked = true;
+        state = State.PieceSelection;
+
 
         if (is_p1_turn && openLimit == true)
         {
@@ -362,7 +370,9 @@ public class GameState : MonoBehaviour
     }
 
 
-    public void PieceChosen(int index, bool is_black){
+    public void PieceChosen(int index, bool is_black)
+    {
+        if (state != State.PieceSelection) return;
         chosen_piece = index; 
         is_black_chosen = is_black;
         //show all possibe positions
@@ -530,6 +540,7 @@ public class GameState : MonoBehaviour
 
     public void MovePiece(Vector3 position)
     {
+        state = State.PieceMoving;
         StartCoroutine(MovePieceCoroutine(position));
 
         if(is_p1_turn && topClicked == true)
@@ -661,6 +672,10 @@ public class GameState : MonoBehaviour
         {
             NextRound();
             pieceMoved = 0;
+        }
+        else
+        {
+            state = State.MoveSelection;
         }
 
         Debug.Log("before return");
@@ -807,4 +822,12 @@ public class GameState : MonoBehaviour
 public class DestinationMouseEvent : UnityEvent<List<int>>
 {
     
+}
+
+public enum State
+{
+    Roll,
+    MoveSelection,
+    PieceSelection,
+    PieceMoving,
 }
