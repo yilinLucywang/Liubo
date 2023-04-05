@@ -788,6 +788,21 @@ public class GameState : MonoBehaviour
     //     }
         
     // }
+    private void spawnStop(List<Vector3> poses){
+        for(int i = 0; i < poses.Count; i++){
+            Vector3 pos = poses[i];
+            GameObject instantiated = Instantiate(stop_sign, pos, Quaternion.identity);
+            instantiated.transform.SetParent(canvas.transform);
+            instantiated_stop_list.Add(instantiated);
+        }
+    }
+
+    private void removeStops(){
+        for(int i = 0; i < instantiated_stop_list.Count; i++){
+            Destroy(instantiated_stop_list[i]);
+        }
+        instantiated_stop_list.Clear();
+    }
 
     IEnumerator MovePieceAnimation(int pieceIndex, GameObject piece, int destAnchor, int startingPos)
     {
@@ -809,26 +824,16 @@ public class GameState : MonoBehaviour
         }).ToArray();
         // yield return piece.transform.DOPath(a.ToArray(), 3, PathType.Linear, PathMode.Full3D).WaitForCompletion();
         //TODO: spawn marks here
+        List<Vector3> poses = new List<Vector3>();
+        for(int i = 0; i < path.Count; i++){
+            poses.Add(bd.GetTopPosition(path[i]));
+        }
+        spawnStop(poses);
         foreach (var anchorPos in a)
         {
             yield return piece.transform.DOMove(anchorPos, 1).WaitForCompletion();
         }
-    }
-
-    private void spawnStop(List<Vector3> poses){
-        for(int i = 0; i < poses.Count; i++){
-            Vector3 pos = poses[i];
-            GameObject instantiated = Instantiate(stop_sign, pos, Quaternion.identity);
-            instantiated.transform.SetParent(canvas.transform);
-            instantiated_stop_list.Add(instantiated);
-        }
-    }
-
-    private void removeGreens(){
-        for(int i = 0; i < instantiated_stop_list.Count; i++){
-            Destroy(instantiated_stop_list[i]);
-        }
-        instantiated_stop_list.Clear();
+        removeStops();
     }
 
     public void OnDestinationMouseEnter(Vector3 DestPos)
