@@ -60,10 +60,6 @@ public class Selection : MonoBehaviour
         {
             highlight.GetComponent<MeshRenderer>().sharedMaterial = originalMaterialHighlight;
             highlight = null;
-            if (GameState.isFirstMoved == true)
-            {
-                highlight = null;
-            }
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit))
@@ -120,10 +116,6 @@ public class Selection : MonoBehaviour
         {
             highlight.GetComponent<MeshRenderer>().sharedMaterial = originalMaterialHighlight;
             highlight = null;
-            if(GameState.isFirstMoved == true)
-            {
-                highlight = null;
-            }
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit))

@@ -55,7 +55,6 @@ public class GameState : MonoBehaviour
     private List<GameObject> instantiated_list = new List<GameObject>();
 
 
-
     public List<GameObject> white_pieces = new List<GameObject>();
     public List<GameObject> black_pieces = new List<GameObject>(); 
 
@@ -79,6 +78,9 @@ public class GameState : MonoBehaviour
     private Coroutine pieceMovingCoroutine;
     public State state = State.Roll;
 
+    public Transform[] allwhitePieces;
+    public Transform[] allblackPieces;
+
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
             white_poses.Add(white_pieces[i].transform.position);
@@ -90,6 +92,10 @@ public class GameState : MonoBehaviour
     void Start()
     {
         state = State.Roll;
+
+        allwhitePieces = whitePieceBut.GetComponentsInChildren<Transform>();
+        allblackPieces = whitePieceBut.GetComponentsInChildren<Transform>();
+
         isCharacterOn = true;
         if(is_p1_turn == true)
         {
@@ -149,7 +155,6 @@ public class GameState : MonoBehaviour
 
     public void NextRound()
     {
-        isFirstMoved = false;
         state = State.Roll;
         is_p1_turn = !is_p1_turn;
         dice_1 = -1; 
@@ -166,6 +171,16 @@ public class GameState : MonoBehaviour
         num_2_text2.text = "";
 
         rollDicebtn.GetComponent<Button>().interactable = true;
+
+        foreach(Transform child in allwhitePieces)
+        {
+            child.gameObject.layer = 0;
+        }
+
+        foreach(Transform child in allblackPieces)
+        {
+            child.gameObject.layer = 0;
+        }
 
         if (is_p1_turn)
         {
@@ -289,7 +304,8 @@ public class GameState : MonoBehaviour
             if (notFirstRound == true && previousPiece == cur_piece.ToString())
             {
                 cur_piece.GetComponent<Clickable>().interactable = false;
-                isFirstMoved = true;
+                cur_piece.layer = 2;
+                
             }
 
         }
@@ -309,6 +325,7 @@ public class GameState : MonoBehaviour
             if (notFirstRound == true && previousPiece == cur_piece.ToString())
             {
                 cur_piece.GetComponent<Clickable>().interactable = false;
+                cur_piece.layer = 2;
             }
         }
     }
@@ -344,7 +361,7 @@ public class GameState : MonoBehaviour
             if (notFirstRound == true && previousPiece == cur_piece.ToString())
             {
                 cur_piece.GetComponent<Clickable>().interactable = false;
-                isFirstMoved = true;
+                cur_piece.layer = 2;
             }
         }
         else if(!is_p1_turn && openLimit == true)
@@ -363,6 +380,7 @@ public class GameState : MonoBehaviour
             if (notFirstRound == true && previousPiece == cur_piece.ToString())
             {
                 cur_piece.GetComponent<Clickable>().interactable = false;
+                cur_piece.layer = 2;
             }
         }
     }
@@ -491,11 +509,11 @@ public class GameState : MonoBehaviour
             if(isSecondOne && (!isDiff)){
                 curPieceTranslation = new Vector3(0f, 0.14f, 0f);
                 if(isHorizontal){
-                    curPieceTranslation += new Vector3(0.077f,0f,0f);
+                    curPieceTranslation += new Vector3(0f,0f,0.15f);
                 }
                 else{
 
-                    curPieceTranslation += new Vector3(0f,0f,0.077f);
+                    curPieceTranslation += new Vector3(0.15f,0f,0f);
                 }
             }
             else{
