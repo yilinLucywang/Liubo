@@ -71,6 +71,7 @@ public class GameState : MonoBehaviour
     public DestinationMouseEvent OnDestinationMouseEnterEvent = new DestinationMouseEvent();
     public UnityEvent OnDestinationMouseExitEvent = new UnityEvent();
     public UnityEvent OnPieceLand = new UnityEvent();
+    public UnityEvent OnPieceStartMoving = new UnityEvent();
     
     private board bd;
     private int pieceMoved = 0;
@@ -565,6 +566,7 @@ public class GameState : MonoBehaviour
     {
 
         state = State.PieceMoving;
+        OnPieceStartMoving.Invoke();
         StartCoroutine(MovePieceCoroutine(position));
 
         if(is_p1_turn && topClicked == true)
@@ -788,6 +790,21 @@ public class GameState : MonoBehaviour
     //     }
         
     // }
+    private void spawnStop(List<Vector3> poses){
+        for(int i = 0; i < poses.Count; i++){
+            Vector3 pos = poses[i];
+            GameObject instantiated = Instantiate(stop_sign, pos, Quaternion.identity);
+            instantiated.transform.SetParent(canvas.transform);
+            instantiated_stop_list.Add(instantiated);
+        }
+    }
+
+    private void removeStops(){
+        for(int i = 0; i < instantiated_stop_list.Count; i++){
+            Destroy(instantiated_stop_list[i]);
+        }
+        instantiated_stop_list.Clear();
+    }
 
     IEnumerator MovePieceAnimation(int pieceIndex, GameObject piece, int destAnchor, int startingPos)
     {
@@ -803,48 +820,81 @@ public class GameState : MonoBehaviour
             path.RemoveAt(0);
         }
 
-        var a = path.Select(nodeIndex =>
+        var a = new Vector3[]{};
+        if (piece.CompareTag("Owl"))
         {
-            return bd.GetTopPosition(nodeIndex);
-        }).ToArray();
+            var isTurnedToNormal = false;
+            a = path.Select(nodeIndex =>
+            {
+                if (is_p1_turn && bd.whiteScoringNests.Contains(nodeIndex) ||
+                    !is_p1_turn && bd.blackScoringNests.Contains(nodeIndex))
+                {
+                    isTurnedToNormal = true;
+                }
+                return bd.GetTopPosition(nodeIndex, !isTurnedToNormal);
+            }).ToArray();
+        }
+        else
+        {
+            var isTurnedToOwl = false;
+            a = path.Select(nodeIndex =>
+            {
+                if (bd.pond_index == nodeIndex)
+                {
+                    isTurnedToOwl = true;
+                }
+                return bd.GetTopPosition(nodeIndex, isTurnedToOwl);
+            }).ToArray();
+        }
+        
         // yield return piece.transform.DOPath(a.ToArray(), 3, PathType.Linear, PathMode.Full3D).WaitForCompletion();
         //TODO: spawn marks here
+        List<Vector3> poses = new List<Vector3>();
+        for(int i = 0; i < path.Count; i++){
+            poses.Add(bd.GetBasePosition(path[i]));
+        }
+        spawnStop(poses);
         foreach (var anchorPos in a)
         {
             yield return piece.transform.DOMove(anchorPos, 1).WaitForCompletion();
         }
-    }
-
-    private void spawnStop(List<Vector3> poses){
-        for(int i = 0; i < poses.Count; i++){
-            Vector3 pos = poses[i];
-            GameObject instantiated = Instantiate(stop_sign, pos, Quaternion.identity);
-            instantiated.transform.SetParent(canvas.transform);
-            instantiated_stop_list.Add(instantiated);
-        }
-    }
-
-    private void removeGreens(){
-        for(int i = 0; i < instantiated_stop_list.Count; i++){
-            Destroy(instantiated_stop_list[i]);
-        }
-        instantiated_stop_list.Clear();
+        removeStops();
     }
 
     public void OnDestinationMouseEnter(Vector3 DestPos)
     {
         var destAnchor = bd.get_anchor_index(DestPos);
         var path = bd.final_paths.First(p => p[p.Count - 1] == destAnchor);
-        OnDestinationMouseEnterEvent.Invoke(path);
+        var isTurningIntoOwl = false;
+        OnDestinationMouseEnterEvent.Invoke(path, isTurningIntoOwl);
     }
     
     public void OnDestinationMouseExit()
     {
         OnDestinationMouseExitEvent.Invoke();
     }
+    
+    public Quaternion GetPieceOrientation(int nodeIndex, bool isOwl)
+    {
+        var ret = Quaternion.identity;
+        if (horizontalPosition.Contains(nodeIndex))
+        {
+            //rotate 90 degree: horizontal
+            ret *= LiuboBoard.transform.rotation * Quaternion.Euler(0f, 0f, 0f);
+        }
+        else
+        {
+            //rotate back
+            ret *= LiuboBoard.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
+        }
+        if(isOwl){
+            ret *= Quaternion.Euler(0f, 90f, 90f);
+        }
+        return ret;
+    }
 }
 
-public class DestinationMouseEvent : UnityEvent<List<int>>
+public class DestinationMouseEvent : UnityEvent<List<int>, bool>
 {
     
 }

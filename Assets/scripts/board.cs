@@ -27,7 +27,7 @@ public class board : MonoBehaviour
 
     //index rules: white piece index: 0-5; black piece index: 6-11 
     public List<List<int>> nodes = new List<List<int>>();
-    public int pond_index = 0; 
+    public int pond_index = 9; 
     public int[,] normal_edges = new int[total_poses, total_poses];
     public int[,] white_owl_edges = new int[total_poses, total_poses];
     public int[,] black_owl_edges = new int[total_poses, total_poses];
@@ -54,6 +54,26 @@ public class board : MonoBehaviour
     public int[] cur_rolls = new int[2];
 
     [SerializeField] private float pieceWidth, pieceHeight;
+
+    public HashSet<int> whiteScoringNests = new HashSet<int>(){ 21, 29 };
+    public HashSet<int> blackScoringNests = new HashSet<int>() {2, 12};
+
+    List<int> horizontalPosition = new List<int>() {
+        1,
+        3,
+        5,
+        8,
+        11,
+        36,
+        33,
+        17,
+        20,
+        30,
+        24,
+        26,
+        14,//14 or 28?
+        22
+    };
     void Awake()
     {
         //-1 means no piece in current location
@@ -381,7 +401,7 @@ public class board : MonoBehaviour
             //     Debug.Log(pathString);
             // }
             // Debug.Log("end");
-            if(visited_spot.Contains(9)){
+            if(visited_spot.Contains(pond_index)){
                 owl_poses.Add(cur_pos);
             }
         }
@@ -413,7 +433,7 @@ public class board : MonoBehaviour
                 path_2.Add(val);
             }
             final_paths.Add(path_2);
-            if(visited_spot.Contains(9)){
+            if(visited_spot.Contains(pond_index)){
                 owl_poses.Add(cur_pos);
             }
         }
@@ -448,7 +468,7 @@ public class board : MonoBehaviour
                 path_2.Add(val);
             }
             final_paths.Add(path_2);
-            if(visited_spot.Contains(9)){
+            if(visited_spot.Contains(pond_index)){
                 owl_poses.Add(cur_pos);
             }
         }
@@ -490,11 +510,11 @@ public class board : MonoBehaviour
 
     //TODO: bool partner
     //List<int> posNotToGo
-    public Vector3 GetTopPosition(int nodeIndex)
+    public Vector3 GetTopPosition(int nodeIndex, bool isOwl)
     {
         var anchor = anchors[index_2_anchor[nodeIndex]];
         var anchorPos = anchor.transform.position;
-        var yOffset = 0f;
+        var yOffset = isOwl ? (pieceHeight / 2) : (pieceWidth / 2);
         foreach (var pieceIndex in nodes[nodeIndex])
         {
             string chosen_piece_name = pieceIndex.ToString();
@@ -504,5 +524,10 @@ public class board : MonoBehaviour
 
         anchorPos.y += yOffset;
         return anchorPos;
+    }
+
+    public Vector3 GetBasePosition(int nodeIndex)
+    {
+        return anchors[index_2_anchor[nodeIndex]].transform.position;
     }
 }

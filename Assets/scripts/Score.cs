@@ -62,7 +62,7 @@ public class Score : MonoBehaviour
             {
                 //Debug.Log("black owl move");
                 //black owl land on nest
-                if ((pos_index == 2) || (pos_index == 12))//(pos_index == 21)|| (pos_index == 29)
+                if (bd.blackScoringNests.Contains(pos_index))//(pos_index == 21)|| (pos_index == 29)
                 {
                     gameData.black_score += 2;
                     changeTagOwl(cur_piece, "Normal");
@@ -138,7 +138,7 @@ public class Score : MonoBehaviour
             {
                 //Debug.Log("white owl move");
                 //white owl land on nest
-                if ((pos_index == 21) || (pos_index == 29))
+                if (bd.whiteScoringNests.Contains(pos_index))
                 {
                     gameData.white_score += 2;
                     changeTagOwl(cur_piece, "Normal");
