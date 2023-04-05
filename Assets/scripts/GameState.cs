@@ -471,7 +471,7 @@ public class GameState : MonoBehaviour
     }
 
     public void piecePlacement(int pos_index, bool isOwl, bool isSecondOne, GameObject cur_piece, Vector3 anchor_pos, bool isDiff){
-        //Debug.Log("408");
+        ////Debug.Log("408");
         Quaternion curPieceRotation = Quaternion.Euler(0f, 0f, 0f);
         Vector3 curPieceTranslation = new Vector3(0f,0f,0f);
         bool isHorizontal = false;
@@ -491,11 +491,11 @@ public class GameState : MonoBehaviour
             if(isSecondOne && (!isDiff)){
                 curPieceTranslation = new Vector3(0f, 0.14f, 0f);
                 if(isHorizontal){
-                    curPieceTranslation += new Vector3(0.11f,0f,0f);
+                    curPieceTranslation += new Vector3(0.077f,0f,0f);
                 }
                 else{
 
-                    curPieceTranslation += new Vector3(0f,0f,0.11f);
+                    curPieceTranslation += new Vector3(0f,0f,0.077f);
                 }
             }
             else{
@@ -505,7 +505,7 @@ public class GameState : MonoBehaviour
         else{
             curPieceRotation = curPieceRotation * Quaternion.Euler(0f, 0f, 0f);
             if(isSecondOne){
-                curPieceTranslation = new Vector3(0f, 0.14f, 0f);
+                curPieceTranslation = new Vector3(0f, 0.11f, 0f);
             }
             else{
                 curPieceTranslation = new Vector3(0f, 0.04f, 0f);
@@ -514,11 +514,11 @@ public class GameState : MonoBehaviour
 
         if(isSecondOne && isDiff){
             if(isOwl){
-                curPieceTranslation = curPieceTranslation +  new Vector3(0f, 0.14f, 0f);
+                curPieceTranslation = curPieceTranslation +  new Vector3(0f, 0.11f, 0f);
             }
             else{
-                Debug.Log("123123");
-                curPieceTranslation = curPieceTranslation - new Vector3(0f, 0.10f, 0f);
+                //Debug.Log("123123");
+                curPieceTranslation = curPieceTranslation - new Vector3(0f, 0.07f, 0f);
             }
 
         }
@@ -527,6 +527,7 @@ public class GameState : MonoBehaviour
         cur_piece.transform.position = cur_piece.transform.position + curPieceTranslation;
         cur_piece.transform.rotation = curPieceRotation; 
     }
+
 
     public bool isDifferentType(int pos_index, bool isOwl, int cur_index){
         board bd = gameObject.GetComponent<board>();
