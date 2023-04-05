@@ -55,7 +55,6 @@ public class GameState : MonoBehaviour
     private List<GameObject> instantiated_list = new List<GameObject>();
 
 
-
     public List<GameObject> white_pieces = new List<GameObject>();
     public List<GameObject> black_pieces = new List<GameObject>(); 
 
@@ -72,12 +71,16 @@ public class GameState : MonoBehaviour
     public DestinationMouseEvent OnDestinationMouseEnterEvent = new DestinationMouseEvent();
     public UnityEvent OnDestinationMouseExitEvent = new UnityEvent();
     public UnityEvent OnPieceLand = new UnityEvent();
+    public UnityEvent OnPieceStartMoving = new UnityEvent();
     
     private board bd;
     private int pieceMoved = 0;
 
     private Coroutine pieceMovingCoroutine;
     public State state = State.Roll;
+
+    public Transform[] allwhitePieces;
+    public Transform[] allblackPieces;
 
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
@@ -90,6 +93,10 @@ public class GameState : MonoBehaviour
     void Start()
     {
         state = State.Roll;
+
+        allwhitePieces = whitePieceBut.GetComponentsInChildren<Transform>();
+        allblackPieces = whitePieceBut.GetComponentsInChildren<Transform>();
+
         isCharacterOn = true;
         if(is_p1_turn == true)
         {
@@ -149,7 +156,6 @@ public class GameState : MonoBehaviour
 
     public void NextRound()
     {
-        isFirstMoved = false;
         state = State.Roll;
         is_p1_turn = !is_p1_turn;
         dice_1 = -1; 
@@ -166,6 +172,16 @@ public class GameState : MonoBehaviour
         num_2_text2.text = "";
 
         rollDicebtn.GetComponent<Button>().interactable = true;
+
+        foreach(Transform child in allwhitePieces)
+        {
+            child.gameObject.layer = 0;
+        }
+
+        foreach(Transform child in allblackPieces)
+        {
+            child.gameObject.layer = 0;
+        }
 
         if (is_p1_turn)
         {
@@ -289,7 +305,8 @@ public class GameState : MonoBehaviour
             if (notFirstRound == true && previousPiece == cur_piece.ToString())
             {
                 cur_piece.GetComponent<Clickable>().interactable = false;
-                isFirstMoved = true;
+                cur_piece.layer = 2;
+                
             }
 
         }
@@ -309,6 +326,7 @@ public class GameState : MonoBehaviour
             if (notFirstRound == true && previousPiece == cur_piece.ToString())
             {
                 cur_piece.GetComponent<Clickable>().interactable = false;
+                cur_piece.layer = 2;
             }
         }
     }
@@ -344,7 +362,7 @@ public class GameState : MonoBehaviour
             if (notFirstRound == true && previousPiece == cur_piece.ToString())
             {
                 cur_piece.GetComponent<Clickable>().interactable = false;
-                isFirstMoved = true;
+                cur_piece.layer = 2;
             }
         }
         else if(!is_p1_turn && openLimit == true)
@@ -363,6 +381,7 @@ public class GameState : MonoBehaviour
             if (notFirstRound == true && previousPiece == cur_piece.ToString())
             {
                 cur_piece.GetComponent<Clickable>().interactable = false;
+                cur_piece.layer = 2;
             }
         }
     }
@@ -491,11 +510,11 @@ public class GameState : MonoBehaviour
             if(isSecondOne && (!isDiff)){
                 curPieceTranslation = new Vector3(0f, 0.14f, 0f);
                 if(isHorizontal){
-                    curPieceTranslation += new Vector3(0.077f,0f,0f);
+                    curPieceTranslation += new Vector3(0f,0f,0.15f);
                 }
                 else{
 
-                    curPieceTranslation += new Vector3(0f,0f,0.077f);
+                    curPieceTranslation += new Vector3(0.15f,0f,0f);
                 }
             }
             else{
@@ -547,6 +566,7 @@ public class GameState : MonoBehaviour
     {
 
         state = State.PieceMoving;
+        OnPieceStartMoving.Invoke();
         StartCoroutine(MovePieceCoroutine(position));
 
         if(is_p1_turn && topClicked == true)
@@ -770,6 +790,21 @@ public class GameState : MonoBehaviour
     //     }
         
     // }
+    private void spawnStop(List<Vector3> poses){
+        for(int i = 0; i < poses.Count; i++){
+            Vector3 pos = poses[i];
+            GameObject instantiated = Instantiate(stop_sign, pos, Quaternion.identity);
+            instantiated.transform.SetParent(canvas.transform);
+            instantiated_stop_list.Add(instantiated);
+        }
+    }
+
+    private void removeStops(){
+        for(int i = 0; i < instantiated_stop_list.Count; i++){
+            Destroy(instantiated_stop_list[i]);
+        }
+        instantiated_stop_list.Clear();
+    }
 
     IEnumerator MovePieceAnimation(int pieceIndex, GameObject piece, int destAnchor, int startingPos)
     {
@@ -785,48 +820,81 @@ public class GameState : MonoBehaviour
             path.RemoveAt(0);
         }
 
-        var a = path.Select(nodeIndex =>
+        var a = new Vector3[]{};
+        if (piece.CompareTag("Owl"))
         {
-            return bd.GetTopPosition(nodeIndex);
-        }).ToArray();
+            var isTurnedToNormal = false;
+            a = path.Select(nodeIndex =>
+            {
+                if (is_p1_turn && bd.whiteScoringNests.Contains(nodeIndex) ||
+                    !is_p1_turn && bd.blackScoringNests.Contains(nodeIndex))
+                {
+                    isTurnedToNormal = true;
+                }
+                return bd.GetTopPosition(nodeIndex, !isTurnedToNormal);
+            }).ToArray();
+        }
+        else
+        {
+            var isTurnedToOwl = false;
+            a = path.Select(nodeIndex =>
+            {
+                if (bd.pond_index == nodeIndex)
+                {
+                    isTurnedToOwl = true;
+                }
+                return bd.GetTopPosition(nodeIndex, isTurnedToOwl);
+            }).ToArray();
+        }
+        
         // yield return piece.transform.DOPath(a.ToArray(), 3, PathType.Linear, PathMode.Full3D).WaitForCompletion();
         //TODO: spawn marks here
+        List<Vector3> poses = new List<Vector3>();
+        for(int i = 0; i < path.Count; i++){
+            poses.Add(bd.GetTopPosition(path[i]));
+        }
+        spawnStop(poses);
         foreach (var anchorPos in a)
         {
             yield return piece.transform.DOMove(anchorPos, 1).WaitForCompletion();
         }
-    }
-
-    private void spawnStop(List<Vector3> poses){
-        for(int i = 0; i < poses.Count; i++){
-            Vector3 pos = poses[i];
-            GameObject instantiated = Instantiate(stop_sign, pos, Quaternion.identity);
-            instantiated.transform.SetParent(canvas.transform);
-            instantiated_stop_list.Add(instantiated);
-        }
-    }
-
-    private void removeGreens(){
-        for(int i = 0; i < instantiated_stop_list.Count; i++){
-            Destroy(instantiated_stop_list[i]);
-        }
-        instantiated_stop_list.Clear();
+        removeStops();
     }
 
     public void OnDestinationMouseEnter(Vector3 DestPos)
     {
         var destAnchor = bd.get_anchor_index(DestPos);
         var path = bd.final_paths.First(p => p[p.Count - 1] == destAnchor);
-        OnDestinationMouseEnterEvent.Invoke(path);
+        var isTurningIntoOwl = false;
+        OnDestinationMouseEnterEvent.Invoke(path, isTurningIntoOwl);
     }
     
     public void OnDestinationMouseExit()
     {
         OnDestinationMouseExitEvent.Invoke();
     }
+    
+    public Quaternion GetPieceOrientation(int nodeIndex, bool isOwl)
+    {
+        var ret = Quaternion.identity;
+        if (horizontalPosition.Contains(nodeIndex))
+        {
+            //rotate 90 degree: horizontal
+            ret *= LiuboBoard.transform.rotation * Quaternion.Euler(0f, 0f, 0f);
+        }
+        else
+        {
+            //rotate back
+            ret *= LiuboBoard.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
+        }
+        if(isOwl){
+            ret *= Quaternion.Euler(0f, 90f, 90f);
+        }
+        return ret;
+    }
 }
 
-public class DestinationMouseEvent : UnityEvent<List<int>>
+public class DestinationMouseEvent : UnityEvent<List<int>, bool>
 {
     
 }
