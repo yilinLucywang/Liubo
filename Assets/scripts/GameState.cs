@@ -39,7 +39,7 @@ public class GameState : MonoBehaviour
     private Vector3 firstTargetPos;
     private string previousPiece;
     private bool isSamePiece = false;
-    private bool notFirstRound = false;
+    public bool notFirstRound = false;
     private GameObject cur_piece;
     public bool isCharacterOn;
 
@@ -67,7 +67,7 @@ public class GameState : MonoBehaviour
     public bool TwoDiceSame;
     public int firstOrigPos = -10, firstFinalPos;
 
-    private bool isFirstMoved = false, blockade = false;
+    public bool isFirstMoved = false, blockade = false;
 
     public DestinationMouseEvent OnDestinationMouseEnterEvent = new DestinationMouseEvent();
     public UnityEvent OnDestinationMouseExitEvent = new UnityEvent();
@@ -148,6 +148,7 @@ public class GameState : MonoBehaviour
 
     public void NextRound()
     {
+        isFirstMoved = false;
         state = State.Roll;
         is_p1_turn = !is_p1_turn;
         dice_1 = -1; 
@@ -287,6 +288,7 @@ public class GameState : MonoBehaviour
             if (notFirstRound == true && previousPiece == cur_piece.ToString())
             {
                 cur_piece.GetComponent<Clickable>().interactable = false;
+                isFirstMoved = true;
             }
 
         }
@@ -341,6 +343,7 @@ public class GameState : MonoBehaviour
             if (notFirstRound == true && previousPiece == cur_piece.ToString())
             {
                 cur_piece.GetComponent<Clickable>().interactable = false;
+                isFirstMoved = true;
             }
         }
         else if(!is_p1_turn && openLimit == true)
