@@ -210,12 +210,26 @@ public class board : MonoBehaviour
                     normal_helper(0,step,visited_spot,p_1);
                     visited_spot.Clear();
                 }
+                if(nodes[0].Count == 2 && (!isSameColor(0))){
+                    visited_spot.Add(0);
+                    List<int> p_1 = CreateList(0);
+                    normal_helper(0,step,visited_spot,p_1);
+                    visited_spot.Clear();
+                }
+
                 if(nodes[11].Count < 2){
                     visited_spot.Add(11);
                     List<int> p_2 = CreateList(11);
                     normal_helper(11,step,visited_spot,p_2);
                     visited_spot.Clear();
                 }
+                else if(nodes[11].Count == 2 && (!isSameColor(11))){
+                    visited_spot.Add(11);
+                    List<int> p_2 = CreateList(11);
+                    normal_helper(11,step,visited_spot,p_2);
+                    visited_spot.Clear();
+                }
+
             }else{
                 //30,23
                 //no way for this case to be owl
@@ -229,7 +243,21 @@ public class board : MonoBehaviour
                     normal_helper(30,step,visited_spot,path);
                     visited_spot.Clear();
                 }
+                else if(nodes[30].Count == 2 && (! isSameColor(30))){
+                    path.Add(30);
+                    visited_spot.Add(30);
+                    normal_helper(30,step,visited_spot,path);
+                    visited_spot.Clear();
+                }
+
                 if(nodes[23].Count < 2){
+                    visited_spot.Add(23);
+                    path.Clear();
+                    path.Add(23);
+                    normal_helper(23,step,visited_spot,path);
+                    visited_spot.Clear();
+                }
+                else if(nodes[23].Count == 2 && (! isSameColor(23))){
                     visited_spot.Add(23);
                     path.Clear();
                     path.Add(23);
@@ -457,5 +485,7 @@ public class board : MonoBehaviour
         return sameColor;
     }
 
+    //TODO: bool partner
+    //List<int> posNotToGo
 
 }
