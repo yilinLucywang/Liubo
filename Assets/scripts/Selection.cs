@@ -21,15 +21,19 @@ public class Selection : MonoBehaviour
     void Update()
     {
         //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if(GameState.state == State.PieceSelection && GameState.is_p1_turn)
+        if (GameState.state == State.PieceSelection && GameState.is_p1_turn)
         {
             WhiteHighLightAndSelect();
-        } 
+        }
         else if (GameState.state == State.PieceSelection && !GameState.is_p1_turn)
         {
             BlackHighLightAndSelect();
         }
-        
+
+        if (GameState.state == State.PieceMoving && GameState.is_p1_turn)
+        {
+
+        }
     }
 
     public void WhiteHighLightAndSelect()
