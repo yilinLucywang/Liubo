@@ -15,8 +15,8 @@ TagManager:
   - UI
   - 
   - 
-  - characters
-  - pieces
+  - whitePieces
+  - blackPieces
   - 
   - 
   - 

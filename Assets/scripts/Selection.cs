@@ -8,13 +8,31 @@ public class Selection : MonoBehaviour
     public Material highlightMaterial;
     public Material selectionMaterial;
 
+    public GameState GameState;
+
     private Material originalMaterialHighlight;
     private Material originalMaterialSelection;
     private Transform highlight;
     private Transform selection;
     private RaycastHit raycastHit;
 
+    private Ray ray;
+
     void Update()
+    {
+        //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if(GameState.state == State.PieceSelection && GameState.is_p1_turn)
+        {
+            WhiteHighLightAndSelect();
+        } 
+        else if (GameState.state == State.PieceSelection && !GameState.is_p1_turn)
+        {
+            BlackHighLightAndSelect();
+        }
+        
+    }
+
+    public void WhiteHighLightAndSelect()
     {
         // Highlight
         if (highlight != null)
@@ -26,21 +44,15 @@ public class Selection : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit))
         {
             highlight = raycastHit.transform;
-            if (highlight.CompareTag("Normal") && highlight != selection)
+            if (highlight.name == "6" || highlight.name == "7" || highlight.name == "8" || highlight.name == "9" || highlight.name == "10" || highlight.name == "11" && highlight != selection)
             {
+                
                 if (highlight.GetComponent<MeshRenderer>().material != highlightMaterial)
                 {
                     originalMaterialHighlight = highlight.GetComponent<MeshRenderer>().material;
                     highlight.GetComponent<MeshRenderer>().material = highlightMaterial;
                 }
-            }
-            else if (highlight.CompareTag("Owl") && highlight != selection)
-            {
-                if (highlight.GetComponent<MeshRenderer>().material != highlightMaterial)
-                {
-                    originalMaterialHighlight = highlight.GetComponent<MeshRenderer>().material;
-                    highlight.GetComponent<MeshRenderer>().material = highlightMaterial;
-                }
+                
             }
             else
             {
@@ -48,7 +60,7 @@ public class Selection : MonoBehaviour
             }
         }
 
-        // Selection
+        //Selection
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             if (highlight)
@@ -74,7 +86,59 @@ public class Selection : MonoBehaviour
                 }
             }
         }
-
     }
 
+    public void BlackHighLightAndSelect()
+    {
+        // Highlight
+        if (highlight != null)
+        {
+            highlight.GetComponent<MeshRenderer>().sharedMaterial = originalMaterialHighlight;
+            highlight = null;
+        }
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit))
+        {
+            highlight = raycastHit.transform;
+            if (highlight.name == "0" || highlight.name == "1" || highlight.name == "2" || highlight.name == "3" || highlight.name == "4" || highlight.name == "5" && highlight != selection)
+            {
+                if (highlight.GetComponent<MeshRenderer>().material != highlightMaterial)
+                {
+                    originalMaterialHighlight = highlight.GetComponent<MeshRenderer>().material;
+                    highlight.GetComponent<MeshRenderer>().material = highlightMaterial;
+                }
+            }
+            else
+            {
+                highlight = null;
+            }
+        }
+
+        //Selection
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        {
+            if (highlight)
+            {
+                if (selection != null)
+                {
+                    selection.GetComponent<MeshRenderer>().material = originalMaterialSelection;
+                }
+                selection = raycastHit.transform;
+                if (selection.GetComponent<MeshRenderer>().material != selectionMaterial)
+                {
+                    originalMaterialSelection = originalMaterialHighlight;
+                    selection.GetComponent<MeshRenderer>().material = selectionMaterial;
+                }
+                highlight = null;
+            }
+            else
+            {
+                if (selection)
+                {
+                    selection.GetComponent<MeshRenderer>().material = originalMaterialSelection;
+                    selection = null;
+                }
+            }
+        }
+    }
 }

@@ -81,7 +81,7 @@ public class GameState : MonoBehaviour
     private int pieceMoved = 0;
 
     private Coroutine pieceMovingCoroutine;
-    public State state = State.MoveSelection;
+    public State state = State.Roll;
     
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
@@ -136,7 +136,7 @@ public class GameState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ShowBoardCharacter()
@@ -200,6 +200,7 @@ public class GameState : MonoBehaviour
         num_2_text.text = num_2.ToString();
         num_1_text2.text = num_1.ToString();
         num_2_text2.text = num_2.ToString();
+
 
         dice_1 = num_1; 
         dice_2 = num_2;
@@ -295,6 +296,7 @@ public class GameState : MonoBehaviour
             {
                 cur_piece.GetComponent<Clickable>().interactable = false;
             }
+
         }
         else if(!is_p1_turn && openLimit == true)
         {
@@ -372,13 +374,13 @@ public class GameState : MonoBehaviour
 
     public void PieceChosen(int index, bool is_black)
     {
+        blockade = false;
         if (state != State.PieceSelection) return;
         chosen_piece = index; 
         is_black_chosen = is_black;
         //show all possibe positions
         Debug.Log("here! line 352");
         ShowPossiblePositions();
-        
 
     }
 
@@ -422,6 +424,10 @@ public class GameState : MonoBehaviour
                         Vector3 newPos = res_list[j];
                         SpawnGreen(newPos);
                     }
+                }
+                else
+                {
+                    SpawnGreen(pos);
                 }
             }
             else
@@ -542,6 +548,7 @@ public class GameState : MonoBehaviour
 
     public void MovePiece(Vector3 position)
     {
+
         state = State.PieceMoving;
         StartCoroutine(MovePieceCoroutine(position));
 
