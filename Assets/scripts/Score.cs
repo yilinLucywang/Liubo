@@ -40,7 +40,7 @@ public class Score : MonoBehaviour
         //bd.nodes[pos_index].Add(chosen_piece);
         bool is_two_same_spot = false;
 
-        //if (pos_index == 9)
+
         if(is_owl)
         {
             cur_piece.tag = "Owl";
@@ -49,7 +49,7 @@ public class Score : MonoBehaviour
             gamestate.piecePlacement(pos_index,  position);
 
             //play turning to owl sfx
-            audioSource.PlayOneShot(SFX[0], 1f);
+            //audioSource.PlayOneShot(SFX[0], 1f);
             // cur_piece.transform.rotation = cur_piece.transform.rotation * Quaternion.Euler(0f, 0f, 90f);
             // cur_piece.transform.position += new Vector3(0f, 0.15f, 0f);
         }
