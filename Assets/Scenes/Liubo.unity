@@ -1058,7 +1058,7 @@ MonoBehaviour:
   isCharacterOn: 1
   valid_sign: {fileID: 727620669}
   canvas: {fileID: 153840371}
-  stop_sign: {fileID: 0}
+  stop_sign: {fileID: 2079689813}
   white_pieces:
   - {fileID: 928359503}
   - {fileID: 1107356711}
@@ -14095,7 +14095,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079689813}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.917, y: 0.059, z: 0.087}
+  m_LocalPosition: {x: -3.304, y: 0.059, z: 3.315}
   m_LocalScale: {x: 0.05, y: 0.15, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
