@@ -95,7 +95,7 @@ public class GameState : MonoBehaviour
         state = State.Roll;
 
         allwhitePieces = whitePieceBut.GetComponentsInChildren<Transform>();
-        allblackPieces = whitePieceBut.GetComponentsInChildren<Transform>();
+        allblackPieces = blackPieceBut.GetComponentsInChildren<Transform>();
 
         isCharacterOn = true;
         if(is_p1_turn == true)
