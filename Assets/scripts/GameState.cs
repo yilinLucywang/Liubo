@@ -491,11 +491,11 @@ public class GameState : MonoBehaviour
             if(isSecondOne && (!isDiff)){
                 curPieceTranslation = new Vector3(0f, 0.14f, 0f);
                 if(isHorizontal){
-                    curPieceTranslation += new Vector3(0.077f,0f,0f);
+                    curPieceTranslation += new Vector3(0f,0f,0.15f);
                 }
                 else{
 
-                    curPieceTranslation += new Vector3(0f,0f,0.077f);
+                    curPieceTranslation += new Vector3(0.15f,0f,0f);
                 }
             }
             else{
