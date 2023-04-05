@@ -19,7 +19,7 @@ public class CameraMove : MonoBehaviour
     private void Update()
     {
         _offset = transform.position - focusPoint.transform.position;
-        Debug.LogError(GameState.state);
+        
         if (GameState.state == State.PieceSelection)
         {
             if (Input.GetKey(KeyCode.E))
