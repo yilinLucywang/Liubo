@@ -851,7 +851,7 @@ public class GameState : MonoBehaviour
         //TODO: spawn marks here
         List<Vector3> poses = new List<Vector3>();
         for(int i = 0; i < path.Count; i++){
-            poses.Add(bd.GetTopPosition(path[i]));
+            poses.Add(bd.GetBasePosition(path[i]));
         }
         spawnStop(poses);
         foreach (var anchorPos in a)

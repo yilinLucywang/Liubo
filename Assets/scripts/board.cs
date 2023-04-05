@@ -526,5 +526,8 @@ public class board : MonoBehaviour
         return anchorPos;
     }
 
-    
+    public Vector3 GetBasePosition(int nodeIndex)
+    {
+        return anchors[index_2_anchor[nodeIndex]].transform.position;
+    }
 }
