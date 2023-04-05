@@ -201,6 +201,7 @@ public class GameState : MonoBehaviour
         num_1_text2.text = num_1.ToString();
         num_2_text2.text = num_2.ToString();
 
+
         dice_1 = num_1; 
         dice_2 = num_2;
 
@@ -422,6 +423,10 @@ public class GameState : MonoBehaviour
                         Vector3 newPos = res_list[j];
                         SpawnGreen(newPos);
                     }
+                }
+                else
+                {
+                    SpawnGreen(pos);
                 }
             }
             else
