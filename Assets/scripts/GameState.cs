@@ -89,6 +89,7 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        state = State.Roll;
         isCharacterOn = true;
         if(is_p1_turn == true)
         {
