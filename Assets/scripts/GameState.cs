@@ -155,8 +155,9 @@ public class GameState : MonoBehaviour
         is_p1_turn = !is_p1_turn;
         dice_1 = -1; 
         dice_2 = -1;
+        chosen_piece = -1;
 
-        stickJar.SetActive(true);
+        StickRoller.GetInstance().SetActive(true);
         throwingSticks.SetActive(true);
         
         num_1_text.text = ""; 
@@ -214,17 +215,21 @@ public class GameState : MonoBehaviour
     IEnumerator WaitForClickBtn()
     {
         yield return new WaitForSeconds(2f);
-        stickJar.SetActive(false);
+        StickRoller.GetInstance().SetActive(false);
         throwingSticks.SetActive(false);
         if (is_p1_turn)
         {
             dice1But.SetActive(true);
             dice2But.SetActive(true);
+            dice1But.GetComponent<Button>().interactable = true;
+            dice2But.GetComponent<Button>().interactable = true;
         }
         else if (!is_p1_turn)
         {
             dice1But2.SetActive(true);
             dice2But2.SetActive(true);
+            dice1But2.GetComponent<Button>().interactable = true;
+            dice2But2.GetComponent<Button>().interactable = true;
         }
     }
     /// <summary>
@@ -261,12 +266,16 @@ public class GameState : MonoBehaviour
         
         if(openLimit == true)
         {
+            RemoveGreens();
+            chosen_piece = -1;
             topClicked = true;
             bottomClicked = false;
         }
 
         if (is_p1_turn && openLimit == true)
         {
+            dice1But.GetComponent<Button>().interactable = false;
+            dice2But.GetComponent<Button>().interactable = true;
             //3D Version
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
             {
@@ -283,6 +292,8 @@ public class GameState : MonoBehaviour
         }
         else if(!is_p1_turn && openLimit == true)
         {
+            dice1But2.GetComponent<Button>().interactable = false;
+            dice2But2.GetComponent<Button>().interactable = true;
             //3D Version
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
             {
@@ -305,12 +316,16 @@ public class GameState : MonoBehaviour
         }
         if (openLimit == true)
         {
+            RemoveGreens();
+            chosen_piece = -1;
             topClicked = false;
             bottomClicked = true;
         }
 
         if (is_p1_turn && openLimit == true)
         {
+            dice1But.GetComponent<Button>().interactable = true;
+            dice2But.GetComponent<Button>().interactable = false;
             //3D Version
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
             {
@@ -328,6 +343,8 @@ public class GameState : MonoBehaviour
         }
         else if(!is_p1_turn && openLimit == true)
         {
+            dice1But2.GetComponent<Button>().interactable = true;
+            dice2But2.GetComponent<Button>().interactable = false;
             //3D Version
             foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
             {
