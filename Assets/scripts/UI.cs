@@ -40,7 +40,7 @@ public class UI : MonoBehaviour
         
         
         
-        if (gameData.white_score == 6 || gameData.black_score == 6)
+        if (gameData.white_score >= 6 || gameData.black_score >= 6)
         {
             BlackImage.SetActive(true);
             StartCoroutine(Fade());

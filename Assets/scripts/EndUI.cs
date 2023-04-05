@@ -23,7 +23,7 @@ public class EndUI : MonoBehaviour
             player1Score.text = gameData.playername1 + " Score: " + gameData.white_score.ToString();
             player2Score.text = gameData.playername2 + " Score: " + gameData.black_score.ToString();
 
-        if (gameData.white_score == 6 )
+        if (gameData.white_score >= 6 )
         {
             Winner.text = gameData.playername1 + " Win!";
         }
