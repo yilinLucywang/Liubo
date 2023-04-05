@@ -374,7 +374,7 @@ public class GameState : MonoBehaviour
 
     public void PieceChosen(int index, bool is_black)
     {
-        blockade = false;
+        //blockade = false;
         if (state != State.PieceSelection) return;
         chosen_piece = index; 
         is_black_chosen = is_black;
