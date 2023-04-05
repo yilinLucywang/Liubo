@@ -9,7 +9,7 @@ public class board : MonoBehaviour
     private static int total_poses = 37;
     private static int piece_number = 6;
     private Dictionary<int, int> anchor_2_index = new Dictionary<int, int> ();
-    private Dictionary<int, int> index_2_anchor = new Dictionary<int, int> ();
+    public Dictionary<int, int> index_2_anchor = new Dictionary<int, int> ();
     private List<int> final_poses =  new List<int>();
 
 
@@ -204,13 +204,18 @@ public class board : MonoBehaviour
                 final_poses.Clear();
                 owl_poses.Clear();
                 HashSet<int> visited_spot = new HashSet<int>();
-                visited_spot.Add(0);
-                List<int> p_1 = CreateList(0);
-                normal_helper(0,step,visited_spot,p_1);
-                visited_spot.Clear();
-                visited_spot.Add(11);
-                List<int> p_2 = CreateList(11);
-                normal_helper(11,step,visited_spot,p_2);
+                if(nodes[0].Count < 2){
+                    visited_spot.Add(0);
+                    List<int> p_1 = CreateList(0);
+                    normal_helper(0,step,visited_spot,p_1);
+                    visited_spot.Clear();
+                }
+                if(nodes[11].Count < 2){
+                    visited_spot.Add(11);
+                    List<int> p_2 = CreateList(11);
+                    normal_helper(11,step,visited_spot,p_2);
+                    visited_spot.Clear();
+                }
             }else{
                 //30,23
                 //no way for this case to be owl
@@ -218,14 +223,19 @@ public class board : MonoBehaviour
                 owl_poses.Clear();
                 HashSet<int> visited_spot = new HashSet<int>();
                 path.Clear();
-                path.Add(30);
-                visited_spot.Add(30);
-                normal_helper(30,step,visited_spot,path);
-                visited_spot.Clear();
-                visited_spot.Add(23);
-                path.Clear();
-                path.Add(23);
-                normal_helper(23,step,visited_spot,path);
+                if(nodes[30].Count < 2){
+                    path.Add(30);
+                    visited_spot.Add(30);
+                    normal_helper(30,step,visited_spot,path);
+                    visited_spot.Clear();
+                }
+                if(nodes[23].Count < 2){
+                    visited_spot.Add(23);
+                    path.Clear();
+                    path.Add(23);
+                    normal_helper(23,step,visited_spot,path);
+                    visited_spot.Clear();
+                }
             }
         }
         else{
