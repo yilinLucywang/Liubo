@@ -5226,8 +5226,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: cb65a0b337afa2d45acc28cc6bbbc77d, type: 2}
   selectionMaterial: {fileID: 2100000, guid: 0d61aea118429f84d8cc6a386c600388, type: 2}
-  originalWhiteMat: {fileID: 0}
-  originalBlackMat: {fileID: 0}
+  originalWhiteMat: {fileID: 2100000, guid: e559da05aba06194cb828420113d9b18, type: 2}
+  originalBlackMat: {fileID: 2100000, guid: 579f5cb74883d464e8a8f9b04bd2b270, type: 2}
   GameState: {fileID: 153840375}
   highlight: {fileID: 0}
   selection: {fileID: 0}
