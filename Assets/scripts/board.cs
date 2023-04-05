@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Text.RegularExpressions;
+using UnityEngine.Tilemaps;
 
 public class board : MonoBehaviour
 {   
@@ -51,6 +52,8 @@ public class board : MonoBehaviour
 
     
     public int[] cur_rolls = new int[2];
+
+    [SerializeField] private float pieceWidth, pieceHeight;
     void Awake()
     {
         //-1 means no piece in current location
@@ -487,5 +490,19 @@ public class board : MonoBehaviour
 
     //TODO: bool partner
     //List<int> posNotToGo
+    public Vector3 GetTopPosition(int nodeIndex)
+    {
+        var anchor = anchors[index_2_anchor[nodeIndex]];
+        var anchorPos = anchor.transform.position;
+        var yOffset = 0f;
+        foreach (var pieceIndex in nodes[nodeIndex])
+        {
+            string chosen_piece_name = pieceIndex.ToString();
+            GameObject piece = GameObject.Find(chosen_piece_name);
+            yOffset += piece.CompareTag("Owl") ? pieceHeight : pieceWidth;
+        }
 
+        anchorPos.y += yOffset;
+        return anchorPos;
+    }
 }

@@ -82,7 +82,7 @@ public class GameState : MonoBehaviour
 
     private Coroutine pieceMovingCoroutine;
     public State state = State.Roll;
-    
+
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
             white_poses.Add(white_pieces[i].transform.position);
@@ -193,7 +193,6 @@ public class GameState : MonoBehaviour
     {
         // int num_1 = RollSticks();
         // int num_2 = RollSticks();
-        ac.Play();
         var (num_1, num_2) = StickRoller.GetInstance().RollSticks();
         
         num_1_text.text = num_1.ToString(); 
@@ -465,7 +464,7 @@ public class GameState : MonoBehaviour
         bool isSecondOne = false; 
         for(int i = 0; i < bd.nodes[pos_index].Count; i++){
             int chosen_piece_index = bd.nodes[pos_index][i];
-            string chosen_piece_name = chosen_piece_index.ToString();; 
+            string chosen_piece_name = chosen_piece_index.ToString();
             GameObject cur_piece = GameObject.Find(chosen_piece_name);
             bool isDiff = isDifferentType(pos_index, cur_piece.CompareTag("Owl"), chosen_piece);
             bool isOwl = cur_piece.CompareTag("Owl");
@@ -791,7 +790,10 @@ public class GameState : MonoBehaviour
             path.RemoveAt(0);
         }
 
-        var a = path.Select(anchor => bd.anchors[bd.index_2_anchor[anchor]].transform.position).ToArray();
+        var a = path.Select(nodeIndex =>
+        {
+            return bd.GetTopPosition(nodeIndex);
+        }).ToArray();
         // yield return piece.transform.DOPath(a.ToArray(), 3, PathType.Linear, PathMode.Full3D).WaitForCompletion();
         //TODO: spawn marks here
         foreach (var anchorPos in a)
