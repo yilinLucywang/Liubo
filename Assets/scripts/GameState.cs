@@ -376,6 +376,7 @@ public class GameState : MonoBehaviour
         chosen_piece = index; 
         is_black_chosen = is_black;
         //show all possibe positions
+        Debug.Log("here! line 352");
         ShowPossiblePositions();
         
 
@@ -392,7 +393,8 @@ public class GameState : MonoBehaviour
             chosen_piece = chosen_piece - 6;
         }
         List<Vector3> res_list = bd.move(is_white, chosen_piece, cur_step);
-
+        Debug.Log("line 369");
+        Debug.Log(res_list.Count);
 
         for(int k = 0; k < bd.final_paths.Count; k++){
             string pathString = "";
@@ -487,11 +489,11 @@ public class GameState : MonoBehaviour
             if(isSecondOne && (!isDiff)){
                 curPieceTranslation = new Vector3(0f, 0.14f, 0f);
                 if(isHorizontal){
-                    curPieceTranslation += new Vector3(0f,0f,0.11f);
+                    curPieceTranslation += new Vector3(0.11f,0f,0f);
                 }
                 else{
 
-                    curPieceTranslation += new Vector3(0.11f,0f,0f);
+                    curPieceTranslation += new Vector3(0f,0f,0.11f);
                 }
             }
             else{
@@ -718,6 +720,7 @@ public class GameState : MonoBehaviour
     }
 
     void SpawnGreen(Vector3 spawn_pos){
+        Debug.Log("this is spawn green");
         //spawn the prefab at the given position
         GameObject instantiated = Instantiate(valid_sign, spawn_pos, Quaternion.identity);
         instantiated.transform.SetParent(canvas.transform);
