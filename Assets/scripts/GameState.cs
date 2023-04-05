@@ -839,6 +839,10 @@ public class GameState : MonoBehaviour
                     isTurnedToNormal = true;
                 }
                 var a = bd.GetTopPosition(nodeIndex, !isTurnedToNormal);
+                
+                piece.transform.DORotateQuaternion(b, 1);
+                yield return piece.transform.DOJump(a, 0.5f, 1, 1).WaitForCompletion();
+                piece.transform.rotation = GetPieceOrientation(nodeIndex, !isTurnedToNormal);
             }
         }
         else
