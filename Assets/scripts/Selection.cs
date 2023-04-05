@@ -7,12 +7,17 @@ public class Selection : MonoBehaviour
 {
     public Material highlightMaterial;
     public Material selectionMaterial;
+    public Material originalWhiteMat;
+    public Material originalBlackMat;
 
     public GameState GameState;
 
     private Material originalMaterialHighlight;
     private Material originalMaterialSelection;
+    
+    [SerializeField]
     private Transform highlight;
+    [SerializeField]
     private Transform selection;
     private RaycastHit raycastHit;
 
@@ -30,9 +35,21 @@ public class Selection : MonoBehaviour
             BlackHighLightAndSelect();
         }
 
-        if (GameState.state == State.PieceMoving && GameState.is_p1_turn)
+        if (GameState.state != State.PieceSelection && GameState.is_p1_turn)
         {
-
+            if (selection)
+            {
+                selection.GetComponent<MeshRenderer>().material = originalWhiteMat;
+                selection = null;
+            }
+        }
+        else if (GameState.state != State.PieceSelection && !GameState.is_p1_turn)
+        {
+            if (selection)
+            {
+                selection.GetComponent<MeshRenderer>().material = originalBlackMat;
+                selection = null;
+            }
         }
     }
 
