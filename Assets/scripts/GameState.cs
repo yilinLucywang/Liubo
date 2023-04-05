@@ -819,44 +819,44 @@ public class GameState : MonoBehaviour
         {
             path.RemoveAt(0);
         }
-
-        var a = new Vector3[]{};
-        if (piece.CompareTag("Owl"))
-        {
-            var isTurnedToNormal = false;
-            a = path.Select(nodeIndex =>
-            {
-                if (is_p1_turn && bd.whiteScoringNests.Contains(nodeIndex) ||
-                    !is_p1_turn && bd.blackScoringNests.Contains(nodeIndex))
-                {
-                    isTurnedToNormal = true;
-                }
-                return bd.GetTopPosition(nodeIndex, !isTurnedToNormal);
-            }).ToArray();
-        }
-        else
-        {
-            var isTurnedToOwl = false;
-            a = path.Select(nodeIndex =>
-            {
-                if (bd.pond_index == nodeIndex)
-                {
-                    isTurnedToOwl = true;
-                }
-                return bd.GetTopPosition(nodeIndex, isTurnedToOwl);
-            }).ToArray();
-        }
         
-        // yield return piece.transform.DOPath(a.ToArray(), 3, PathType.Linear, PathMode.Full3D).WaitForCompletion();
         //TODO: spawn marks here
         List<Vector3> poses = new List<Vector3>();
         for(int i = 0; i < path.Count; i++){
             poses.Add(bd.GetBasePosition(path[i]));
         }
         spawnStop(poses);
-        foreach (var anchorPos in a)
+        
+        if (piece.CompareTag("Owl"))
         {
-            yield return piece.transform.DOMove(anchorPos, 1).WaitForCompletion();
+            var isTurnedToNormal = false;
+            foreach (var nodeIndex in path)
+            {
+                var b = GetPieceOrientation(nodeIndex, !isTurnedToNormal);
+                if (is_p1_turn && bd.whiteScoringNests.Contains(nodeIndex) ||
+                    !is_p1_turn && bd.blackScoringNests.Contains(nodeIndex))
+                {
+                    isTurnedToNormal = true;
+                }
+                var a = bd.GetTopPosition(nodeIndex, !isTurnedToNormal);
+            }
+        }
+        else
+        {
+            var isTurnedToOwl = false;
+            foreach (var nodeIndex in path)
+            {
+                var b = GetPieceOrientation(nodeIndex, isTurnedToOwl);
+                if (nodeIndex == bd.pond_index)
+                {
+                    isTurnedToOwl = true;
+                }
+                var a = bd.GetTopPosition(nodeIndex, isTurnedToOwl);
+                
+                piece.transform.DORotateQuaternion(b, 1);
+                yield return piece.transform.DOJump(a, 0.5f, 1, 1).WaitForCompletion();
+                piece.transform.rotation = GetPieceOrientation(nodeIndex, isTurnedToOwl);
+            }
         }
         removeStops();
     }
