@@ -393,6 +393,7 @@ public class GameState : MonoBehaviour
         if (state != State.PieceSelection) return;
         chosen_piece = index; 
         is_black_chosen = is_black;
+        cur_piece = GameObject.Find(chosen_piece.ToString());
         //show all possibe positions
         Debug.Log("here! line 352");
         ShowPossiblePositions();
@@ -405,11 +406,7 @@ public class GameState : MonoBehaviour
         //piece offbard starting pos: 11,1,30,22
         board bd = gameObject.GetComponent<board>();
         bool is_white = !is_black_chosen;
-        if (is_white)
-        {
-            chosen_piece = chosen_piece - 6;
-        }
-        List<Vector3> res_list = bd.move(is_white, chosen_piece, cur_step);
+        List<Vector3> res_list = bd.move(is_white, is_white ? chosen_piece - 6 : chosen_piece, cur_step);
         Debug.Log("line 369");
         Debug.Log(res_list.Count);
 
@@ -592,17 +589,15 @@ public class GameState : MonoBehaviour
         Score score = gameObject.GetComponent<Score>();
         
         //TODO: 1. move piece
-        if (!is_black_chosen)
-        {
-            chosen_piece = chosen_piece + 6;
-        }
-
-        string chosen_piece_name = chosen_piece.ToString();
-        cur_piece = GameObject.Find(chosen_piece_name);
+        
         board bd = gameObject.GetComponent<board>();
         int pos_index = bd.get_anchor_index(position);
-
-            bool is_two_same_spot = false;
+        var path = bd.final_paths.First(p => p[p.Count - 1] == pos_index);
+        if ((chosen_piece >= 6 && bd.white_pieces[chosen_piece - 6] != -1) || (chosen_piece < 6 && bd.black_pieces[chosen_piece] != -1))
+        {
+            path.RemoveAt(0);
+        }
+        bool is_two_same_spot = false;
 
         //check position beofre moving
         int CurOrgIndex = bd.get_anchor_index(cur_piece.transform.position);
@@ -625,7 +620,7 @@ public class GameState : MonoBehaviour
         {
             is_two_same_spot = true;
         }
-        bool is_owl = bd.is_becoming_owl(pos_index);
+        bool is_owl = willBeOwl(path, cur_piece.CompareTag("Owl"));
 
 
         //TODO: check whether the other piece is of the same type
@@ -645,19 +640,21 @@ public class GameState : MonoBehaviour
                 break;
             }
         }
-        
+
         // Perform moving animation, delay all the following until the animation completes
-        yield return StartCoroutine(MovePieceAnimation(chosen_piece, cur_piece, pos_index, CurOrgIndex));
+        yield return StartCoroutine(MovePieceAnimation(cur_piece, path));
         
         bd.nodes[pos_index].Add(chosen_piece);
-        piecePlacement(pos_index,position);
 
 
         //calculate score before add piece 
         //TODO: this is the bool indicating whether the piece should be an owl
         Debug.Log("before calc score");
-        score.CalculateScore(position, chosen_piece, is_black_chosen, is_owl);
+        score.CalculateScore(pos_index, chosen_piece, cur_piece, is_black_chosen, is_owl);
         Debug.Log("after calc score");
+        
+        piecePlacement(pos_index, position);
+        
         if (openLimit == true)
         {
             previousPiece = cur_piece.ToString();
@@ -667,18 +664,14 @@ public class GameState : MonoBehaviour
             }
 
         }
-
-        if (!is_black_chosen)
-        {
-            chosen_piece = chosen_piece - 6;
-        }
+        
         if (is_black_chosen)
         {
             bd.black_pieces[chosen_piece] = pos_index;
         }
         else
         {
-            bd.white_pieces[chosen_piece] = pos_index;
+            bd.white_pieces[chosen_piece - 6] = pos_index;
         }
 
         if (openLimit == true)
@@ -806,19 +799,8 @@ public class GameState : MonoBehaviour
         instantiated_stop_list.Clear();
     }
 
-    IEnumerator MovePieceAnimation(int pieceIndex, GameObject piece, int destAnchor, int startingPos)
+    IEnumerator MovePieceAnimation(GameObject piece, List<int> path)
     {
-        board bd = gameObject.GetComponent<board>();
-        var path = bd.final_paths.First(p => p[p.Count - 1] == destAnchor);
-
-        if (pieceIndex >= 6 && bd.white_pieces[pieceIndex - 6] != -1)
-        {
-            path.RemoveAt(0);
-        } 
-        else if (pieceIndex < 6 && bd.black_pieces[pieceIndex] != -1)
-        {
-            path.RemoveAt(0);
-        }
         
         //TODO: spawn marks here
         List<Vector3> poses = new List<Vector3>();
@@ -826,23 +808,26 @@ public class GameState : MonoBehaviour
             poses.Add(bd.GetBasePosition(path[i]));
         }
         spawnStop(poses);
-        
+
         if (piece.CompareTag("Owl"))
         {
             var isTurnedToNormal = false;
             foreach (var nodeIndex in path)
             {
                 var b = GetPieceOrientation(nodeIndex, !isTurnedToNormal);
+                var a = bd.GetTopPosition(nodeIndex, !isTurnedToNormal);
+
+
+                piece.transform.DORotateQuaternion(b, 1);
+                yield return piece.transform.DOJump(a, 0.3f, 1, 1).WaitForCompletion();
                 if (is_p1_turn && bd.whiteScoringNests.Contains(nodeIndex) ||
                     !is_p1_turn && bd.blackScoringNests.Contains(nodeIndex))
                 {
                     isTurnedToNormal = true;
+                    piece.transform.DOJump(bd.GetTopPosition(nodeIndex, !isTurnedToNormal), 0.1f, 1, 0.5f);
+                    yield return piece.transform.DORotateQuaternion(GetPieceOrientation(nodeIndex, !isTurnedToNormal), 0.5f)
+                        .WaitForCompletion();
                 }
-                var a = bd.GetTopPosition(nodeIndex, !isTurnedToNormal);
-                
-                piece.transform.DORotateQuaternion(b, 1);
-                yield return piece.transform.DOJump(a, 0.5f, 1, 1).WaitForCompletion();
-                piece.transform.rotation = GetPieceOrientation(nodeIndex, !isTurnedToNormal);
             }
         }
         else
@@ -851,15 +836,18 @@ public class GameState : MonoBehaviour
             foreach (var nodeIndex in path)
             {
                 var b = GetPieceOrientation(nodeIndex, isTurnedToOwl);
+                var a = bd.GetTopPosition(nodeIndex, isTurnedToOwl);
+                piece.transform.DORotateQuaternion(b, 1);
+                yield return piece.transform.DOJump(a, 0.3f, 1, 1).WaitForCompletion();
+
                 if (nodeIndex == bd.pond_index)
                 {
                     isTurnedToOwl = true;
+                    piece.transform.DOJump(bd.GetTopPosition(nodeIndex, isTurnedToOwl), 0.1f, 1, 0.5f);
+                    yield return piece.transform.DORotateQuaternion(GetPieceOrientation(nodeIndex, isTurnedToOwl), 0.5f)
+                        .WaitForCompletion();
                 }
-                var a = bd.GetTopPosition(nodeIndex, isTurnedToOwl);
                 
-                piece.transform.DORotateQuaternion(b, 1);
-                yield return piece.transform.DOJump(a, 0.5f, 1, 1).WaitForCompletion();
-                piece.transform.rotation = GetPieceOrientation(nodeIndex, isTurnedToOwl);
             }
         }
         removeStops();
@@ -869,8 +857,8 @@ public class GameState : MonoBehaviour
     {
         var destAnchor = bd.get_anchor_index(DestPos);
         var path = bd.final_paths.First(p => p[p.Count - 1] == destAnchor);
-        var isTurningIntoOwl = false;
-        OnDestinationMouseEnterEvent.Invoke(path, isTurningIntoOwl);
+        // not_owl && isBecomingOwl || isOwl && !isBecomingNormal
+        OnDestinationMouseEnterEvent.Invoke(path, willBeOwl(path, cur_piece.CompareTag("Owl")));
     }
     
     public void OnDestinationMouseExit()
@@ -895,6 +883,20 @@ public class GameState : MonoBehaviour
             ret *= Quaternion.Euler(0f, 90f, 90f);
         }
         return ret;
+    }
+
+    private bool isPassingPond(List<int> path)
+    {
+        return path.Contains(bd.pond_index);
+    }
+    
+    private bool isPassingNests(List<int> path) {
+        return is_black_chosen ? bd.blackScoringNests.Overlaps(path) : bd.whiteScoringNests.Overlaps(path);
+    }
+
+    private bool willBeOwl(List<int> path, bool isCurrentlyOwl)
+    {
+        return isCurrentlyOwl && !isPassingNests(path) || !isCurrentlyOwl && isPassingPond(path);
     }
 }
 
