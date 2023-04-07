@@ -930,8 +930,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132348234}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.046, z: 0}
-  m_LocalScale: {x: 0.72785336, y: 0.002501559, z: 0.72785336}
+  m_LocalPosition: {x: -0.001, y: -0.041, z: 0.019}
+  m_LocalScale: {x: 0.30246753, y: 0.0010395505, z: 0.30246753}
   m_Children: []
   m_Father: {fileID: 941231049}
   m_RootOrder: 1
@@ -967,7 +967,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3a2e9f2c9969d0d408221b675f9bf635, type: 2}
+  - {fileID: 2100000, guid: b976849f4c0a89e42ad96e72de648ea6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2019,7 +2019,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 971e60f122d65124ba453b56fd901a3a, type: 3}
+  m_Texture: {fileID: 8400000, guid: dcd95785898e76643975323e6860fe32, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4375,8 +4375,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 574.1, y: 701.4}
-  m_SizeDelta: {x: 1366.148, y: 707.7731}
+  m_AnchoredPosition: {x: 574.1, y: 962.6}
+  m_SizeDelta: {x: 1366.148, y: 185.31824}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &500057748
 MonoBehaviour:
@@ -4408,7 +4408,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Black turn!!!
 --- !u!222 &500057749
@@ -14080,8 +14080,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -567.9, y: 701.4}
-  m_SizeDelta: {x: 1144.4669, y: 707.7731}
+  m_AnchoredPosition: {x: -567.9, y: 965.4}
+  m_SizeDelta: {x: 1144.4669, y: 179.85492}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1985146387
 MonoBehaviour:
@@ -14113,7 +14113,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: White turn!!!
 --- !u!222 &1985146388
