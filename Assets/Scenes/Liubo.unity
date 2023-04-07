@@ -1043,7 +1043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: c2bf33fbf6d9e3a48ad89085e62bb76a, type: 2}
   hasDiffColor: 0
-  score_sound: {fileID: 153840383}
+  score_sound: {fileID: 0}
   SFX:
   - {fileID: 8300000, guid: 784525f8d33a7394e9378060fc7b7b73, type: 3}
   - {fileID: 8300000, guid: 176971ee96425a94b9455d86de537819, type: 3}
@@ -9833,7 +9833,7 @@ PrefabInstance:
     - target: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
         type: 3}
       propertyPath: m_TagString
-      value: Owl
+      value: Normal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a098fa4854716164db33d4f4c6bca159, type: 3}
@@ -10433,7 +10433,7 @@ PrefabInstance:
     - target: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
         type: 3}
       propertyPath: m_TagString
-      value: Owl
+      value: Normal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a098fa4854716164db33d4f4c6bca159, type: 3}
@@ -13420,7 +13420,7 @@ PrefabInstance:
     - target: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
         type: 3}
       propertyPath: m_TagString
-      value: Owl
+      value: Normal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a098fa4854716164db33d4f4c6bca159, type: 3}

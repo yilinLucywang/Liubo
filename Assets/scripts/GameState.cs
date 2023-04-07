@@ -213,8 +213,8 @@ public class GameState : MonoBehaviour
         num_2_text2.text = num_2.ToString();
 
 
-        dice_1 = 4; 
-        dice_2 = 1;
+        dice_1 = 2; 
+        dice_2 = 2;
 
 
         if (openLimit == true)
