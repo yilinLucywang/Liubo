@@ -22,10 +22,10 @@ public class CameraMove : MonoBehaviour
         
         if (GameState.state == State.PieceSelection)
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.RightArrow))
             {
                 transform.position = focusPoint.transform.position + Quaternion.Euler(0, _speed * -1 * Time.deltaTime, 0) * _offset;
-            } else if (Input.GetKey(KeyCode.Q))
+            } else if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.position = focusPoint.transform.position + Quaternion.Euler(0, _speed * Time.deltaTime, 0) * _offset;
             }
