@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ExtensionMethods;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Layout
@@ -18,6 +19,8 @@ public class StickResultShower : MonoBehaviour
     [SerializeField] private TextAsset layoutFile;
 
     [SerializeField] private Animator uiAnimator;
+
+    [SerializeField] private GameObject stickResultPanel;
     //private List<StickTransform> stickTransforms;
     private Dictionary<string, StickTransform> stickTransforms;
     private List<StickLayout> layouts;
@@ -34,6 +37,9 @@ public class StickResultShower : MonoBehaviour
         layouts = layoutFile.text.RemoveAll('\r').Split('\n').Skip(1).Select(StickLayout.FromCsvLine).ToList();
 
         StickRoller.GetInstance().onStickRoll.AddListener(ShowResult);
+        
+        HideResult();
+        stickResultPanel.GetComponent<Button>().onClick.AddListener(HideResult);
     }
 
     // Update is called once per frame
@@ -61,11 +67,14 @@ public class StickResultShower : MonoBehaviour
             }
             val >>= 1;
         }
+        
+        stickResultPanel.SetActive(true);
         uiAnimator.Play("ShowResult");
     }
 
     public void HideResult()
     {
+        stickResultPanel.SetActive(false);
         sticks.ForEach(stick => stick.SetActive(false));
     }
 }

@@ -14,7 +14,7 @@ public class JarController : MonoBehaviour
     private HingeJoint hj;
     private IEnumerator lockControlCountdownCoroutine;
 
-    private AudioSource ac;
+    public AudioSource ac;
     
     // [SerializeField] private Rigidbody childRigidbody;
     // Start is called before the first frame update
