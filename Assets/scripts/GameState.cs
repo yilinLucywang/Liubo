@@ -650,9 +650,7 @@ public class GameState : MonoBehaviour
 
         //calculate score before add piece 
         //TODO: this is the bool indicating whether the piece should be an owl
-        Debug.Log("before calc score");
         score.CalculateScore(pos_index, chosen_piece, cur_piece, is_black_chosen, is_owl);
-        Debug.Log("after calc score");
         
         piecePlacement(pos_index, position);
         
@@ -695,7 +693,6 @@ public class GameState : MonoBehaviour
             state = State.MoveSelection;
         }
 
-        Debug.Log("before return");
         yield return null;
     }
 
@@ -784,7 +781,7 @@ public class GameState : MonoBehaviour
     //     }
         
     // }
-    private void spawnStop(List<Vector3> poses){
+    public void spawnStop(List<Vector3> poses){
         for(int i = 0; i < poses.Count; i++){
             Vector3 pos = poses[i];
             GameObject instantiated = Instantiate(stop_sign, pos, Quaternion.identity);
@@ -793,7 +790,7 @@ public class GameState : MonoBehaviour
         }
     }
 
-    private void removeStops(){
+    public void removeStops(){
         for(int i = 0; i < instantiated_stop_list.Count; i++){
             Destroy(instantiated_stop_list[i]);
         }

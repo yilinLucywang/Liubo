@@ -35,6 +35,13 @@ public class MovingTrajectory : MonoBehaviour
         var bd = gs.gameObject.GetComponent<board>();
         var vertices = path.Select(anchorIndex => bd.anchors[bd.index_2_anchor[anchorIndex]].transform.position).ToArray();
         lr.SetPositions(vertices);
+        List<Vector3> poses = new List<Vector3>();
+        for(int i = 0; i < path.Count; i++){
+            poses.Add(bd.GetBasePosition(path[i]));
+        }
+        gs.spawnStop(poses);
+        
+
     }
 
     private void ShowHologram(List<int> path, bool isTurningIntoOwl)
@@ -54,5 +61,6 @@ public class MovingTrajectory : MonoBehaviour
     private void HideTrajectory()
     {
         lr.positionCount = 0;
+        gs.removeStops();
     }
 }
