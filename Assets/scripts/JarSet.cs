@@ -14,7 +14,7 @@ public class JarSet : MonoBehaviour
     private Vector3 originalJarPos;
 
     private Vector3 originalJarRot;
-    
+    private JarController jc;
     
     // Start is called before the first frame update
     void Start()
@@ -35,6 +35,8 @@ public class JarSet : MonoBehaviour
         StickRoller.GetInstance().onStickRollerDisable.AddListener(DisableJarAndSticks);
 
         flyingSticksAnimator.speed = 6f;
+
+        jc = jar.GetComponent<JarController>();
     }
 
     // Update is called once per frame
@@ -51,6 +53,10 @@ public class JarSet : MonoBehaviour
     
     IEnumerator SetSticksActive()
     {
+        
+        jc.isMouseControlable = false;
+        jc.ac.Stop();
+        jc.enabled = false;
         yield return new WaitForSeconds(0.5f);
         sticks.ForEach(stick =>
         {
@@ -60,7 +66,6 @@ public class JarSet : MonoBehaviour
         flyingSticksAnimator.Play("ThrowSticks");
         jar.transform.position = originalJarPos;
         jar.transform.eulerAngles = originalJarRot;
-        jar.GetComponent<JarController>().isMouseControlable = false;
         // lock mouse control
         
         yield return new WaitForSeconds(1.2f);
@@ -78,7 +83,8 @@ public class JarSet : MonoBehaviour
         jar.SetActive(true);
         jar.transform.position = originalJarPos;
         jar.transform.eulerAngles = originalJarRot;
-        jar.GetComponent<JarController>().isMouseControlable = true;
+        jc.isMouseControlable = true;
+        jc.enabled = true;
     }
     
     void DisableJarAndSticks()
@@ -91,7 +97,7 @@ public class JarSet : MonoBehaviour
         jar.SetActive(false);
         jar.transform.position = originalJarPos;
         jar.transform.eulerAngles = originalJarRot;
-        jar.GetComponent<JarController>().isMouseControlable = false;
+        jc.isMouseControlable = false;
         
     }
 }

@@ -13,12 +13,15 @@ public class JarController : MonoBehaviour
     private bool isAngleLockActive = false;
     private HingeJoint hj;
     private IEnumerator lockControlCountdownCoroutine;
+
+    public AudioSource ac;
     
     // [SerializeField] private Rigidbody childRigidbody;
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        ac = GetComponent<AudioSource>();
         isMouseControlable = true;
         hj = GetComponent<HingeJoint>();
 
@@ -28,7 +31,11 @@ public class JarController : MonoBehaviour
     void Update()
     {
         if (!isMouseControlable) return;
-        if (hj.angle > 13) isAngleLockActive = false;
+        if (hj.angle > 13)
+        {
+            isAngleLockActive = false;
+            ac.Stop();
+        }
         if (isAngleLockActive) return;
         var cons = 1f;
         
@@ -72,8 +79,13 @@ public class JarController : MonoBehaviour
         preX = newX;
         preY = newY;
 
-        
-        if (hj.angle < 5) isAngleLockActive = true;
+
+
+        if (hj.angle < 5)
+        {
+            isAngleLockActive = true;
+            ac.Play();
+        }
     }
 
     
