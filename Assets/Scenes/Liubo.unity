@@ -2482,7 +2482,7 @@ PrefabInstance:
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.02720001
+      value: -0.027
       objectReference: {fileID: 0}
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
@@ -5054,7 +5054,7 @@ PrefabInstance:
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.02720001
+      value: -0.027
       objectReference: {fileID: 0}
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
@@ -6044,7 +6044,7 @@ PrefabInstance:
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.02720001
+      value: -0.027
       objectReference: {fileID: 0}
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
@@ -6669,7 +6669,7 @@ PrefabInstance:
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.027200013
+      value: -0.027
       objectReference: {fileID: 0}
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
@@ -8916,7 +8916,7 @@ PrefabInstance:
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.02720001
+      value: -0.027
       objectReference: {fileID: 0}
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
@@ -10666,7 +10666,7 @@ PrefabInstance:
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.02720001
+      value: -0.027
       objectReference: {fileID: 0}
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
