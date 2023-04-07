@@ -624,7 +624,9 @@ public class GameState : MonoBehaviour
         }
         bool is_owl = willBeOwl(path, cur_piece.CompareTag("Owl"));
         if(wasOwl != is_owl){
-            owlSound.Play();
+            if(!wasOwl){
+                owlSound.Play();
+            }
         }
 
 
