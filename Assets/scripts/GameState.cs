@@ -213,8 +213,8 @@ public class GameState : MonoBehaviour
         num_2_text2.text = num_2.ToString();
 
 
-        dice_1 = num_1; 
-        dice_2 = num_2;
+        dice_1 = 2; 
+        dice_2 = 2;
 
 
         if (openLimit == true)
@@ -548,7 +548,7 @@ public class GameState : MonoBehaviour
 
     public bool isDifferentType(int pos_index, bool isOwl, int cur_index){
         board bd = gameObject.GetComponent<board>();
-        if(bd.nodes[pos_index].Count == 1){
+        if(bd.nodes[pos_index].Count == 2){
             if(bd.nodes[pos_index][0] != cur_index){
                 string chosen_piece_name = bd.nodes[pos_index][0].ToString();
                 GameObject prev_piece = GameObject.Find(chosen_piece_name);
