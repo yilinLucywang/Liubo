@@ -9,6 +9,7 @@ public class Score : MonoBehaviour
     
     public GameData gameData;
     public bool hasDiffColor;
+    public AudioSource score_sound;
     [SerializeField] private AudioClip[] SFX;
     [SerializeField] private AudioSource audioSource;
 
@@ -27,6 +28,7 @@ public class Score : MonoBehaviour
    
     public void CalculateScore(int pos_index, int chosen_piece, GameObject cur_piece, bool is_black_chosen, bool is_owl)
     {
+        bool score_changed = false;
         //cur_piece.transform.position = position;
         board bd = gameObject.GetComponent<board>();
         GameState gamestate = gameObject.GetComponent<GameState>();
@@ -41,7 +43,6 @@ public class Score : MonoBehaviour
         if(is_owl)
         {
             cur_piece.tag = "Owl";
-            Debug.Log("line 45");
             //
 
             //play turning to owl sfx
@@ -63,8 +64,8 @@ public class Score : MonoBehaviour
                 //Debug.Log("black owl move");
                 //black owl passed on nest
                 gameData.black_score += 2;
+                score_changed = true;
                 //RotateBackToNorm(cur_piece);
-                Debug.Log("line 67");
             }
                 // if there is already a piece on there
              diffColorIndex = findDifferentColor(pos_index, is_black_chosen);
@@ -78,6 +79,7 @@ public class Score : MonoBehaviour
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal")
                     {
                         gameData.black_score++;
+                        score_changed = true;
                         //Debug.Log("Black owl get white normal");
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
@@ -86,12 +88,12 @@ public class Score : MonoBehaviour
                     else if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl" && (bd.nodes[pos_index].Count > 2))
                     {
                         gameData.black_score += 3;
+                        score_changed = true;
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
 
                         //RotateBackToNorm(cur_piece);
                         //Debug.Log("2 Black owl get white owl");
                         //remove different color piece
-                        Debug.Log("line 99");
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
                     }
                 }
@@ -101,11 +103,11 @@ public class Score : MonoBehaviour
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl")
                     {
                         gameData.black_score += 3;
+                        score_changed = true;
                         //Debug.Log("Black normal get white owl");
                         //RotateBackToNorm(cur_piece);
                         //remove different color piece
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
-                        Debug.Log("line 117");
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
                     }
                     //Debug.Log("index"+ bd.nodes[pos_index].Count);
@@ -113,6 +115,7 @@ public class Score : MonoBehaviour
                     {
                         //Debug.Log("2 b normal get 1 w normal ");
                         gameData.black_score++;
+                        score_changed = true;
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
                     }
@@ -130,6 +133,7 @@ public class Score : MonoBehaviour
                 //Debug.Log("white owl move");
                 //white owl land on nest
                 gameData.white_score += 2;
+                score_changed = true;
             }
             // if there is already a piece on there
             diffColorIndex = findDifferentColor(pos_index, is_black_chosen);
@@ -142,6 +146,7 @@ public class Score : MonoBehaviour
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal")
                     {
                         gameData.white_score++;
+                        score_changed = true;
                         //Debug.Log("white owl get black normal");
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
@@ -150,6 +155,7 @@ public class Score : MonoBehaviour
                     else if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl" && (bd.nodes[pos_index].Count > 2))
                     {
                         gameData.white_score += 3;
+                        score_changed = true;
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
 
                         //RotateBackToNorm(cur_piece);
@@ -164,6 +170,7 @@ public class Score : MonoBehaviour
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl")
                     {
                         gameData.white_score += 3;
+                        score_changed = true;
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
                         //Debug.Log("white normal get black owl");
                         //RotateBackToNorm(cur_piece);
@@ -174,6 +181,7 @@ public class Score : MonoBehaviour
                     {
                         //Debug.Log("2 w normal get 1 b normal ");
                         gameData.white_score++;
+                        score_changed = true; 
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
                     }
@@ -181,10 +189,11 @@ public class Score : MonoBehaviour
                 
             }
         }
+        if(score_changed){
+            score_sound.Play();
+        }
         //update UI
-        Debug.Log("before change score");
         UI.ChangeScore();
-        Debug.Log("after change score");
     }
 
 
