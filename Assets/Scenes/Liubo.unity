@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1921,7 +1921,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: dcd95785898e76643975323e6860fe32, type: 2}
+  m_Texture: {fileID: 2800000, guid: 971e60f122d65124ba453b56fd901a3a, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1953,7 +1953,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 1940, y: 1564}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &207585361
 PrefabInstance:
@@ -8444,6 +8444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMouseControlable: 0
+  ac: {fileID: 0}
 --- !u!82 &1123006578
 AudioSource:
   m_ObjectHideFlags: 0
