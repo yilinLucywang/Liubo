@@ -11,6 +11,7 @@ public class GameState : MonoBehaviour
     //Set this to true for the 3D scene, will use Vector3s instead of Vector2s
     [SerializeField] GameObject LiuboBoard;
     public AudioSource ac;
+    public AudioSource owlSound;
     public bool Is3DGame = false;
 
     public bool is_p1_turn = true;
