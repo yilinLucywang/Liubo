@@ -63,7 +63,7 @@ public class Score : MonoBehaviour
             {
                 //Debug.Log("black owl move");
                 //black owl passed on nest
-                gameData.black_score += 2;
+                gameData.black_score += 3;
                 score_changed = true;
                 //RotateBackToNorm(cur_piece);
             }
@@ -87,7 +87,7 @@ public class Score : MonoBehaviour
                     //2 black owl eat white owl
                     else if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl" && (bd.nodes[pos_index].Count > 2))
                     {
-                        gameData.black_score += 3;
+                        gameData.black_score += 2;
                         score_changed = true;
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
 
@@ -102,7 +102,7 @@ public class Score : MonoBehaviour
                 {
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl")
                     {
-                        gameData.black_score += 3;
+                        gameData.black_score += 2;
                         score_changed = true;
                         //Debug.Log("Black normal get white owl");
                         //RotateBackToNorm(cur_piece);
@@ -132,7 +132,7 @@ public class Score : MonoBehaviour
             {
                 //Debug.Log("white owl move");
                 //white owl land on nest
-                gameData.white_score += 2;
+                gameData.white_score += 3;
                 score_changed = true;
             }
             // if there is already a piece on there
@@ -154,7 +154,7 @@ public class Score : MonoBehaviour
                     //2 black owl eat white owl
                     else if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl" && (bd.nodes[pos_index].Count > 2))
                     {
-                        gameData.white_score += 3;
+                        gameData.white_score += 2;
                         score_changed = true;
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
 
@@ -169,7 +169,7 @@ public class Score : MonoBehaviour
                 {
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl")
                     {
-                        gameData.white_score += 3;
+                        gameData.white_score += 2;
                         score_changed = true;
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
                         //Debug.Log("white normal get black owl");
