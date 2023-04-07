@@ -4375,8 +4375,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 574.1, y: 701.4}
-  m_SizeDelta: {x: 1366.148, y: 707.7731}
+  m_AnchoredPosition: {x: 574.1, y: 962.6}
+  m_SizeDelta: {x: 1366.148, y: 185.31824}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &500057748
 MonoBehaviour:
@@ -4408,7 +4408,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Black turn!!!
 --- !u!222 &500057749
@@ -14080,8 +14080,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -567.9, y: 701.4}
-  m_SizeDelta: {x: 1144.4669, y: 707.7731}
+  m_AnchoredPosition: {x: -567.9, y: 965.4}
+  m_SizeDelta: {x: 1144.4669, y: 179.85492}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1985146387
 MonoBehaviour:
@@ -14113,7 +14113,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: White turn!!!
 --- !u!222 &1985146388

@@ -62,7 +62,7 @@ public class Selection : MonoBehaviour
             highlight = null;
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit))
+        if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit, Mathf.Infinity))
         {
             highlight = raycastHit.transform;
             if (highlight.name == "6" || highlight.name == "7" || highlight.name == "8" || highlight.name == "9" || highlight.name == "10" || highlight.name == "11" && highlight != selection)
@@ -118,7 +118,7 @@ public class Selection : MonoBehaviour
             highlight = null;
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit))
+        if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit, Mathf.Infinity))
         {
             highlight = raycastHit.transform;
             if (highlight.name == "0" || highlight.name == "1" || highlight.name == "2" || highlight.name == "3" || highlight.name == "4" || highlight.name == "5" && highlight != selection)
