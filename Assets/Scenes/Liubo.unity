@@ -1156,6 +1156,8 @@ MonoBehaviour:
   boardCharacter: {fileID: 1832840750}
   stickJar: {fileID: 552044310}
   throwingSticks: {fileID: 1028252659}
+  whiteMat: {fileID: 2100000, guid: e559da05aba06194cb828420113d9b18, type: 2}
+  blackMat: {fileID: 2100000, guid: 579f5cb74883d464e8a8f9b04bd2b270, type: 2}
   num_1_text: {fileID: 1476920756}
   num_2_text: {fileID: 846062073}
   num_1_text2: {fileID: 1607193593}

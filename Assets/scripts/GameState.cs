@@ -25,6 +25,7 @@ public class GameState : MonoBehaviour
     public GameData gameData;
     public GameObject boardCharacter;
     public GameObject stickJar, throwingSticks;
+    public Material whiteMat, blackMat;
 
     public Text num_1_text, num_2_text, num_1_text2, num_2_text2;  
 
@@ -174,14 +175,18 @@ public class GameState : MonoBehaviour
 
         rollDicebtn.GetComponent<Button>().interactable = true;
 
+        
+
         foreach(Transform child in allwhitePieces)
         {
             child.gameObject.layer = 0;
+            child.gameObject.GetComponentInChildren<MeshRenderer>().material = whiteMat;
         }
 
         foreach(Transform child in allblackPieces)
         {
             child.gameObject.layer = 0;
+            child.gameObject.GetComponentInChildren<MeshRenderer>().material = blackMat;
         }
 
         if (is_p1_turn)
