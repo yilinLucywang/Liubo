@@ -10,6 +10,11 @@ public class StartUI : MonoBehaviour
     [SerializeField] private TMP_InputField[] inputField;
     [SerializeField] GameObject startButton, nameButton;
     public GameData data;
+    void Start()
+    {
+        inputField[0].characterLimit = 6;
+        inputField[0].characterLimit = 6;
+    }
     public void showName()
     {
         nameButton.SetActive(true);
