@@ -590,7 +590,8 @@ public class GameState : MonoBehaviour
         Score score = gameObject.GetComponent<Score>();
         
         //TODO: 1. move piece
-        
+        bool wasOwl = (!cur_piece.CompareTag("Normal"));
+
         board bd = gameObject.GetComponent<board>();
         int pos_index = bd.get_anchor_index(position);
         var path = bd.final_paths.First(p => p[p.Count - 1] == pos_index);
@@ -622,6 +623,9 @@ public class GameState : MonoBehaviour
             is_two_same_spot = true;
         }
         bool is_owl = willBeOwl(path, cur_piece.CompareTag("Owl"));
+        if(wasOwl != is_owl){
+            owlSound.Play();
+        }
 
 
         //TODO: check whether the other piece is of the same type
