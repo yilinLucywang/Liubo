@@ -104,6 +104,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: highlight thin version blue
       objectReference: {fileID: 0}
+    - target: {fileID: 7048573557094801917, guid: de5d45b3185ed994db0c4a4a864169aa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957679572900361185, guid: de5d45b3185ed994db0c4a4a864169aa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de5d45b3185ed994db0c4a4a864169aa, type: 3}
 --- !u!4 &2954418150482645784 stripped
