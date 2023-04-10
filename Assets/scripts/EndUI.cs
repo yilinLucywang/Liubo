@@ -11,6 +11,7 @@ public class EndUI : MonoBehaviour
     [SerializeField] private Text player1Score;
     [SerializeField] private Text player2Score;
     [SerializeField] private Text Winner;
+    [SerializeField] private GameObject WhiteWin, BlackWin;
 
     void Awake()
     {
@@ -26,10 +27,14 @@ public class EndUI : MonoBehaviour
         if (gameData.white_score >= 6 )
         {
             Winner.text = gameData.playername1 + " Win!";
+            WhiteWin.SetActive(true);
+            BlackWin.SetActive(false);
         }
         else
         {
             Winner.text = gameData.playername2 + " Win!";
+            WhiteWin.SetActive(false);
+            BlackWin.SetActive(true);
         }
     }
 
