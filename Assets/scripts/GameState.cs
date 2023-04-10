@@ -58,7 +58,7 @@ public class GameState : MonoBehaviour
     public GameObject stop_sign; 
     private List<GameObject> instantiated_stop_list = new List<GameObject>();
 
-    private int cur_step = 0;
+    public int cur_step = 0;
     private List<GameObject> instantiated_list = new List<GameObject>();
 
 
@@ -79,6 +79,8 @@ public class GameState : MonoBehaviour
     public UnityEvent OnDestinationMouseExitEvent = new UnityEvent();
     public UnityEvent OnPieceLand = new UnityEvent();
     public UnityEvent OnPieceStartMoving = new UnityEvent();
+    // When player press ESC to deselect both the piece and the move
+    public UnityEvent OnDeselect = new UnityEvent();
     
     private board bd;
     private int pieceMoved = 0;
@@ -287,7 +289,7 @@ public class GameState : MonoBehaviour
 
     IEnumerator WaitForClickBtn()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.71f);
         state = State.MoveOrPieceSelection;
         StickRoller.GetInstance().SetActive(false);
         throwingSticks.SetActive(false);
@@ -475,6 +477,7 @@ public class GameState : MonoBehaviour
             dice1But2.GetComponent<Button>().interactable = true;
             dice2But2.GetComponent<Button>().interactable = true;
         }
+        OnDeselect.Invoke();
     }
 
     List<int> horizontalPosition = new List<int>() {
