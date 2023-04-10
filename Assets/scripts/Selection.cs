@@ -16,7 +16,7 @@ public class Selection : MonoBehaviour
     private Material originalMaterialHighlight;
     [SerializeField]
     private Material originalMaterialSelection;
-    
+
     [SerializeField]
     private Transform highlight;
     [SerializeField]
@@ -78,7 +78,8 @@ public class Selection : MonoBehaviour
                     highlightMaterial = initialHighlightMat;
                     originalMaterialHighlight = highlight.GetComponent<MeshRenderer>().material;
                     highlight.GetComponent<MeshRenderer>().material = highlightMaterial;
-                } else if(highlight.GetComponent<MeshRenderer>().material != highlightMaterial && highlight == selection)
+                }
+                else if (highlight.GetComponent<MeshRenderer>().material != highlightMaterial && highlight == selection)
                 {
                     highlight.GetComponent<MeshRenderer>().material = selectionMaterial;
                     highlight = null;
@@ -107,14 +108,6 @@ public class Selection : MonoBehaviour
                 }
                 highlight = null;
             }
-            else
-            {
-                if (selection)
-                {
-                    selection.GetComponent<MeshRenderer>().material = originalWhiteMat;
-                    selection = null;
-                }
-            }
         }
     }
 
@@ -132,13 +125,18 @@ public class Selection : MonoBehaviour
             highlight = raycastHit.transform;
             if (highlight.name == "0" || highlight.name == "1" || highlight.name == "2" || highlight.name == "3" || highlight.name == "4" || highlight.name == "5" && highlight != selection)
             {
-                if (highlight.GetComponent<MeshRenderer>().material != highlightMaterial)
+                if (highlight.GetComponent<MeshRenderer>().material != highlightMaterial && highlight != selection)
                 {
+                    highlightMaterial = initialHighlightMat;
                     originalMaterialHighlight = highlight.GetComponent<MeshRenderer>().material;
                     highlight.GetComponent<MeshRenderer>().material = highlightMaterial;
                 }
+                else if (highlight.GetComponent<MeshRenderer>().material != highlightMaterial && highlight == selection)
+                {
+                    highlight.GetComponent<MeshRenderer>().material = selectionMaterial;
+                    highlight = null;
+                }
             }
-            
             else
             {
                 highlight = null;
@@ -161,14 +159,6 @@ public class Selection : MonoBehaviour
                     selection.GetComponent<MeshRenderer>().material = selectionMaterial;
                 }
                 highlight = null;
-            }
-            else
-            {
-                if (selection)
-                {
-                    selection.GetComponent<MeshRenderer>().material = originalBlackMat;
-                    selection = null;
-                }
             }
         }
     }
