@@ -20,7 +20,7 @@ public class CameraMove : MonoBehaviour
     {
         _offset = transform.position - focusPoint.transform.position;
         
-        if (GameState.state == State.PieceSelection)
+        if ((GameState.state & State.MoveOrPieceSelection) != 0)
         {
             if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.RightArrow))
             {
@@ -31,7 +31,7 @@ public class CameraMove : MonoBehaviour
             }
         }
 
-        if(GameState.state != State.PieceSelection)
+        if((GameState.state & State.MoveOrPieceSelection) != 0)
         {
             transform.position = initPos;
         }

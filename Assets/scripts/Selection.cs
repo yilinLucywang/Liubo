@@ -32,16 +32,16 @@ public class Selection : MonoBehaviour
 
     void Update()
     {
-        if (GameState.state == State.PieceSelection && GameState.is_p1_turn)
+        if ((GameState.state & State.MoveOrPieceSelection) != 0 && GameState.is_p1_turn)
         {
             WhiteHighLightAndSelect();
         }
-        else if (GameState.state == State.PieceSelection && !GameState.is_p1_turn)
+        else if ((GameState.state & State.MoveOrPieceSelection) != 0 && !GameState.is_p1_turn)
         {
             BlackHighLightAndSelect();
         }
 
-        if (GameState.state != State.PieceSelection && GameState.is_p1_turn)
+        if ((GameState.state & State.PieceSelected) == 0 && GameState.is_p1_turn)
         {
             if (selection)
             {
@@ -49,7 +49,7 @@ public class Selection : MonoBehaviour
                 selection = null;
             }
         }
-        else if (GameState.state != State.PieceSelection && !GameState.is_p1_turn)
+        else if ((GameState.state & State.PieceSelected) == 0 && !GameState.is_p1_turn)
         {
             if (selection)
             {

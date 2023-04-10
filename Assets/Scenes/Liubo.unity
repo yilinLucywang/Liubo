@@ -1259,7 +1259,7 @@ MonoBehaviour:
   ac: {fileID: 153840381}
   owlSound: {fileID: 153840382}
   Is3DGame: 1
-  is_p1_turn: 1
+  is_p1_turn: 0
   dice_1: -1
   dice_2: -1
   dice1But: {fileID: 517806623}

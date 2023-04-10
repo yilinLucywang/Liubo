@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GameState : MonoBehaviour
 {
@@ -14,7 +16,7 @@ public class GameState : MonoBehaviour
     public AudioSource owlSound;
     public bool Is3DGame = false;
 
-    public bool is_p1_turn = true;
+    public bool is_p1_turn = false;
     public int dice_1 = -1; 
     public int dice_2 = -1;
 
@@ -139,12 +141,16 @@ public class GameState : MonoBehaviour
             dice2But2.SetActive(false);
         }
         bd = GetComponent<board>();
+        NextRound();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonUp(1))
+        {
+            DeselectButtonAndPiece();
+        }
     }
 
     public void ShowBoardCharacter()
@@ -167,7 +173,6 @@ public class GameState : MonoBehaviour
         is_p1_turn = !is_p1_turn;
         dice_1 = -1; 
         dice_2 = -1;
-        chosen_piece = -1;
 
         StickRoller.GetInstance().SetActive(true);
         throwingSticks.SetActive(true);
@@ -179,9 +184,7 @@ public class GameState : MonoBehaviour
         num_2_text2.text = "";
 
         rollDicebtn.GetComponent<Button>().interactable = true;
-
         
-
         foreach(Transform child in allwhitePieces)
         {
             child.gameObject.layer = 0;
@@ -215,6 +218,46 @@ public class GameState : MonoBehaviour
         firstOrigPos = -10;
     }
 
+    private void SetUpForMove()
+    {
+        DeselectButtonAndPiece();
+        // enable clickable pieces
+        if (is_p1_turn && openLimit == true)
+        {
+            //3D Version
+            foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
+            {
+                btn.interactable = false;
+            }
+            foreach (var btn in whitePieceBut.GetComponentsInChildren<Clickable>())
+            {
+                btn.interactable = true;
+            }
+            if (notFirstRound == true && previousPiece == cur_piece.ToString())
+            {
+                cur_piece.GetComponent<Clickable>().interactable = false;
+                cur_piece.layer = 2;
+            }
+        }
+        else if(!is_p1_turn && openLimit == true)
+        {
+            //3D Version
+            foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
+            {
+                btn.interactable = true;
+            }
+            foreach (var btn in whitePieceBut.GetComponentsInChildren<Clickable>())
+            {
+                btn.interactable = false;
+            }
+            if (notFirstRound == true && previousPiece == cur_piece.ToString())
+            {
+                cur_piece.GetComponent<Clickable>().interactable = false;
+                cur_piece.layer = 2;
+            }
+        }
+    }
+    
     public void RollDice()
     {
         // int num_1 = RollSticks();
@@ -245,7 +288,7 @@ public class GameState : MonoBehaviour
     IEnumerator WaitForClickBtn()
     {
         yield return new WaitForSeconds(2f);
-        state = State.MoveSelection;
+        state = State.MoveOrPieceSelection;
         StickRoller.GetInstance().SetActive(false);
         throwingSticks.SetActive(false);
         if (is_p1_turn)
@@ -262,7 +305,7 @@ public class GameState : MonoBehaviour
             dice1But2.GetComponent<Button>().interactable = true;
             dice2But2.GetComponent<Button>().interactable = true;
         }
-        
+        SetUpForMove();
     }
     /// <summary>
     /// Random number generator that returns a number between 1-4
@@ -292,112 +335,61 @@ public class GameState : MonoBehaviour
 
     public void TopClick()
     {
-        if (state != State.PieceSelection && state != State.MoveSelection) return;
+        if ((state & State.MoveOrPieceSelection) == 0) return;
         if(dice_1 != -1){
             cur_step = dice_1;
             
         }
         
         RemoveGreens();
-        chosen_piece = -1;
         topClicked = true;
         bottomClicked = false;
-        state = State.PieceSelection;
+        state |= State.MoveSelected;
 
         if (is_p1_turn && openLimit == true)
         {
             dice1But.GetComponent<Button>().interactable = false;
             dice2But.GetComponent<Button>().interactable = true;
-            //3D Version
-            foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
-            {
-                btn.interactable = false;
-            }
-            foreach (var btn in whitePieceBut.GetComponentsInChildren<Clickable>())
-            {
-                btn.interactable = true;
-            }
-            if (notFirstRound == true && previousPiece == cur_piece.ToString())
-            {
-                cur_piece.GetComponent<Clickable>().interactable = false;
-                cur_piece.layer = 2;
-                
-            }
-
         }
         else if(!is_p1_turn && openLimit == true)
         {
             dice1But2.GetComponent<Button>().interactable = false;
             dice2But2.GetComponent<Button>().interactable = true;
-            //3D Version
-            foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
-            {
-                btn.interactable = true;
-            }
-            foreach (var btn in whitePieceBut.GetComponentsInChildren<Clickable>())
-            {
-                btn.interactable = false;
-            }
-            if (notFirstRound == true && previousPiece == cur_piece.ToString())
-            {
-                cur_piece.GetComponent<Clickable>().interactable = false;
-                cur_piece.layer = 2;
-            }
+        }
+        
+        if (state == (State.MoveOrPieceSelection | State.MoveSelected | State.PieceSelected))
+        { 
+            ShowPossiblePositions();
         }
     }
 
     public void BottomClick(){
-        if (state != State.PieceSelection && state != State.MoveSelection) return;
+        if ((state & State.MoveOrPieceSelection) == 0) return;
 
         if(dice_2 != -1){
             cur_step = dice_2;
         }
 
         RemoveGreens();
-        chosen_piece = -1;
         topClicked = false;
         bottomClicked = true;
-        state = State.PieceSelection;
+        state |= State.MoveSelected;
 
 
         if (is_p1_turn && openLimit == true)
         {
             dice1But.GetComponent<Button>().interactable = true;
             dice2But.GetComponent<Button>().interactable = false;
-            //3D Version
-            foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
-            {
-                btn.interactable = false;
-            }
-            foreach (var btn in whitePieceBut.GetComponentsInChildren<Clickable>())
-            {
-                btn.interactable = true;
-                
-            }
-            if (notFirstRound == true && previousPiece == cur_piece.ToString())
-            {
-                cur_piece.GetComponent<Clickable>().interactable = false;
-                cur_piece.layer = 2;
-            }
         }
         else if(!is_p1_turn && openLimit == true)
         {
             dice1But2.GetComponent<Button>().interactable = true;
             dice2But2.GetComponent<Button>().interactable = false;
-            //3D Version
-            foreach (var btn in blackPieceBut.GetComponentsInChildren<Clickable>())
-            {
-                btn.interactable = true;
-            }
-            foreach (var btn in whitePieceBut.GetComponentsInChildren<Clickable>())
-            {
-                btn.interactable = false;
-            }
-            if (notFirstRound == true && previousPiece == cur_piece.ToString())
-            {
-                cur_piece.GetComponent<Clickable>().interactable = false;
-                cur_piece.layer = 2;
-            }
+        }
+        
+        if (state == (State.MoveOrPieceSelection | State.MoveSelected | State.PieceSelected))
+        {
+            ShowPossiblePositions();
         }
     }
 
@@ -405,14 +397,17 @@ public class GameState : MonoBehaviour
     public void PieceChosen(int index, bool is_black)
     {
         //blockade = false;
-        if (state != State.PieceSelection) return;
+        if ((state & State.MoveOrPieceSelection) == 0) return;
+        state |= State.PieceSelected;
         chosen_piece = index; 
         is_black_chosen = is_black;
         cur_piece = GameObject.Find(chosen_piece.ToString());
         //show all possibe positions
         Debug.Log("here! line 352");
-        ShowPossiblePositions();
-
+        if (state == (State.MoveOrPieceSelection | State.MoveSelected | State.PieceSelected))
+        {
+            ShowPossiblePositions();
+        }
     }
 
     private void ShowPossiblePositions()
@@ -464,6 +459,23 @@ public class GameState : MonoBehaviour
         }
     }
 
+    private void DeselectButtonAndPiece()
+    {
+        state = State.MoveOrPieceSelection;
+        chosen_piece = -1;
+        cur_step = 0;
+        RemoveGreens();
+        if (is_p1_turn)
+        {
+            dice1But.GetComponent<Button>().interactable = true;
+            dice2But.GetComponent<Button>().interactable = true;
+        }
+        else if (!is_p1_turn)
+        {
+            dice1But2.GetComponent<Button>().interactable = true;
+            dice2But2.GetComponent<Button>().interactable = true;
+        }
+    }
 
     List<int> horizontalPosition = new List<int>() {
          1,
@@ -637,11 +649,6 @@ public class GameState : MonoBehaviour
             is_two_same_spot = true;
         }
         bool is_owl = willBeOwl(path, cur_piece.CompareTag("Owl"));
-        if(wasOwl != is_owl){
-            if(!wasOwl){
-                owlSound.Play();
-            }
-        }
 
 
         //TODO: check whether the other piece is of the same type
@@ -710,7 +717,7 @@ public class GameState : MonoBehaviour
         }
         else
         {
-            state = State.MoveSelection;
+            SetUpForMove();
         }
 
         yield return null;
@@ -826,11 +833,11 @@ public class GameState : MonoBehaviour
     {
         
         //TODO: spawn marks here
-        List<Vector3> poses = new List<Vector3>();
-        for(int i = 0; i < path.Count; i++){
-            poses.Add(bd.GetBasePosition(path[i]));
-        }
-        spawnStop(poses);
+        // List<Vector3> poses = new List<Vector3>();
+        // for(int i = 0; i < path.Count; i++){
+        //     poses.Add(bd.GetBasePosition(path[i]));
+        // }
+        // spawnStop(poses);
 
         if (piece.CompareTag("Owl"))
         {
@@ -867,13 +874,14 @@ public class GameState : MonoBehaviour
                 {
                     isTurnedToOwl = true;
                     piece.transform.DOJump(bd.GetTopPosition(nodeIndex, isTurnedToOwl), 0.1f, 1, 0.5f);
+                    owlSound.Play();
                     yield return piece.transform.DORotateQuaternion(GetPieceOrientation(nodeIndex, isTurnedToOwl), 0.5f)
                         .WaitForCompletion();
                 }
                 
             }
         }
-        removeStops();
+        // removeStops();
     }
 
     public void OnDestinationMouseEnter(Vector3 DestPos)
@@ -928,10 +936,11 @@ public class DestinationMouseEvent : UnityEvent<List<int>, bool>
     
 }
 
-public enum State
+[Flags] public enum State
 {
-    Roll,
-    MoveSelection,
-    PieceSelection,
-    PieceMoving,
+    Roll = 0,
+    MoveOrPieceSelection = 1,
+    MoveSelected = 2,
+    PieceSelected = 4,
+    PieceMoving = 8, 
 }
