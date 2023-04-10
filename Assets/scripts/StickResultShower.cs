@@ -56,14 +56,14 @@ public class StickResultShower : MonoBehaviour
         stickTransformIDs.Shuffle();
         
         var val = (val1 << 3) + val2;
-        for (int i = 0; i < 6; i++)
+        for (int i = 5; i >= 0; i--)
         {
             sticks[i].transform.localPosition = stickTransforms[stickTransformIDs[i]].position;
             sticks[i].transform.localEulerAngles = stickTransforms[stickTransformIDs[i]].rotation;
             sticks[i].transform.localScale = stickTransforms[stickTransformIDs[i]].scale;
             if ((val & 1) == 1)
             {
-                sticks[i].transform.Rotate(0, 180, 0, Space.Self);
+                sticks[i].transform.Rotate(180, 0, 0, Space.Self);
             }
             val >>= 1;
         }
