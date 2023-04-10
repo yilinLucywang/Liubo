@@ -796,6 +796,11 @@ public class GameState : MonoBehaviour
         for(int i = 0; i < poses.Count; i++){
             Vector3 pos = poses[i];
             GameObject instantiated = Instantiate(stop_sign, pos, Quaternion.identity);
+            int pos_index = bd.get_anchor_index(pos);
+            if (!horizontalPosition.Contains(pos_index))
+            {
+                instantiated.transform.rotation = instantiated.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
+            }
             instantiated.transform.SetParent(canvas.transform);
             instantiated_stop_list.Add(instantiated);
         }
