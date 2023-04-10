@@ -427,30 +427,30 @@ public class GameState : MonoBehaviour
         for (int i = 0; i < res_list.Count; i++)
         {
             Vector3 pos = res_list[i];
-            
-            
+            var nodeIndex = bd.get_anchor_index(res_list[i]);
+            var rotation = GetPieceOrientation(nodeIndex, false);
             if (blockade == true && dice_1 == dice_2)
             {
                 
                 //if (res_list[i].x - firstTargetPos.x < 0.01f && res_list[i].z - firstTargetPos.z < 0.01f)
                 
-                if (bd.get_anchor_index (res_list[i]) == bd.get_anchor_index(firstTargetPos))
+                if (nodeIndex == bd.get_anchor_index(firstTargetPos))
                 {
                     res_list.RemoveAt(i);
                     for(int j = 0; j<res_list.Count; j++)
                     {
                         Vector3 newPos = res_list[j];
-                        SpawnGreen(newPos);
+                        SpawnGreen(newPos, rotation);
                     }
                 }
                 else
                 {
-                    SpawnGreen(pos);
+                    SpawnGreen(pos, rotation);
                 }
             }
             else
             {
-                SpawnGreen(pos);
+                SpawnGreen(pos, rotation);
             }
         }
     }
@@ -742,10 +742,10 @@ public class GameState : MonoBehaviour
         //This part takes care of the UI part
     }
 
-    void SpawnGreen(Vector3 spawn_pos){
+    void SpawnGreen(Vector3 spawn_pos, Quaternion rotation){
         Debug.Log("this is spawn green");
         //spawn the prefab at the given position
-        GameObject instantiated = Instantiate(valid_sign, spawn_pos, Quaternion.identity);
+        GameObject instantiated = Instantiate(valid_sign, spawn_pos, rotation);
         instantiated.transform.SetParent(canvas.transform);
         instantiated_list.Add(instantiated);
     }
