@@ -85,8 +85,6 @@ public class Tutorial : MonoBehaviour
                 break;
 
         }
-        Debug.Log("prev" + prev);
-        Debug.Log("curr" + curr);
-        Debug.Log("********");
+
     }
 }
