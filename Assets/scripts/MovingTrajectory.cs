@@ -20,6 +20,8 @@ public class MovingTrajectory : MonoBehaviour
         gs.OnDestinationMouseExitEvent.AddListener(HideHologram);
         gs.OnPieceStartMoving.AddListener(HideHologram);
         gs.OnPieceLand.AddListener(HideTrajectory);
+        gs.OnDeselect.AddListener(HideHologram);
+        gs.OnDeselect.AddListener(HideTrajectory);
         lr = GetComponent<LineRenderer>();
     }
 
@@ -35,12 +37,10 @@ public class MovingTrajectory : MonoBehaviour
         var bd = gs.gameObject.GetComponent<board>();
         var vertices = path.Select(anchorIndex => bd.anchors[bd.index_2_anchor[anchorIndex]].transform.position).ToArray();
         lr.SetPositions(vertices);
-        List<Vector3> poses = new List<Vector3>();
-        for(int i = 0; i < path.Count; i++){
-            poses.Add(bd.GetBasePosition(path[i]));
-        }
-        gs.spawnStop(poses);
         
+        // if starting on the board, skip
+        gs.spawnStop(path.Select(t => bd.GetBasePosition(t)).Skip(gs.cur_step < path.Count ? 1 : 0).ToList());
+
 
     }
 
