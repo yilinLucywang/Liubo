@@ -1,40 +1,92 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Tutorial : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameObject[] slides, buttons;
-    private int next = 0, curr = 0;
+    private int next = 0, curr = 0, prev = 0;
     public void showNextSlides()
     {
-        if (next < 5)
+        if (curr < 5)
         {
-            slides[next].SetActive(false);
-            slides[next+1].SetActive(true);
-            next++;
+            slides[curr].SetActive(false);
+            slides[curr + 1].SetActive(true);
+            curr++;
         }
         else
         {
             slides[5].SetActive(true);
+            curr = 5;
         }
 
     }
 
     public void showPrevSlides()
     {
-        if (next > 0)
+        if (curr > 0)
         {
-            slides[next].SetActive(false);
-            slides[next - 1].SetActive(true);
-            next--;
+            slides[curr].SetActive(false);
+            slides[curr - 1].SetActive(true);
+            curr--;
         }
         else
         {
-            next = 0;
+            curr = 0;
             slides[0].SetActive(true);
         }
         
+    }
+
+    public void showSlide()
+    {
+        string clickedName = EventSystem.current.currentSelectedGameObject.name;
+        switch (clickedName)
+        {
+            case "Button0":
+                prev = curr;
+                curr = 0;
+                slides[prev].SetActive(false);
+                slides[curr].SetActive(true);
+                break;
+            case "Button1":
+                prev = curr;
+                curr = 1;
+                slides[prev].SetActive(false);
+                slides[curr].SetActive(true);
+                break;
+            case "Button2":
+                prev = curr;
+                curr = 2;
+                slides[prev].SetActive(false);
+                slides[curr].SetActive(true);
+                break;
+            case "Button3":
+                prev = curr;
+                curr = 3;
+                slides[prev].SetActive(false);
+                slides[curr].SetActive(true);
+                break;
+            case "Button4":
+                prev = curr;
+                curr = 4;
+                slides[prev].SetActive(false);
+                slides[curr].SetActive(true);
+                break;
+            case "Button5":
+                prev = curr;
+                curr = 5;
+                slides[prev].SetActive(false);
+                slides[curr].SetActive(true);
+                break;
+            default:
+                break;
+
+        }
+        Debug.Log("prev" + prev);
+        Debug.Log("curr" + curr);
+        Debug.Log("********");
     }
 }
