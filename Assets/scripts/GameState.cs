@@ -406,6 +406,23 @@ public class GameState : MonoBehaviour
 
     }
 
+    List<int> horizontalPosition = new List<int>() {
+         1,
+         3,
+         5,
+         8,
+         11,
+         36,
+         33,
+         17,
+         20,
+         30,
+         24,
+         26,
+         14,//14 or 28?
+         22
+    };
+
     private void ShowPossiblePositions()
     {
         RemoveGreens();
@@ -427,8 +444,14 @@ public class GameState : MonoBehaviour
         for (int i = 0; i < res_list.Count; i++)
         {
             Vector3 pos = res_list[i];
+<<<<<<< Updated upstream
             var nodeIndex = bd.get_anchor_index(res_list[i]);
             var rotation = GetPieceOrientation(nodeIndex, false);
+=======
+            Quaternion horizontal = Quaternion.Euler(0f, 90f, 0f);
+            Quaternion identity = Quaternion.Euler(0f, 0f, 0f);
+            
+>>>>>>> Stashed changes
             if (blockade == true && dice_1 == dice_2)
             {
                 
@@ -440,38 +463,51 @@ public class GameState : MonoBehaviour
                     for(int j = 0; j<res_list.Count; j++)
                     {
                         Vector3 newPos = res_list[j];
+<<<<<<< Updated upstream
                         SpawnGreen(newPos, rotation);
+=======
+                        int new_index = bd.get_anchor_index (res_list[j]);
+                        if(horizontalPosition.Contains(new_index)){
+                            SpawnGreen(newPos,identity);
+                        }
+                        else{
+                            SpawnGreen(newPos,horizontal);
+                        }
+>>>>>>> Stashed changes
                     }
                 }
                 else
                 {
+<<<<<<< Updated upstream
                     SpawnGreen(pos, rotation);
+=======
+                        int index_cur = bd.get_anchor_index (res_list[i]);
+                        if(horizontalPosition.Contains(index_cur)){
+                            SpawnGreen(pos,identity);
+                        }
+                        else{
+                            SpawnGreen(pos,horizontal);
+                        }
+>>>>>>> Stashed changes
                 }
             }
             else
             {
+<<<<<<< Updated upstream
                 SpawnGreen(pos, rotation);
+=======
+                int index_cur = bd.get_anchor_index (res_list[i]);
+                if(horizontalPosition.Contains(index_cur)){
+                    SpawnGreen(pos,identity);
+                }
+                else{
+                    SpawnGreen(pos,horizontal);
+                }
+>>>>>>> Stashed changes
             }
         }
     }
 
-
-    List<int> horizontalPosition = new List<int>() {
-         1,
-         3,
-         5,
-         8,
-         11,
-         36,
-         33,
-         17,
-         20,
-         30,
-         24,
-         26,
-         14,//14 or 28?
-         22
-    };
     public void piecePlacement(int pos_index, Vector3 anchor_pos){
         //Debug.Log("388");
         board bd = gameObject.GetComponent<board>();
@@ -742,10 +778,17 @@ public class GameState : MonoBehaviour
         //This part takes care of the UI part
     }
 
+<<<<<<< Updated upstream
     void SpawnGreen(Vector3 spawn_pos, Quaternion rotation){
         Debug.Log("this is spawn green");
         //spawn the prefab at the given position
         GameObject instantiated = Instantiate(valid_sign, spawn_pos, rotation);
+=======
+    void SpawnGreen(Vector3 spawn_pos, Quaternion q){
+        Debug.Log("this is spawn green");
+        //spawn the prefab at the given position
+        GameObject instantiated = Instantiate(valid_sign, spawn_pos, q);
+>>>>>>> Stashed changes
         instantiated.transform.SetParent(canvas.transform);
         instantiated_list.Add(instantiated);
     }
@@ -792,6 +835,8 @@ public class GameState : MonoBehaviour
     //     }
         
     // }
+
+    //, List<Quaternion> qs
     public void spawnStop(List<Vector3> poses){
         for(int i = 0; i < poses.Count; i++){
             Vector3 pos = poses[i];
