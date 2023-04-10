@@ -6156,6 +6156,8 @@ MonoBehaviour:
   originalWhiteMat: {fileID: 2100000, guid: e559da05aba06194cb828420113d9b18, type: 2}
   originalBlackMat: {fileID: 2100000, guid: 579f5cb74883d464e8a8f9b04bd2b270, type: 2}
   GameState: {fileID: 153840375}
+  originalMaterialHighlight: {fileID: 0}
+  originalMaterialSelection: {fileID: 0}
   highlight: {fileID: 0}
   selection: {fileID: 0}
 --- !u!4 &581899969

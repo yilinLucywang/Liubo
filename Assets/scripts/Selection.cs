@@ -12,7 +12,9 @@ public class Selection : MonoBehaviour
 
     public GameState GameState;
 
+    [SerializeField]
     private Material originalMaterialHighlight;
+    [SerializeField]
     private Material originalMaterialSelection;
     
     [SerializeField]
@@ -21,11 +23,15 @@ public class Selection : MonoBehaviour
     private Transform selection;
     private RaycastHit raycastHit;
 
-    private Ray ray;
+    private Material initialHighlightMat;
+
+    private void Start()
+    {
+        initialHighlightMat = highlightMaterial;
+    }
 
     void Update()
     {
-        //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (GameState.state == State.PieceSelection && GameState.is_p1_turn)
         {
             WhiteHighLightAndSelect();
@@ -67,13 +73,16 @@ public class Selection : MonoBehaviour
             highlight = raycastHit.transform;
             if (highlight.name == "6" || highlight.name == "7" || highlight.name == "8" || highlight.name == "9" || highlight.name == "10" || highlight.name == "11" && highlight != selection)
             {
-                
-                if (highlight.GetComponent<MeshRenderer>().material != highlightMaterial)
+                if (highlight.GetComponent<MeshRenderer>().material != highlightMaterial && highlight != selection)
                 {
+                    highlightMaterial = initialHighlightMat;
                     originalMaterialHighlight = highlight.GetComponent<MeshRenderer>().material;
                     highlight.GetComponent<MeshRenderer>().material = highlightMaterial;
+                } else if(highlight.GetComponent<MeshRenderer>().material != highlightMaterial && highlight == selection)
+                {
+                    highlight.GetComponent<MeshRenderer>().material = selectionMaterial;
+                    highlight = null;
                 }
-                
             }
             else
             {
@@ -93,7 +102,7 @@ public class Selection : MonoBehaviour
                 selection = raycastHit.transform;
                 if (selection.GetComponent<MeshRenderer>().material != selectionMaterial)
                 {
-                    originalMaterialSelection = originalMaterialHighlight;
+                    originalMaterialSelection = originalWhiteMat;
                     selection.GetComponent<MeshRenderer>().material = selectionMaterial;
                 }
                 highlight = null;
@@ -102,7 +111,7 @@ public class Selection : MonoBehaviour
             {
                 if (selection)
                 {
-                    selection.GetComponent<MeshRenderer>().material = originalMaterialSelection;
+                    selection.GetComponent<MeshRenderer>().material = originalWhiteMat;
                     selection = null;
                 }
             }
@@ -129,6 +138,7 @@ public class Selection : MonoBehaviour
                     highlight.GetComponent<MeshRenderer>().material = highlightMaterial;
                 }
             }
+            
             else
             {
                 highlight = null;
@@ -147,7 +157,7 @@ public class Selection : MonoBehaviour
                 selection = raycastHit.transform;
                 if (selection.GetComponent<MeshRenderer>().material != selectionMaterial)
                 {
-                    originalMaterialSelection = originalMaterialHighlight;
+                    originalMaterialSelection = originalBlackMat;
                     selection.GetComponent<MeshRenderer>().material = selectionMaterial;
                 }
                 highlight = null;
@@ -156,7 +166,7 @@ public class Selection : MonoBehaviour
             {
                 if (selection)
                 {
-                    selection.GetComponent<MeshRenderer>().material = originalMaterialSelection;
+                    selection.GetComponent<MeshRenderer>().material = originalBlackMat;
                     selection = null;
                 }
             }
