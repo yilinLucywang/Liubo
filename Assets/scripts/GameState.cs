@@ -27,6 +27,9 @@ public class GameState : MonoBehaviour
     public GameObject stickJar, throwingSticks;
     public Material whiteMat, blackMat;
 
+    public GameObject WhiteNestHighlights;
+    public GameObject BlackNestHighlights;
+
     public Text num_1_text, num_2_text, num_1_text2, num_2_text2;  
 
     public bool is_black_chosen = true;
@@ -83,6 +86,8 @@ public class GameState : MonoBehaviour
 
     public Transform[] allwhitePieces;
     public Transform[] allblackPieces;
+
+
 
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
@@ -194,6 +199,8 @@ public class GameState : MonoBehaviour
             blackTurn.SetActive(false);
             whiteTurn.GetComponentInChildren<Text>().text = gameData.playername1 + "'s Turn";
             whiteTurn.SetActive(true);
+            WhiteNestHighlights.SetActive(true);
+            BlackNestHighlights.SetActive(false);
             
         }
         if (!is_p1_turn)
@@ -201,6 +208,8 @@ public class GameState : MonoBehaviour
             whiteTurn.SetActive(false);
             blackTurn.GetComponentInChildren<Text>().text = gameData.playername2 + "'s Turn";
             blackTurn.SetActive(true);
+            WhiteNestHighlights.SetActive(false);
+            BlackNestHighlights.SetActive(true);
 
         }
         firstOrigPos = -10;
