@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public UnityEvent OnButtonHoverEnter;
+    public UnityEvent OnButtonHoverExit;
+
+    public bool interactable = true;
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.LogWarning("Hover Enter");
+        CallOnButtonHoverEnter();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.LogWarning("Hover Exit");
+        CallOnButtonHoverExit();
     }
 
     // Start is called before the first frame update
@@ -25,5 +30,21 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     void Update()
     {
         
+    }
+
+    public void CallOnButtonHoverEnter()
+    {
+        if(interactable)
+        {
+            OnButtonHoverEnter.Invoke();
+        }
+    }
+
+    public void CallOnButtonHoverExit()
+    {
+        if (interactable)
+        {
+            OnButtonHoverExit.Invoke();
+        }
     }
 }
