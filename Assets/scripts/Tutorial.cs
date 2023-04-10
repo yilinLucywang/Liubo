@@ -5,8 +5,8 @@ using UnityEngine;
 public class Tutorial : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private GameObject[] slides;
-    private int next = 0;
+    [SerializeField] private GameObject[] slides, buttons;
+    private int next = 0, curr = 0;
     public void showNextSlides()
     {
         if (next < 5)

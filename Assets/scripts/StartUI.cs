@@ -13,7 +13,7 @@ public class StartUI : MonoBehaviour
     void Start()
     {
         inputField[0].characterLimit = 6;
-        inputField[0].characterLimit = 6;
+        inputField[1].characterLimit = 6;
     }
     public void showTutorial()
     {
