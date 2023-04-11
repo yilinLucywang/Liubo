@@ -14,11 +14,13 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerEnter(PointerEventData eventData)
     {
         CallOnButtonHoverEnter();
+        Debug.Log("Enter");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         CallOnButtonHoverExit();
+        Debug.Log("Exit");
     }
 
     // Start is called before the first frame update
@@ -35,21 +37,29 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void CallOnButtonHoverEnter()
     {
-        Debug.Log("Enter");
+
         if (interactable)
         {
             OnButtonHoverEnter.Invoke();
         }
-        hoverImg.SetActive(true);
+
+        
     }
 
     public void CallOnButtonHoverExit()
     {
-        Debug.Log("Exit");
         if (interactable)
         {
             OnButtonHoverExit.Invoke();
         }
+    }
+
+    public void showImg()
+    {
+        hoverImg.SetActive(true);
+    }
+    public void hideImg()
+    {
         hoverImg.SetActive(false);
     }
 }
