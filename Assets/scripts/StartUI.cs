@@ -8,7 +8,7 @@ public class StartUI : MonoBehaviour
 {
 
     [SerializeField] private TMP_InputField[] inputField;
-    [SerializeField] GameObject startButton, nameButton, tutorial;
+    [SerializeField] GameObject startButton, nameButton, tutorial, rulesButton, creditButton, ExitButton;
     public GameData data;
     void Start()
     {
@@ -19,11 +19,18 @@ public class StartUI : MonoBehaviour
     {
         tutorial.SetActive(true);
         startButton.SetActive(false);
+        rulesButton.SetActive(false);
+        creditButton.SetActive(false);
+        ExitButton.SetActive(false);
     }
     public void showName()
     {
         nameButton.SetActive(true);
+        rulesButton.SetActive(false);
+        startButton.SetActive(false);
         tutorial.SetActive(false);
+        creditButton.SetActive(false);
+        ExitButton.SetActive(false);
     }
     public void StartGame()
     {
@@ -41,5 +48,9 @@ public class StartUI : MonoBehaviour
 
 
         SceneManager.LoadScene("Liubo");
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

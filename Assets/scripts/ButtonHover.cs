@@ -8,6 +8,7 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 {
     public UnityEvent OnButtonHoverEnter;
     public UnityEvent OnButtonHoverExit;
+    [SerializeField] private GameObject hoverImg;
 
     public bool interactable = true;
     public void OnPointerEnter(PointerEventData eventData)
@@ -34,17 +35,21 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void CallOnButtonHoverEnter()
     {
-        if(interactable)
+        Debug.Log("Enter");
+        if (interactable)
         {
             OnButtonHoverEnter.Invoke();
         }
+        hoverImg.SetActive(true);
     }
 
     public void CallOnButtonHoverExit()
     {
+        Debug.Log("Exit");
         if (interactable)
         {
             OnButtonHoverExit.Invoke();
         }
+        hoverImg.SetActive(false);
     }
 }
