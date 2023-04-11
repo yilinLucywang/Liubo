@@ -85,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 5153218863103408578, guid: 5c32d8243d806944faec5070efcf9e0a,
         type: 3}
       propertyPath: m_Name
-      value: 11 (1)
+      value: Hologram
       objectReference: {fileID: 0}
     - target: {fileID: 5153218863103408578, guid: 5c32d8243d806944faec5070efcf9e0a,
         type: 3}
@@ -166,6 +166,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0d61aea118429f84d8cc6a386c600388, type: 2}
+      objectReference: {fileID: 2100000, guid: c364f80019fcbf449bccc6c0ef6ea538, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c32d8243d806944faec5070efcf9e0a, type: 3}
