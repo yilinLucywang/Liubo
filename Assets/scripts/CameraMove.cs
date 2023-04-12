@@ -31,7 +31,7 @@ public class CameraMove : MonoBehaviour
             }
         }
 
-        if((GameState.state & State.MoveOrPieceSelection) != 0)
+        if((GameState.state & State.MoveOrPieceSelection) == 0)
         {
             transform.position = initPos;
         }

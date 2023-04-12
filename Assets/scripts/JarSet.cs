@@ -68,8 +68,8 @@ public class JarSet : MonoBehaviour
         jar.transform.eulerAngles = originalJarRot;
         // lock mouse control
         
-        yield return new WaitForSeconds(1.2f);
-        ResetJarAndSticks();
+        // yield return new WaitForSeconds(1.2f);
+        // ResetJarAndSticks();
     }
     
     void ResetJarAndSticks()
