@@ -265,8 +265,6 @@ public class GameState : MonoBehaviour
         // int num_1 = RollSticks();
         // int num_2 = RollSticks();
         var (num_1, num_2) = StickRoller.GetInstance().RollSticks();
-        num_1 = 3;
-        num_2 = 3;
         num_1_text.text = num_1.ToString(); 
         num_2_text.text = num_2.ToString();
         num_1_text2.text = num_1.ToString();
