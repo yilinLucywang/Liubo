@@ -16,6 +16,12 @@ public class UI : MonoBehaviour
     [SerializeField] private Button HintButton;
     [SerializeField] private Text hintButtonText;
 
+    private bool isLineOn;
+
+    public Light direcLight;
+    public GameObject lineImg;
+    public Text showLineTxt;
+
     private bool isHintOn = false;
 
     void Awake()
@@ -23,6 +29,7 @@ public class UI : MonoBehaviour
     }
     void Start()
     {
+        isLineOn = false;
         gameData.white_score = 0;
         gameData.black_score = 0;
         player1Score.text = gameData.playername1 + "  \n\t " + gameData.white_score.ToString();
@@ -102,6 +109,37 @@ public class UI : MonoBehaviour
         isHintOn = false;
         hintButtonText.text = "Show How to Capture";
         HintButton.enabled = true;
+    }
+
+
+    public void ShowLines()
+    {
+        if(isLineOn == false)
+        {
+            direcLight.intensity = 0.5f;
+            lineImg.SetActive(true);
+            isLineOn = true;
+            
+        }
+        else if(isLineOn == true)
+        {
+            direcLight.intensity = 1.8f;
+            lineImg.SetActive(false);
+            isLineOn = false;
+            
+        }
+    }
+
+    public void LinesText()
+    {
+        if(isLineOn == true)
+        {
+            showLineTxt.text = "Hide Lines";
+        } 
+        else if(isLineOn == false)
+        {
+            showLineTxt.text = "Show Lines";
+        }
     }
 
 }
