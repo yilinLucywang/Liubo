@@ -827,8 +827,10 @@ public class GameState : MonoBehaviour
     public void highLightFinal(List<Vector3> poses){
         Vector3 pos = poses[poses.Count - 1]; 
         for(int i = 0; i < instantiated_list.Count; i++){
-            if(Vector3.Distance(instantiated_list[i].transform.position, pos) > 0.01){
-                instantiated_list[i].SetActive(false);
+            if(instantiated_list[i]){
+                if(Vector3.Distance(instantiated_list[i].transform.position, pos) > 0.01){
+                    instantiated_list[i].SetActive(false);
+                }
             }
         }       
     }
