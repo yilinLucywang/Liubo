@@ -72,8 +72,9 @@ public class GameState : MonoBehaviour
     public bool TwoDiceSame;
     public int firstOrigPos = -10, firstFinalPos;
 
-    public bool isFirstMoved = false, blockade = false;
-
+    public bool isFirstMoved = false, startedFromABlockade = false;
+    public int FormerBlockadeCompany = -1;
+    
     public DestinationMouseEvent OnDestinationMouseEnterEvent = new DestinationMouseEvent();
     public UnityEvent OnDestinationMouseExitEvent = new UnityEvent();
     public UnityEvent OnPieceLand = new UnityEvent();
@@ -264,7 +265,8 @@ public class GameState : MonoBehaviour
         // int num_1 = RollSticks();
         // int num_2 = RollSticks();
         var (num_1, num_2) = StickRoller.GetInstance().RollSticks();
-        
+        num_1 = 3;
+        num_2 = 3;
         num_1_text.text = num_1.ToString(); 
         num_2_text.text = num_2.ToString();
         num_1_text2.text = num_1.ToString();
@@ -428,35 +430,20 @@ public class GameState : MonoBehaviour
             }
         }
 
+        res_list.RemoveAll(destNodePos =>
+        {
+            var nodeIndex = bd.get_anchor_index(destNodePos);
+            return startedFromABlockade == true 
+                   && chosen_piece == FormerBlockadeCompany 
+                   && nodeIndex == bd.get_anchor_index(firstTargetPos);
+        });
 
         for (int i = 0; i < res_list.Count; i++)
         {
             Vector3 pos = res_list[i];
             var nodeIndex = bd.get_anchor_index(res_list[i]);
             var rotation = GetPieceOrientation(nodeIndex, false);
-            if (blockade == true && dice_1 == dice_2)
-            {
-                
-                //if (res_list[i].x - firstTargetPos.x < 0.01f && res_list[i].z - firstTargetPos.z < 0.01f)
-                
-                if (nodeIndex == bd.get_anchor_index(firstTargetPos))
-                {
-                    res_list.RemoveAt(i);
-                    for(int j = 0; j<res_list.Count; j++)
-                    {
-                        Vector3 newPos = res_list[j];
-                        SpawnGreen(newPos, rotation);
-                    }
-                }
-                else
-                {
-                    SpawnGreen(pos, rotation);
-                }
-            }
-            else
-            {
-                SpawnGreen(pos, rotation);
-            }
+            SpawnGreen(pos, rotation);
         }
     }
 
@@ -503,14 +490,14 @@ public class GameState : MonoBehaviour
         {
             is_two_same_spot = true;
         }
-        bool isSecondOne = false; 
+        bool isSecondOne = false;
+        var areDiff = hasDifferentType(pos_index);
         for(int i = 0; i < bd.nodes[pos_index].Count; i++){
             int chosen_piece_index = bd.nodes[pos_index][i];
             string chosen_piece_name = chosen_piece_index.ToString();
             GameObject cur_piece = GameObject.Find(chosen_piece_name);
-            bool isDiff = isDifferentType(pos_index, cur_piece.CompareTag("Owl"), chosen_piece);
             bool isOwl = cur_piece.CompareTag("Owl");
-            piecePlacement(pos_index, isOwl, isSecondOne, cur_piece, anchor_pos, isDiff);
+            piecePlacement(pos_index, isOwl, isSecondOne, cur_piece, anchor_pos, areDiff);
             isSecondOne = true;
         }
     }
@@ -532,41 +519,37 @@ public class GameState : MonoBehaviour
             curPieceRotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
         }
         if(isOwl){
+            // single owl
             curPieceRotation = curPieceRotation * Quaternion.Euler(0f, 90f, 90f);
-            if(isSecondOne && (!isDiff)){
-                curPieceTranslation = new Vector3(0f, 0.14f, 0f);
+            curPieceTranslation = new Vector3(0f, bd.pieceHeight / 2, 0f);
+            
+            // 1 owl 1 normal, owl on the top
+            if (isDiff)
+            {
+                curPieceTranslation += new Vector3(0f, bd.pieceWidth, 0f);
+            }
+            // 2 owl, the second owl
+            else if(isSecondOne){
                 if(isHorizontal){
                     curPieceTranslation += new Vector3(0f,0f,0.15f);
                 }
                 else{
-
                     curPieceTranslation += new Vector3(0.15f,0f,0f);
                 }
-            }
-            else{
-                curPieceTranslation = new Vector3(0f, 0.14f, 0f);
             }
         }
         else{
             curPieceRotation = curPieceRotation * Quaternion.Euler(0f, 0f, 0f);
-            if(isSecondOne){
-                curPieceTranslation = new Vector3(0f, 0.11f, 0f);
+            // top normal of 2 normals
+            if (isSecondOne && !isDiff){
+                curPieceTranslation = new Vector3(0f, bd.pieceWidth * 1.5f, 0f);
             }
+            // single normal, or the bottom normal of 2 pieces 
             else{
-                curPieceTranslation = new Vector3(0f, 0.04f, 0f);
+                curPieceTranslation = new Vector3(0f, bd.pieceWidth / 2, 0f);
             }
         }
 
-        if(isSecondOne && isDiff){
-            if(isOwl){
-                curPieceTranslation = curPieceTranslation +  new Vector3(0f, 0.11f, 0f);
-            }
-            else{
-                //Debug.Log("123123");
-                curPieceTranslation = curPieceTranslation - new Vector3(0f, 0.07f, 0f);
-            }
-
-        }
         cur_piece.transform.position = anchor_pos;
         //cur_piece.transform.Translate(curPieceTranslation);
         cur_piece.transform.position = cur_piece.transform.position + curPieceTranslation;
@@ -574,16 +557,12 @@ public class GameState : MonoBehaviour
     }
 
 
-    public bool isDifferentType(int pos_index, bool isOwl, int cur_index){
+    public bool hasDifferentType(int pos_index){
         board bd = gameObject.GetComponent<board>();
         if(bd.nodes[pos_index].Count == 2){
-            if(bd.nodes[pos_index][0] != cur_index){
-                string chosen_piece_name = bd.nodes[pos_index][0].ToString();
-                GameObject prev_piece = GameObject.Find(chosen_piece_name);
-                if(prev_piece.CompareTag("Owl") ^ isOwl){
-                    return true;
-                }
-            }
+            var p1 = GameObject.Find(bd.nodes[pos_index][0].ToString());
+            var p2 = GameObject.Find(bd.nodes[pos_index][1].ToString());
+            return p1.CompareTag("Owl") != p2.CompareTag("Owl");
         }
         return false;
     }
@@ -613,7 +592,7 @@ public class GameState : MonoBehaviour
     private IEnumerator MovePieceCoroutine(Vector3 position)
     {
         notFirstRound = true;
-        blockade = false;
+        startedFromABlockade = false;
         //call script form score
         Score score = gameObject.GetComponent<Score>();
         
@@ -640,7 +619,8 @@ public class GameState : MonoBehaviour
         else if (bd.nodes[CurOrgIndex].Count > 1 && GetComponent<board>().isSameColor(CurOrgIndex) == true)
         {
             //form blockade
-            blockade = true;
+            startedFromABlockade = true;
+            FormerBlockadeCompany = bd.nodes[CurOrgIndex].First(pieceIndex => pieceIndex != chosen_piece);
             firstTargetPos = position;
             //Debug.Log("first pos" + bd.get_anchor_index(firstTargetPos));
         }

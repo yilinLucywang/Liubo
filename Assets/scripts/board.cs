@@ -53,7 +53,7 @@ public class board : MonoBehaviour
     
     public int[] cur_rolls = new int[2];
 
-    [SerializeField] private float pieceWidth, pieceHeight;
+    [SerializeField] public float pieceWidth, pieceHeight;
 
     public HashSet<int> whiteScoringNests = new HashSet<int>(){ 21, 29 };
     public HashSet<int> blackScoringNests = new HashSet<int>() {2, 12};
@@ -515,11 +515,20 @@ public class board : MonoBehaviour
         var anchor = anchors[index_2_anchor[nodeIndex]];
         var anchorPos = anchor.transform.position;
         var yOffset = isOwl ? (pieceHeight / 2) : (pieceWidth / 2);
+        var nOwls = 0;
         foreach (var pieceIndex in nodes[nodeIndex])
         {
             string chosen_piece_name = pieceIndex.ToString();
             GameObject piece = GameObject.Find(chosen_piece_name);
-            yOffset += piece.CompareTag("Owl") ? pieceHeight : pieceWidth;
+            if (piece.CompareTag("Owl") && nOwls == 0)
+            {
+                yOffset += pieceHeight;
+                nOwls += 1;
+            }
+            else
+            {
+                yOffset += pieceWidth;
+            }
         }
 
         anchorPos.y += yOffset;
