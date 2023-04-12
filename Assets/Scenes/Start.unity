@@ -3709,7 +3709,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 153840372}
         m_TargetAssemblyTypeName: StartUI, Assembly-CSharp
-        m_MethodName: showName
+        m_MethodName: BackToMainPage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

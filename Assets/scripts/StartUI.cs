@@ -49,6 +49,17 @@ public class StartUI : MonoBehaviour
 
         SceneManager.LoadScene("Liubo");
     }
+
+    public void BackToMainPage()
+    {
+        nameButton.SetActive(false);
+        rulesButton.SetActive(true);
+        startButton.SetActive(true);
+        tutorial.SetActive(false);
+        creditButton.SetActive(true);
+        ExitButton.SetActive(true);
+    }
+
     public void ExitGame()
     {
         Application.Quit();
