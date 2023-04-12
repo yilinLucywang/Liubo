@@ -61,7 +61,6 @@ public class GameState : MonoBehaviour
     public int cur_step = 0;
     private List<GameObject> instantiated_list = new List<GameObject>();
 
-
     public List<GameObject> white_pieces = new List<GameObject>();
     public List<GameObject> black_pieces = new List<GameObject>(); 
 
@@ -824,6 +823,24 @@ public class GameState : MonoBehaviour
             instantiated_stop_list.Add(instantiated);
         }
     }
+
+    public void highLightFinal(List<Vector3> poses){
+        Vector3 pos = poses[poses.Count - 1]; 
+        for(int i = 0; i < instantiated_list.Count; i++){
+            if(Vector3.Distance(instantiated_list[i].transform.position, pos) > 0.01){
+                instantiated_list[i].SetActive(false);
+            }
+        }       
+    }
+
+    public void restoreFinals(){
+        for(int i = 0; i < instantiated_list.Count; i++){
+            if(instantiated_list[i]){
+                instantiated_list[i].SetActive(true);
+            }
+        }
+    }
+
 
     public void removeStops(){
         for(int i = 0; i < instantiated_stop_list.Count; i++){
