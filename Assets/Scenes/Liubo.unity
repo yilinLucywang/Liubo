@@ -4885,7 +4885,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: cb65a0b337afa2d45acc28cc6bbbc77d, type: 2}
+      objectReference: {fileID: 2100000, guid: f9915868f42bd7448a22c560ea56de3f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65697dd5648905540b84894e7f923f37, type: 3}
 --- !u!1 &500057746
@@ -6161,7 +6161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: cb65a0b337afa2d45acc28cc6bbbc77d, type: 2}
-  selectionMaterial: {fileID: 2100000, guid: 0d61aea118429f84d8cc6a386c600388, type: 2}
+  selectionMaterial: {fileID: 2100000, guid: f9915868f42bd7448a22c560ea56de3f, type: 2}
   originalWhiteMat: {fileID: 2100000, guid: e559da05aba06194cb828420113d9b18, type: 2}
   originalBlackMat: {fileID: 2100000, guid: 579f5cb74883d464e8a8f9b04bd2b270, type: 2}
   GameState: {fileID: 153840375}
