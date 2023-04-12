@@ -21,6 +21,7 @@ public class UI : MonoBehaviour
     public Light direcLight;
     public GameObject lineImg;
     public Text showLineTxt;
+    public GameState gameState;
 
     private bool isHintOn = false;
 
@@ -119,14 +120,21 @@ public class UI : MonoBehaviour
             direcLight.intensity = 0.5f;
             lineImg.SetActive(true);
             isLineOn = true;
-            
+            gameState.boardCharacter.SetActive(false);
         }
         else if(isLineOn == true)
         {
             direcLight.intensity = 1.8f;
             lineImg.SetActive(false);
             isLineOn = false;
-            
+            if(gameState.isCharacterOn == false)
+            {
+                gameState.boardCharacter.SetActive(false);
+            } else if(gameState.isCharacterOn == true)
+            {
+                gameState.boardCharacter.SetActive(true);
+                gameState.isCharacterOn = true;
+            }
         }
     }
 
