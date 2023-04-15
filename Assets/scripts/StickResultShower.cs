@@ -63,7 +63,7 @@ public class StickResultShower : MonoBehaviour
             sticks[i].transform.localScale = stickTransforms[stickTransformIDs[i]].scale;
             if ((val & 1) == 1)
             {
-                sticks[i].transform.Rotate(180, 0, 0, Space.Self);
+                sticks[i].transform.Rotate(0, 180, 0, Space.Self);
             }
             val >>= 1;
         }

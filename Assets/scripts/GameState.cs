@@ -149,7 +149,7 @@ public class GameState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonUp(1))
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonUp(1)) && state == State.MoveOrPieceSelection)
         {
             DeselectButtonAndPiece();
         }
