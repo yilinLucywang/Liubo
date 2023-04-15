@@ -43,11 +43,13 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         //Close hint on any click
         if (isHintOn && Input.GetMouseButtonDown(0))
         {
             ToggleHintOff();
         }
+        */
     }
 
     public void ChangeScore()
@@ -108,7 +110,7 @@ public class UI : MonoBehaviour
     {
         HintImage.SetActive(false);
         isHintOn = false;
-        hintButtonText.text = "Show How to Capture";
+        hintButtonText.text = "Show Rulebook";
         HintButton.enabled = true;
     }
 

@@ -3528,6 +3528,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial
       objectReference: {fileID: 0}
+    - target: {fileID: 5208175078158454687, guid: 3e9dd741fc5fa894fb0c544127ac017f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5208175078437391327, guid: 3e9dd741fc5fa894fb0c544127ac017f,
         type: 3}
       propertyPath: m_TargetCamera
