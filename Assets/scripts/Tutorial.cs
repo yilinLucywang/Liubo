@@ -10,7 +10,8 @@ public class Tutorial : MonoBehaviour
     private int next = 0, curr = 0, prev = 0;
     public void showNextSlides()
     {
-        if (curr < 5)
+        Debug.Log("In Show Next Slide");
+        if (curr < 11)
         {
             slides[curr].SetActive(false);
             slides[curr + 1].SetActive(true);
@@ -18,14 +19,15 @@ public class Tutorial : MonoBehaviour
         }
         else
         {
-            slides[5].SetActive(true);
-            curr = 5;
+            slides[11].SetActive(true);
+            curr = 11;
         }
 
     }
 
     public void showPrevSlides()
     {
+        Debug.Log("In Show Prev Slide");
         if (curr > 0)
         {
             slides[curr].SetActive(false);
@@ -78,6 +80,42 @@ public class Tutorial : MonoBehaviour
             case "Button5":
                 prev = curr;
                 curr = 5;
+                slides[prev].SetActive(false);
+                slides[curr].SetActive(true);
+                break;
+            case "Button6":
+                prev = curr;
+                curr = 6;
+                slides[prev].SetActive(false);
+                slides[curr].SetActive(true);
+                break;
+            case "Button7":
+                prev = curr;
+                curr = 7;
+                slides[prev].SetActive(false);
+                slides[curr].SetActive(true);
+                break;
+            case "Button8":
+                prev = curr;
+                curr = 8;
+                slides[prev].SetActive(false);
+                slides[curr].SetActive(true);
+                break;
+            case "Button9":
+                prev = curr;
+                curr = 9;
+                slides[prev].SetActive(false);
+                slides[curr].SetActive(true);
+                break;
+            case "Button10":
+                prev = curr;
+                curr = 10;
+                slides[prev].SetActive(false);
+                slides[curr].SetActive(true);
+                break;
+            case "Button11":
+                prev = curr;
+                curr = 11;
                 slides[prev].SetActive(false);
                 slides[curr].SetActive(true);
                 break;
