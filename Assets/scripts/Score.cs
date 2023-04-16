@@ -3,6 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.Events;
+
+public class ScoreEvent : UnityEvent<ScoreType, int>
+{
+    
+}
+
+public enum ScoreType
+{
+    CaptureOwl,
+    CaptureNormal,
+    Nest,
+}
 
 public class Score : MonoBehaviour
 {
@@ -13,6 +26,8 @@ public class Score : MonoBehaviour
     [SerializeField] private AudioClip[] SFX;
     [SerializeField] private AudioSource audioSource;
 
+    public ScoreEvent OnScore = new ScoreEvent();
+    
     void Start()
     {
 
@@ -63,7 +78,9 @@ public class Score : MonoBehaviour
             {
                 //Debug.Log("black owl move");
                 //black owl passed on nest
-                gameData.black_score += 2;
+                var point = GetScorePointsByType(ScoreType.Nest);
+                OnScore.Invoke(ScoreType.Nest, point);
+                gameData.black_score += point;
                 score_changed = true;
                 //RotateBackToNorm(cur_piece);
             }
@@ -78,7 +95,9 @@ public class Score : MonoBehaviour
                     //black owl eat white normal
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal")
                     {
-                        gameData.black_score++;
+                        var point = GetScorePointsByType(ScoreType.CaptureNormal);
+                        OnScore.Invoke(ScoreType.CaptureNormal, point);
+                        gameData.black_score += point;
                         score_changed = true;
                         //Debug.Log("Black owl get white normal");
                         //remove different color piece
@@ -87,7 +106,9 @@ public class Score : MonoBehaviour
                     //2 black owl eat white owl
                     else if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl" && (bd.nodes[pos_index].Count > 2))
                     {
-                        gameData.black_score += 3;
+                        var point = GetScorePointsByType(ScoreType.CaptureOwl);
+                        OnScore.Invoke(ScoreType.CaptureOwl, point);
+                        gameData.black_score += point;
                         score_changed = true;
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
 
@@ -102,7 +123,9 @@ public class Score : MonoBehaviour
                 {
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl")
                     {
-                        gameData.black_score += 3;
+                        var point = GetScorePointsByType(ScoreType.CaptureOwl);
+                        OnScore.Invoke(ScoreType.CaptureOwl, point);
+                        gameData.black_score += point;
                         score_changed = true;
                         //Debug.Log("Black normal get white owl");
                         //RotateBackToNorm(cur_piece);
@@ -114,7 +137,9 @@ public class Score : MonoBehaviour
                     if ( (bd.nodes[pos_index].Count > 2)&&(findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal"))
                     {
                         //Debug.Log("2 b normal get 1 w normal ");
-                        gameData.black_score++;
+                        var point = GetScorePointsByType(ScoreType.CaptureNormal);
+                        OnScore.Invoke(ScoreType.CaptureNormal, point);
+                        gameData.black_score += point;
                         score_changed = true;
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex] - 6, true);
@@ -132,7 +157,9 @@ public class Score : MonoBehaviour
             {
                 //Debug.Log("white owl move");
                 //white owl land on nest
-                gameData.white_score += 2;
+                var point = GetScorePointsByType(ScoreType.Nest);
+                OnScore.Invoke(ScoreType.Nest, point);
+                gameData.white_score += point;
                 score_changed = true;
             }
             // if there is already a piece on there
@@ -145,7 +172,9 @@ public class Score : MonoBehaviour
                     //white owl eat black normal
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal")
                     {
-                        gameData.white_score++;
+                        var point = GetScorePointsByType(ScoreType.CaptureNormal);
+                        OnScore.Invoke(ScoreType.CaptureNormal, point);
+                        gameData.white_score += point;
                         score_changed = true;
                         //Debug.Log("white owl get black normal");
                         //remove different color piece
@@ -154,7 +183,9 @@ public class Score : MonoBehaviour
                     //2 black owl eat white owl
                     else if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl" && (bd.nodes[pos_index].Count > 2))
                     {
-                        gameData.white_score += 3;
+                        var point = GetScorePointsByType(ScoreType.CaptureOwl);
+                        OnScore.Invoke(ScoreType.CaptureOwl, point);
+                        gameData.white_score += point;
                         score_changed = true;
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
 
@@ -169,7 +200,9 @@ public class Score : MonoBehaviour
                 {
                     if (findTag(bd.nodes[pos_index][diffColorIndex]) == "Owl")
                     {
-                        gameData.white_score += 3;
+                        var point = GetScorePointsByType(ScoreType.CaptureOwl);
+                        OnScore.Invoke(ScoreType.CaptureOwl, point);
+                        gameData.white_score += point;
                         score_changed = true;
                         changeTag(bd.nodes[pos_index][diffColorIndex], "Normal");
                         //Debug.Log("white normal get black owl");
@@ -180,7 +213,10 @@ public class Score : MonoBehaviour
                     if ((bd.nodes[pos_index].Count > 2) && (findTag(bd.nodes[pos_index][diffColorIndex]) == "Normal"))
                     {
                         //Debug.Log("2 w normal get 1 b normal ");
-                        gameData.white_score++;
+                        var point = GetScorePointsByType(ScoreType.CaptureNormal);
+                        OnScore.Invoke(ScoreType.CaptureNormal, point);
+                        gameData.white_score += point;
+                        score_changed = true;
                         score_changed = true; 
                         //remove different color piece
                         gamestate.RemovePiece(bd.nodes[pos_index][diffColorIndex], false);
@@ -255,6 +291,17 @@ public class Score : MonoBehaviour
         {
             hasDiffColor = false;
             return 0;
+        }
+    }
+    
+    public int GetScorePointsByType(ScoreType type)
+    {
+        switch (type)
+        {
+            case ScoreType.CaptureNormal: return 1;
+            case ScoreType.CaptureOwl: return 2;
+            case ScoreType.Nest: return 3;
+            default: return 0;
         }
     }
     // public void RotateBackToNorm(GameObject cur_piece)

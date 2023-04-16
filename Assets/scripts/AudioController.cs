@@ -8,6 +8,7 @@ public class AudioController : MonoBehaviour
     private AudioSource ac;
     [SerializeField] private AudioClip roll;
     [SerializeField] private AudioClip landing;
+    [SerializeField] private AudioClip owl;
     
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,7 @@ public class AudioController : MonoBehaviour
         ac = GetComponent<AudioSource>();
         StickRoller.GetInstance().onStickRoll.AddListener(PlayRollingSound);
         gs.OnPieceLand.AddListener(PlayLandingSound);
+        gs.OnTurningIntoOwl.AddListener(PlayOwlSound);
     }
 
     // Update is called once per frame
@@ -31,5 +33,10 @@ public class AudioController : MonoBehaviour
     void PlayLandingSound()
     {
         ac.PlayOneShot(landing);
+    }
+
+    void PlayOwlSound()
+    {
+        ac.PlayOneShot(owl);
     }
 }

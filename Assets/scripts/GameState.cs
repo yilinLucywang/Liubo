@@ -13,7 +13,6 @@ public class GameState : MonoBehaviour
     //Set this to true for the 3D scene, will use Vector3s instead of Vector2s
     [SerializeField] GameObject LiuboBoard;
     public AudioSource ac;
-    public AudioSource owlSound;
     public bool Is3DGame = false;
 
     public bool is_p1_turn = false;
@@ -81,6 +80,9 @@ public class GameState : MonoBehaviour
     public UnityEvent OnPieceStartMoving = new UnityEvent();
     // When player press ESC to deselect both the piece and the move
     public UnityEvent OnDeselect = new UnityEvent();
+    public TurnChangeEvent OnTurnChange = new TurnChangeEvent(); // is P1 turn or not
+    public UnityEvent OnBlockadeForm = new UnityEvent();
+    public UnityEvent OnTurningIntoOwl = new UnityEvent();
     
     private board bd;
     private int pieceMoved = 0;
@@ -149,7 +151,7 @@ public class GameState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonUp(1)) && state == State.MoveOrPieceSelection)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonUp(1)) && (state & State.MoveOrPieceSelection) != 0)
         {
             DeselectButtonAndPiece();
         }
@@ -217,6 +219,7 @@ public class GameState : MonoBehaviour
             BlackNestHighlights.SetActive(true);
 
         }
+        OnTurnChange.Invoke(is_p1_turn);
         firstOrigPos = -10;
     }
 
@@ -551,7 +554,7 @@ public class GameState : MonoBehaviour
         cur_piece.transform.position = anchor_pos;
         //cur_piece.transform.Translate(curPieceTranslation);
         cur_piece.transform.position = cur_piece.transform.position + curPieceTranslation;
-        cur_piece.transform.rotation = curPieceRotation; 
+        cur_piece.transform.rotation = curPieceRotation;
     }
 
 
@@ -874,7 +877,7 @@ public class GameState : MonoBehaviour
                 {
                     isTurnedToOwl = true;
                     piece.transform.DOJump(bd.GetTopPosition(nodeIndex, isTurnedToOwl), 0.1f, 1, 0.5f);
-                    owlSound.Play();
+                    OnTurningIntoOwl.Invoke();
                     yield return piece.transform.DORotateQuaternion(GetPieceOrientation(nodeIndex, isTurnedToOwl), 0.5f)
                         .WaitForCompletion();
                 }
@@ -935,6 +938,14 @@ public class DestinationMouseEvent : UnityEvent<List<int>, bool>
 {
     
 }
+
+public class TurnChangeEvent : UnityEvent<bool>
+{
+    
+}
+
+
+
 
 [Flags] public enum State
 {
