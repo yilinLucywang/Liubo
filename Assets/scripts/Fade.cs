@@ -13,6 +13,11 @@ public class Fade : MonoBehaviour
 
     public float timeOfFade;
 
+    public AudioSource bg;
+    public float durations;
+    public float target_volume;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -69,11 +74,25 @@ public class Fade : MonoBehaviour
 
     public void GoToGame()
     {
+        StartCoroutine(FadeAudio(bg, durations, target_volume));
         StartCoroutine(FadeToGame());
     }
 
     public void BackToGame()
     {
         StartCoroutine(FadeOutToGame());
+    }
+
+    IEnumerator FadeAudio(AudioSource audioSource, float duration, float targetVolume)
+    {
+        float currentTime = 0;
+        float start = audioSource.volume;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+        yield break;
     }
 }

@@ -1016,6 +1016,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 775347676}
   timeOfFade: 1
+  audioS: {fileID: 153840373}
+  durations: 2
+  target_volume: 0
 --- !u!1 &291723613
 GameObject:
   m_ObjectHideFlags: 0
