@@ -6,6 +6,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 using Random = UnityEngine.Random;
 
 public class GameState : MonoBehaviour
@@ -93,19 +94,23 @@ public class GameState : MonoBehaviour
     public Transform[] allwhitePieces;
     public Transform[] allblackPieces;
 
-
+    public PlayableDirector whiteSideTimeLine;
+    public PlayableDirector blackSideTImeLine;
 
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
             white_poses.Add(white_pieces[i].transform.position);
             black_poses.Add(black_pieces[i].transform.position);
         }
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
         state = State.Roll;
+
+        whiteSideTimeLine.Stop();
 
         allwhitePieces = whitePieceBut.GetComponentsInChildren<Transform>();
         allblackPieces = blackPieceBut.GetComponentsInChildren<Transform>();
@@ -155,6 +160,21 @@ public class GameState : MonoBehaviour
         {
             DeselectButtonAndPiece();
         }
+
+        if(state == State.MoveOrPieceSelection && is_p1_turn)
+        {
+            
+            whiteSideTimeLine.time = 0;
+            whiteSideTimeLine.Play();
+        }
+
+        if(state == State.MoveOrPieceSelection && !is_p1_turn)
+        {
+            blackSideTImeLine.time = 0;
+            blackSideTImeLine.Play();
+        }
+
+        
     }
 
     public void ShowBoardCharacter()
@@ -354,11 +374,15 @@ public class GameState : MonoBehaviour
         {
             dice1But.GetComponent<Button>().interactable = false;
             dice2But.GetComponent<Button>().interactable = true;
+            
+            whiteSideTimeLine.Stop();
         }
         else if(!is_p1_turn && openLimit == true)
         {
             dice1But2.GetComponent<Button>().interactable = false;
             dice2But2.GetComponent<Button>().interactable = true;
+
+            blackSideTImeLine.Stop();
         }
         
         if (state == (State.MoveOrPieceSelection | State.MoveSelected | State.PieceSelected))
@@ -373,7 +397,7 @@ public class GameState : MonoBehaviour
         if(dice_2 != -1){
             cur_step = dice_2;
         }
-
+        
         RemoveGreens();
         topClicked = false;
         bottomClicked = true;
@@ -384,11 +408,13 @@ public class GameState : MonoBehaviour
         {
             dice1But.GetComponent<Button>().interactable = true;
             dice2But.GetComponent<Button>().interactable = false;
+            whiteSideTimeLine.Stop();
         }
         else if(!is_p1_turn && openLimit == true)
         {
             dice1But2.GetComponent<Button>().interactable = true;
             dice2But2.GetComponent<Button>().interactable = false;
+            blackSideTImeLine.Stop();
         }
         
         if (state == (State.MoveOrPieceSelection | State.MoveSelected | State.PieceSelected))
@@ -411,6 +437,7 @@ public class GameState : MonoBehaviour
         if (state == (State.MoveOrPieceSelection | State.MoveSelected | State.PieceSelected))
         {
             ShowPossiblePositions();
+            
         }
     }
 
