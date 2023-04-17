@@ -97,12 +97,17 @@ public class GameState : MonoBehaviour
     public PlayableDirector whiteSideTimeLine;
     public PlayableDirector blackSideTImeLine;
 
+    public Fade fadeInOut;
+    
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
             white_poses.Add(white_pieces[i].transform.position);
             black_poses.Add(black_pieces[i].transform.position);
         }
 
+        fadeInOut = FindObjectOfType<Fade>();
+
+        fadeInOut.BackToGame();
     }
 
     // Start is called before the first frame update

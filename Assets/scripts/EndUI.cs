@@ -21,18 +21,18 @@ public class EndUI : MonoBehaviour
         //player1Score.text = "Player 1 Score: " + gameData.white_score.ToString();
         //player2Score.text = "Player 2 Score: " + gameData.black_score.ToString();
         if (player1Score.text != " ")
-            player1Score.text = gameData.playername1 + " Score: " + gameData.white_score.ToString();
-            player2Score.text = gameData.playername2 + " Score: " + gameData.black_score.ToString();
+            player1Score.text = gameData.playername1 + "'s Score: " + gameData.white_score.ToString();
+            player2Score.text = gameData.playername2 + "'s Score: " + gameData.black_score.ToString();
 
         if (gameData.white_score >= 6 )
         {
-            Winner.text = gameData.playername1 + " Win!";
+            Winner.text = gameData.playername1 + " Wins!";
             WhiteWin.SetActive(true);
             BlackWin.SetActive(false);
         }
         else
         {
-            Winner.text = gameData.playername2 + " Win!";
+            Winner.text = gameData.playername2 + " Wins!";
             WhiteWin.SetActive(false);
             BlackWin.SetActive(true);
         }
@@ -45,6 +45,10 @@ public class EndUI : MonoBehaviour
     }
     public void Restart()
     {
-        SceneManager.LoadScene("Liubo");
+        SceneManager.LoadScene("Start");
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
