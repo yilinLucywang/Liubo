@@ -13,11 +13,15 @@ public class Fade : MonoBehaviour
 
     public float timeOfFade;
 
-    public AudioSource bg;
+    private AudioSource bg;
     public float durations;
     public float target_volume;
 
 
+    private void Start()
+    {
+        bg = GetComponent<AudioSource>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -62,7 +66,7 @@ public class Fade : MonoBehaviour
     IEnumerator FadeToGame()
     {
         FadeIn();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.2f);
         SceneManager.LoadScene("Liubo");
     }
 
