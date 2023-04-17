@@ -1008,11 +1008,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "To start your turn, click on \u201CRoll Sticks\u201D at the bottom of
-    the screen. Before rolling, you can shake the jar by moving your mouse quickly!
-    After rolling, you will see a display of the result. The game automatically interprets
-    this result for you, and displays your two numbers underneath your player card.
-    To learn how to count the sticks yourself, see the note below:\r\n\r\n\r\n"
+  m_text: "<b>To start your turn, click on \u201CRoll Sticks\u201D at the bottom
+    of the screen</b>. Before rolling, you can shake the jar by moving your mouse
+    quickly! After rolling, you will see a display of the result. The game automatically
+    interprets this result for you, and displays your two numbers underneath your
+    player card. \n\r\n\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -1962,11 +1962,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Liubo is an ancient Chinese board game about birds competing over a pond
-    full of fish. Each player controls 6 pieces representing birds. These birds fly
-    around the board from perch to perch (the lines on the board), trying to reach
-    the pond in the center of the board. When a bird crosses over or lands on the
-    pond, it catches a fish and becomes an \u201COwl\u201D, also meaning \u201Cleader\u201D
+  m_text: "<b>Liubo</b> is an ancient Chinese board game about birds competing over
+    a pond full of fish. Each player controls 6 pieces representing birds. These
+    birds fly around the board from perch to perch (the lines on the board), trying
+    to reach the pond in the center of the board. When a bird crosses over or lands
+    on the pond, it catches a fish and becomes an \u201COwl\u201D, also meaning \u201Cleader\u201D
     of the flock. Owls can score points by dropping their fish into nests on the
     opponent\u2019s side of the board. However, you can also score points by capturing
     your opponent\u2019s normal birds or Owls, which is often the faster path to
@@ -2108,11 +2108,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "When two opposing birds of the same type (both normal or both Owl)  land
-    on the same perch, that perch becomes contested. Both birds share the space for
-    now; however, once a third bird enters a contested perch, the two of the same
-    color will form a blockade, and the odd bird out will be captured. This is also
-    called a blockade capture. \r\n\r\nA contested perch is not a blockade. They
-    do not prevent other birds from moving through them.\r\n"
+    on the same perch, that perch becomes <b>contested</b>. Both birds share the
+    space for now; however, once a third bird enters a contested perch, the two of
+    the same color will form a blockade, and the odd bird out will be <b>captured</b>.
+    This is also called a <b>blockade capture</b>. \r\n\r\n<b>A contested perch is
+    not a blockade</b>. They do not prevent other birds from moving through them.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -2472,14 +2472,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Every Liubo turn consists of the following steps:\r\n    1. Roll the jar
-    of sticks by clicking \u201CRoll Sticks\u201D to generate two numbers between
-    1 and 4 (see \u201CRolling the Sticks\u201D)\r\n    2. Select a piece to move
-    by clicking on it\r\n    3. Select one of the numbers you rolled to determine
-    how many steps to move your piece\r\n    4. Click on one of the highlighted destination
-    spaces to move your piece\r\n    5. Repeat steps 2-4 to move a second piece.
-    You cannot move the same piece twice in one turn.\r\nYou must always move two
-    pieces. You cannot \u201Cpass\u201D your turn without finishing both moves.\r\n\r\n\r\n"
+  m_text: "Every Liubo turn consists of the following steps:\r\n    1. <b>Roll the
+    jar of sticks</b> by clicking \u201CRoll Sticks\u201D to generate two numbers
+    between 1 and 4 (see \u201CRolling the Sticks\u201D)\r\n    2. <b>Select a piece</b>
+    to move by clicking on it\r\n    3. <b>Select one of the numbers you rolled</b>
+    to determine how many steps to move your piece\r\n    4. <b>Click on one of the
+    highlighted destination spaces</b> to move your piece\r\n    5. Repeat steps
+    2-4 to <b>move a second piece</b>. You cannot move the same piece twice in one
+    turn.\r\n<b>You must always move two pieces</b>. You cannot \u201Cpass\u201D
+    your turn without finishing both moves.\r\n\r\n\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -2751,13 +2752,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "When a bird lands on or crosses the pond in the center of the board, it
-    becomes an Owl. This is indicated by the piece standing up on end. Owls are the
-    only pieces that can score in nests, but they are also more valuable to capture.
-    There is no limit to the number of Owls you can have at once.\r\n\r\nA bird becomes
-    an Owl as soon as it enters the pond as part of a movement. This means that it
-    is impossible to capture an Owl standing in the middle using a single normal
-    bird\u2013it will become an Owl as soon as it enters the space.\r\n"
+  m_text: "When a bird <b>lands on or crosses the pond</b> in the center of the board,
+    it becomes an <b>Owl</b>. This is indicated by the piece standing up on end.
+    Owls are the only pieces that can score in nests, but they are also more valuable
+    to capture. There is no limit to the number of Owls you can have at once.\r\n\r\nA
+    bird becomes an Owl as soon as it enters the pond as part of a movement. This
+    means that it is impossible to capture an Owl standing in the middle using a
+    single normal bird\u2013it will become an Owl as soon as it enters the space.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -4621,13 +4622,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You also score points by having your Owl reach one of its nests. These
-    nest spaces are circular spaces located on your opponent\u2019s side of the board.
-    When an Owl either lands on or pass through a nest space during its movement,
-    its player immediately scores 2 points, and the Owl reverts to being a normal
-    bird. \r\n\r\nTechnicality: Only Owls may enter nest spaces. However, normal
-    birds can always exit nest spaces. This is important because the Owl reverts
-    to being a normal bird as soon as it enters the nest!\r\n"
+  m_text: "You also score points by having your <b>Owl reach one of its nests</b>.
+    These nest spaces are <b>circular spaces located on your opponent\u2019s side
+    of the board</b>. When an Owl either <b>lands on or pass through a nest space</b>
+    during its movement, its player immediately scores <b>2 points</b>, and the <b>Owl
+    reverts to being a normal bird</b>. \r\n\r\nTechnicality: Only Owls may enter
+    nest spaces. However, normal birds can always exit nest spaces. This is important
+    because the Owl reverts to being a normal bird as soon as it enters the nest!\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -6112,16 +6113,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "All of your birds begin the game off the board. Their first step onto
-    the board must be onto one of the \u201CBranch\u201D spaces on your side of the
-    board, which are highlighted in green. \r\n\nTo move, first select a piece by
-    clicking on it. This will highlight the piece in blue. Next, click on one of
-    your move numbers below your player card. Once you have selected a piece and
-    a move number, all valid destinations on the board will be highlighted in (gold/orange).
-    Click on one of these destinations to move your piece there. \r\n\r\nHovering
-    your mouse over one of these destinations will preview the path your piece would
-    take to get there. This can be important to know if your piece will become an
-    Owl or cross a nest during this movement. \r\n\r\n\r\n"
+  m_text: "All of your birds begin the game <b>off the board</b>. Their first step
+    onto the board must be onto one of the <b>\u201CBranch\u201D spaces</b> on your
+    side of the board, which are highlighted in green. \r\n\nTo move, first <b>select
+    a piece by clicking on it</b>. This will highlight the piece in blue. Next, <b>click
+    on one of your move numbers</b> below your player card. Once you have selected
+    a piece and a move number, all <b>valid destinations</b> on the board will be
+    highlighted in gold. Click on one of these destinations to move your piece there.
+    \r\n\r\nHovering your mouse over one of these destinations will <b>preview the
+    path</b> your piece would take to get there. This can be important to know if
+    your piece will become an Owl or cross a nest during this movement. \r\n\r\n\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -7489,12 +7490,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The goal of Liubo is to be the first player to score 6 points. There are
-    three ways to score points:\r\n   - Capturing an opponent\u2019s normal bird
-    is worth 1 point. (See \"Capturing\")\r\n    - Landing on or moving through a
-    nest space with your own Owl is worth 2 points. The Owl then becomes a normal
-    bird again. (See \"Scoring in Nests\")\r\n    - Capturing an opponent\u2019s
-    Owl is worth 3 points. (See \"Capturing\")"
+  m_text: "<b>The goal of Liubo is to be the first player to score 6 points.</b>
+    There are three ways to score points:\r\n   - Capturing an opponent\u2019s normal
+    bird is worth <b>1 point</b>. (See \"Capturing\")\r\n    - Capturing an opponent\u2019s
+    Owl is worth <b>2 points</b>. (See \"Capturing\")\n    - Landing on or moving
+    through a nest space with your own Owl is worth <b>3 points</b>. The Owl then
+    becomes a normal bird again. (See \"Scoring in Nests\")\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -8741,17 +8742,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You may capture an opponent\u2019s bird in one of three ways:\r\n    1.
-    Moving a normal bird onto an Owl\u2019s perch immediately captures the Owl.\r\n   
-    2. Moving an Owl onto a normal bird\u2019s perch immediately captures the normal
-    bird.\r\n    3. Moving any bird onto a contested perch immediately captures the
-    opponent\u2019s bird on that space. Additionally, your two pieces form a blockade
-    on that perch.\r\nIn all cases, the active player scores points based on the
-    type (normal or Owl) of the opponent\u2019s bird they captured. Capturing a normal
-    bird awards 1 point, while capturing an Owl is worth 3 points.\r\nCaptured birds
-    are moved off the board, but returned to their player; that player may re-enter
-    their bird from a starting space on their next turn. Additionally, captured Owls
-    are downgraded back to normal birds."
+  m_text: "You may <b>capture</b> an opponent\u2019s bird in one of three ways:\r\n   
+    1. Moving a <b>normal bird onto an Owl\u2019s perch</b> immediately <b>captures
+    the Owl</b>.\r\n    2. Moving an <b>Owl onto a normal bird\u2019s perch</b> immediately
+    <b>captures the normal bird</b>.\r\n    3. Moving <b>any bird onto a contested
+    perch</b> immediately <b>captures the opponent\u2019s bird</b> on that space.
+    Additionally, your two pieces form a blockade on that perch.\r\nIn all cases,
+    the active player <b>scores points based on the type</b> (normal or Owl) of the
+    opponent\u2019s bird they captured. Capturing a <b>normal bird awards 1 point</b>,
+    while capturing an <b>Owl awards 3 points</b>.\r\nCaptured birds are moved off
+    the board, but returned to their player; that player may re-enter their bird
+    from a starting space on their next turn. Additionally, captured Owls are downgraded
+    back to normal birds."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -9024,14 +9026,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "The connections between perches are drawn onto the diagram above. There
-    is an Outer Ring of perches representing a forest, and 4 paths into a central
-    garden, with the pond at the very center. The nest spaces are connected to the
-    branch and hollow spaces at each corner. Normal birds may never enter nests.
-    Owls may enter the two nests on their opponent\u2019s side of the board.\n\nYou
-    may show this diagram during gameplay by clicking \"Show  lines\" in the lower
-    left corner of the screen. Additionally, you can examine the board from other
-    angles by rotating the camera; to do so, use the left and right arrow keys, or
-    the Q and E keys."
+    is an <b>outer ring</b> of perches representing a <b>forest</b>, and 4 paths
+    into a <b>central garden</b>, with the <b>pond</b> at the very center. The <b>nest</b>
+    spaces are connected to the \"branch\" and \"hollow\" spaces at each corner.
+    Normal birds may never enter nests. Owls may enter the two nests on their opponent\u2019s
+    side of the board.\n\nYou may show this diagram during gameplay by clicking \"Show 
+    lines\" in the lower left corner of the screen. Additionally, you can examine
+    the board from other angles by rotating the camera; to do so, use the left and
+    right arrow keys, or the Q and E keys."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -9167,18 +9169,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'When two of your birds share a perch, they form a blockade. Blockades
-    prevent all other pieces from moving through them, including your own. The pieces
-    of a blockade stack on top of each other. Because blockades can be made of any
-    combination of Owls and normal birds, there are three different ways they can
-    look (see video above). However, all of these blockades work exactly the same
-    way.
+  m_text: 'When two of your birds share a perch, they form a <b>blockade</b>. Blockades
+    prevent all other pieces from moving through them, <b>including your own</b>.
+    The pieces of a blockade stack on top of each other. Because blockades can be
+    made of any combination of Owls and normal birds, there are three different ways
+    they can look (see video above). However, all of these blockades work exactly
+    the same way.
 
 
-
-    Special Rule: When rolling doubles, you cannot move both pieces of
-    a blockade to the same new space. They can both move, but they must move to two
-    different spaces. '
+    <b>Special Rule</b>: When rolling doubles, you cannot move
+    both pieces of a blockade to the same new space. They can both move, but they
+    must move to two different spaces. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
