@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   white_score: 1
-  black_score: 0
-  playername1: EVAN
-  playername2: ERIC
+  black_score: 4
+  playername1: aaa
+  playername2: bbb
