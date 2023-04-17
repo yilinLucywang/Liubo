@@ -47,7 +47,7 @@ public class StartUI : MonoBehaviour
             data.playername2 = inputField[1].text;
 
 
-        SceneManager.LoadScene("Liubo");
+        
     }
 
     public void Credits()
