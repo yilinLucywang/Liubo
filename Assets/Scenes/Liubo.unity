@@ -7929,7 +7929,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player who gets 6 points, WIN!
+  m_text: Score <b>6 points</b> to win the game!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -17690,6 +17690,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 704134196}
   timeOfFade: 1
+  durations: 0
+  target_volume: 0
 --- !u!4 &2058179162
 Transform:
   m_ObjectHideFlags: 0
