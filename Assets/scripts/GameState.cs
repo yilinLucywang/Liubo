@@ -691,7 +691,7 @@ public class GameState : MonoBehaviour
         ////Debug.Log("count" + bd.nodes[pos_index].Count);
         OnPieceLand.Invoke();
 
-        new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         pieceMoved++;
         if (pieceMoved == 2)
         {
