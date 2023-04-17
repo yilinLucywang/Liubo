@@ -9105,7 +9105,7 @@ MonoBehaviour:
   gs: {fileID: 153840375}
   roll: {fileID: 8300000, guid: 73331f4129147514fb71e37f1ed310f1, type: 3}
   landing: {fileID: 8300000, guid: 3842bccd09b66b941aab259dd08a6ce0, type: 3}
-  owl: {fileID: 0}
+  owl: {fileID: 8300000, guid: 784525f8d33a7394e9378060fc7b7b73, type: 3}
 --- !u!1 &928359503 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8991270938767602381, guid: a098fa4854716164db33d4f4c6bca159,
@@ -14017,7 +14017,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 100
-    m_Alignment: 4
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -15033,7 +15033,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 100
-    m_Alignment: 4
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

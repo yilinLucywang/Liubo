@@ -12,8 +12,8 @@ public class StartUI : MonoBehaviour
     public GameData data;
     void Start()
     {
-        inputField[0].characterLimit = 15;
-        inputField[1].characterLimit = 15;
+        inputField[0].characterLimit = 12;
+        inputField[1].characterLimit = 12;
     }
     public void showTutorial()
     {
