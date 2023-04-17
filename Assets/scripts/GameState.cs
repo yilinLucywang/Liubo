@@ -98,6 +98,7 @@ public class GameState : MonoBehaviour
     public PlayableDirector blackSideTImeLine;
 
     public Fade fadeInOut;
+    public GameObject fadeInImg;
     
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
@@ -106,7 +107,7 @@ public class GameState : MonoBehaviour
         }
 
         fadeInOut = FindObjectOfType<Fade>();
-
+        fadeInImg.SetActive(true);
         fadeInOut.BackToGame();
     }
 
