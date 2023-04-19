@@ -744,6 +744,14 @@ public class GameState : MonoBehaviour
         else
         {
             SetUpForMove();
+            if (topClicked)
+            {
+                BottomClick();
+            }
+            else
+            {
+                TopClick();
+            }
         }
 
         yield return null;
