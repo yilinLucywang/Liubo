@@ -1259,7 +1259,7 @@ MonoBehaviour:
   allwhitePieces: []
   allblackPieces: []
   whiteSideTimeLine: {fileID: 1899372038}
-  blackSideTImeLine: {fileID: 774223834}
+  blackSideTimeLine: {fileID: 774223834}
   fadeInOut: {fileID: 2058179161}
   fadeInImg: {fileID: 704134194}
 --- !u!114 &153840376
@@ -10540,6 +10540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMouseControlable: 0
+  isAngleLockActive: 0
   ac: {fileID: 0}
 --- !u!82 &1123006578
 AudioSource:
