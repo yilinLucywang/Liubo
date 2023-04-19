@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -70,10 +71,12 @@ public class Fade : MonoBehaviour
         SceneManager.LoadScene("Liubo");
     }
 
-    IEnumerator FadeOutToGame()
+    IEnumerator FadeOutToGame(Action OnFadeOut)
     {
         yield return new WaitForSeconds(2.5f);
         FadeOut();
+        yield return new WaitForSeconds(1f);
+        OnFadeOut();
     }
 
     public void GoToGame()
@@ -82,9 +85,9 @@ public class Fade : MonoBehaviour
         StartCoroutine(FadeToGame());
     }
 
-    public void BackToGame()
+    public void BackToGame(Action OnBackToGame)
     {
-        StartCoroutine(FadeOutToGame());
+        StartCoroutine(FadeOutToGame(OnBackToGame));
     }
 
     IEnumerator FadeAudio(AudioSource audioSource, float duration, float targetVolume)

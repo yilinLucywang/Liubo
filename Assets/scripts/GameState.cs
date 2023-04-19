@@ -108,7 +108,7 @@ public class GameState : MonoBehaviour
 
         fadeInOut = FindObjectOfType<Fade>();
         fadeInImg.SetActive(true);
-        fadeInOut.BackToGame();
+        fadeInOut.BackToGame(NextRound);
     }
 
     // Start is called before the first frame update
@@ -156,7 +156,7 @@ public class GameState : MonoBehaviour
             dice2But2.SetActive(false);
         }
         bd = GetComponent<board>();
-        NextRound();
+        // NextRound();
     }
 
     // Update is called once per frame
