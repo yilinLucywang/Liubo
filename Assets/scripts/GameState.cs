@@ -124,8 +124,8 @@ public class GameState : MonoBehaviour
         isCharacterOn = true;
         if(is_p1_turn == true)
         {
-            whiteTurn.GetComponentInChildren<Text>().text = gameData.playername1 + "'s Turn";
-            whiteTurn.SetActive(true);
+            //whiteTurn.GetComponentInChildren<Text>().text = gameData.playername1 + "'s Turn";
+            //whiteTurn.SetActive(true);
         }
         if (openLimit == true)
         {
@@ -230,8 +230,8 @@ public class GameState : MonoBehaviour
         if (is_p1_turn)
         {
             blackTurn.SetActive(false);
-            whiteTurn.GetComponentInChildren<Text>().text = gameData.playername1 + "'s Turn";
-            whiteTurn.SetActive(true);
+            //whiteTurn.GetComponentInChildren<Text>().text = gameData.playername1 + "'s Turn";
+            //whiteTurn.SetActive(true);
             WhiteNestHighlights.SetActive(true);
             BlackNestHighlights.SetActive(false);
             
@@ -239,8 +239,8 @@ public class GameState : MonoBehaviour
         if (!is_p1_turn)
         {
             whiteTurn.SetActive(false);
-            blackTurn.GetComponentInChildren<Text>().text = gameData.playername2 + "'s Turn";
-            blackTurn.SetActive(true);
+            //blackTurn.GetComponentInChildren<Text>().text = gameData.playername2 + "'s Turn";
+            //blackTurn.SetActive(true);
             WhiteNestHighlights.SetActive(false);
             BlackNestHighlights.SetActive(true);
 
@@ -303,7 +303,8 @@ public class GameState : MonoBehaviour
         dice_1 = num_1; 
         dice_2 = num_2;
 
-
+        dice_1 = 2;
+        dice_2 = 4;
         if (openLimit == true)
         {
             StopCoroutine(WaitForClickBtn());
