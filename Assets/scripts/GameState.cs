@@ -303,8 +303,6 @@ public class GameState : MonoBehaviour
         dice_1 = num_1; 
         dice_2 = num_2;
 
-        dice_1 = 2;
-        dice_2 = 4;
         if (openLimit == true)
         {
             StopCoroutine(WaitForClickBtn());
