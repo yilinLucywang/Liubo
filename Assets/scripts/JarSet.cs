@@ -99,6 +99,6 @@ public class JarSet : MonoBehaviour
         jar.transform.position = originalJarPos;
         jar.transform.eulerAngles = originalJarRot;
         jc.isMouseControlable = false;
-        
+        jc.isAngleLockActive = true;
     }
 }

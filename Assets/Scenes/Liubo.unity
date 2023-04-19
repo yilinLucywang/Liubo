@@ -10540,7 +10540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMouseControlable: 0
-  isAngleLockActive: 0
+  isAngleLockActive: 1
   ac: {fileID: 0}
 --- !u!82 &1123006578
 AudioSource:
