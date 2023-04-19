@@ -299,8 +299,8 @@ public class Score : MonoBehaviour
         switch (type)
         {
             case ScoreType.CaptureNormal: return 1;
-            case ScoreType.CaptureOwl: return 2;
-            case ScoreType.Nest: return 3;
+            case ScoreType.CaptureOwl: return 3;
+            case ScoreType.Nest: return 2;
             default: return 0;
         }
     }
