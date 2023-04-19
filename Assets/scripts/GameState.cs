@@ -117,7 +117,7 @@ public class GameState : MonoBehaviour
         state = State.Roll;
 
         whiteSideTimeLine.Stop();
-        
+        blackSideTimeLine.Stop();
 
         allwhitePieces = whitePieceBut.GetComponentsInChildren<Transform>();
         allblackPieces = blackPieceBut.GetComponentsInChildren<Transform>();
