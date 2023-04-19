@@ -10,7 +10,7 @@ public class JarController : MonoBehaviour
     private float preX = 0, preY = 0;
 
     public bool isMouseControlable;
-    private bool isAngleLockActive = false;
+    public bool isAngleLockActive = true;
     private HingeJoint hj;
     private IEnumerator lockControlCountdownCoroutine;
 

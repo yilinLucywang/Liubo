@@ -156,6 +156,7 @@ public class GameState : MonoBehaviour
             dice2But2.SetActive(false);
         }
         bd = GetComponent<board>();
+        StickRoller.GetInstance().SetActive(false);
         // NextRound();
     }
 
