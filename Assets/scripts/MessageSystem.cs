@@ -36,20 +36,36 @@ public class MessageSystem : MonoBehaviour
     void ShowTurnChangeMessage(bool isP1Turn)
     {
         animator.Play("ShowMessage");
-        text.text = $"{(isP1Turn ? gs.gameData.playername1 : gs.gameData.playername2)} 's turn!";
+        text.text = $"{(isP1Turn ? gs.gameData.playername1 : gs.gameData.playername2)}'s turn!";
     }
 
     void ShowScoreMessage(ScoreType scoreType, int points)
     {
         animator.Play("ShowMessage");
-        text.text = points > 1 ? $"Score {points.ToString()} points!"
-                : $"Score {points.ToString()} point!";
+        var txt = "";
+        switch (scoreType)
+        {
+            case ScoreType.Nest:
+                txt += "Reached nest: ";
+                break;
+            case ScoreType.CaptureNormal:
+                txt += "Bird captured: ";
+                break;
+            case ScoreType.CaptureOwl:
+                txt += "Owl captured: ";
+                break;
+            default:
+                break;
+        }
+        
+        text.text = txt + (points > 1 ? $"score {points.ToString()} points!"
+                : $"score {points.ToString()} point!");
     }
 
     void ShowOwlMessage()
     {
         animator.Play("ShowMessage");
-        text.text = "Owl";
+        text.text = "Bird upgraded into an Owl!";
     }
 
     void ShowBlockadeMessage()
