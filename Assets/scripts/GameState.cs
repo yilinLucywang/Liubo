@@ -855,6 +855,9 @@ public class GameState : MonoBehaviour
                 if(Vector3.Distance(instantiated_list[i].transform.position, pos) > 0.01){
                     instantiated_list[i].SetActive(false);
                 }
+                else{
+                    instantiated_list[i].transform.GetChild (0).gameObject.SetActive(false);
+                }
             }
         }       
     }
@@ -863,6 +866,7 @@ public class GameState : MonoBehaviour
         for(int i = 0; i < instantiated_list.Count; i++){
             if(instantiated_list[i]){
                 instantiated_list[i].SetActive(true);
+                instantiated_list[i].transform.GetChild (0).gameObject.SetActive(true);
             }
         }
     }
