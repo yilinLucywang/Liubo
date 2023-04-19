@@ -125,7 +125,7 @@ public class GameState : MonoBehaviour
         if(is_p1_turn == true)
         {
             whiteTurn.GetComponentInChildren<Text>().text = gameData.playername1 + "'s Turn";
-            whiteTurn.SetActive(true);
+            // whiteTurn.SetActive(true);
         }
         if (openLimit == true)
         {
@@ -232,7 +232,7 @@ public class GameState : MonoBehaviour
         {
             blackTurn.SetActive(false);
             whiteTurn.GetComponentInChildren<Text>().text = gameData.playername1 + "'s Turn";
-            whiteTurn.SetActive(true);
+            // whiteTurn.SetActive(true);
             WhiteNestHighlights.SetActive(true);
             BlackNestHighlights.SetActive(false);
             
@@ -241,7 +241,7 @@ public class GameState : MonoBehaviour
         {
             whiteTurn.SetActive(false);
             blackTurn.GetComponentInChildren<Text>().text = gameData.playername2 + "'s Turn";
-            blackTurn.SetActive(true);
+            // blackTurn.SetActive(true);
             WhiteNestHighlights.SetActive(false);
             BlackNestHighlights.SetActive(true);
 
