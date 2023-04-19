@@ -38,7 +38,7 @@ public class UI : MonoBehaviour
         player1Score.text = gameData.white_score.ToString();
         player2Score.text = gameData.black_score.ToString();
 
-        showCharacter.text = "Hide Characters";
+        showCharacter.text = "Hide Labels";
 
     }
 

@@ -95,7 +95,7 @@ public class GameState : MonoBehaviour
     public Transform[] allblackPieces;
 
     public PlayableDirector whiteSideTimeLine;
-    public PlayableDirector blackSideTImeLine;
+    public PlayableDirector blackSideTimeLine;
 
     public Fade fadeInOut;
     public GameObject fadeInImg;
@@ -117,6 +117,7 @@ public class GameState : MonoBehaviour
         state = State.Roll;
 
         whiteSideTimeLine.Stop();
+        blackSideTimeLine.Stop();
 
         allwhitePieces = whitePieceBut.GetComponentsInChildren<Transform>();
         allblackPieces = blackPieceBut.GetComponentsInChildren<Transform>();
@@ -177,8 +178,8 @@ public class GameState : MonoBehaviour
 
         if(state == State.MoveOrPieceSelection && !is_p1_turn)
         {
-            blackSideTImeLine.time = 0;
-            blackSideTImeLine.Play();
+            blackSideTimeLine.time = 0;
+            blackSideTimeLine.Play();
         }
 
         
@@ -381,15 +382,19 @@ public class GameState : MonoBehaviour
         {
             dice1But.GetComponent<Button>().interactable = false;
             dice2But.GetComponent<Button>().interactable = true;
-            
+
+            whiteSideTimeLine.time = 0;
             whiteSideTimeLine.Stop();
+            whiteSideTimeLine.Evaluate();
         }
         else if(!is_p1_turn && openLimit == true)
         {
             dice1But2.GetComponent<Button>().interactable = false;
             dice2But2.GetComponent<Button>().interactable = true;
 
-            blackSideTImeLine.Stop();
+            blackSideTimeLine.time = 0;
+            blackSideTimeLine.Stop();
+            blackSideTimeLine.Evaluate();
         }
         
         if (state == (State.MoveOrPieceSelection | State.MoveSelected | State.PieceSelected))
@@ -415,13 +420,17 @@ public class GameState : MonoBehaviour
         {
             dice1But.GetComponent<Button>().interactable = true;
             dice2But.GetComponent<Button>().interactable = false;
+            whiteSideTimeLine.time = 0;
             whiteSideTimeLine.Stop();
+            whiteSideTimeLine.Evaluate();
         }
         else if(!is_p1_turn && openLimit == true)
         {
             dice1But2.GetComponent<Button>().interactable = true;
             dice2But2.GetComponent<Button>().interactable = false;
-            blackSideTImeLine.Stop();
+            blackSideTimeLine.time = 0;
+            blackSideTimeLine.Stop();
+            blackSideTimeLine.Evaluate();
         }
         
         if (state == (State.MoveOrPieceSelection | State.MoveSelected | State.PieceSelected))
@@ -735,6 +744,14 @@ public class GameState : MonoBehaviour
         else
         {
             SetUpForMove();
+            if (topClicked)
+            {
+                BottomClick();
+            }
+            else
+            {
+                TopClick();
+            }
         }
 
         yield return null;
@@ -846,6 +863,9 @@ public class GameState : MonoBehaviour
                 if(Vector3.Distance(instantiated_list[i].transform.position, pos) > 0.01){
                     instantiated_list[i].SetActive(false);
                 }
+                else{
+                    instantiated_list[i].transform.GetChild (0).gameObject.SetActive(false);
+                }
             }
         }       
     }
@@ -854,6 +874,7 @@ public class GameState : MonoBehaviour
         for(int i = 0; i < instantiated_list.Count; i++){
             if(instantiated_list[i]){
                 instantiated_list[i].SetActive(true);
+                instantiated_list[i].transform.GetChild (0).gameObject.SetActive(true);
             }
         }
     }

@@ -23,7 +23,14 @@ public class TutorialPage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            PrevPage();
+        }
+        else if(Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            NextPage();
+        }
     }
 
     public void NextPage()
@@ -73,5 +80,8 @@ public class TutorialPage : MonoBehaviour
 
         //Write page number
         pageNumberText.text = "" + (pageNum+1) + " / " + lessonPages.Count;
+
+        //Set Page Number in code
+        currentPage = pageNum;
     }
 }
