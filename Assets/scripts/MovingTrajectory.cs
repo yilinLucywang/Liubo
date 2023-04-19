@@ -39,7 +39,7 @@ public class MovingTrajectory : MonoBehaviour
         lr.SetPositions(vertices);
         
         // if starting on the board, skip
-        gs.spawnStop(path.Select(t => bd.GetBasePosition(t)).Skip(gs.cur_step < path.Count ? 1 : 0).ToList());
+        gs.spawnStop(path.Select(t => bd.GetBasePosition(t)).Skip(gs.cur_step < path.Count ? 1 : 0).SkipLast(1).ToList());
         gs.highLightFinal(path.Select(t => bd.GetBasePosition(t)).Skip(gs.cur_step < path.Count ? 1 : 0).ToList());
 
 

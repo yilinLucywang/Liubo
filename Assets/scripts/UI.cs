@@ -87,11 +87,11 @@ public class UI : MonoBehaviour
     {
         if (GetComponent<GameState>().isCharacterOn == false)
         {
-            showCharacter.text = "Show Characters";
+            showCharacter.text = "Show Labels";
         }
         else if (GetComponent<GameState>().isCharacterOn == true)
         {
-            showCharacter.text = "Hide Characters";
+            showCharacter.text = "Hide Labels";
         }
     }
 
