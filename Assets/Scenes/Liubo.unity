@@ -8176,7 +8176,7 @@ PlayableDirector:
     value: {fileID: 911234943}
   - key: {fileID: -1181139023919139465, guid: 97ddb26c37e60cd45b533f6af0c7925f, type: 2}
     value: {fileID: 1029214119}
-  - key: {fileID: 8049306247193992650, guid: 97ddb26c37e60cd45b533f6af0c7925f, type: 2}
+  - key: {fileID: 1096605351237008933, guid: 97ddb26c37e60cd45b533f6af0c7925f, type: 2}
     value: {fileID: 1528555393}
   m_ExposedReferences:
     m_References: []
@@ -12547,14 +12547,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fdbd3cf8d24f14348871bd7acbb2b00c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aebe69a4353a90748a31cc19ce5f2542, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13579,14 +13579,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fdbd3cf8d24f14348871bd7acbb2b00c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aebe69a4353a90748a31cc19ce5f2542, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16591,10 +16591,10 @@ PlayableDirector:
     value: {fileID: 1476920757}
   - key: {fileID: 2104856588225365151, guid: c8d09a1b0d229234b8ab0b51ee0bf605, type: 2}
     value: {fileID: 846062076}
-  - key: {fileID: -6380381791963715673, guid: c8d09a1b0d229234b8ab0b51ee0bf605, type: 2}
-    value: {fileID: 1405893441}
   - key: {fileID: 5865825139777937735, guid: c8d09a1b0d229234b8ab0b51ee0bf605, type: 2}
     value: {fileID: 842474558}
+  - key: {fileID: -4045032294026965207, guid: c8d09a1b0d229234b8ab0b51ee0bf605, type: 2}
+    value: {fileID: 1405893441}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1899372039
