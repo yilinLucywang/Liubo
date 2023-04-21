@@ -2771,7 +2771,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &272148671
 Transform:
   m_ObjectHideFlags: 0
@@ -3313,7 +3313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &287115303
 Transform:
   m_ObjectHideFlags: 0
@@ -3434,7 +3434,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &322208201
 Transform:
   m_ObjectHideFlags: 0
@@ -4903,7 +4903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &464938964
 Transform:
   m_ObjectHideFlags: 0
@@ -6417,7 +6417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &564380944
 Transform:
   m_ObjectHideFlags: 0
@@ -6713,7 +6713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &623073296
 Transform:
   m_ObjectHideFlags: 0
@@ -7306,7 +7306,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653076022}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -7572,7 +7572,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700147886}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -8036,7 +8036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.15
-  loadingTxt: 
+  loadingTxt: []
 --- !u!1 &773139226
 GameObject:
   m_ObjectHideFlags: 0
@@ -8176,7 +8176,7 @@ PlayableDirector:
     value: {fileID: 911234943}
   - key: {fileID: -1181139023919139465, guid: 97ddb26c37e60cd45b533f6af0c7925f, type: 2}
     value: {fileID: 1029214119}
-  - key: {fileID: 8049306247193992650, guid: 97ddb26c37e60cd45b533f6af0c7925f, type: 2}
+  - key: {fileID: 1096605351237008933, guid: 97ddb26c37e60cd45b533f6af0c7925f, type: 2}
     value: {fileID: 1528555393}
   m_ExposedReferences:
     m_References: []
@@ -8327,7 +8327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832575517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.737, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8787,17 +8787,17 @@ PrefabInstance:
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.027
+      value: 0.0358
       objectReference: {fileID: 0}
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0008
+      value: 0.0009
       objectReference: {fileID: 0}
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.085
+      value: 0.1036
       objectReference: {fileID: 0}
     - target: {fileID: 2222871553930387538, guid: bae781a92bb37ec42b7249f2adaf6d0f,
         type: 3}
@@ -11406,7 +11406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1225267726
 Transform:
   m_ObjectHideFlags: 0
@@ -12041,7 +12041,7 @@ GameObject:
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1322910856
 Transform:
   m_ObjectHideFlags: 0
@@ -12547,14 +12547,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fdbd3cf8d24f14348871bd7acbb2b00c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aebe69a4353a90748a31cc19ce5f2542, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13579,14 +13579,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fdbd3cf8d24f14348871bd7acbb2b00c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aebe69a4353a90748a31cc19ce5f2542, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16591,10 +16591,10 @@ PlayableDirector:
     value: {fileID: 1476920757}
   - key: {fileID: 2104856588225365151, guid: c8d09a1b0d229234b8ab0b51ee0bf605, type: 2}
     value: {fileID: 846062076}
-  - key: {fileID: -6380381791963715673, guid: c8d09a1b0d229234b8ab0b51ee0bf605, type: 2}
-    value: {fileID: 1405893441}
   - key: {fileID: 5865825139777937735, guid: c8d09a1b0d229234b8ab0b51ee0bf605, type: 2}
     value: {fileID: 842474558}
+  - key: {fileID: -4045032294026965207, guid: c8d09a1b0d229234b8ab0b51ee0bf605, type: 2}
+    value: {fileID: 1405893441}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1899372039
@@ -18136,7 +18136,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2117922724}
   m_OnClick:
     m_PersistentCalls:
@@ -19039,10 +19039,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 72441992132798292, guid: 5202f428a4eabc04595a6e2e1c32f609,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3312211234608529070, guid: 5202f428a4eabc04595a6e2e1c32f609,
         type: 3}
       propertyPath: m_Name
       value: ValidMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312211234608529070, guid: 5202f428a4eabc04595a6e2e1c32f609,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3312211234608529071, guid: 5202f428a4eabc04595a6e2e1c32f609,
         type: 3}
