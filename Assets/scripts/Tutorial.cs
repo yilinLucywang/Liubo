@@ -123,6 +123,10 @@ public class Tutorial : MonoBehaviour
                 break;
 
         }
+        if (slides[curr].GetComponent<TutorialPage>())
+        {
+            slides[curr].GetComponent<TutorialPage>().FirstPage();
+        }
 
     }
 }

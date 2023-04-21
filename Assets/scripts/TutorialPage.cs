@@ -45,6 +45,12 @@ public class TutorialPage : MonoBehaviour
         ActivatePage(currentPage);
     }
 
+    public void FirstPage()
+    {
+        currentPage = 0;
+        ActivatePage(currentPage);
+    }
+
     private void ActivatePage(int pageNum)
     {
         //Bounds Check page number and activate arrows

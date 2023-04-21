@@ -37,6 +37,7 @@ public class JarSet : MonoBehaviour
         flyingSticksAnimator.speed = 6f;
 
         jc = jar.GetComponent<JarController>();
+        DisableJarAndSticks();
     }
 
     // Update is called once per frame

@@ -84,7 +84,8 @@ public class GameState : MonoBehaviour
     public TurnChangeEvent OnTurnChange = new TurnChangeEvent(); // is P1 turn or not
     public UnityEvent OnBlockadeForm = new UnityEvent();
     public UnityEvent OnTurningIntoOwl = new UnityEvent();
-    
+    public UnityEvent OnGameStart = new UnityEvent();
+
     private board bd;
     private int pieceMoved = 0;
 
@@ -108,7 +109,7 @@ public class GameState : MonoBehaviour
 
         fadeInOut = FindObjectOfType<Fade>();
         fadeInImg.SetActive(true);
-        fadeInOut.BackToGame(NextRound);
+        fadeInOut.BackToGame(StartGame);
     }
 
     // Start is called before the first frame update
@@ -117,7 +118,7 @@ public class GameState : MonoBehaviour
         state = State.Roll;
 
         whiteSideTimeLine.Stop();
-        
+        blackSideTimeLine.Stop();
 
         allwhitePieces = whitePieceBut.GetComponentsInChildren<Transform>();
         allblackPieces = blackPieceBut.GetComponentsInChildren<Transform>();
@@ -183,6 +184,18 @@ public class GameState : MonoBehaviour
         }
 
         
+    }
+
+    private void StartGame()
+    {
+        OnGameStart.Invoke();
+        StartCoroutine(StartGameDelay(NextRound));
+    }
+
+    IEnumerator StartGameDelay(Action callBack)
+    {
+        yield return new WaitForSeconds(3f);
+        callBack();
     }
 
     public void ShowBoardCharacter()
