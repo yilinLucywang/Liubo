@@ -384,8 +384,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: When two of your birds share a perch, they form a <b>blockade</b>. This
-    prevents all other birds from landing on or moving through this perch.
+  m_text: When two of your birds share a perch, they form a <color=#FFCA44><b>blockade</b>.</color>
+    This prevents all other birds from landing on or moving through this perch.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -790,9 +790,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>Special Rule</b>: When rolling doubles, you cannot move both pieces
-    of a blockade to the same new space. They can both move, but they must move to
-    two different spaces. '
+  m_text: '<color=#FFCA44><b>Special Rule</b>:</color> When rolling doubles, you
+    cannot move both pieces of a blockade to the same new space. They can both move,
+    but they must move to two different spaces. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -1046,7 +1046,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Hello friend! I am Liu He, former emperor and famous Han dynasty Liubo
     player! I was also known as Haihun Hou (the Marquis of Haihun). The last pages
-    of each section contain my notes about the game and its history. \n-Liu He"
+    of each section contain my notes about the game and its history. \n- Liu He"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 4121202274092925370, guid: 0f9ac9fae2f027b488324762da5a4fcb,
@@ -1057,7 +1057,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280098077
-  m_fontColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1080,11 +1080,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1228,12 +1228,12 @@ MonoBehaviour:
     1000 years. By playing the game and trying your own strategies, you are also
     helping preserve the history of Liubo for future generations. Thank you for playing!
 
-    -Liu
-    He
+    -
+    Liu He
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
     type: 2}
   m_fontSharedMaterials: []
@@ -1242,7 +1242,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4290571007
-  m_fontColor: {r: 1, g: 0.91764706, b: 0.7372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1265,11 +1265,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1298,7 +1298,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1001717624513335305
@@ -1367,9 +1367,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>Step 2</b>. <b>Click on a piece</b> to move, and <b>click on one of
-    the numbers</b> you rolled. You may click the piece and the number in either
-    order. You can deselect by using the escape key or right mouse button.
+  m_text: '<color=#FFCA44><b>Step 2</b>. <b>Click on a piece</b></color> to move,
+    and <color=#FFCA44><b>click on one of the numbers</b></color> you rolled. You
+    may click the piece and the number in either order. You can deselect by using
+    the escape key or right mouse button.
 
 '
   m_isRightToLeft: 0
@@ -1510,7 +1511,7 @@ MonoBehaviour:
   m_text: " The value of each group is equal to the number of \u201Cheads\u201D rolled.
     However, rolling all \u201Ctails\u201D is actually worth 4! This method of rolling
     results in 1 and 2 being three times as likely as 3 and 4. Rolling big numbers
-    is a special event in Liubo!\n-Liu He\n"
+    is a special event in Liubo!\n- Liu He\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 4121202274092925370, guid: 0f9ac9fae2f027b488324762da5a4fcb,
@@ -1521,7 +1522,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280098077
-  m_fontColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1544,11 +1545,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1923,9 +1924,9 @@ MonoBehaviour:
     captured. Try placing several normal birds on perches between the pond and the
     nest you want to score in before moving your Owl. This way you provide several
     possible blockade locations, creating a \"road\" of safe places for your Owl
-    to land on the way to the nest. \n-Liu He\n"
+    to land on the way to the nest. \n- Liu He\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
     type: 2}
   m_fontSharedMaterials: []
@@ -1934,7 +1935,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4290571007
-  m_fontColor: {r: 1, g: 0.91764706, b: 0.7372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1957,11 +1958,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1990,7 +1991,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1518611418813570213
@@ -2059,9 +2060,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>Step 4</b>. Repeat steps 2&3 to <b>move a second piece</b>. \n\n <b>You
-    must always move two pieces</b>. You cannot move the same piece twice in one
-    turn. You cannot \u201Cpass\u201D your turn without finishing both moves.\n\n"
+  m_text: "<color=#FFCA44><b>Step 4</b>.</color> Repeat steps 2&3 to <color=#FFCA44><b>move
+    a second piece</b>.</color> \n\n<color=#FFCA44><b>You must always move two pieces</b>.</color>
+    You cannot move the same piece twice in one turn. You cannot \u201Cpass\u201D
+    your turn without finishing both moves.\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -3193,12 +3195,12 @@ MonoBehaviour:
     while moving others around the outside. This way you can set up more possible
     landing areas for your owl, and your opponent will be less able to block you.
 
-    -Liu
-    He
+    -
+    Liu He
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
     type: 2}
   m_fontSharedMaterials: []
@@ -3207,7 +3209,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4290571007
-  m_fontColor: {r: 1, g: 0.91764706, b: 0.7372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3230,11 +3232,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3263,7 +3265,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2480330063364003974
@@ -3470,7 +3472,7 @@ MonoBehaviour:
     mirrors of the Han dynasty, also known as the TLV pattern. In one interpretation,
     the central square represents the earth, the connected \u201CT\u201D shapes represent
     the sky, the four circles represent the seas, and the Ls and Vs around the outer
-    edge represent the cosmos.\n-Liu He"
+    edge represent the cosmos.\n- Liu He"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 4121202274092925370, guid: 0f9ac9fae2f027b488324762da5a4fcb,
@@ -3481,7 +3483,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280098077
-  m_fontColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3504,11 +3506,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3742,7 +3744,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "When an Owl lands on a perch with an opponent\u2019s bird, that bird is
     immediately captured.\n\nHowever, if a normal bird lands on a perch with an opponent's
-    Owl,the Owl is immediately captured."
+    Owl, the Owl is immediately captured."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -4253,9 +4255,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Every Liubo turn consists of the following steps:\r\n    \n<b>Step 1</b>.
-    <b>Roll the jar of sticks</b> by clicking \u201CRoll Sticks\u201D to generate
-    two numbers between 1 and 4 (see \u201CRolling the Sticks\u201D)\r\n \n"
+  m_text: "Every Liubo turn consists of the following steps:\r\n    \n<color=#FFCA44><b>Step
+    1</b>. <b>Roll the jar of sticks</b></color> by clicking \u201CRoll Sticks\u201D
+    to generate two numbers between 1 and 4 (see \u201CRolling the Sticks\u201D)\r\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -4436,7 +4438,7 @@ MonoBehaviour:
     to capture in the meantime.
 
 
-    -Liu He'
+    - Liu He'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 4121202274092925370, guid: 0f9ac9fae2f027b488324762da5a4fcb,
@@ -4447,7 +4449,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280098077
-  m_fontColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4474,7 +4476,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4578,7 +4580,7 @@ MonoBehaviour:
     can perch in this environment.
 
 
-    -Liu He'
+    - Liu He'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 4121202274092925370, guid: 0f9ac9fae2f027b488324762da5a4fcb,
@@ -4589,7 +4591,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280098077
-  m_fontColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4612,11 +4614,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -5027,7 +5029,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "The blockade mechanic is inspired by one of Liubo\u2019s likely predecessors:
-    the Indian game Pachisi. You may know it better by the name Parcheesi.\n\n-Liu
+    the Indian game Pachisi. You may know it better by the name Parcheesi.\n\n- Liu
     He"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
@@ -5039,7 +5041,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280098077
-  m_fontColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5062,11 +5064,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -5745,8 +5747,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\u201CLiu\u201D in Liubo means \u201Csix,\u201D and the number six appears
-    several times in the game: 6 points to win, 6 birds per player, 6 throwing sticks!\n\n-Liu
-    He\n\t\t\t\t\t"
+    several times in the game: 6 points to win, 6 birds per player, 6 throwing sticks!\n\n-
+    Liu He\n\t\t\t\t\t"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 4121202274092925370, guid: 0f9ac9fae2f027b488324762da5a4fcb,
@@ -5757,7 +5759,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4282006074
-  m_fontColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5780,11 +5782,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -5882,8 +5884,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Capture Type 1: Moving a <b>normal bird onto an Owl\u2019s perch</b> immediately
-    <b>captures the Owl</b>.\r\n"
+  m_text: "Capture Type 1: Moving a <color=#FFCA44><b>normal bird onto an Owl\u2019s
+    perch</b></color> immediately <color=#FFCA44><b>captures the Owl</b>.\r</color>\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -6556,9 +6558,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hovering your mouse over one of these destinations will <b>preview the
-    path</b> your piece would take to get there. This can be important to know if
-    your piece will become an Owl or cross a nest during this movement. \r\n\r\n\r\n"
+  m_text: "Hovering your mouse over one of these destinations will <color=#FFCA44><b>preview
+    the path</b></color> your piece would take to get there. This can be important
+    to know if your piece will become an Owl or cross a nest during this movement.
+    \r\n\r\n\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -7139,7 +7142,7 @@ MonoBehaviour:
   m_text: "Each stick has one rounded side and one flat side, which you can think
     of like the \u201Cheads\u201D and \u201Ctails\u201D of a coin. When counting
     the sticks, \u201Cheads\u201D is worth 1, while \u201Ctails\u201D is 0. The sticks
-    are counted in two groups: 3 light sticks, and 3 dark sticks.\n-Liu He\n\r\n"
+    are counted in two groups: 3 light sticks, and 3 dark sticks.\n- Liu He\n\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 4121202274092925370, guid: 0f9ac9fae2f027b488324762da5a4fcb,
@@ -7149,8 +7152,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280098077
-  m_fontColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
+    rgba: 4290571007
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7173,11 +7176,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -8266,11 +8269,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>To start your turn, click on \u201CRoll Sticks\u201D at the bottom
-    of the screen</b>. Before rolling, you can shake the jar by moving your mouse
-    quickly! After rolling, you will see a display of the result. The game automatically
-    interprets this result for you, and displays your two numbers underneath your
-    player card. \n\r\n\r\n"
+  m_text: "<color=#FFCA44><b>To start your turn, click on \u201CRoll Sticks\u201D
+    at the bottom of the screen</b>.</color> Before rolling, you can shake the jar
+    by moving your mouse quickly! After rolling, you will see a display of the result.
+    The game automatically interprets this result for you, and displays your two
+    numbers underneath your player card. \n\r\n\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -9220,13 +9223,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>Liubo</b> is an ancient Chinese board game about birds competing over
-    a pond full of fish. The full rules of the game were lost to time; here we present
-    one possible reconstruction of the rules based on the surviving components and
-    texts!
+  m_text: '<color=#FFCA44><b>Liubo</b></color> is an ancient Chinese board game about
+    birds competing over a pond full of fish. The full rules of the game were lost
+    to time; here we present one possible reconstruction of the rules based on the
+    surviving components and texts!
 
-    <b>Use the menu on the left to navigate the rules topics. Within
-    a topic, use the arrows to flip through pages.</b>
+    <color=#FFCA44><b>Use the menu on the left
+    to navigate the rules topics. Within a topic, use the arrows to flip through
+    pages.</b></color>
 
 '
   m_isRightToLeft: 0
@@ -9365,8 +9369,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'When two opposing birds of the same type (both normal or both Owl)  land
-    on the same perch, that perch becomes <b>contested</b>. Both birds share the
-    space peacefully... for now.
+    on the same perch, that perch becomes <color=#FFCA44><b>contested</b>.</color>
+    Both birds share the space peacefully... for now.
 
 '
   m_isRightToLeft: 0
@@ -9811,9 +9815,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "When a bird <b>lands on or crosses the pond</b> in the center of the board,
-    it becomes an <b>Owl</b>. This is indicated by the piece standing up on end.
-    \n"
+  m_text: "When a bird <color=#FFCA44><b>lands on or crosses the pond</b></color>
+    in the center of the board, it becomes an <color=#FFCA44><b>Owl</b></color>.
+    This is indicated by the piece standing up on end. \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -11806,11 +11810,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You also score points by having your <b>Owl reach one of its nests</b>.
-    These nest spaces are <b>circular spaces located on your opponent\u2019s side
-    of the board</b>. When an Owl either <b>lands on or pass through a nest space</b>
-    during its movement, its player immediately scores <b>2 points</b>, and the <b>Owl
-    reverts to being a normal bird</b>. \n"
+  m_text: "You also score points by having your <color=#FFCA44><b>Owl reach one of
+    its nests</b>.</color> These nest spaces are <color=#FFCA44><b>circular spaces
+    located on your opponent\u2019s side of the board</b>.</color> When an Owl either
+    <color=#FFCA44><b>lands on or pass through a nest space</b></color> during its
+    movement, its player immediately scores <color=#FFCA44><b>2 points</b>,</color>
+    and the <color=#FFCA44><b>Owl reverts to being a normal bird</b>.</color> \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -12967,8 +12972,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Here are the elements on your screen during gameplay: \r\n    1. Displays
-    your <b>name and current score</b>\r\n    2. Displays your two <b>move numbers</b>
-    for this turn\r\n    3. Shows or hides the <b>\u201Chelper lines\u201D</b> indicating
+    your <color=#FFCA44><b>name and current score</b>\r</color>\n    2. Displays
+    your two <color=#FFCA44><b>move numbers</b></color> for this turn\r\n    3. Shows
+    or hides the <color=#FFCA44><b>\u201Chelper lines\u201D</b></color> indicating
     which spaces on the board are connected\r\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
@@ -13153,9 +13159,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "All of your birds begin the game <b>off the board</b>. Their first step
-    onto the board must be onto one of the <b>\u201CBranch\u201D spaces</b> on your
-    side of the board, which are highlighted in green. \r"
+  m_text: "All of your birds begin the game <color=#FFCA44><b>off the board</b>.</color>
+    Their first step onto the board must be onto one of the <color=#FFCA44><b>\u201CBranch\u201D
+    spaces</b></color> on your side of the board, which are highlighted in green.
+    \r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -15862,10 +15869,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "There are <b>three ways to capture</b> an opponent's bird (detailed on
-    the following pages). In all cases, the active player <b>scores points based
-    on the type</b> (normal or Owl) of the opponent\u2019s bird they captured. Capturing
-    a <b>normal bird awards 1 point</b>, while capturing an <b>Owl awards 3 points</b>.\r"
+  m_text: "There are <color=#FFCA44><b>three ways to capture</b></color> an opponent's
+    bird (detailed on the following pages). In all cases, the active player <color=#FFCA44><b>scores
+    points based on the type</b></color> (normal or Owl) of the opponent\u2019s bird
+    they captured. Capturing a <color=#FFCA44><b>normal bird awards 1 point</b>,</color>
+    while capturing an <color=#FFCA44><b>Owl awards 3 points</b>.\r</color>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -16138,8 +16146,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: The connections between perches are drawn onto the diagram above. Any perches
-    connected by blue lines in this diagram are <b>adjacent</b>. It takes 1 step
-    of movement to move between adjacent perches.
+    connected by blue lines in this diagram are <color=#FFCA44><b>adjacent</b>.</color>
+    It takes 1 step of movement to move between adjacent perches.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -16275,8 +16283,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'When two of your birds share a perch, they form a <b>blockade</b>. Blockades
-    prevent all other pieces from moving through them, <b>including your own</b>. '
+  m_text: 'When two of your birds share a perch, they form a <color=#FFCA44><b>blockade</b>.</color>
+    Blockades prevent all other pieces from moving through them, <color=#FFCA44><b>including
+    your own</b>.</color> '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -16417,7 +16426,7 @@ MonoBehaviour:
     from capture!
 
 
-    -Liu He'
+    - Liu He'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -16428,7 +16437,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4290571007
-  m_fontColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -16455,7 +16464,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -16687,9 +16696,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "To move, first <b>select a piece by clicking on it</b>. This will highlight
-    the piece in blue. Next, <b>click on one of your move numbers</b> below your
-    player card. Once you have selected a piece and a move number, all <b>valid destinations</b>
+  m_text: "To move, first <color=#FFCA44><b>select a piece by clicking on it</b>.</color>
+    This will highlight the piece in blue. Next, <color=#FFCA44><b>click on one of
+    your move numbers</b></color> below your player card. Once you have selected
+    a piece and a move number, all <color=#FFCA44><b>valid destinations</b></color>
     on the board will be highlighted in gold. Click on one of these destinations
     to move your piece there. \r\n\r\n\r\n"
   m_isRightToLeft: 0
@@ -17007,7 +17017,7 @@ MonoBehaviour:
     The normal birds will reach the other side first, and help provide safe perches
     for your Owl to land.
 
-    -Liu He'
+    - Liu He'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 4121202274092925370, guid: 0f9ac9fae2f027b488324762da5a4fcb,
@@ -17018,7 +17028,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4290571007
-  m_fontColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -17041,11 +17051,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -17148,9 +17158,9 @@ MonoBehaviour:
     off the board. This way, they can enter quickly to catch an opponent''s Owl before
     they reach a nest!
 
-    -Liu He'
+    - Liu He'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
     type: 2}
   m_fontSharedMaterials: []
@@ -17159,7 +17169,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4290571007
-  m_fontColor: {r: 1, g: 0.91764706, b: 0.7372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -17182,11 +17192,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -17215,7 +17225,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5611054590172870629
@@ -17288,7 +17298,8 @@ MonoBehaviour:
     popular in my day because its mix of strategy and randomness is welcoming to
     new players. These elements also made it a perfect gambling game.
 
-    -Liu He'
+    - Liu
+    He'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 4121202274092925370, guid: 0f9ac9fae2f027b488324762da5a4fcb,
@@ -17299,7 +17310,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4282006074
-  m_fontColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -17322,11 +17333,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -17564,7 +17575,7 @@ MonoBehaviour:
     made of materials such as jade, ivory, and lacquered wood, while the throwing
     sticks were made of bamboo around metal rods.
 
-    -Liu He'
+    - Liu He'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 4121202274092925370, guid: 0f9ac9fae2f027b488324762da5a4fcb,
@@ -17575,7 +17586,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280098077
-  m_fontColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -17598,11 +17609,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -17973,9 +17984,9 @@ MonoBehaviour:
   m_text: "<b>Tip #5: Understand the sticks.</b> Rolls of 1 and 2 are three times
     more likely than 3 and 4. Use this to estimate the likelihood of events such
     as captures and nest scores. The best Liubo players know when to push their luck,
-    and when to stay safe. \n-Liu He\n"
+    and when to stay safe. \n- Liu He\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
     type: 2}
   m_fontSharedMaterials: []
@@ -17984,7 +17995,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4290571007
-  m_fontColor: {r: 1, g: 0.91764706, b: 0.7372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -18007,11 +18018,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -18040,7 +18051,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6241799830065017966
@@ -18109,11 +18120,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "In Liubo, the word used for \u201COwl\u201D also means \u201Cleader.\u201D
+  m_text: "In Liubo, the word used for \u201C Owl\u201D also means \u201C leader.\u201D
     So, when a bird becomes an Owl in the game, it is not literally transforming
     form one species of bird to another. Instead, it has earned the right to be called
-    \u201Cleader\u201D of the other birds by successfully catching a fish from the
-    pond.\r\n-Liu He\n"
+    \u201C leader\u201D of the other birds by successfully catching a fish from the
+    pond.\r\n- Liu He\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 4121202274092925370, guid: 0f9ac9fae2f027b488324762da5a4fcb,
@@ -18123,8 +18134,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280098077
-  m_fontColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
+    rgba: 4284925437
+  m_fontColor: {r: 0.990566, g: 0.77158237, b: 0.39871833, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -18147,11 +18158,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -18383,9 +18394,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Capture Type 3: Moving <b>any bird onto a contested perch</b> immediately
-    <b>captures the opponent\u2019s bird</b> on that space. Additionally, your two
-    pieces form a blockade on that perch.\r"
+  m_text: "Capture Type 3: Moving <color=#FFCA44><b>any bird onto a contested perch</b></color>
+    immediately <color=#FFCA44><b>captures the opponent\u2019s bird</b></color> on
+    that space. Additionally, your two pieces form a blockade on that perch.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -18523,8 +18534,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Owls can score points by dropping their fish into nests on the opponent\u2019s
     side of the board. However, you can also score points by capturing your opponent\u2019s
-    normal birds or Owls, which is often the faster path to victory.\r\n\n<b>The
-    first player to 6 points wins!</b>\r\n\n"
+    normal birds or Owls, which is often the faster path to victory.\r\n\n<color=#FFCA44><b>The
+    first player to 6 points wins!</b>\r</color>\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -18936,10 +18947,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>The goal of Liubo is to be the first player to score 6 points.</b>
-    There are three ways to score points:\r\n   - Capturing an opponent\u2019s normal
-    bird is worth <b>1 point</b>. \n    - An Owl reaching a nest is worth <b>2 points</b>.
-    \n    - Capturing an opponent\u2019s Owl is worth <b>3 points</b>. "
+  m_text: "<color=#FFCA44><b>The goal of Liubo is to be the first player to score
+    6 points.</b></color> There are three ways to score points:\r\n   - Capturing
+    an opponent\u2019s normal bird is worth <color=#FFCA44><b>1 point</b>.</color>
+    \n    - An Owl reaching a nest is worth <color=#FFCA44><b>2 points</b>.</color>
+    \n    - Capturing an opponent\u2019s Owl is worth <color=#FFCA44><b>3 points</b>.</color> "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -19075,11 +19087,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "In <b>Liubo</b>, each player controls 6 pieces representing birds. These
-    birds fly around the board from perch to perch (the lines on the board), trying
-    to reach the pond in the center of the board. When a bird crosses over or lands
-    on the pond, it catches a fish and becomes an \u201COwl\u201D, also meaning \u201Cleader\u201D
-    of the flock. \n"
+  m_text: "In <color=#FFCA44><b>Liubo</b></color>, each player controls 6 pieces
+    representing birds. These birds fly around the board from perch to perch (the
+    lines on the board), trying to reach the pond in the center of the board. When
+    a bird crosses over or lands on the pond, it catches a fish and becomes an \u201COwl\u201D,
+    also meaning \u201Cleader\u201D of the flock. \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -19619,7 +19631,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'When a bird lands on or crosses over the pond, it becomes an <b>Owl</b>.
+  m_text: 'When a bird lands on or crosses over the pond, it becomes an <color=#FFCA44><b>Owl</b>.</color>
     Owls are more powerful than other Birds; they can score points in nests. However,
     they are also vulnerable to capture from other birds.
 
@@ -19759,8 +19771,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>A contested perch is not a blockade</b>. They do not prevent other
-    birds from moving through them.
+  m_text: '<color=#FFCA44><b>A contested perch is not a blockade</b>. They do not
+    prevent other birds from moving through them.
 
 '
   m_isRightToLeft: 0
@@ -20080,7 +20092,7 @@ MonoBehaviour:
     score by capturing your Owls. Make all your pieces work together to keep your
     Owls safe.
 
-    -Liu He
+    - Liu He
 
 '
   m_isRightToLeft: 0
@@ -20093,7 +20105,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280098077
-  m_fontColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -20116,11 +20128,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -20219,8 +20231,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Once a third bird enters a contested perch, the two of the same color
-    will form a blockade, and the odd bird out will be <b>captured</b>. This is also
-    called a <b>blockade capture</b>.
+    will form a blockade, and the odd bird out will be <color=#FFCA44><b>captured</b>.</color>
+    This is also called a <color=#FFCA44><b>blockade capture</b>.</color>
 
 '
   m_isRightToLeft: 0
@@ -20358,8 +20370,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "When you and an opponent share a perch, that perch is considered <b>contested</b>\r.\n\nWhen
-    a third bird enters a contested perch, the odd bird out is <b>captured</b>\r.\n"
+  m_text: "When you and an opponent share a perch, that perch is considered <color=#FFCA44><b>contested</b>\r.</color>\n\nWhen
+    a third bird enters a contested perch, the odd bird out is <color=#FFCA44><b>captured</b>\r.</color>\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -21032,8 +21044,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Capture Type 2: Moving an <b>Owl onto a normal bird\u2019s perch</b> immediately
-    <b>captures the normal bird</b>.\r"
+  m_text: "Capture Type 2: Moving an <color=#FFCA44><b>Owl onto a normal bird\u2019s
+    perch</b></color> immediately <color=#FFCA44><b>captures the normal bird</b>.</color>\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -21985,8 +21997,8 @@ MonoBehaviour:
     particuarly the trigrams and hexagrams found in the the <i>Yi Jing (Book of Changes).</i>
 
 
-    -Liu
-    He'
+    -
+    Liu He'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 4121202274092925370, guid: 0f9ac9fae2f027b488324762da5a4fcb,
@@ -21997,7 +22009,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280098077
-  m_fontColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -22020,11 +22032,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -22122,8 +22134,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <b>Step 3</b>. Click on one of the highlighted <b>destination spaces</b>
-    to move your piece
+  m_text: <color=#FFCA44><b>Step 3</b>.</color> Click on one of the highlighted <color=#FFCA44><b>destination
+    spaces</b></color> to move your piece.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -22439,7 +22451,7 @@ MonoBehaviour:
     translation into modern Chinese or English, so this set of names is an approximation
     that fits the theme.
 
-    -Liu He'
+    - Liu He'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 4121202274092925370, guid: 0f9ac9fae2f027b488324762da5a4fcb,
@@ -22450,7 +22462,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280098077
-  m_fontColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -22473,11 +22485,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -22847,11 +22859,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The board consists of an <b>outer ring</b> of perches representing a <b>forest</b>,
-    and 4 paths into a <b>central garden</b>, with the <b>pond</b> at the very center.
-    The <b>nest</b> spaces are connected to the \"branch\" and \"hollow\" spaces
-    at each corner. Only Owls may enter nests, and only the two nests on their <b>opponent\u2019s
-    side of the board</b>."
+  m_text: "The board consists of an <color=#FFCA44><b>outer ring</b></color> of perches
+    representing a <color=#FFCA44><b>forest</b>,</color> and 4 paths into a <color=#FFCA44><b>central
+    garden</b>,</color> with the <color=#FFCA44><b>pond</b></color> at the very center.
+    The <color=#FFCA44><b>nest</b></color> spaces are connected to the \"branch\"
+    and \"hollow\" spaces at each corner. Only Owls may enter nests, and only the
+    two nests on their <color=#FFCA44><b>opponent\u2019s side of the board</b>.</color>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -23371,10 +23384,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You may show this diagram during gameplay by clicking <b>"Show lines"</b>
-    in the lower left corner of the screen. Additionally, you can examine the board
-    from other angles by rotating the camera; to do so, use the left and right arrow
-    keys, or the Q and E keys.
+  m_text: You may show this diagram during gameplay by clicking <color=#FFCA44><b>"Show
+    lines"</b></color> in the lower left corner of the screen. Additionally, you
+    can examine the board from other angles by rotating the camera; to do so, use
+    the left and right arrow keys, or the Q and E keys.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -23515,11 +23528,11 @@ MonoBehaviour:
     moment. A bird all by itself won''t be able to do this. Birds of a feather flock
     together!
 
-    -Liu He
+    - Liu He
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
     type: 2}
   m_fontSharedMaterials: []
@@ -23528,7 +23541,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4290571007
-  m_fontColor: {r: 1, g: 0.91764706, b: 0.7372549, a: 1}
+  m_fontColor: {r: 0.99215686, g: 0.77254903, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -23551,11 +23564,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.73
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -23584,6 +23597,6 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
