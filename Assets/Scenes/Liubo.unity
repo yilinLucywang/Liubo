@@ -1167,7 +1167,7 @@ MonoBehaviour:
   max_anchor_distance: 0.2
   cur_rolls: 0000000000000000
   pieceWidth: 0.08
-  pieceHeight: 0.28
+  pieceHeight: 0.23
 --- !u!114 &153840375
 MonoBehaviour:
   m_ObjectHideFlags: 0
