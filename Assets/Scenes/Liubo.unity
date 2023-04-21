@@ -7659,7 +7659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &704134195
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8036,9 +8036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delaySpeed: 0.02
-  loadingTxt:
-  - afsjdfjas;ldgas
-  - sfdhsdhsdfhsdfhsdfhsdhf
+  loadingTxt: []
 --- !u!1 &773139226
 GameObject:
   m_ObjectHideFlags: 0
