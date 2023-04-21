@@ -1113,6 +1113,7 @@ MonoBehaviour:
   lineImg: {fileID: 1558402084}
   showLineTxt: {fileID: 248188238}
   gameState: {fileID: 153840375}
+  lowerLightIntensity: 1.8
 --- !u!114 &153840374
 MonoBehaviour:
   m_ObjectHideFlags: 0
