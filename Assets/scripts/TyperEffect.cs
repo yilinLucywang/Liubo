@@ -6,7 +6,7 @@ using TMPro;
 
 public class TyperEffect : MonoBehaviour
 {
-    public float delay = 0.1f;
+    public float delaySpeed;
     public string[] loadingTxt;
 
     private string currentTxt = "";
@@ -29,7 +29,7 @@ public class TyperEffect : MonoBehaviour
          {
              currentTxt = randomTxt.Substring(0, j);
              this.GetComponent<TextMeshProUGUI>().text = currentTxt;
-             yield return new WaitForSeconds(delay);
+             yield return new WaitForSeconds(delaySpeed);
          }
         
     }
