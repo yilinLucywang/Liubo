@@ -22,6 +22,7 @@ public class UI : MonoBehaviour
     public GameObject lineImg;
     public Text showLineTxt;
     public GameState gameState;
+    public float lowerLightIntensity;
 
     private bool isHintOn = false;
 
@@ -121,7 +122,7 @@ public class UI : MonoBehaviour
     {
         if(isLineOn == false)
         {
-            direcLight.intensity = 0.5f;
+            direcLight.intensity = lowerLightIntensity;
             lineImg.SetActive(true);
             isLineOn = true;
             gameState.boardCharacter.SetActive(false);

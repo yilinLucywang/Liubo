@@ -23,6 +23,7 @@ public class MessageSystem : MonoBehaviour
         gs = FindObjectOfType<GameState>();
         gs.OnTurnChange.AddListener(ShowTurnChangeMessage);
         gs.OnTurningIntoOwl.AddListener(ShowOwlMessage);
+        gs.OnGameStart.AddListener(ShowStartingMessage);
         var score = FindObjectOfType<Score>();
         score.OnScore.AddListener(ShowScoreMessage);
     }
@@ -71,5 +72,11 @@ public class MessageSystem : MonoBehaviour
     void ShowBlockadeMessage()
     {
         
+    }
+
+    void ShowStartingMessage()
+    {
+        animator.Play("ShowMessage");
+        text.text = "Score 6 points to win!";
     }
 }
