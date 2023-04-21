@@ -7,24 +7,30 @@ using TMPro;
 public class TyperEffect : MonoBehaviour
 {
     public float delay = 0.1f;
-    public string loadingTxt;
+    public string[] loadingTxt;
 
     private string currentTxt = "";
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(ShowText());
+        StopCoroutine(ShowText());
+        if (loadingTxt.Length > 0)
+        {
+            StartCoroutine(ShowText());
+        }
     }
 
     // Update is called once per frame
     IEnumerator ShowText()
     {
-        for(int i = 0; i <= loadingTxt.Length; i++)
-        {
-            currentTxt= loadingTxt.Substring(0, i);
-            this.GetComponent<TextMeshProUGUI>().text = currentTxt;
-            yield return new WaitForSeconds(delay);
-        }
+         string randomTxt = loadingTxt[Random.Range(0, loadingTxt.Length)];
+         for (int j = 0; j <= randomTxt.Length; j++)
+         {
+             currentTxt = randomTxt.Substring(0, j);
+             this.GetComponent<TextMeshProUGUI>().text = currentTxt;
+             yield return new WaitForSeconds(delay);
+         }
+        
     }
 }
