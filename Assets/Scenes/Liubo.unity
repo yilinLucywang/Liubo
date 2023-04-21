@@ -7884,6 +7884,7 @@ GameObject:
   - component: {fileID: 730170164}
   - component: {fileID: 730170166}
   - component: {fileID: 730170165}
+  - component: {fileID: 730170167}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -7906,10 +7907,10 @@ RectTransform:
   m_Father: {fileID: 704134195}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.000015258789}
-  m_SizeDelta: {x: 1563.5249, y: 916.4631}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -575.75635, y: 337.48065}
+  m_SizeDelta: {x: 1151.5127, y: 674.9614}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &730170165
 MonoBehaviour:
@@ -7931,7 +7932,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Score <b>6 points</b> to win the game!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -7965,7 +7966,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -8009,6 +8010,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730170163}
   m_CullTransparentMesh: 1
+--- !u!114 &730170167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730170163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d7ce7d5797c2f4c96b9a49533ac414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.15
+  loadingTxt: 
 --- !u!1 &773139226
 GameObject:
   m_ObjectHideFlags: 0
