@@ -20,8 +20,8 @@ public class CameraMove : MonoBehaviour
     {
         _offset = transform.position - focusPoint.transform.position;
         
-        if ((GameState.state & State.MoveOrPieceSelection) != 0)
-        {
+        //if ((GameState.state & State.MoveOrPieceSelection) != 0)
+        //{
             if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.RightArrow))
             {
                 transform.position = focusPoint.transform.position + Quaternion.Euler(0, _speed * -1 * Time.deltaTime, 0) * _offset;
@@ -29,12 +29,12 @@ public class CameraMove : MonoBehaviour
             {
                 transform.position = focusPoint.transform.position + Quaternion.Euler(0, _speed * Time.deltaTime, 0) * _offset;
             }
-        }
+        //}
 
-        if((GameState.state & State.MoveOrPieceSelection) == 0)
-        {
-            transform.position = initPos;
-        }
+        //if((GameState.state & State.MoveOrPieceSelection) == 0)
+        //{
+            //transform.position = initPos;
+        //}
     }
 
     private void LateUpdate()
