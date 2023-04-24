@@ -1402,7 +1402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &512023999
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2861,7 +2861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1313657365
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3688,9 +3688,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tina Tingru Lian \n\nJeffrey Chia-Wei Liu \n\nEliza Yongzi Ye\r\n\nLochlan
-    Belford\r\nJeffrey Chia-Wei Liu\nYicheng Lu\r\n\nLucy Yilin Wang\r\nLochlan Belford\r\nJeffrey
-    Chia-Wei Liu\nYicheng Lu\r\nTina Tingru Lian \n\n"
+  m_text: "Tingru(Tina) Lian \n\nChia-Wei(Jeffrey) Liu\n\nYongzi(Eliza) Ye\r\n\nLochlan
+    Belford\r\nChia-Wei(Jeffrey) Liu\nYicheng Lu\r\n\nYilin(Lucy) Wang\r\nLochlan
+    Belford\r\nChia-Wei(Jeffrey) Liu\nYicheng Lu\r\nTingru(Tina) Lian \n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
