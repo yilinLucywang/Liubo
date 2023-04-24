@@ -6081,6 +6081,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BookOpen6
       objectReference: {fileID: 0}
+    - target: {fileID: 182180635480875916, guid: cf97e29513b10114a9e3c9e0b8595fc7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2258722353555953485, guid: cf97e29513b10114a9e3c9e0b8595fc7,
         type: 3}
       propertyPath: m_RenderingLayerMask
