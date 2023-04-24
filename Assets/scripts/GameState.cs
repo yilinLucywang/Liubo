@@ -5,8 +5,8 @@ using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class GameState : MonoBehaviour
@@ -573,11 +573,11 @@ public class GameState : MonoBehaviour
         else
         {
             //rotate back
-            curPieceRotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
+            curPieceRotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, -90f, 0f);
         }
         if(isOwl){
             // single owl
-            curPieceRotation = curPieceRotation * Quaternion.Euler(0f, 90f, 90f);
+            curPieceRotation = curPieceRotation * Quaternion.Euler(0f, -90f, 90f);
             curPieceTranslation = new Vector3(0f, bd.pieceHeight / 2, 0f);
             
             // 1 owl 1 normal, owl on the top
@@ -786,7 +786,7 @@ public class GameState : MonoBehaviour
             }
             bd.white_pieces[index] = -1;
             white_pieces[index].transform.position = white_poses[index];
-            white_pieces[index].transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            white_pieces[index].transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
         else{
             int ori_place = bd.black_pieces[index];
@@ -800,7 +800,7 @@ public class GameState : MonoBehaviour
             }
             bd.black_pieces[index] = -1;
             black_pieces[index].transform.position = black_poses[index];
-            black_pieces[index].transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            black_pieces[index].transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
         //This part takes care of the UI part
     }
@@ -979,10 +979,10 @@ public class GameState : MonoBehaviour
         else
         {
             //rotate back
-            ret *= LiuboBoard.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
+            ret *= LiuboBoard.transform.rotation * Quaternion.Euler(0f, -90f, 0f);
         }
         if(isOwl){
-            ret *= Quaternion.Euler(0f, 90f, 90f);
+            ret *= Quaternion.Euler(0f, -90f, 90f);
         }
         return ret;
     }
