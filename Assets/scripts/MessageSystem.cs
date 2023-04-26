@@ -58,9 +58,9 @@ public class MessageSystem : MonoBehaviour
             default:
                 break;
         }
-        
-        text.text = txt + (points > 1 ? $"score {points.ToString()} points!"
-                : $"score {points.ToString()} point!");
+
+        text.text = txt + (points > 1 ? string.Format("score {0} points!", points.ToString())
+                : string.Format("score {0} point!", points.ToString()));
     }
 
     void ShowOwlMessage()
