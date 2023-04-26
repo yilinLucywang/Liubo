@@ -5015,6 +5015,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hologram
       objectReference: {fileID: 0}
+    - target: {fileID: 2462963544690734457, guid: 65697dd5648905540b84894e7f923f37,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2983042013063507907, guid: 65697dd5648905540b84894e7f923f37,
         type: 3}
       propertyPath: m_RootOrder
