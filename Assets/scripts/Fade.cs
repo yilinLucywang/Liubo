@@ -73,7 +73,7 @@ public class Fade : MonoBehaviour
 
     IEnumerator FadeOutToGame(Action OnFadeOut)
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(4f);
         FadeOut();
         yield return new WaitForSeconds(1f);
         OnFadeOut();

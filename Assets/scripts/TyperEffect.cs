@@ -31,6 +31,7 @@ public class TyperEffect : MonoBehaviour
              this.GetComponent<TextMeshProUGUI>().text = currentTxt;
              yield return new WaitForSeconds(delaySpeed);
          }
+        //return null;
         
     }
 }
