@@ -100,7 +100,12 @@ public class GameState : MonoBehaviour
 
     public Fade fadeInOut;
     public GameObject fadeInImg;
-    
+
+    [SerializeField]
+    private Color txtColorOnRollBut;
+
+    public Text txtOnRollBut;
+
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
             white_poses.Add(white_pieces[i].transform.position);
@@ -115,7 +120,9 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         state = State.Roll;
+        txtColorOnRollBut = txtOnRollBut.color;
 
         whiteSideTimeLine.Stop();
         blackSideTimeLine.Stop();
@@ -229,8 +236,9 @@ public class GameState : MonoBehaviour
         num_2_text2.text = "";
 
         rollDicebtn.GetComponent<Button>().interactable = true;
-        Color color = rollDicebtn.GetComponentInChildren<Text>().color;
-        color.a = 1f;
+        txtColorOnRollBut = new Color(txtColorOnRollBut.r, txtColorOnRollBut.g, txtColorOnRollBut.b, 1f);
+        txtOnRollBut.color = txtColorOnRollBut;
+
         foreach (Transform child in allwhitePieces)
         {
             child.gameObject.layer = 0;
@@ -326,9 +334,10 @@ public class GameState : MonoBehaviour
             StopCoroutine(WaitForClickBtn());
             StartCoroutine(WaitForClickBtn());
 
-            Color color = rollDicebtn.GetComponentInChildren<Text>().color;
-            color.a = 0.5f;
-        rollDicebtn.GetComponent<Button>().interactable = false;
+            
+            rollDicebtn.GetComponent<Button>().interactable = false;
+            txtColorOnRollBut = new Color(txtColorOnRollBut.r, txtColorOnRollBut.g, txtColorOnRollBut.b, 0.5f);
+            txtOnRollBut.color = txtColorOnRollBut;
         }
 
     }
