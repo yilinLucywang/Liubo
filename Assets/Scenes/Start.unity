@@ -3689,8 +3689,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Tingru(Tina) Lian \n\nChia-Wei(Jeffrey) Liu\n\nYongzi(Eliza) Ye\r\n\nLochlan
-    Belford\r\nChia-Wei(Jeffrey) Liu\nYicheng Lu\r\n\nYilin(Lucy) Wang\r\nLochlan
-    Belford\r\nChia-Wei(Jeffrey) Liu\nYicheng Lu\r\nTingru(Tina) Lian \n\n"
+    Belford\r\nChia-Wei(Jeffrey) Liu\nYicheng Lu\r\n\nYilin(Lucy) Wang\r\n\nLochlan
+    Belford\r\nTingru(Tina) Lian \nChia-Wei(Jeffrey) Liu\nYicheng Lu\r\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -3730,7 +3730,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 20
+  m_lineSpacing: 10
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -3982,7 +3982,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Producer\n\nAssistant Producer\n\nArtist\n\nGame Designer\n\t\t\t\t\n\t\t\n\nProgrammer\n\n"
+  m_text: "Producer\n\nAssistant Producer\n\nArtist\n\nGame Designer\n\t\t\t\t\n\t\t\n\nLead
+    Programmer\n\nProgrammer"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -4022,7 +4023,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 20
+  m_lineSpacing: 10
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
