@@ -229,8 +229,9 @@ public class GameState : MonoBehaviour
         num_2_text2.text = "";
 
         rollDicebtn.GetComponent<Button>().interactable = true;
-        
-        foreach(Transform child in allwhitePieces)
+        Color color = rollDicebtn.GetComponentInChildren<Text>().color;
+        color.a = 1f;
+        foreach (Transform child in allwhitePieces)
         {
             child.gameObject.layer = 0;
             child.gameObject.GetComponentInChildren<MeshRenderer>().material = whiteMat;
@@ -308,6 +309,7 @@ public class GameState : MonoBehaviour
     {
         // int num_1 = RollSticks();
         // int num_2 = RollSticks();
+
         var (num_1, num_2) = StickRoller.GetInstance().RollSticks();
         num_1_text.text = num_1.ToString(); 
         num_2_text.text = num_2.ToString();
@@ -324,8 +326,9 @@ public class GameState : MonoBehaviour
             StopCoroutine(WaitForClickBtn());
             StartCoroutine(WaitForClickBtn());
 
-
-            rollDicebtn.GetComponent<Button>().interactable = false;
+            Color color = rollDicebtn.GetComponentInChildren<Text>().color;
+            color.a = 0.5f;
+        rollDicebtn.GetComponent<Button>().interactable = false;
         }
 
     }
