@@ -167,6 +167,7 @@ public class UI : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        //Application.Quit();
+        SceneManager.LoadScene("Start");
     }
 }
