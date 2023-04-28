@@ -23,7 +23,8 @@ public class WriteToGameObject : MonoBehaviour
             foreach (string column in columns) {
                 if(colCount-12 >= 0 && colCount-12 < 13){
                     if(rowCount == 0){ 
-                        //sectionList[colCount - 12].transform.GetChild(rowCount).GetComponent<TMP_Text>().text = column;
+                        Debug.Log(column);
+                        sectionList[colCount - 12].transform.GetChild(rowCount).GetComponent<TMP_Text>().text = column;
                     }
                     else{
                         //sectionList[colCount - 12].transform.GetChild(1).GetChild(rowCount - 1).GetComponent<TMP_Text>().text = column;
