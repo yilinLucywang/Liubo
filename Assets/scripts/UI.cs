@@ -10,7 +10,7 @@ public class UI : MonoBehaviour
     [SerializeField] private GameData gameData;
     [SerializeField] private Text player1Score, player1Name;
     [SerializeField] private Text player2Score, player2Name;
-    [SerializeField] private GameObject BlackImage;
+    [SerializeField] private GameObject BlackImage, QuitImg;
     [SerializeField] private Text showCharacter;
     [SerializeField] private GameObject HintImage;
     [SerializeField] private Button HintButton;
@@ -155,4 +155,18 @@ public class UI : MonoBehaviour
         }
     }
 
+    public void showQuitIMG()
+    {
+        QuitImg.SetActive(true);
+    }
+
+    public void hideQuitIMG()
+    {
+        QuitImg.SetActive(false);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
