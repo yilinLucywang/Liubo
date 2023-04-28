@@ -157,17 +157,20 @@ public class UI : MonoBehaviour
 
     public void showQuitIMG()
     {
+        Time.timeScale = 0f;
         QuitImg.SetActive(true);
     }
 
     public void hideQuitIMG()
     {
+        Time.timeScale = 1f;
         QuitImg.SetActive(false);
     }
 
     public void QuitGame()
     {
         //Application.Quit();
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Start");
     }
 }

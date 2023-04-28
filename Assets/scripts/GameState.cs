@@ -21,6 +21,7 @@ public class GameState : MonoBehaviour
     public int dice_2 = -1;
 
     public GameObject dice1But, dice2But, dice1But2, dice2But2;
+    public GameObject dice1ButSelect, dice2ButSelect, dice1But2Select, dice2But2Select;
     public GameObject blackPieceBut, whitePieceBut;
     public GameObject rollDicebtn;
     public GameObject whiteTurn, blackTurn;
@@ -407,6 +408,8 @@ public class GameState : MonoBehaviour
         {
             dice1But.GetComponent<Button>().interactable = false;
             dice2But.GetComponent<Button>().interactable = true;
+            dice1ButSelect.SetActive(true);
+            dice2ButSelect.SetActive(false);
 
             whiteSideTimeLine.time = 0;
             whiteSideTimeLine.Stop();
@@ -416,6 +419,8 @@ public class GameState : MonoBehaviour
         {
             dice1But2.GetComponent<Button>().interactable = false;
             dice2But2.GetComponent<Button>().interactable = true;
+            dice1But2Select.SetActive(true);
+            dice2But2Select.SetActive(false);
 
             blackSideTimeLine.time = 0;
             blackSideTimeLine.Stop();
@@ -445,6 +450,9 @@ public class GameState : MonoBehaviour
         {
             dice1But.GetComponent<Button>().interactable = true;
             dice2But.GetComponent<Button>().interactable = false;
+            dice1ButSelect.SetActive(false);
+            dice2ButSelect.SetActive(true);
+
             whiteSideTimeLine.time = 0;
             whiteSideTimeLine.Stop();
             whiteSideTimeLine.Evaluate();
@@ -453,6 +461,9 @@ public class GameState : MonoBehaviour
         {
             dice1But2.GetComponent<Button>().interactable = true;
             dice2But2.GetComponent<Button>().interactable = false;
+            dice1But2Select.SetActive(false);
+            dice2But2Select.SetActive(true);
+
             blackSideTimeLine.time = 0;
             blackSideTimeLine.Stop();
             blackSideTimeLine.Evaluate();
@@ -526,11 +537,15 @@ public class GameState : MonoBehaviour
         {
             dice1But.GetComponent<Button>().interactable = true;
             dice2But.GetComponent<Button>().interactable = true;
+            dice1ButSelect.SetActive(false);
+            dice2ButSelect.SetActive(false);
         }
         else if (!is_p1_turn)
         {
             dice1But2.GetComponent<Button>().interactable = true;
             dice2But2.GetComponent<Button>().interactable = true;
+            dice1But2Select.SetActive(false);
+            dice2But2Select.SetActive(false);
         }
         OnDeselect.Invoke();
     }
