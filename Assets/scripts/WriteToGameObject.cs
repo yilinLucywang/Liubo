@@ -16,24 +16,28 @@ public class WriteToGameObject : MonoBehaviour
         string path = @"Assets\scripts\tutorialText.csv";
         string[] lines = System.IO.File.ReadAllLines(path);
         int rowCount = 0;
+        string text = "";
         foreach(string line in lines)
         {
-            string[] columns = line.Split(',');
-            int colCount = 0;
-            foreach (string column in columns) {
-                if(colCount-12 >= 0 && colCount-12 < 13){
-                    if(rowCount == 0){ 
-                        Debug.Log(column);
-                        sectionList[colCount - 12].transform.GetChild(rowCount).GetComponent<TMP_Text>().text = column;
-                    }
-                    else{
-                        //sectionList[colCount - 12].transform.GetChild(1).GetChild(rowCount - 1).GetComponent<TMP_Text>().text = column;
-                    }
-                }
-                colCount += 1;
-            }
-            rowCount += 1;
+            text += line;
+            text += "\n";
         }
+        string[] columns = text.Split("$%");
+        Debug.Log(columns[23]);
+        Debug.Log(columns[24]);
+        for(int i = 0; i < columns.Length; i++){
+            int rowNumber = (int)Mathf.Floor(i/24);
+            int colNumber = i%24;
+            if(colNumber > 11 && colNumber < 24){
+                if(rowNumber == 0){ 
+                    sectionList[colNumber - 12].transform.GetChild(0).GetComponent<TMP_Text>().text = columns[i];
+                }
+                else{
+                    sectionList[colNumber - 12].transform.GetChild(1).GetChild(rowNumber-1).GetComponent<TMP_Text>().text = columns[i];
+                }
+            }
+        }
+
     }
 
 }
