@@ -74,4 +74,9 @@ public class StartUI : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Link()
+    {
+        Application.OpenURL("https://projects.etc.cmu.edu/liubo-lab/credits/");
+    }
 }
