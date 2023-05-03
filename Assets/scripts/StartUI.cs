@@ -83,6 +83,5 @@ public class StartUI : MonoBehaviour
     public void ChangeLanguage()
     {
         data.isEN ^= true;
-        Debug.Log(data.isEN);
     }
 }
