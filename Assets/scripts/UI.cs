@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
+
 
 public class UI : MonoBehaviour
 {
@@ -23,6 +25,8 @@ public class UI : MonoBehaviour
     public Text showLineTxt;
     public GameState gameState;
     public float lowerLightIntensity;
+    public Text[] UINormalTxt;
+    public List<TMP_Text> uiTxt;
 
     private bool isHintOn = false;
 
@@ -39,7 +43,10 @@ public class UI : MonoBehaviour
         player1Score.text = gameData.white_score.ToString();
         player2Score.text = gameData.black_score.ToString();
 
-        showCharacter.text = "Hide Labels";
+        showCharacter.text = TextProvider.Instance.GetText("text0032");//"Hide Labels";
+        UINormalTxt[0].text = TextProvider.Instance.GetText("text0034");
+        UINormalTxt[1].text = TextProvider.Instance.GetText("text0016"); //Rule book
+        UINormalTxt[2].text = TextProvider.Instance.GetText("text0014"); // show lines
 
     }
 
@@ -88,11 +95,11 @@ public class UI : MonoBehaviour
     {
         if (GetComponent<GameState>().isCharacterOn == false)
         {
-            showCharacter.text = "Show Labels";
+            showCharacter.text = TextProvider.Instance.GetText("text0015"); // "Show Labels";
         }
         else if (GetComponent<GameState>().isCharacterOn == true)
         {
-            showCharacter.text = "Hide Labels";
+            showCharacter.text = TextProvider.Instance.GetText("text0032"); //"Hide Labels";
         }
     }
 
@@ -113,7 +120,7 @@ public class UI : MonoBehaviour
     {
         HintImage.SetActive(false);
         isHintOn = false;
-        hintButtonText.text = "Show Rulebook";
+        hintButtonText.text = TextProvider.Instance.GetText("text0016"); // "Show Rulebook";
         HintButton.enabled = true;
     }
 
@@ -147,11 +154,11 @@ public class UI : MonoBehaviour
     {
         if(isLineOn == true)
         {
-            showLineTxt.text = "Hide Lines";
+            showLineTxt.text = TextProvider.Instance.GetText("text0031"); // "Hide Lines";
         } 
         else if(isLineOn == false)
         {
-            showLineTxt.text = "Show Lines";
+            showLineTxt.text = TextProvider.Instance.GetText("text0014"); // "Show Lines";
         }
     }
 
@@ -159,6 +166,9 @@ public class UI : MonoBehaviour
     {
         Time.timeScale = 0f;
         QuitImg.SetActive(true);
+        uiTxt[0].GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0035");
+        uiTxt[1].GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0036");
+        uiTxt[2].GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0037");
     }
 
     public void hideQuitIMG()
