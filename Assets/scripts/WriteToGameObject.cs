@@ -20,7 +20,7 @@ public class WriteToGameObject : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if(gameData.isEN){
+        if(!gameData.isEN){
             string path = @"Assets\scripts\tutorialText.csv";
             string[] lines = System.IO.File.ReadAllLines(path);
             int rowCount = 0;
@@ -48,21 +48,31 @@ public class WriteToGameObject : MonoBehaviour
                 else{
                     if(colNumber > 11 && colNumber < 24){
                         Debug.Log(columns[i]);
+                        string content = columns[i]; 
+                        if(content[content.Length - 1] == '\"'){
+                            content = content.Substring(0, content.Length - 1);
+                        }
+                        if(content[0] == '\"'){
+                            content = content.Substring(1,content.Length - 1);
+                        }
                         if(rowNumber == 0){ 
-                            sectionList[colNumber - 12].transform.GetChild(0).GetComponent<TMP_Text>().text = columns[i];
+                            sectionList[colNumber - 12].transform.GetChild(0).GetComponent<TMP_Text>().text = content;
                             sectionList[colNumber - 12].transform.GetChild(0).GetComponent<TMP_Text>().font = chineseA;
-                            titles[colNumber - 12].text = columns[i]; 
+                            titles[colNumber - 12].text = content; 
                             titles[colNumber - 12].font = chineseA;
                         }
                         else{
                             //Debug.Log(column);
                             //Debug.Log(colNumber.ToString() +"," + rowNumber.ToString() + con);
-                            sectionList[colNumber - 12].transform.GetChild(1).GetChild(rowNumber-1).GetComponent<TMP_Text>().text = columns[i];
+                            sectionList[colNumber - 12].transform.GetChild(1).GetChild(rowNumber-1).GetComponent<TMP_Text>().text = content;
                             sectionList[colNumber - 12].transform.GetChild(1).GetChild(rowNumber-1).GetComponent<TMP_Text>().font = chineseA;
                         }
                     }
                 }
             }
+        }
+        else{
+
         }
 
     }
