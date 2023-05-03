@@ -32,6 +32,13 @@ public class UI : MonoBehaviour
 
     void Awake()
     {
+        showCharacter.text = TextProvider.Instance.GetText("text0032");//"Hide Labels";
+        UINormalTxt[0].text = TextProvider.Instance.GetText("text0034"); //Quit Game
+        hintButtonText.text = TextProvider.Instance.GetText("text0016"); //Rule book
+        showLineTxt.text = TextProvider.Instance.GetText("text0014"); // show lines
+        UINormalTxt[1].text = TextProvider.Instance.GetText("text0019_2"); //Roll Stick
+
+
     }
     void Start()
     {
@@ -43,10 +50,6 @@ public class UI : MonoBehaviour
         player1Score.text = gameData.white_score.ToString();
         player2Score.text = gameData.black_score.ToString();
 
-        showCharacter.text = TextProvider.Instance.GetText("text0032");//"Hide Labels";
-        UINormalTxt[0].text = TextProvider.Instance.GetText("text0034"); //Quit Game
-        hintButtonText.text = TextProvider.Instance.GetText("text0016"); //Rule book
-        showLineTxt.text = TextProvider.Instance.GetText("text0014"); // show lines
 
     }
 
@@ -166,6 +169,7 @@ public class UI : MonoBehaviour
     {
         Time.timeScale = 0f;
         QuitImg.SetActive(true);
+
         uiTxt[0].GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0035");
         uiTxt[1].GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0036");
         uiTxt[2].GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0037");

@@ -1117,8 +1117,7 @@ MonoBehaviour:
   lowerLightIntensity: 1.8
   UINormalTxt:
   - {fileID: 928471940}
-  - {fileID: 1692873362}
-  - {fileID: 248188238}
+  - {fileID: 949242622}
   uiTxt:
   - {fileID: 389821914}
   - {fileID: 1380681584}
