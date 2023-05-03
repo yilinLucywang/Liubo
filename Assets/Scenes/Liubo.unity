@@ -1115,6 +1115,14 @@ MonoBehaviour:
   showLineTxt: {fileID: 248188238}
   gameState: {fileID: 153840375}
   lowerLightIntensity: 1.8
+  UINormalTxt:
+  - {fileID: 928471940}
+  - {fileID: 1692873362}
+  - {fileID: 248188238}
+  uiTxt:
+  - {fileID: 389821914}
+  - {fileID: 1380681584}
+  - {fileID: 510555600}
 --- !u!114 &153840374
 MonoBehaviour:
   m_ObjectHideFlags: 0

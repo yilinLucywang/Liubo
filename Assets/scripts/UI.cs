@@ -44,9 +44,9 @@ public class UI : MonoBehaviour
         player2Score.text = gameData.black_score.ToString();
 
         showCharacter.text = TextProvider.Instance.GetText("text0032");//"Hide Labels";
-        UINormalTxt[0].text = TextProvider.Instance.GetText("text0034");
-        UINormalTxt[1].text = TextProvider.Instance.GetText("text0016"); //Rule book
-        UINormalTxt[2].text = TextProvider.Instance.GetText("text0014"); // show lines
+        UINormalTxt[0].text = TextProvider.Instance.GetText("text0034"); //Quit Game
+        hintButtonText.text = TextProvider.Instance.GetText("text0016"); //Rule book
+        showLineTxt.text = TextProvider.Instance.GetText("text0014"); // show lines
 
     }
 
