@@ -33,17 +33,20 @@ public class WriteToGameObject : MonoBehaviour
             int colNumber = i%24;
             string con = columns[i].Substring(1,columns[i].Length-2);
             if(con.Length <= 1){
+                if(rowNumber != 0){
+                    Debug.Log(columns[i]);
                     continue;
+                }
             }
             else{
                 if(colNumber > 11 && colNumber < 24){
                     if(rowNumber == 0){ 
-                        sectionList[colNumber - 12].transform.GetChild(0).GetComponent<TMP_Text>().text = con;
+                        sectionList[colNumber - 12].transform.GetChild(0).GetComponent<TMP_Text>().text = columns[i];
                         sectionList[colNumber - 12].transform.GetChild(0).GetComponent<TMP_Text>().font = chineseA;
                     }
                     else{
                         //Debug.Log(column);
-                        Debug.Log(colNumber.ToString() +"," + rowNumber.ToString() + con);
+                        //Debug.Log(colNumber.ToString() +"," + rowNumber.ToString() + con);
                         sectionList[colNumber - 12].transform.GetChild(1).GetChild(rowNumber-1).GetComponent<TMP_Text>().text = con;
                         sectionList[colNumber - 12].transform.GetChild(1).GetChild(rowNumber-1).GetComponent<TMP_Text>().font = chineseA;
                     }
