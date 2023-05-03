@@ -3262,6 +3262,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 1519849102200486908, guid: 440152680d88c9546beecf413c27f98a,
         type: 3}
+      propertyPath: gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: c2bf33fbf6d9e3a48ad89085e62bb76a,
+        type: 2}
+    - target: {fileID: 1519849102200486908, guid: 440152680d88c9546beecf413c27f98a,
+        type: 3}
       propertyPath: titles.Array.size
       value: 12
       objectReference: {fileID: 0}
