@@ -43,12 +43,12 @@ public class StartUI : MonoBehaviour
 
 
         if (inputField[0].text == "")
-            data.playername1 = "Player1";
+            data.playername1 = TextProvider.Instance.GetText("text0011"); // "Player1";
         else
             data.playername1 = inputField[0].text;
 
         if (inputField[1].text == "")
-            data.playername2 = "Player2";
+            data.playername2 = TextProvider.Instance.GetText("text0012"); //"Player2";
         else
             data.playername2 = inputField[1].text;
 
