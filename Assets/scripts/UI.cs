@@ -10,23 +10,23 @@ public class UI : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameData gameData;
-    [SerializeField] private Text player1Score, player1Name;
-    [SerializeField] private Text player2Score, player2Name;
+    [SerializeField] private TMP_Text player1Score, player1Name;
+    [SerializeField] private TMP_Text player2Score, player2Name;
     [SerializeField] private GameObject BlackImage, QuitImg;
-    [SerializeField] private Text showCharacter;
+    [SerializeField] private TMP_Text showCharacter;
     [SerializeField] private GameObject HintImage;
     [SerializeField] private GameObject HintImageChinese;
     [SerializeField] private Button HintButton;
-    [SerializeField] private Text hintButtonText;
+    [SerializeField] private TMP_Text hintButtonText;
 
     private bool isLineOn;
 
     public Light direcLight;
     public GameObject lineImg;
-    public Text showLineTxt;
+    public TMP_Text showLineTxt;
     public GameState gameState;
     public float lowerLightIntensity;
-    public Text[] UINormalTxt;
+
     public List<TMP_Text> uiTxt;
 
     private bool isHintOn = false;
@@ -34,15 +34,15 @@ public class UI : MonoBehaviour
     void Awake()
     {
         showCharacter.text = TextProvider.Instance.GetText("text0032");//"Hide Labels";
-        UINormalTxt[0].text = TextProvider.Instance.GetText("text0034"); //Quit Game
         hintButtonText.text = TextProvider.Instance.GetText("text0016"); //Rule book
         showLineTxt.text = TextProvider.Instance.GetText("text0014"); // show lines
-        UINormalTxt[1].text = TextProvider.Instance.GetText("text0019_2"); //Roll Stick
 
-        UINormalTxt[2].text = TextProvider.Instance.GetText("text0010"); //player
-        UINormalTxt[4].text = TextProvider.Instance.GetText("text0010"); //player
-        UINormalTxt[3].text = TextProvider.Instance.GetText("text0013"); //score
-        UINormalTxt[5].text = TextProvider.Instance.GetText("text0013"); //score
+        uiTxt[3].text = TextProvider.Instance.GetText("text0019_2");//Roll Stick
+        uiTxt[4].text = TextProvider.Instance.GetText("text0034"); //Quit Game
+        uiTxt[5].text = TextProvider.Instance.GetText("text0010"); //player
+        uiTxt[6].text = TextProvider.Instance.GetText("text0010"); //player
+        uiTxt[7].text = TextProvider.Instance.GetText("text0013"); //score
+        uiTxt[8].text = TextProvider.Instance.GetText("text0013"); //score
 
 
     }
