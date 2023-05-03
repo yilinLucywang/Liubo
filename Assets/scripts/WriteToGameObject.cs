@@ -32,11 +32,9 @@ public class WriteToGameObject : MonoBehaviour
             int rowNumber = (int)Mathf.Floor(i/24);
             int colNumber = i%24;
             string con = columns[i].Substring(1,columns[i].Length-2);
-            if(con.Length <= 1){
-                if(rowNumber != 0){
-                    Debug.Log(columns[i]);
-                    continue;
-                }
+            if(con.Length <= 1 && rowNumber != 0){
+                Debug.Log(columns[i]);
+                continue;
             }
             else{
                 if(colNumber > 11 && colNumber < 24){
@@ -47,7 +45,7 @@ public class WriteToGameObject : MonoBehaviour
                     else{
                         //Debug.Log(column);
                         //Debug.Log(colNumber.ToString() +"," + rowNumber.ToString() + con);
-                        sectionList[colNumber - 12].transform.GetChild(1).GetChild(rowNumber-1).GetComponent<TMP_Text>().text = con;
+                        sectionList[colNumber - 12].transform.GetChild(1).GetChild(rowNumber-1).GetComponent<TMP_Text>().text = columns[i];
                         sectionList[colNumber - 12].transform.GetChild(1).GetChild(rowNumber-1).GetComponent<TMP_Text>().font = chineseA;
                     }
                 }
