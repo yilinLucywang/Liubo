@@ -12,8 +12,8 @@ public class GameData : ScriptableObject
     {
         white_score = 0;
         black_score = 0;
-        playername1 = "Player 1";
-        playername2 = "Player 2";
+        playername1 = "Player1";
+        playername2 = "Player2";
         isEN = true;
     }
 }

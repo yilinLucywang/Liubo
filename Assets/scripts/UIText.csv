@@ -1,5 +1,5 @@
 Text_ID,English,Chinese,Notes
-text0001,"Start Game ",开始游戏,Start Scene
+text0001,Start Game ,开始游戏,Start Scene
 text0002,Rules,学棋,
 text0003,Credits,游戏制作人员名单,
 text0004,Exit,退出,
@@ -69,7 +69,7 @@ text0007,Player 1 Name,青方棋手,Start Scene
 text0008,Player 2 Name,白方棋手,
 text0009,Confirm,对弈,
 text0010,Player,棋手,
-text0011,"Player 1 ",青方,默认
+text0011,Player1 ,青方,默认
 text0012,Player2,白方,默认
 text0013,Score,得筹,
 text0014,Show Lines,显示行棋路径,
@@ -83,7 +83,7 @@ text0019_3,Score 6 points to win!,获六筹者胜,message
 text0019_4,'s Turn,回合,
 text0019_5,Bird upgraded into an Owl!,入水牵鱼，竖棋成枭,
 text0019_6,Reached nest:,置鱼：,
-text0019_7,"Bird captured: ",杀散：,
+text0019_7,Bird captured: ,杀散：,
 text0019_8,Owl captured:,逐枭：,
 text0020,score {0} point!,获{0}筹,score 1 point
 text0021,score {0} points!,获{0}筹,score more than 1 points
@@ -110,10 +110,10 @@ text0038_3,Tip: Your birds must work together. Keep them in groups of two or thr
 text0038_4,Tip: Owls by themselves are likely to be captured. Use your other birds to protect them!,博也者贵枭，胜者必杀枭。是杀其所贵也，儒者以为害义，故不博。,
 text0038_5,Tip: Rolls of 1 and 2 are three times more likely than 3 and 4! Use this to estimate your chances.,棋行到处即竖之，名为骁棋，即入水食鱼，亦名牵鱼。,
 text0038_6,Tip: Have fun! Liubo's mix of strategy and randomness means there is no one perfect strategy.,每一牵鱼获二筹，翻一鱼获三筹。若已牵两鱼而不胜者，名曰被翻双鱼，彼家获六筹，为大胜也。,
-text0039_1," -Liu He",— 李白《相和歌辞.猛虎行》,
-text0039_2," -Liu He",— 《说文》,
-text0039_3," -Liu He",— 《楚辞·招魂》,
-text0039_4," -Liu He",— 《太平御览·博》,
-text0039_5," -Liu He",— 《古博经》,
-text0039_6," -Liu He",— 《古博经》,
+text0039_1, -Liu He,— 李白《相和歌辞.猛虎行》,
+text0039_2, -Liu He,— 《说文》,
+text0039_3, -Liu He,— 《楚辞·招魂》,
+text0039_4, -Liu He,— 《太平御览·博》,
+text0039_5, -Liu He,— 《古博经》,
+text0039_6, -Liu He,— 《古博经》,
 text0040,More Credits,更多鸣谢,

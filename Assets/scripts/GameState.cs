@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
 using UnityEngine.UI;
+using TMPro;
 using Random = UnityEngine.Random;
 
 public class GameState : MonoBehaviour
@@ -105,7 +106,7 @@ public class GameState : MonoBehaviour
     [SerializeField]
     private Color txtColorOnRollBut;
 
-    public Text txtOnRollBut;
+    public TMP_Text txtOnRollBut;
 
     public TextMesh[] charactersOnBoard;
 
