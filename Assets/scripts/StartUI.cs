@@ -91,4 +91,16 @@ public class StartUI : MonoBehaviour
     {
         data.isEN ^= true;
     }
+
+    public void changeTextLang()
+    {
+        startButton.transform.GetChild(1).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0001");
+        rulesButton.transform.GetChild(1).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0002");
+        creditButton.transform.GetChild(1).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0003");
+        ExitButton.transform.GetChild(1).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0004");
+        //nameButton.
+
+//chineseTutorial;
+//credits;
+    }
 }
