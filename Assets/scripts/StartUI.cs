@@ -79,4 +79,10 @@ public class StartUI : MonoBehaviour
     {
         Application.OpenURL("https://projects.etc.cmu.edu/liubo-lab/credits/");
     }
+
+    public void ChangeLanguage()
+    {
+        data.isEN ^= true;
+        Debug.Log(data.isEN);
+    }
 }
