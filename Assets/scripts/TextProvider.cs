@@ -1,27 +1,121 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
-public class TextProvider
+public class TextProvider : MonoBehaviour
 {
     public static TextProvider Instance;
+    public GameData gameData;
+    private Dictionary<string, MultiLangText> texts = new Dictionary<string, MultiLangText>();
     // Start is called before the first frame update
-    public static TextProvider GetInstance()
+    void Awake()
     {
-        if (Instance == null)
+        if (Instance != null && Instance != this)
         {
-            Instance = new TextProvider();
+            Destroy(this);
+            return;
         }
-        return Instance;
+        Instance = this;
     }
-    
-    public TextProvider()
+
+    void Start()
     {
+        string filePath = @"Assets\scripts\UIText.csv";
+        char delimiter = ',';
+        char quoteChar = '"';
+        string lineBreak = "\r\n";
+        
+        string text = System.IO.File.ReadAllText(filePath);
+        //var reg = "(?<=([^\"]*(\"[^\"]*\"[^\"]*)*[^\"]*))\r\n(?=([^\"]*(\"[^\"]*\"[^\"]*)*[^\"]*))";
+        //string[] csvLines = Regex.Split(text, reg);
+        bool inQuotes = false;
+        string currentField = "";
+        var result = new List<IList<string>>();
+        var newLine = new List<string>();
+        for (int i = 0; i < text.Length; i++)
+        {
+            char c = text[i];
+            if (c == quoteChar)
+            {
+                // If we encounter a quote character, toggle the inQuotes flag
+                inQuotes = !inQuotes;
+                if (i > 0 && text[i - 1] == quoteChar)
+                {
+                    // If this quote is escaped, add it to the current field
+                    currentField += c;
+                }
+            }
+            else if (c == delimiter && !inQuotes)
+            {
+                // If we encounter a delimiter outside of quotes, we've finished a field
+                newLine.Add(currentField);
+                currentField = "";
+            }
+            else if (text.Substring(i).StartsWith(lineBreak) && !inQuotes)
+            {
+                // If we encounter a line break outside of quotes, we've finished a record
+                newLine.Add(currentField);
+                currentField = "";
+                result.Add(newLine);
+                newLine = new List<string>();
+                i += lineBreak.Length - 1;
+            }
+            else
+            {
+                // Otherwise, just add the character to the current field
+                currentField += c;
+            }
+        }
+        // Handle the last field in the line, if any
+        if (!string.IsNullOrEmpty(currentField))
+        {
+            newLine.Add(currentField);
+            result.Add(newLine);
+        }
+
+        for (int i = 1; i < result.Count; i++)
+        {
+            var line = result[i];
+            texts.Add(line[0], new MultiLangText(line[0], line[1], line[2]));
+        }
         
     }
 
     public string GetText(string id)
     {
-        return "";
+        return texts[id].GetText(gameData.isEN ? Language.English : Language.Chinese);
     }
+}
+
+public struct MultiLangText
+{
+    public string id;
+    private string en;
+    private string cn;
+
+    public MultiLangText(string id, string en, string cn)
+    {
+        this.id = id;
+        this.en = en;
+        this.cn = cn;
+    }
+
+    public string GetText(Language language)
+    {
+        switch (language)
+        {
+            case Language.Chinese:
+                return cn;
+            case Language.English:
+                return en;
+            default:
+                return en;
+        }
+    }
+}
+
+public enum Language
+{
+    English,
+    Chinese,
 }
