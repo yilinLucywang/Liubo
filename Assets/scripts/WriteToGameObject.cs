@@ -9,6 +9,11 @@ using TMPro;
 
 public class WriteToGameObject : MonoBehaviour
 {
+    public TMP_FontAsset englishA;
+    public TMP_FontAsset chineseA;
+ 
+    // public Material englishMA;
+    // public Material chineseMA;
     public List<GameObject> sectionList;
     // Start is called before the first frame update
     void Awake()
@@ -34,11 +39,13 @@ public class WriteToGameObject : MonoBehaviour
                 if(colNumber > 11 && colNumber < 24){
                     if(rowNumber == 0){ 
                         sectionList[colNumber - 12].transform.GetChild(0).GetComponent<TMP_Text>().text = con;
+                        sectionList[colNumber - 12].transform.GetChild(0).GetComponent<TMP_Text>().font = chineseA;
                     }
                     else{
                         //Debug.Log(column);
                         Debug.Log(colNumber.ToString() +"," + rowNumber.ToString() + con);
                         sectionList[colNumber - 12].transform.GetChild(1).GetChild(rowNumber-1).GetComponent<TMP_Text>().text = con;
+                        sectionList[colNumber - 12].transform.GetChild(1).GetChild(rowNumber-1).GetComponent<TMP_Text>().font = chineseA;
                     }
                 }
             }

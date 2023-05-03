@@ -3116,6 +3116,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 153840379}
     m_Modifications:
+    - target: {fileID: 1519849102200486908, guid: 440152680d88c9546beecf413c27f98a,
+        type: 3}
+      propertyPath: chineseA
+      value: 
+      objectReference: {fileID: 11400000, guid: 08622f78957097e41aa9ce281b1b6c89,
+        type: 2}
+    - target: {fileID: 1519849102200486908, guid: 440152680d88c9546beecf413c27f98a,
+        type: 3}
+      propertyPath: englishA
+      value: 
+      objectReference: {fileID: 11400000, guid: 0f9ac9fae2f027b488324762da5a4fcb,
+        type: 2}
+    - target: {fileID: 5208175077645302912, guid: 440152680d88c9546beecf413c27f98a,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
+    - target: {fileID: 5208175077645302912, guid: 440152680d88c9546beecf413c27f98a,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 5208175078158454684, guid: 440152680d88c9546beecf413c27f98a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3226,6 +3249,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial Chinese
       objectReference: {fileID: 0}
+    - target: {fileID: 5208175078521435277, guid: 440152680d88c9546beecf413c27f98a,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
+    - target: {fileID: 5208175078521435277, guid: 440152680d88c9546beecf413c27f98a,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 440152680d88c9546beecf413c27f98a, type: 3}
 --- !u!1 &1302347180 stripped
