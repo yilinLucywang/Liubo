@@ -15,6 +15,7 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject BlackImage, QuitImg;
     [SerializeField] private Text showCharacter;
     [SerializeField] private GameObject HintImage;
+    [SerializeField] private GameObject HintImageChinese;
     [SerializeField] private Button HintButton;
     [SerializeField] private Text hintButtonText;
 
@@ -110,8 +111,13 @@ public class UI : MonoBehaviour
     public void ToggleHintOn()
     {
         if(!isHintOn)
-        {
-            HintImage.SetActive(true);
+        {   
+            if(gameData.isEN){
+                HintImage.SetActive(true);
+            }
+            else{
+                HintImageChinese.SetActive(true);
+            }
             isHintOn = true;
             hintButtonText.text = "Hide How to Capture";
             HintButton.enabled = false;
@@ -121,7 +127,12 @@ public class UI : MonoBehaviour
     //Triggered by any click while hint is on
     public void ToggleHintOff()
     {
-        HintImage.SetActive(false);
+        if(gameData.isEN){
+            HintImage.SetActive(false);
+        }
+        else{
+            HintImageChinese.SetActive(false);
+        }
         isHintOn = false;
         hintButtonText.text = TextProvider.Instance.GetText("text0016"); // "Show Rulebook";
         HintButton.enabled = true;

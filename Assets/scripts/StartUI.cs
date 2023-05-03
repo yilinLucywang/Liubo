@@ -8,7 +8,7 @@ public class StartUI : MonoBehaviour
 {
 
     [SerializeField] private TMP_InputField[] inputField;
-    [SerializeField] GameObject startButton, nameButton, tutorial, chineseTutorial, rulesButton, creditButton, ExitButton, credits;
+    [SerializeField] GameObject startButton, nameButton, tutorial, chineseTutorial, rulesButton, creditButton, ExitButton, credits, LangButton;
     public GameData data;
     void Start()
     {
@@ -27,6 +27,7 @@ public class StartUI : MonoBehaviour
         rulesButton.SetActive(false);
         creditButton.SetActive(false);
         ExitButton.SetActive(false);
+        LangButton.SetActive(false);
     }
     public void showName()
     {
@@ -37,6 +38,7 @@ public class StartUI : MonoBehaviour
         chineseTutorial.SetActive(false);
         creditButton.SetActive(false);
         ExitButton.SetActive(false);
+        LangButton.SetActive(false);
     }
     public void StartGame()
     {
@@ -75,6 +77,7 @@ public class StartUI : MonoBehaviour
         chineseTutorial.SetActive(false);
         creditButton.SetActive(true);
         ExitButton.SetActive(true);
+        LangButton.SetActive(true);
     }
 
     public void ExitGame()
@@ -98,9 +101,13 @@ public class StartUI : MonoBehaviour
         rulesButton.transform.GetChild(1).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0002");
         creditButton.transform.GetChild(1).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0003");
         ExitButton.transform.GetChild(1).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0004");
-        //nameButton.
-
-//chineseTutorial;
-//credits;
+        //name
+        nameButton.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0007");
+        nameButton.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0008");
+        nameButton.transform.GetChild(3).GetChild(0).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0009");
+        //chineseTutorial;
+        credits.transform.GetChild(0).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0003");
+        credits.transform.GetChild(1).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0005");
+        credits.transform.GetChild(2).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0006");
     }
 }
