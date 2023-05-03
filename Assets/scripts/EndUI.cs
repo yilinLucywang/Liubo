@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class EndUI : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameData gameData;
-    [SerializeField] private Text player1Score;
-    [SerializeField] private Text player2Score;
-    [SerializeField] private Text Winner;
+    [SerializeField] private TMP_Text player1Score;
+    [SerializeField] private TMP_Text player2Score;
+    [SerializeField] private TMP_Text Winner;
     [SerializeField] private GameObject WhiteWin, BlackWin;
 
     void Awake()
