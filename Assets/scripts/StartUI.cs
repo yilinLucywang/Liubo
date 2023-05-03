@@ -109,5 +109,6 @@ public class StartUI : MonoBehaviour
         credits.transform.GetChild(0).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0003");
         credits.transform.GetChild(1).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0005");
         credits.transform.GetChild(2).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0006");
+        //credits.transform.GetChild(4).GetChild(0).GetComponent<TMP_Text>().text = TextProvider.Instance.GetText("text0040");
     }
 }
