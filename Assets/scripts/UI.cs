@@ -39,6 +39,11 @@ public class UI : MonoBehaviour
         showLineTxt.text = TextProvider.Instance.GetText("text0014"); // show lines
         UINormalTxt[1].text = TextProvider.Instance.GetText("text0019_2"); //Roll Stick
 
+        UINormalTxt[2].text = TextProvider.Instance.GetText("text0010"); //player
+        UINormalTxt[4].text = TextProvider.Instance.GetText("text0010"); //player
+        UINormalTxt[3].text = TextProvider.Instance.GetText("text0013"); //score
+        UINormalTxt[5].text = TextProvider.Instance.GetText("text0013"); //score
+
 
     }
     void Start()
