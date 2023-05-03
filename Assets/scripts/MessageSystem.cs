@@ -37,7 +37,7 @@ public class MessageSystem : MonoBehaviour
     void ShowTurnChangeMessage(bool isP1Turn)
     {
         animator.Play("ShowMessage");
-        text.text = $"{(isP1Turn ? gs.gameData.playername1 : gs.gameData.playername2)}'s turn!";
+        text.text = $"{(isP1Turn ? gs.gameData.playername1 : gs.gameData.playername2)}" + TextProvider.Instance.GetText("text0019_4"); //'s turn!";
     }
 
     void ShowScoreMessage(ScoreType scoreType, int points)
