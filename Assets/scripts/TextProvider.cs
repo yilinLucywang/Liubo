@@ -64,11 +64,11 @@ public class TextProvider : MonoBehaviour
             }
         }
         // Handle the last field in the line, if any
-        if (!string.IsNullOrEmpty(currentField))
-        {
-            newLine.Add(currentField);
-            result.Add(newLine);
-        }
+        // if (!string.IsNullOrEmpty(currentField))
+        // {
+        newLine.Add(currentField);
+        result.Add(newLine);
+        // }
 
         for (int i = 1; i < result.Count; i++)
         {

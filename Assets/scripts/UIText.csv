@@ -20,7 +20,12 @@ Game Designer Programmer","制作人
 
 
 
-程序员",
+主程序员
+
+程序员
+
+
+",
 text0006,"Tingru(Tina) Lian 
 
 Chia-Wei(Jeffrey) Liu
@@ -69,7 +74,7 @@ text0018,Player 1 Score,获筹,
 text0019_1,Player 2 Score,获筹,
 text0019_2,Roll Sticks,投箸,
 text0019_3,Score 6 points to win!,获六筹者胜,message
-text0019_4,s Turn,回合,
+text0019_4,'s Turn,回合,
 text0019_5,Bird upgraded into an Owl!,入水牵鱼，竖棋成枭,
 text0019_6,Reached nest:,置鱼：,
 text0019_7,"Bird captured: ",杀散：,
@@ -77,7 +82,8 @@ text0019_8,Owl captured:,逐枭：,
 text0020,score {0} point!,获{0}筹,score 1 point
 text0021,score {0} points!,获{0}筹,score more than 1 points
 text0022,Branch,高,
-text0023,Owl's Nest,詘,
+text0023,"Owl's 
+Nest",詘,
 text0024,Hollow,長,
 text0025,Garden Wall,曲,
 text0026,Woodshed,張,
@@ -87,7 +93,7 @@ text0029,Stone Path,廉,
 text0030,Pond,方,
 text0031,Hide Lines,隐藏行棋路径,
 text0032,Hide Labels,隐藏方位名称,
-text0033,s Score,最终获筹数,
+text0033,'s Score,最终获筹数,
 text0034,Quit Game,退出棋局,
 text0035,Quit Game?,确定要退出棋局吗？,
 text0036,"No, back to game",继续棋局,
