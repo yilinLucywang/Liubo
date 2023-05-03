@@ -22,8 +22,8 @@ public class EndUI : MonoBehaviour
         //player1Score.text = "Player 1 Score: " + gameData.white_score.ToString();
         //player2Score.text = "Player 2 Score: " + gameData.black_score.ToString();
         if (player1Score.text != " ")
-            player1Score.text = gameData.playername1 + TextProvider.Instance.GetText("text0033") + gameData.white_score.ToString();
-            player2Score.text = gameData.playername2 + TextProvider.Instance.GetText("text0033") + gameData.black_score.ToString();
+            player1Score.text = gameData.playername1 + TextProvider.Instance.GetText("text0033") + " " + gameData.white_score.ToString();
+            player2Score.text = gameData.playername2 + TextProvider.Instance.GetText("text0033") + " " + gameData.black_score.ToString();
 
         if (gameData.white_score >= 6 )
         {
