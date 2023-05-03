@@ -8,7 +8,7 @@ public class StartUI : MonoBehaviour
 {
 
     [SerializeField] private TMP_InputField[] inputField;
-    [SerializeField] GameObject startButton, nameButton, tutorial, rulesButton, creditButton, ExitButton, credits;
+    [SerializeField] GameObject startButton, nameButton, tutorial, chineseTutorial, rulesButton, creditButton, ExitButton, credits;
     public GameData data;
     void Start()
     {
@@ -17,7 +17,12 @@ public class StartUI : MonoBehaviour
     }
     public void showTutorial()
     {
-        tutorial.SetActive(true);
+        if(data.isEN){
+            tutorial.SetActive(true);
+        }
+        else{
+            chineseTutorial.SetActive(true);
+        }
         startButton.SetActive(false);
         rulesButton.SetActive(false);
         creditButton.SetActive(false);
@@ -29,6 +34,7 @@ public class StartUI : MonoBehaviour
         rulesButton.SetActive(false);
         startButton.SetActive(false);
         tutorial.SetActive(false);
+        chineseTutorial.SetActive(false);
         creditButton.SetActive(false);
         ExitButton.SetActive(false);
     }
@@ -66,6 +72,7 @@ public class StartUI : MonoBehaviour
         rulesButton.SetActive(true);
         startButton.SetActive(true);
         tutorial.SetActive(false);
+        chineseTutorial.SetActive(false);
         creditButton.SetActive(true);
         ExitButton.SetActive(true);
     }
