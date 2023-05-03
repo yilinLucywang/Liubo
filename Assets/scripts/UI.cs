@@ -44,6 +44,13 @@ public class UI : MonoBehaviour
         uiTxt[7].text = TextProvider.Instance.GetText("text0013"); //score
         uiTxt[8].text = TextProvider.Instance.GetText("text0013"); //score
 
+        if (!gameData.isEN)
+        {
+            for(int i = 5; i <= 8; i++)
+            {
+                uiTxt[i].fontSize = 85f;
+            }
+        }
 
     }
     void Start()
