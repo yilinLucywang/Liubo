@@ -20,6 +20,7 @@ public class WriteToGameObject : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        if(gameData.isEN){
             string path = @"Assets\scripts\tutorialText.csv";
             string[] lines = System.IO.File.ReadAllLines(path);
             int rowCount = 0;
@@ -57,5 +58,6 @@ public class WriteToGameObject : MonoBehaviour
             }
         }
 
+    }
 
 }
