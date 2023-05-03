@@ -1119,6 +1119,10 @@ MonoBehaviour:
   UINormalTxt:
   - {fileID: 928471940}
   - {fileID: 949242622}
+  - {fileID: 1967404183}
+  - {fileID: 490051895}
+  - {fileID: 650646755}
+  - {fileID: 1706732360}
   uiTxt:
   - {fileID: 389821914}
   - {fileID: 1380681584}
@@ -16894,6 +16898,21 @@ PrefabInstance:
       propertyPath: titles.Array.data[11]
       value: 
       objectReference: {fileID: 1956865911}
+    - target: {fileID: 5208175077430784061, guid: 440152680d88c9546beecf413c27f98a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 153840373}
+    - target: {fileID: 5208175077430784061, guid: 440152680d88c9546beecf413c27f98a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleHintOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208175077430784061, guid: 440152680d88c9546beecf413c27f98a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5208175078089818657, guid: 440152680d88c9546beecf413c27f98a,
         type: 3}
       propertyPath: m_hasFontAssetChanged
