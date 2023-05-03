@@ -7772,7 +7772,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 861, y: -434}
+  m_AnchoredPosition: {x: 810, y: -222}
   m_SizeDelta: {x: 2024.1035, y: 1138.5581}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &730170165
@@ -7887,18 +7887,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delaySpeed: 0.02
-  loadingTxt:
-  - '"Tip: Use all your birds! More birds on the board means more options on every
-    turn."'
-  - '"Tip: Use the whole board. Send some birds through the middle, and some around
-    the outside."'
-  - '"Tip: Your birds must work together. Keep them in groups of two or three."'
-  - '"Tip: Owls by themselves are likely to be captured. Use your other birds to
-    protect them!"'
-  - '"Tip: Rolls of 1 and 2 are three times more likely than 3 and 4! Use this to
-    estimate your chances."'
-  - '"Tip: Have fun! Liubo''s mix of strategy and randomness means there is no one
-    perfect strategy."'
+  loadingTxtID:
+  - text0038_1
+  loadingTxtSourceID:
+  - text0039_1
+  textBox: {fileID: 730170165}
+  sourceTextBox: {fileID: 818041700}
 --- !u!1 &773139226
 GameObject:
   m_ObjectHideFlags: 0
@@ -8183,8 +8177,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 861, y: -653}
-  m_SizeDelta: {x: 2024.1035, y: 1138.5581}
+  m_AnchoredPosition: {x: 776, y: -572}
+  m_SizeDelta: {x: 2024.1035, y: 765.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &818041699
 MonoBehaviour:
@@ -8199,19 +8193,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delaySpeed: 0.02
-  loadingTxt:
-  - '"Tip: Use all your birds! More birds on the board means more options on every
-    turn." -Liu He'
-  - '"Tip: Use the whole board. Send some birds through the middle, and some around
-    the outside.." -Liu He'
-  - '"Tip: Your birds must work together. Keep them in groups of two or three." -Liu
-    He'
-  - '"Tip: Owls by themselves are likely to be captured. Use your other birds to
-    protect them!" -Liu He'
-  - '"Tip: Rolls of 1 and 2 are three times more likely than 3 and 4! Use this to
-    estimate your chances." -Liu He'
-  - '"Tip: Have fun! Liubo''s mix of strategy and randomness means there is no one
-    perfect strategy." -Liu He'
+  loadingTxtID:
+  - text0038_1
+  loadingTxtSourceID:
+  - text0039_1
+  textBox: {fileID: 730170165}
+  sourceTextBox: {fileID: 818041700}
 --- !u!114 &818041700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8232,7 +8219,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' -Liu He'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54361bd513981c145b59c64d77885138, type: 2}
   m_sharedMaterial: {fileID: 3467357844186650442, guid: 54361bd513981c145b59c64d77885138,
@@ -8276,7 +8263,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

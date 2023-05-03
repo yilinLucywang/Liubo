@@ -16,10 +16,7 @@ public class TextProvider : MonoBehaviour
             return;
         }
         Instance = this;
-    }
-
-    void Start()
-    {
+        
         string filePath = @"Assets\scripts\UIText.csv";
         char delimiter = ',';
         char quoteChar = '"';
@@ -78,6 +75,11 @@ public class TextProvider : MonoBehaviour
             var line = result[i];
             texts.Add(line[0], new MultiLangText(line[0], line[1], line[2]));
         }
+    }
+
+    void Start()
+    {
+        
         
     }
 
