@@ -3,16 +3,23 @@ text0001,"Start Game ",开始游戏,Start Scene
 text0002,Rules,学棋,
 text0003,Credits,游戏制作人员名单,
 text0004,Exit,退出,
-text0005,"Role  Producer
+text0005,"Producer
 
 Assistant Producer
 
 Artist
 
 Game Designer Programmer","制作人 
+
 助理制作人  
+
 美术 
+
 游戏策划 
+
+
+
+
 程序员",
 text0006,"Tingru(Tina) Lian 
 
@@ -62,7 +69,7 @@ text0018,Player 1 Score,获筹,
 text0019_1,Player 2 Score,获筹,
 text0019_2,Roll Sticks,投箸,
 text0019_3,Score 6 points to win!,获六筹者胜,message
-text0019_4,‘s Turn,回合,
+text0019_4,s Turn,回合,
 text0019_5,Bird upgraded into an Owl!,入水牵鱼，竖棋成枭,
 text0019_6,Reached nest:,置鱼：,
 text0019_7,"Bird captured: ",杀散：,
@@ -97,3 +104,4 @@ text0039_3," -Liu He",— 《楚辞·招魂》,
 text0039_4," -Liu He",— 《太平御览·博》,
 text0039_5," -Liu He",— 《古博经》,
 text0039_6," -Liu He",— 《古博经》,
+text0040,More Credits,更多鸣谢,

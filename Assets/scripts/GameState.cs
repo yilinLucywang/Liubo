@@ -107,6 +107,8 @@ public class GameState : MonoBehaviour
 
     public Text txtOnRollBut;
 
+    public TextMesh[] charactersOnBoard;
+
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
             white_poses.Add(white_pieces[i].transform.position);
@@ -116,6 +118,40 @@ public class GameState : MonoBehaviour
         fadeInOut = FindObjectOfType<Fade>();
         fadeInImg.SetActive(true);
         fadeInOut.BackToGame(StartGame);
+
+        for(int i = 0; i <= 3; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0024"); //hollow
+        }
+        for(int i = 4; i <= 7; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0022"); //branch
+        }
+        for (int i = 8; i <= 11; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0025"); //garden wall
+        }
+        for (int i = 12; i <= 15; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0026"); //woodshed
+        }
+        for (int i = 16; i <= 19; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0029"); //stone path
+        }
+        for (int i = 20; i <= 23; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0023"); //owl nest
+        }
+        for (int i = 24; i <= 27; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0027"); //felled tree
+        }
+        for (int i = 28; i <= 31; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0028"); //woodpile
+        }
+        charactersOnBoard[32].text = TextProvider.Instance.GetText("text0030"); //pond
     }
 
     // Start is called before the first frame update
