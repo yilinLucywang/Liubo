@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TextProvider
 {
+    public static TextProvider Instance;
     // Start is called before the first frame update
     public static TextProvider GetInstance()
     {
@@ -12,5 +13,15 @@ public class TextProvider
             Instance = new TextProvider();
         }
         return Instance;
+    }
+    
+    public TextProvider()
+    {
+        
+    }
+
+    public string GetText(string id)
+    {
+        return "";
     }
 }
