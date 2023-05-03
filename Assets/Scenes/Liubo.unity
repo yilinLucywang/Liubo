@@ -1285,6 +1285,40 @@ MonoBehaviour:
   fadeInImg: {fileID: 704134194}
   txtColorOnRollBut: {r: 0, g: 0, b: 0, a: 0}
   txtOnRollBut: {fileID: 949242622}
+  charactersOnBoard:
+  - {fileID: 1901855909}
+  - {fileID: 322512295}
+  - {fileID: 909022769}
+  - {fileID: 163023963}
+  - {fileID: 598192156}
+  - {fileID: 1407285685}
+  - {fileID: 1334777032}
+  - {fileID: 1704776979}
+  - {fileID: 773139228}
+  - {fileID: 907659482}
+  - {fileID: 628353563}
+  - {fileID: 232890371}
+  - {fileID: 436942302}
+  - {fileID: 2029448974}
+  - {fileID: 1482380366}
+  - {fileID: 534681500}
+  - {fileID: 1756929322}
+  - {fileID: 1206264858}
+  - {fileID: 455004899}
+  - {fileID: 991446730}
+  - {fileID: 1921162914}
+  - {fileID: 557498551}
+  - {fileID: 1678411321}
+  - {fileID: 75677615}
+  - {fileID: 2048304341}
+  - {fileID: 592173771}
+  - {fileID: 932027668}
+  - {fileID: 1379118315}
+  - {fileID: 1575981518}
+  - {fileID: 1636609467}
+  - {fileID: 2035366402}
+  - {fileID: 1609897488}
+  - {fileID: 1989919803}
 --- !u!114 &153840376
 MonoBehaviour:
   m_ObjectHideFlags: 0
