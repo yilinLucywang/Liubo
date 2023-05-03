@@ -15,6 +15,7 @@ public class WriteToGameObject : MonoBehaviour
     // public Material englishMA;
     // public Material chineseMA;
     public List<GameObject> sectionList;
+    public List<TMP_Text> titles;
     // Start is called before the first frame update
     void Awake()
     {
@@ -41,6 +42,8 @@ public class WriteToGameObject : MonoBehaviour
                     if(rowNumber == 0){ 
                         sectionList[colNumber - 12].transform.GetChild(0).GetComponent<TMP_Text>().text = columns[i];
                         sectionList[colNumber - 12].transform.GetChild(0).GetComponent<TMP_Text>().font = chineseA;
+                        titles[colNumber - 12].text = columns[i]; 
+                        titles[colNumber - 12].font = chineseA;
                     }
                     else{
                         //Debug.Log(column);
