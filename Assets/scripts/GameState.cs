@@ -119,12 +119,16 @@ public class GameState : MonoBehaviour
         fadeInOut = FindObjectOfType<Fade>();
         fadeInImg.SetActive(true);
         fadeInOut.BackToGame(StartGame);
+    }
 
-        for(int i = 0; i <= 3; i++)
+    // Start is called before the first frame update
+    void Start()
+    {
+        for (int i = 0; i <= 3; i++)
         {
             charactersOnBoard[i].text = TextProvider.Instance.GetText("text0024"); //hollow
         }
-        for(int i = 4; i <= 7; i++)
+        for (int i = 4; i <= 7; i++)
         {
             charactersOnBoard[i].text = TextProvider.Instance.GetText("text0022"); //branch
         }
@@ -153,11 +157,6 @@ public class GameState : MonoBehaviour
             charactersOnBoard[i].text = TextProvider.Instance.GetText("text0028"); //woodpile
         }
         charactersOnBoard[32].text = TextProvider.Instance.GetText("text0030"); //pond
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
 
         state = State.Roll;
         txtColorOnRollBut = txtOnRollBut.color;

@@ -33,6 +33,19 @@ public class UI : MonoBehaviour
 
     void Awake()
     {
+        
+
+    }
+    void Start()
+    {
+        isLineOn = false;
+        gameData.white_score = 0;
+        gameData.black_score = 0;
+        player1Name.text = gameData.playername1;
+        player2Name.text = gameData.playername2;
+        player1Score.text = gameData.white_score.ToString();
+        player2Score.text = gameData.black_score.ToString();
+
         showCharacter.text = TextProvider.Instance.GetText("text0032");//"Hide Labels";
         hintButtonText.text = TextProvider.Instance.GetText("text0016"); //Rule book
         showLineTxt.text = TextProvider.Instance.GetText("text0014"); // show lines
@@ -46,24 +59,11 @@ public class UI : MonoBehaviour
 
         if (!gameData.isEN)
         {
-            for(int i = 5; i <= 8; i++)
+            for (int i = 5; i <= 8; i++)
             {
                 uiTxt[i].fontSize = 85f;
             }
         }
-
-    }
-    void Start()
-    {
-        isLineOn = false;
-        gameData.white_score = 0;
-        gameData.black_score = 0;
-        player1Name.text = gameData.playername1;
-        player2Name.text = gameData.playername2;
-        player1Score.text = gameData.white_score.ToString();
-        player2Score.text = gameData.black_score.ToString();
-
-
     }
 
     // Update is called once per frame
