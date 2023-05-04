@@ -12,7 +12,6 @@
 一、进行回合之法
 二、得筹之法
 三、获胜条件"$%"以下为游戏界面内容：
-
 1.棋手的<color=#FFCA44><b>名字和当前得筹数</b></color> 
 2.本回合中可用之两个<color=#FFCA44><b>移动步数</b></color> 
 3.显示或隐藏<color=#FFCA44><b>行棋路径</b></color> 
@@ -54,7 +53,6 @@ $%"<b>Step 4</b>. Repeat steps 2&3 to <b>move a second piece</b>.
  -Liu He"$%"In Liubo, the word used for “Owl” also means “leader.” So, when a bird becomes an Owl in the game, it is not literally transforming form one species of bird to another. Instead, it has earned the right to be called “leader” of the other birds by successfully catching a fish from the pond.
  -Liu He"$%$%$%Captured birds are moved off the board, but returned to their player; that player may re-enter their bird from a starting space on their next turn. Additionally, captured Owls are downgraded back to normal birds.$%$%"<b>Tip #5: Understand the sticks.</b> Rolls of 1 and 2 are three times more likely than 3 and 4. Use this to estimate the likelihood of events such as captures and nest scores. The best Liubo players know when to push their luck, and when to stay safe. 
  -Liu He"$%$%"<color=#FFCA44><b>四</b></color>，重复第二、第三步，以<color=#FFCA44><b>移动第二个棋子</b></color>。
-
 <color=#FFCA44><b>每回合皆须合移动两个棋子</b></color>，一回合内不可行同一棋两次。完成两次移动前不可结束回合。"$%$%$%$%王逸：“己棋已梟，當成牟勝，射張食棋，下兆於屈，故呼五白，以助投也。”$%《古博经》：“棋行到处即竖之，名为骁棋，即入水食鱼，亦名牵鱼。”$%$%$%《古博经》：“每一牵鱼获二筹，翻一鱼获三筹。若已牵两鱼而不胜者，名曰被翻双鱼，彼家获六筹，为大胜也。”$%$%"<b>率衡第五（运筹帷幄）</b>：善博者不欲牟，不恐不胜，平心定意，捉得其齐，行由其理，虽不必胜，得筹必多。$%"
 $%When two of your birds share a perch, they form a <b>blockade</b>. This prevents all other birds from landing on or moving through this perch.$%$%$%$%"The pattern of lines on the Liubo board comes from traditional bronze mirrors of the Han dynasty, also known as the TLV pattern. In one interpretation, the central square represents the earth, the connected “T” shapes represent the sky, the four circles represent the seas, and the Ls and Vs around the outer edge represent the cosmos.
  -Liu He"$%$%$%$%"Capturing is often the fastest way to score. You should always be looking for ways to capture your opponent, as well as ways to protect your own pieces from capture!
@@ -66,7 +64,6 @@ $%$%$%$%$%$%$%$%$%$%$%$%$%当一散棋落于或穿过池塘时，即竖起成为
 $%$%$%$%$%$%$%$%$%$%$%$%$%当一枭棋落于一对手散棋所在的棋位时，对手散棋即遭<b><color=#FFCA44>驱逐</color></b>。然而，需两枚散棋落于一对手枭棋方能将其<b><color=#FFCA44>驱逐</color></b>。$%$%$%$%$%$%$%$%$%$%"$%"
 $%$%$%$%$%$%$%$%$%$%$%$%$%最后，当枭棋落于在或穿过对手“巢穴”（<i>詘</i>）时，即得2筹，该枭棋即变回散棋。$%$%$%$%$%$%$%$%$%$%"$%"
 $%$%$%$%$%$%$%$%$%$%$%$%$%"<color=#FFCA44><b>先获六筹者胜。</b></color> 得筹法有三：
-
 驱逐对手散棋得 <color=#FFCA44><b>一筹</b></color> 。
 枭棋达对手巢穴得 <color=#FFCA44><b>二筹</b></color> 。
 驱逐对手枭棋得 <color=#FFCA44><b>三筹</b></color> 。"$%$%$%$%$%$%$%$%$%$%"$%"
