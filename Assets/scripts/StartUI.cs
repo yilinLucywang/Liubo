@@ -14,6 +14,7 @@ public class StartUI : MonoBehaviour
     {
         inputField[0].characterLimit = 12;
         inputField[1].characterLimit = 12;
+        changeTextLang();
     }
     public void showTutorial()
     {
