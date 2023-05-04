@@ -8458,8 +8458,18 @@ MonoBehaviour:
   delaySpeed: 0.02
   loadingTxtID:
   - text0038_1
+  - text0038_2
+  - text0038_3
+  - text0038_4
+  - text0038_5
+  - text0038_6
   loadingTxtSourceID:
   - text0039_1
+  - text0039_2
+  - text0039_3
+  - text0039_4
+  - text0039_5
+  - text0039_6
   textBox: {fileID: 730170165}
   sourceTextBox: {fileID: 818041700}
 --- !u!114 &818041700
