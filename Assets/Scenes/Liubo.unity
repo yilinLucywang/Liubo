@@ -7689,7 +7689,7 @@ GameObject:
   - component: {fileID: 704134198}
   - component: {fileID: 704134197}
   - component: {fileID: 704134196}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: TransationImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8011,7 +8011,7 @@ GameObject:
   - component: {fileID: 730170166}
   - component: {fileID: 730170165}
   - component: {fileID: 730170167}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8416,7 +8416,7 @@ GameObject:
   - component: {fileID: 818041701}
   - component: {fileID: 818041700}
   - component: {fileID: 818041699}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
