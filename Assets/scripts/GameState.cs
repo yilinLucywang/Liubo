@@ -766,7 +766,7 @@ public class GameState : MonoBehaviour
             //piece index 0 - 11
             if(bd.nodes[CurOrgIndex][i] == chosen_piece){
                 bd.nodes[CurOrgIndex].RemoveAt(i);
-                piecePlacement(CurOrgIndex, new Vector3(cur_piece.transform.position.x, 0.04f, cur_piece.transform.position.z));
+                piecePlacement(CurOrgIndex, bd.anchors[bd.index_2_anchor[CurOrgIndex]].transform.position);
                 break;
             }
         }
