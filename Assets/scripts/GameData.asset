@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   white_score: 0
   black_score: 0
-  playername1: "\u9752\u65B9"
-  playername2: "\u767D\u65B9"
+  playername1: "\u4E00\u4E8C\u4E09\u56DB\u4E94\u516D\u4E03\u516B\u4E5D\u5341\u4E00\u4E8C"
+  playername2: "\u4E00\u4E8C\u4E09\u56DB\u4E94\u516D\u4E03\u516B\u4E5D\u5341\u4E00\u4E8C"
   isEN: 0
