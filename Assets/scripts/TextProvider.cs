@@ -17,7 +17,7 @@ public class TextProvider : MonoBehaviour
         }
         Instance = this;
         
-        string filePath = @"Assets\scripts\UIText.csv";
+        string filePath = @"Assets\scripts\UIText.txt";
         char delimiter = ',';
         char quoteChar = '"';
         string lineBreak = "\r\n";
