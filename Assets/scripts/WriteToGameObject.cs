@@ -21,7 +21,7 @@ public class WriteToGameObject : MonoBehaviour
     void Awake()
     {
         if(!gameData.isEN){
-            string path = @"Assets\scripts\tutorialText.csv";
+            string path = @"Assets\scripts\tutorialText.txt";
             string[] lines = System.IO.File.ReadAllLines(path);
             int rowCount = 0;
             string text = "";
