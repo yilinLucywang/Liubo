@@ -19,16 +19,18 @@ public class CameraMove : MonoBehaviour
     private void Update()
     {
         _offset = transform.position - focusPoint.transform.position;
-        
+
         if ((GameState.state & State.MoveOrPieceSelection) != 0)
         {
             if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.RightArrow))
             {
                 transform.position = focusPoint.transform.position + Quaternion.Euler(0, _speed * -1 * Time.deltaTime, 0) * _offset;
-            } else if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
+            }
+            else if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.position = focusPoint.transform.position + Quaternion.Euler(0, _speed * Time.deltaTime, 0) * _offset;
             }
+            
         }
 
         if((GameState.state & State.MoveOrPieceSelection) == 0)
@@ -39,6 +41,6 @@ public class CameraMove : MonoBehaviour
 
     private void LateUpdate()
     {
-            transform.rotation = Quaternion.LookRotation(focusPoint.transform.position - transform.position,Vector3.up);
+          transform.rotation = Quaternion.LookRotation(focusPoint.transform.position - transform.position,Vector3.up);
     }
 }

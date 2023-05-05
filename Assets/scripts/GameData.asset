@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99759c694db0d241bad31bc24c6ebe6, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  white_score: 1
-  black_score: 4
-  playername1: aaa
-  playername2: bbb
+  white_score: 0
+  black_score: 0
+  playername1: "\u4E00\u4E8C\u4E09\u56DB\u4E94\u516D\u4E03\u516B\u4E5D\u5341\u4E00\u4E8C"
+  playername2: "\u4E00\u4E8C\u4E09\u56DB\u4E94\u516D\u4E03\u516B\u4E5D\u5341\u4E00\u4E8C"
+  isEN: 0

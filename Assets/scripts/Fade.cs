@@ -44,10 +44,10 @@ public class Fade : MonoBehaviour
             if(canvasGroup.alpha >= 0)
             {
                 canvasGroup.alpha -= timeOfFade * Time.deltaTime;
-                canvasGroup.blocksRaycasts = false;
                 if (canvasGroup.alpha == 0)
                 {
                     fadeOut = false;
+                    canvasGroup.blocksRaycasts = false;
                 }
             }
         }
@@ -73,7 +73,7 @@ public class Fade : MonoBehaviour
 
     IEnumerator FadeOutToGame(Action OnFadeOut)
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(4f);
         FadeOut();
         yield return new WaitForSeconds(1f);
         OnFadeOut();

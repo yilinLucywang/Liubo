@@ -5,8 +5,9 @@ using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 using UnityEngine.Playables;
+using UnityEngine.UI;
+using TMPro;
 using Random = UnityEngine.Random;
 
 public class GameState : MonoBehaviour
@@ -21,6 +22,7 @@ public class GameState : MonoBehaviour
     public int dice_2 = -1;
 
     public GameObject dice1But, dice2But, dice1But2, dice2But2;
+    public GameObject dice1ButSelect, dice2ButSelect, dice1But2Select, dice2But2Select;
     public GameObject blackPieceBut, whitePieceBut;
     public GameObject rollDicebtn;
     public GameObject whiteTurn, blackTurn;
@@ -100,7 +102,14 @@ public class GameState : MonoBehaviour
 
     public Fade fadeInOut;
     public GameObject fadeInImg;
-    
+
+    [SerializeField]
+    private Color txtColorOnRollBut;
+
+    public TMP_Text txtOnRollBut;
+
+    public TextMesh[] charactersOnBoard;
+
     void Awake(){
         for(int i = 0; i < white_pieces.Count; i++){
             white_poses.Add(white_pieces[i].transform.position);
@@ -115,7 +124,42 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i <= 3; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0024"); //hollow
+        }
+        for (int i = 4; i <= 7; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0022"); //branch
+        }
+        for (int i = 8; i <= 11; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0025"); //garden wall
+        }
+        for (int i = 12; i <= 15; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0026"); //woodshed
+        }
+        for (int i = 16; i <= 19; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0029"); //stone path
+        }
+        for (int i = 20; i <= 23; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0023"); //owl nest
+        }
+        for (int i = 24; i <= 27; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0027"); //felled tree
+        }
+        for (int i = 28; i <= 31; i++)
+        {
+            charactersOnBoard[i].text = TextProvider.Instance.GetText("text0028"); //woodpile
+        }
+        charactersOnBoard[32].text = TextProvider.Instance.GetText("text0030"); //pond
+
         state = State.Roll;
+        txtColorOnRollBut = txtOnRollBut.color;
 
         whiteSideTimeLine.Stop();
         blackSideTimeLine.Stop();
@@ -229,8 +273,10 @@ public class GameState : MonoBehaviour
         num_2_text2.text = "";
 
         rollDicebtn.GetComponent<Button>().interactable = true;
-        
-        foreach(Transform child in allwhitePieces)
+        txtColorOnRollBut = new Color(txtColorOnRollBut.r, txtColorOnRollBut.g, txtColorOnRollBut.b, 1f);
+        txtOnRollBut.color = txtColorOnRollBut;
+
+        foreach (Transform child in allwhitePieces)
         {
             child.gameObject.layer = 0;
             child.gameObject.GetComponentInChildren<MeshRenderer>().material = whiteMat;
@@ -308,6 +354,7 @@ public class GameState : MonoBehaviour
     {
         // int num_1 = RollSticks();
         // int num_2 = RollSticks();
+
         var (num_1, num_2) = StickRoller.GetInstance().RollSticks();
         num_1_text.text = num_1.ToString(); 
         num_2_text.text = num_2.ToString();
@@ -324,8 +371,10 @@ public class GameState : MonoBehaviour
             StopCoroutine(WaitForClickBtn());
             StartCoroutine(WaitForClickBtn());
 
-
+            
             rollDicebtn.GetComponent<Button>().interactable = false;
+            txtColorOnRollBut = new Color(txtColorOnRollBut.r, txtColorOnRollBut.g, txtColorOnRollBut.b, 0.5f);
+            txtOnRollBut.color = txtColorOnRollBut;
         }
 
     }
@@ -395,6 +444,8 @@ public class GameState : MonoBehaviour
         {
             dice1But.GetComponent<Button>().interactable = false;
             dice2But.GetComponent<Button>().interactable = true;
+            dice1ButSelect.SetActive(true);
+            dice2ButSelect.SetActive(false);
 
             whiteSideTimeLine.time = 0;
             whiteSideTimeLine.Stop();
@@ -404,6 +455,8 @@ public class GameState : MonoBehaviour
         {
             dice1But2.GetComponent<Button>().interactable = false;
             dice2But2.GetComponent<Button>().interactable = true;
+            dice1But2Select.SetActive(true);
+            dice2But2Select.SetActive(false);
 
             blackSideTimeLine.time = 0;
             blackSideTimeLine.Stop();
@@ -433,6 +486,9 @@ public class GameState : MonoBehaviour
         {
             dice1But.GetComponent<Button>().interactable = true;
             dice2But.GetComponent<Button>().interactable = false;
+            dice1ButSelect.SetActive(false);
+            dice2ButSelect.SetActive(true);
+
             whiteSideTimeLine.time = 0;
             whiteSideTimeLine.Stop();
             whiteSideTimeLine.Evaluate();
@@ -441,6 +497,9 @@ public class GameState : MonoBehaviour
         {
             dice1But2.GetComponent<Button>().interactable = true;
             dice2But2.GetComponent<Button>().interactable = false;
+            dice1But2Select.SetActive(false);
+            dice2But2Select.SetActive(true);
+
             blackSideTimeLine.time = 0;
             blackSideTimeLine.Stop();
             blackSideTimeLine.Evaluate();
@@ -514,11 +573,15 @@ public class GameState : MonoBehaviour
         {
             dice1But.GetComponent<Button>().interactable = true;
             dice2But.GetComponent<Button>().interactable = true;
+            dice1ButSelect.SetActive(false);
+            dice2ButSelect.SetActive(false);
         }
         else if (!is_p1_turn)
         {
             dice1But2.GetComponent<Button>().interactable = true;
             dice2But2.GetComponent<Button>().interactable = true;
+            dice1But2Select.SetActive(false);
+            dice2But2Select.SetActive(false);
         }
         OnDeselect.Invoke();
     }
@@ -573,11 +636,11 @@ public class GameState : MonoBehaviour
         else
         {
             //rotate back
-            curPieceRotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
+            curPieceRotation = LiuboBoard.transform.rotation * Quaternion.Euler(0f, -90f, 0f);
         }
         if(isOwl){
             // single owl
-            curPieceRotation = curPieceRotation * Quaternion.Euler(0f, 90f, 90f);
+            curPieceRotation = curPieceRotation * Quaternion.Euler(0f, -90f, 90f);
             curPieceTranslation = new Vector3(0f, bd.pieceHeight / 2, 0f);
             
             // 1 owl 1 normal, owl on the top
@@ -786,7 +849,7 @@ public class GameState : MonoBehaviour
             }
             bd.white_pieces[index] = -1;
             white_pieces[index].transform.position = white_poses[index];
-            white_pieces[index].transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            white_pieces[index].transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
         else{
             int ori_place = bd.black_pieces[index];
@@ -800,7 +863,7 @@ public class GameState : MonoBehaviour
             }
             bd.black_pieces[index] = -1;
             black_pieces[index].transform.position = black_poses[index];
-            black_pieces[index].transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            black_pieces[index].transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
         //This part takes care of the UI part
     }
@@ -979,10 +1042,10 @@ public class GameState : MonoBehaviour
         else
         {
             //rotate back
-            ret *= LiuboBoard.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
+            ret *= LiuboBoard.transform.rotation * Quaternion.Euler(0f, -90f, 0f);
         }
         if(isOwl){
-            ret *= Quaternion.Euler(0f, 90f, 90f);
+            ret *= Quaternion.Euler(0f, -90f, 90f);
         }
         return ret;
     }

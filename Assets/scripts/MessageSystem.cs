@@ -37,7 +37,7 @@ public class MessageSystem : MonoBehaviour
     void ShowTurnChangeMessage(bool isP1Turn)
     {
         animator.Play("ShowMessage");
-        text.text = $"{(isP1Turn ? gs.gameData.playername1 : gs.gameData.playername2)}'s turn!";
+        text.text = $"{(isP1Turn ? gs.gameData.playername1 : gs.gameData.playername2)}" + TextProvider.Instance.GetText("text0019_4"); //'s turn!";
     }
 
     void ShowScoreMessage(ScoreType scoreType, int points)
@@ -47,26 +47,26 @@ public class MessageSystem : MonoBehaviour
         switch (scoreType)
         {
             case ScoreType.Nest:
-                txt += "Reached nest: ";
+                txt += TextProvider.Instance.GetText("text0019_6"); // Reached nest: ";
                 break;
             case ScoreType.CaptureNormal:
-                txt += "Bird captured: ";
+                txt += TextProvider.Instance.GetText("text0019_7"); //  "Bird captured: ";
                 break;
             case ScoreType.CaptureOwl:
-                txt += "Owl captured: ";
+                txt += TextProvider.Instance.GetText("text0019_8"); //  "Owl captured: ";
                 break;
             default:
                 break;
         }
-        
-        text.text = txt + (points > 1 ? $"score {points.ToString()} points!"
-                : $"score {points.ToString()} point!");
+
+        text.text = txt + (points > 1 ? string.Format(TextProvider.Instance.GetText("text0021"), points.ToString()) //"score {0} points!"
+                : string.Format(TextProvider.Instance.GetText("text0020"), points.ToString())); //"score {0} point!"
     }
 
     void ShowOwlMessage()
     {
         animator.Play("ShowMessage");
-        text.text = "Bird upgraded into an Owl!";
+        text.text = TextProvider.Instance.GetText("text0019_5"); //  "Bird upgraded into an Owl!";
     }
 
     void ShowBlockadeMessage()
@@ -77,6 +77,6 @@ public class MessageSystem : MonoBehaviour
     void ShowStartingMessage()
     {
         animator.Play("ShowMessage");
-        text.text = "Score 6 points to win!";
+        text.text = TextProvider.Instance.GetText("text0019_3"); //  "Score 6 points to win!";
     }
 }
