@@ -6,7 +6,6 @@ public class TextProvider : MonoBehaviour
 {
     public static TextProvider Instance;
     public GameData gameData;
-    public bool isMac;
     private Dictionary<string, MultiLangText> texts = new Dictionary<string, MultiLangText>();
     // Start is called before the first frame update
     void Awake()
@@ -19,13 +18,17 @@ public class TextProvider : MonoBehaviour
         Instance = this;
         
         string filePath = @"Assets\scripts\UIText.txt";
-        if(isMac)
+        if(Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer)
         {
             filePath = @"Assets/scripts/UIText.txt";
         }
         char delimiter = ',';
         char quoteChar = '"';
         string lineBreak = "\r\n";
+        if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer)
+        {
+            lineBreak = "\n";
+        }
         
         string text = System.IO.File.ReadAllText(filePath);
         //var reg = "(?<=([^\"]*(\"[^\"]*\"[^\"]*)*[^\"]*))\r\n(?=([^\"]*(\"[^\"]*\"[^\"]*)*[^\"]*))";

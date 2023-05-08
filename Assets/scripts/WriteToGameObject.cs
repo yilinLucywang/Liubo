@@ -22,6 +22,10 @@ public class WriteToGameObject : MonoBehaviour
     {
         if(!gameData.isEN){
             string path = @"Assets\scripts\tutorialText.txt";
+            if(Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer)
+            {
+                path = @"Assets/scripts/tutorialText.txt";
+            }
             string[] lines = System.IO.File.ReadAllLines(path);
             int rowCount = 0;
             string text = "";
